@@ -1,62 +1,73 @@
 .mynerve-regular {
-    font-family: "Mynerve", cursive;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Mynerve", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .playpen-sans-regular {
-    font-family: "Playpen Sans", cursive;
-
+  font-family: "Playpen Sans", cursive;
 }
 
 * {
-    font-family: "Playpen Sans", cursive;
-    font-optical-sizing: auto;
-    font-size: 15px;
-    font-weight: 350;
-    font-style: normal;
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-size: 15px;
+  font-weight: 350;
+  font-style: normal;
 }
 
 .logo {
-    font-family: "Mynerve", cursive;
-    font-weight: 200;
-    font-style: normal;
-    text-align: center;
-    color: black;
-    transform: rotate(-10deg);
+  font-family: "Mynerve", cursive;
+  font-weight: 200;
+  font-style: normal;
+  text-align: center;
+  color: black;
+  transform: rotate(-10deg);
 
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .navbar-nav {
-    border-radius: 50px;
+  border-radius: 50px;
 }
-
 
 /* Add some space at the top of the body to prevent content from being hidden by the fixed navbar */
 #home {
-    padding-top: 130px;
+  padding-top: 130px;
 }
 
-#special{
-    padding-top: 80px;
+#special {
+  padding-top: 80px;
 }
 
 /* Style for the navbar when the user scrolls */
 .navbar-scrolled {
-    background-color: #fff;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    transition: background-color 0.3s ease-in-out;
+  background-color: #fff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.arrow-image{
-    position: absolute;
-    scale: 0.2;
-    left: 55%;
-    top: 140px;
+.arrow-image {
+  position: absolute;
+  scale: 0.2;
+  left: 55%;
+  top: 140px;
 }
 
-.scroll-image{
-    scale: 0.8;
-    margin-top: 100px;
+.scroll-image {
+  scale: 0.8;
+  margin-top: 100px;
+}
+
+.circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 24px;
+
+  background-color: black;
+
+  position: fixed;
+  top: 0;
+  left: 0;
 }
