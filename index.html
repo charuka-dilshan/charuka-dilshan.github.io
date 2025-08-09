@@ -5,11 +5,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charuka Dilshan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mynerve&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Playpen+Sans:wght@100..800&display=swap"
+        rel="stylesheet">
     <meta name="google-site-verification" content="Jz0CX0vkqTgHw4R-DC2ySniV-RB-KPfNLnkW7Z6VCW8">
+
 </head>
 
-<body>
-<h1>hi hello world</h1>
+<body id="home">
+
+    <!-- nav bar -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top w-100 mt-3">
+        <div class="container">
+            <!-- The toggler button for mobile view -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- The collapsible part of the navbar -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- 'mx-auto' perfectly centers the navigation links -->
+                <ul id="navbar-nav" class="navbar-nav mx-auto px-lg-3 py-lg-0 px-4 py-4">
+                    <li class="nav-item px-2">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a href="#special" class="nav-link">Special</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a href="#projects" class="nav-link">Projects</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="arrow-image">
+        <img src="src/right-down.png">
+    </div>
+
+    <!-- hero section -->
+    <div id="home" class="container vh-100">
+        <div class="text-center">
+            <p class="title fs-1 mb-0"> <b class="fs-1">HI! ,</b> I'm Charuka Dilshan</p>
+            <p class="mt-0">Software Engineer Undergraduate</p>
+            <p class="fs-4">I Engineer Digital Solutions.</p>
+        </div>
+
+        <div class="row">
+            <div class="offset-9 col-3 mt-5">
+                <button class="btn btn-primary py-0">
+                    <p>Get My CV</p>
+                </button>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <img src="src/mouse-cursor.png" class="scroll-image">
+        </div>
+    </div>
+
+
+    <div id="special" class="container vh-100">
+        <div class="title text-center mb-5">
+            <p class="fw-semibold fs-1 mb-0">Some Tools</p>
+            <p>I Think You're Looking For These! (Your Welcome)</p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-4 g-4 justify-content-center">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="src/image-file-converter.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Image File Converter</h5>
+                        <p class="card-text">Effortlessly convert images with this tool, your fast and private solution.
+                            Batch convert JPG, PNG, WEBP, and more using a simple drag-and-drop interface.</p>
+
+                        <div class="text-end">
+                            <a href="#" class="text-decoration-none">Try out
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- about section -->
+    <div id="about">
+        <p>Who Am I ?</p>
+        <p>At my core, I'm a builder. There's a special kind of magic in starting with nothing but an idea and, line
+            by
+            line, bringing it to life. To do that well, I know I have to keep learning. I genuinely enjoy the
+            process of
+            getting to know a new technology, understanding its strengths, and then figuring out how to weave it
+            into a
+            project. For me, learning and building aren't separate things, they're two sides of the same coin, and I
+            can't imagine doing one without the other.</p>
+    </div>
+
+
+    <!-- skills -->
+    <p>My Developer Toolkit</p>
+    <p>Html</p>
+    <p>CSS</p>
+    <p>PHP</p>
+    <p>JavaScript</p>
+    <p>Java</p>
+    <p>MySQL</p>
+    <p>Figma</p>
+    <p>Arduino</p>
+    <p>Opencv</p>
+
+    <!-- education -->
+    <p>Bsc(Hons) In Software Engineering - Java Institue for Advanced Technology</p>
+    <p>GCE Advance Level</p>
+    <p>GCE Ordinary Level</p>
+
+    <!-- projects -->
+    <div id="projects">
+        <p>My Projects</p>
+        <p>Lets Work Together</p>
+    </div>
+
+
+    <!-- contact -->
+    <div id="contact">
+        <p>Get In Touch</p>
+    </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+        crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
