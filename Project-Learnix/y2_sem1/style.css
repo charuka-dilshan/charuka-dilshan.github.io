@@ -1,0 +1,45 @@
+/* Styles for the "Coming Soon" page */
+/* Place this in a new file, e.g., y1_sem2/style.css */
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f7f6;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+.coming-soon-container {
+  max-width: 600px;
+  padding: 2rem;
+}
+
+.coming-soon-container h1 {
+  font-size: 3rem;
+  color: #004a99;
+  margin-bottom: 1rem;
+}
+
+.coming-soon-container p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.back-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #004a99;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: #003366;
+}

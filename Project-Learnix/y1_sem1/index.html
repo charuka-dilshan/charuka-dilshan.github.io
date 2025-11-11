@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y1 S1 - Subjects</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <h1>Year 1, Semester 1</h1>
+        <p>EUSL TC Bsc in Computer Science</p>
+    </header>
+
+    <main>
+        <div class="page-controls">
+            <a href="../index.html" class="back-link">&larr; Back to Semesters</a>
+
+            <input type="text" id="searchBar" onkeyup="searchSubjects()" placeholder="Search subjects...">
+        </div>
+
+        <h2>Subjects</h2>
+
+        <div class="subject-grid" id="subjectGrid">
+
+            <div class="subject-card timetable-card" id="openTimetable">
+                <h3>View Timetable</h3>
+                <p>Class & Lab Schedule</p>
+            </div>
+
+            <a href="co1121.html" class="subject-card">
+                <h3>Basic Mathematics for Computing</h3>
+                <p>CO 1121</p>
+            </a>
+
+            <a href="co1122.html" class="subject-card">
+                <h3>Basic Computer Programming</h3>
+                <p>CO 1122</p>
+            </a>
+
+            <a href="co1112.html" class="subject-card">
+                <h3>Practical work on CO 1122</h3>
+                <p>CO 1112</p>
+            </a>
+
+            <a href="co1123.html" class="subject-card">
+                <h3>Formal Methods for Problem solving</h3>
+                <p>CO 1123</p>
+            </a>
+
+            <a href="co1124.html" class="subject-card">
+                <h3>Computer Systems and PC Applications</h3>
+                <p>CO 1124</p>
+            </a>
+
+            <a href="co1114.html" class="subject-card">
+                <h3>Practical work on CO 1124</h3>
+                <p>CO 1114</p>
+            </a>
+
+            <a href="co1125.html" class="subject-card">
+                <h3>Statistics for Science and Technology</h3>
+                <p>CO 1125</p>
+            </a>
+
+            <a href="co1115.html" class="subject-card">
+                <h3>Practical Work on CO 1125</h3>
+                <p>CO 1115</p>
+            </a>
+
+            <a href="co1126.html" class="subject-card">
+                <h3>Management Information system</h3>
+                <p>CO 1126</p>
+            </a>
+
+            <a href="gep1.html" class="subject-card">
+                <h3>General English Proficiency - 1</h3>
+                <p>GEP I</p>
+            </a>
+
+        </div>
+    </main>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+
+        <img class="modal-content" id="timetableImage">
+
+        <div id="caption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
