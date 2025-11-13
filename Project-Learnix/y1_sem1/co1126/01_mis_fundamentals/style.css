@@ -1,0 +1,355 @@
+/* Basic reset and global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: #b9b7b794;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Styles for Module 05 */
+
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Header styles */
+.main-header {
+  background-color: #990000; /* A professional blue */
+  color: #ffffff;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-header h1 {
+  font-size: 2.5rem;
+}
+
+.back-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #6c757d;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.back-link:hover {
+  background-color: #5a6268;
+}
+
+/* Tab Navigation */
+.content-nav {
+  display: flex;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 2rem;
+}
+
+.nav-btn {
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #555;
+  border-bottom: 3px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.nav-btn .icon {
+  margin-right: 0.5rem;
+}
+
+.nav-btn:hover {
+  color: #000;
+}
+
+.nav-btn.active {
+  color: #004a99;
+  border-bottom-color: #004a99;
+}
+
+/* Content Area */
+.content-item {
+  display: none; /* Hidden by default */
+}
+
+.content-item.active {
+  display: block; /* Show active content */
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-item h2 {
+  font-size: 1.8rem;
+  color: #004a99;
+  margin-bottom: 1.5rem;
+}
+
+/* PDF Embed */
+.pdf-container {
+  position: relative;
+  width: 100%;
+  padding-top: 133.33%;
+  height: 0;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f4f4f4;
+}
+
+.pdf-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Notes Content */
+.notes-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  line-height: 1.7;
+}
+
+.notes-content h3 {
+  font-size: 1.4rem;
+  color: #004a99;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.notes-content h4 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.notes-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.notes-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+ul.law-list li {
+  background: #f9f9f9;
+  padding: 8px 12px;
+  border-left: 3px solid #004a99;
+  margin-bottom: 5px;
+}
+
+.notes-content hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 2rem 0;
+}
+
+/* Quiz Content */
+.quiz-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.question {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1.5rem;
+}
+
+.question p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.question label {
+  display: block;
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
+  background: #f4f7f6;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.question label:hover {
+  background: #e9eef3;
+}
+
+.question input[type="radio"] {
+  margin-right: 10px;
+}
+
+.submit-btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #004a99;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #003366;
+}
+
+/* Quiz Results */
+.quiz-results {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: none;
+}
+
+.quiz-results.correct {
+  background-color: #e6f7ec;
+  border: 1px solid #5cb85c;
+  color: #155724;
+}
+
+.quiz-results.incorrect {
+  background-color: #f8d7da;
+  border: 1px solid #d9534f;
+  color: #721c24;
+}
+
+.question label.correct {
+  background-color: #e6f7ec;
+  border: 1px solid #5cb85c;
+}
+
+.question label.incorrect {
+  background-color: #f8d7da;
+  border: 1px solid #d9534f;
+}
+
+/* --- PDF Viewer Styles --- */
+
+/* 1. The Container */
+.pdf-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  border-radius: 0 0 8px 8px; /* Rounded bottom corners only */
+  background: #f4f4f4;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Aspect Ratio for SLIDES (Landscape) */
+/* Use 75% for 4:3 slides (Standard) or 56.25% for 16:9 slides (Widescreen) */
+.landscape-viewer {
+  padding-top: 75%;
+}
+
+/* 3. The Iframe itself */
+.pdf-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* --- Download Card Styles --- */
+
+.download-container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px dashed #ccc;
+}
+
+.file-card {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  gap: 1.5rem;
+  max-width: 500px;
+  width: 100%;
+}
+
+.file-icon {
+  font-size: 3rem;
+}
+
+.file-details {
+  flex-grow: 1;
+}
+
+.file-details h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 0 0 0.2rem 0;
+}
+
+.file-details p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.download-btn {
+  background-color: #004a99;
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  white-space: nowrap; /* Keeps button text on one line */
+}
+
+.download-btn:hover {
+  background-color: #003366;
+}

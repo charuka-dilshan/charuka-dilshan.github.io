@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIS Fundamentals</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <h1>Module 01: MIS Fundamentals</h1>
+        <p>CO 1126 - Management Information Systems</p>
+    </header>
+
+    <main>
+        <a href="../" class="back-link">&larr; Back to MIS Modules</a>
+
+        <nav class="content-nav">
+            <button class="nav-btn active" data-content="slides">
+                <span class="icon">📄</span> Lecture Slides
+            </button>
+            <button class="nav-btn" data-content="notes">
+                <span class="icon">✍️</span> Detailed Notes
+            </button>
+            <button class="nav-btn" data-content="quiz">
+                <span class="icon">❓</span> Quiz
+            </button>
+        </nav>
+
+        <div class="content-display">
+
+            <div id="slides" class="content-item active">
+                <h2>Lecture Slides</h2>
+
+                <div class="download-container">
+                    <div class="file-card">
+                        <div class="file-icon">📄</div>
+                        <div class="file-details">
+                            <h3>slides.pdf</h3>
+                            <p>Module 05 Lecture Slides</p>
+                        </div>
+                        <a href="slides.pdf" download class="download-btn">
+                            Download PDF ⬇
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="notes" class="content-item">
+                <h2>Detailed Course Notes</h2>
+                <div class="notes-content">
+
+                    <h3>1. Core Concepts: Data vs. Information vs. Knowledge</h3>
+                    <p>It is essential to distinguish between these three terms in the context of MIS:</p>
+
+                    <h4>A. Data</h4>
+                    [cite_start]<p>Data refers to unorganized, raw facts that have not yet been processed to reveal
+                        meaning[cite: 231].</p>
+                    <ul class="law-list">
+                        [cite_start]<li><strong>Alphanumeric data:</strong> Numbers, letters, and other characters[cite:
+                            232].</li>
+                        [cite_start]<li><strong>Image data:</strong> Graphic images and pictures[cite: 232].</li>
+                        [cite_start]<li><strong>Audio data:</strong> Sound, noise, or tones[cite: 232].</li>
+                        [cite_start]<li><strong>Video data:</strong> Moving images or pictures[cite: 232].</li>
+                    </ul>
+
+                    <h4>B. Information</h4>
+                    [cite_start]<p>Information is organized data that has a particular meaning within a specific
+                        context[cite: 233]. It is data that has been processed to be useful.</p>
+
+                    <h4>C. Knowledge</h4>
+                    <p>Knowledge is the understanding of information to make decisions. [cite_start]It involves
+                        experience, explanation, and the ability to use information effectively[cite: 235].</p>
+
+                    <hr>
+
+                    <h3>2. Characteristics of Valuable Information</h3>
+                    [cite_start]<p>For information to be useful to a manager, it must possess specific qualities [cite:
+                        286-296]:</p>
+                    <table class="notes-table">
+                        <tr>
+                            <th>Characteristic</th>
+                            <th>Definition</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Accuracy</strong></td>
+                            <td>Is the information correct? Can we rely on it?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Timeliness</strong></td>
+                            <td>How current is the information? Is it available when needed?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accessibility</strong></td>
+                            <td>Can authorized users access the information easily?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Engagement</strong></td>
+                            <td>Is the information capable of affecting a decision?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Application</strong></td>
+                            <td>Is the information relevant to the current context?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Completeness</strong></td>
+                            <td>Are any values missing? Is the picture complete?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Consistency</strong></td>
+                            <td>Is the aggregate/summary info in agreement with detailed info?</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rarity</strong></td>
+                            <td>Is the information previously known, or does it offer new insight?</td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+                    <h3>3. Systems and Information Systems</h3>
+
+                    <h4>Definitions</h4>
+                    <ul>
+                        [cite_start]<li><strong>System:</strong> A group of components that interact to achieve a
+                            purpose[cite: 236].</li>
+                        <li><strong>Information System (IS):</strong> A group of components that interact to produce
+                            information. [cite_start]It collects input, processes it, produces output, and provides a
+                            feedback/control mechanism [cite: 237-238].</li>
+                        [cite_start]<li><strong>CBIS (Computer-Based Information System):</strong> An IS that includes
+                            computers[cite: 239].</li>
+                    </ul>
+
+                    [cite_start]<h4>Real-World System Examples [cite: 249-285]:</h4>
+                    <p>Every system has Inputs, Processes, Outputs, and Feedback.</p>
+
+                    <div class="example-box"
+                        style="background:#f9f9f9; padding:15px; border-left:4px solid #004a99; margin-bottom:10px;">
+                        <strong>1. University System</strong><br>
+                        &bull; <em>Inputs:</em> Students, Faculty, Textbooks<br>
+                        &bull; <em>Processes:</em> Education, Courses<br>
+                        &bull; <em>Output:</em> Graduates<br>
+                        &bull; <em>Feedback:</em> Surveys, Grades
+                    </div>
+
+                    <div class="example-box"
+                        style="background:#f9f9f9; padding:15px; border-left:4px solid #004a99; margin-bottom:10px;">
+                        <strong>2. Toyota Plant (Manufacturing)</strong><br>
+                        &bull; <em>Inputs:</em> Raw materials, components<br>
+                        &bull; <em>Processes:</em> Assembly line<br>
+                        &bull; <em>Output:</em> Mini-vans<br>
+                        &bull; <em>Feedback:</em> Customer surveys, Quality reports
+                    </div>
+
+                    <div class="example-box"
+                        style="background:#f9f9f9; padding:15px; border-left:4px solid #004a99; margin-bottom:10px;">
+                        <strong>3. Fast Food IS</strong><br>
+                        &bull; <em>Inputs:</em> Consumer orders<br>
+                        &bull; <em>Processes:</em> Processing software<br>
+                        &bull; <em>Output:</em> Receipts, Cook's order list<br>
+                        &bull; <em>Feedback:</em> Invalid entry messages
+                    </div>
+
+                    <hr>
+
+                    <h3>4. Management Information Systems (MIS)</h3>
+
+                    <h4>Definition</h4>
+                    [cite_start]<p>MIS is a computer-based system that provides the information needed to manage an
+                        organization effectively[cite: 298].</p>
+                    [cite_start]<p><strong>Peter Keen's Definition:</strong> <em>"The effective design, delivery, and
+                            use of information systems in organizations."</em> [cite: 301]</p>
+
+                    [cite_start]<h4>The Three Primary Resources [cite: 307-310]</h4>
+                    <p>MIS involves the coordination of:</p>
+                    <ol>
+                        <li><strong>People:</strong> The most important resource. They set goals and make decisions.
+                            They must be <em>information literate</em> and <em>technology literate</em>.</li>
+                        <li><strong>Information:</strong> Organized data with meaning.</li>
+                        <li><strong>Technology:</strong> Hardware and software tools used to process information.</li>
+                    </ol>
+
+                    <h4>Importance of MIS</h4>
+                    [cite_start]<p>MIS is critical because managers operate under two main challenges [cite: 4107-4111]:
+                    </p>
+                    <ol>
+                        <li><strong>Liberalization & Globalization:</strong> Organizations compete globally, not just
+                            locally. Managers must take quick decisions or lose business to competitors.</li>
+                        <li><strong>The Information Age:</strong> Information doubles every 2-3 years. Managers must
+                            process massive volumes of data; without MIS, they risk making costly errors.</li>
+                    </ol>
+                    [cite_start]<p>MIS enables small organizations to compete with larger ones by offsetting "economies
+                        of scale"[cite: 4117].</p>
+
+                    <hr>
+
+                    <h3>5. Computers and MIS</h3>
+                    [cite_start]<p>Computers automate critical business functions[cite: 4123]:</p>
+                    <ul>
+                        [cite_start]<li><strong>Speed & Accuracy:</strong> Computers process business data (like
+                            accounting) quicker and more accurately than humans[cite: 4127].</li>
+                        [cite_start]<li><strong>Access Control:</strong> Computers restrict access to sensitive
+                            information using usernames and passwords, preventing unauthorized filtering or altering of
+                            data [cite: 4129-4131].</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>6. Case Study: MIS in the Airline Industry</h3>
+                    [cite_start]<p>The evolution of MIS in the airline industry demonstrates how systems become more
+                        sophisticated over time [cite: 339-344]:</p>
+
+                    <ul class="law-list">
+                        <li><strong>Generation I:</strong> A database-supported transactional system. Used for
+                            reservations, ticket sales, and inventory.</li>
+                        <li><strong>Generation II:</strong> Added <em>sales monitoring</em> and <em>revenue
+                                management</em> for each individual flight.</li>
+                        <li><strong>Generation III:</strong> Included benchmarking against competition and statistical
+                            modeling tools for trend analysis and forecasting.</li>
+                        <li><strong>Generation IV:</strong> Implements advanced pricing strategies based on probability
+                            and heuristic methods to obtain optimal profit from each sale.</li>
+                    </ul>
+
+                    <h4>Why is this important?</h4>
+                    [cite_start]<p>The modeling database helps answer questions like: <em>"What price should be set for
+                            the next ticket?"</em>[cite: 349].</p>
+                    <p>Without a sophisticated MIS, airlines cannot establish competitive prices:</p>
+                    <ul>
+                        [cite_start]<li>If the price is higher than the competition, the plane flies empty (loss of
+                            revenue)[cite: 361].</li>
+                        [cite_start]<li>If the price is too low, they lose potential profit[cite: 362].</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>7. Organizational Structure</h3>
+                    [cite_start]<p>MIS supports various levels of the organization [cite: 4135-4148]:</p>
+                    <ul>
+                        <li><strong>President:</strong> Top-level strategic decisions.</li>
+                        <li><strong>Managers:</strong> R&D, Finance, Marketing, Manufacturing.</li>
+                        <li><strong>Operational Teams:</strong> Design, Development, Testing, Accounting, Purchasing,
+                            Sales, Customer Service, Distribution.</li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div id="quiz" class="content-item">
+                <h2>Quiz: Fundamentals Review</h2>
+                <div class="quiz-content">
+                    <form id="quizForm">
+
+                        <div class="question">
+                            <p>1. According to the notes, what is "Knowledge"?</p>
+                            <label><input type="radio" name="q1" value="a"> Unorganized raw facts</label>
+                            <label><input type="radio" name="q1" value="b"> Organized data with meaning</label>
+                            <label><input type="radio" name="q1" value="c"> Understanding information to make
+                                decisions</label>
+                        </div>
+
+                        <div class="question">
+                            <p>2. Which characteristic of valuable information asks "Is the information correct?"</p>
+                            <label><input type="radio" name="q2" value="a"> Timeliness</label>
+                            <label><input type="radio" name="q2" value="b"> Accuracy</label>
+                            <label><input type="radio" name="q2" value="c"> Rarity</label>
+                            <label><input type="radio" name="q2" value="d"> Completeness</label>
+                        </div>
+
+                        <div class="question">
+                            <p>3. What are the three primary resources of MIS?</p>
+                            <label><input type="radio" name="q3" value="a"> Hardware, Software, Data</label>
+                            <label><input type="radio" name="q3" value="b"> People, Information, Technology</label>
+                            <label><input type="radio" name="q3" value="c"> Input, Process, Output</label>
+                        </div>
+
+                        <div class="question">
+                            <p>4. In the University System example, what is considered an "Output"?</p>
+                            <label><input type="radio" name="q4" value="a"> Students</label>
+                            <label><input type="radio" name="q4" value="b"> Courses</label>
+                            <label><input type="radio" name="q4" value="c"> Graduates</label>
+                            <label><input type="radio" name="q4" value="d"> Textbooks</label>
+                        </div>
+
+                        <div class="question">
+                            <p>5. Which generation of Airline MIS introduced "Benchmarking against competition"?</p>
+                            <label><input type="radio" name="q5" value="a"> Generation I</label>
+                            <label><input type="radio" name="q5" value="b"> Generation II</label>
+                            <label><input type="radio" name="q5" value="c"> Generation III</label>
+                            <label><input type="radio" name="q5" value="d"> Generation IV</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Check Answers</button>
+                    </form>
+                    <div id="quizResults" class="quiz-results"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

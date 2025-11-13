@@ -1,0 +1,180 @@
+/* Styles for the CO 1121 page */
+/* Place this in co1121/style.css */
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* --- Controls (Search and Back Button) --- */
+.page-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.back-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #6c757d;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: #5a6268;
+}
+
+#searchBar {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchBar:focus {
+  outline: none;
+  border-color: #004a99;
+  box-shadow: 0 0 5px rgba(0, 74, 153, 0.3);
+}
+
+main h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #004a99;
+}
+
+/* --- Module Grid --- */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.module-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #d93025; /* Red accent for PDFs */
+  position: relative; /* Needed for the icon */
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.module-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  padding-right: 30px; /* Space for the icon */
+}
+
+.module-card p {
+  font-size: 0.9rem;
+  color: #d93025;
+  font-weight: bold;
+}
+
+/* PDF Icon */
+.module-card::after {
+  content: "📄"; /* PDF file emoji */
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.8rem;
+  opacity: 0.5;
+}
+
+/* Basic reset and global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: #b9b7b794;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header styles */
+.main-header {
+  background-color: #990000; /* A professional blue */
+  color: #ffffff;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-header h1 {
+  font-size: 2.5rem;
+}
+
+/* Main content styles */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+main h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #004a99;
+}
+
+/* Semester card grid */
+.semester-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Individual semester card styles */
+.semester-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.semester-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.semester-card h3 {
+  font-size: 1.5rem;
+  color: #004a99;
+}
+
+.semester-card p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
