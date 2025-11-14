@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems Development (SDLC)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <h1>Module 09: Systems Development</h1>
+        <p>CO 1126 - Management Information Systems</p>
+    </header>
+
+    <main>
+        <a href="../" class="back-link">&larr; Back to MIS Modules</a>
+
+        <nav class="content-nav">
+            <button class="nav-btn active" data-content="slides">
+                <span class="icon">📄</span> Lecture Slides
+            </button>
+            <button class="nav-btn" data-content="notes">
+                <span class="icon">✍️</span> Detailed Notes
+            </button>
+            <button class="nav-btn" data-content="quiz">
+                <span class="icon">❓</span> Quiz
+            </button>
+        </nav>
+
+        <div class="content-display">
+
+            <div id="slides" class="content-item active">
+                <h2>Lecture Slides</h2>
+
+                <div class="download-container">
+                    <div class="file-card">
+                        <div class="file-icon">📄</div>
+                        <div class="file-details">
+                            <h3>slides.pdf</h3>
+                            <p>Chapter 8: Systems Development</p>
+                        </div>
+                        <a href="slides.pdf" download class="download-btn">
+                            Download PDF ⬇
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="notes" class="content-item">
+                <h2>Detailed Course Notes</h2>
+                <div class="notes-content">
+
+                    <h3>1. The Systems Development Life Cycle (SDLC)</h3>
+                    <p>The **SDLC (Systems Development Life Cycle)** is a structured, step-by-step approach for
+                        developing information systems. It is one approach used to reduce the high risk of failure in IT
+                        projects.</p>
+
+                    <h4>The Seven Phases of the SDLC</h4>
+                    <table class="notes-table">
+                        <thead>
+                            <tr>
+                                <th>Phase</th>
+                                <th>Primary Activities</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Plan</strong></td>
+                                <td>Define the system, set the **project scope**, and develop the **project plan**
+                                    (tasks, resources, timeframes). This phase identifies **Critical Success Factors
+                                    (CSFs)**.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Analysis</strong></td>
+                                <td>Gather the **business requirements** for the system. This is often done using **JAD
+                                    (Joint Application Development)** sessions, resulting in a **Requirements Definition
+                                    Document** that gets a formal **sign-off**.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Design</strong></td>
+                                <td>Design the **technical architecture** (hardware, software, telecom). This phase
+                                    involves **modeling**, such as creating **GUI (Graphical User Interface)** designs.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Develop</strong></td>
+                                <td>Transform the design documents into an actual system. This includes building the
+                                    technical architecture, creating the database, and writing the programs.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. Test</strong></td>
+                                <td>Verify that the system works and meets all business requirements. This involves
+                                    executing **Test Conditions** and performing **UAT (User Acceptance Testing)** to
+                                    see if the system satisfies users.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>6. Implement</strong></td>
+                                <td>Distribute the system to users. This phase includes creating **user documentation**
+                                    and conducting user **training** (either online or in a workshop).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>7. Maintain</strong></td>
+                                <td>Monitor and support the new system to ensure it continues to meet business goals.
+                                    This includes building a **Help Desk** and having a process for system changes.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h3>2. Why Do Systems Fail?</h3>
+                    <p>Only about 20% of IT projects are successful. The primary reasons for failure include:</p>
+                    <ul class="law-list">
+                        <li><strong>Unclear or Missing Requirements:</strong> The business requirements drive the entire
+                            project. If they are wrong, the system will fail.</li>
+                        <li><strong>Skipping SDLC Phases:</strong> When a project falls behind, teams tend to skip
+                            phases, which is "sure to lead to system failure".</li>
+                        <li><strong>Failure to Manage Project Scope:</strong>
+                            <ul>
+                                <li><strong>Scope Creep:</strong> Occurs when the scope of the project increases.</li>
+                                <li><strong>Feature Creep:</strong> Occurs when developers add extra features that were
+                                    not part of the initial requirements.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Failure to Manage Project Plan:</strong> The plan is the road map. Failing to
+                            manage, revise, and update it is a major challenge.</li>
+                        <li><strong>Changing Technology:</strong> Technology changes so fast it can make the system
+                            obsolete before it's even finished.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>3. Sourcing: Who Builds the System?</h3>
+                    <p>Sourcing is the question of who will build the system.</p>
+
+                    <h4>A. Insourcing</h4>
+                    <p>Using IT specialists **within your organization** to develop the system.</p>
+
+                    <h4>B. Selfsourcing (or End-User Development)</h4>
+                    <p>The development of IT systems by **Knowledge Workers (KWs)** with little or no help from IT
+                        specialists.</p>
+                    <ul>
+                        <li><strong>Advantages:</strong> Improves requirements determination, increases user
+                            participation and sense of ownership, and increases the speed of development.</li>
+                        <li><strong>Risks:</strong> Inadequate user expertise, lack of organizational focus
+                            ("privatized" systems), and lack of documentation or support.</li>
+                    </ul>
+
+                    <h4>C. Outsourcing</h4>
+                    <p>The delegation of specific work to a **third party** for a specified time, cost, and level of
+                        service.</p>
+                    <ul>
+                        <li><strong>Advantages:</strong> Allows focus on core competencies, reduces costs, acquires
+                            leading-edge technology, and improves performance accountability.</li>
+                        <li><strong>Disadvantages:</strong> Reduces technical know-how, reduces degree of control,
+                            increases vulnerability of strategic information, and increases dependency on others.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>4. Prototyping</h3>
+                    <p>Prototyping is an alternative to the traditional SDLC.</p>
+                    <ul>
+                        <li><strong>Prototype:</strong> A model that demonstrates the features of a proposed product,
+                            service, or system.</li>
+                        <li><strong>Prototyping:</strong> The process of building that model.</li>
+                    </ul>
+
+                    <h4>Types of Prototypes:</h4>
+                    <ul>
+                        <li><strong>Proof-of-Concept Prototype:</strong> Used to prove the technical feasibility of a
+                            proposed system.</li>
+                        <li><strong>Selling Prototype:</strong> Used to convince people of the worth of a proposed
+                            system.</li>
+                    </ul>
+
+                    <h4>Advantages of Prototyping:</h4>
+                    <ul>
+                        <li>Encourages active knowledge worker participation.</li>
+                        <li>Helps resolve discrepancies among knowledge workers.</li>
+                        <li>Gives users a "feel" for the final system.</li>
+                    </ul>
+
+                    <h4>Disadvantages of Prototyping:</h4>
+                    <ul>
+                        <li>Leads people to believe the final system will follow shortly.</li>
+                        <li>Gives no indication of performance under operational conditions.</li>
+                        <li>Leads the team to forgo proper testing and documentation.</li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div id="quiz" class="content-item">
+                <h2>Quiz: Systems Development</h2>
+                <div class="quiz-content">
+                    <form id="quizForm">
+
+                        <div class="question">
+                            <p>1. What does "SDLC" stand for?</p>
+                            <label><input type="radio" name="q1" value="a"> Software Design Life Cycle</label>
+                            <label><input type="radio" name="q1" value="b"> Systems Development Life Cycle</label>
+                            <label><input type="radio" name="q1" value="c"> Sourcing Development Life Cycle</label>
+                            <label><input type="radio" name="q1" value="d"> Systems Design and Logic Cycle</label>
+                        </div>
+
+                        <div class="question">
+                            <p>2. Which phase involves defining the system, setting the scope, and developing the
+                                project plan?</p>
+                            <label><input type="radio" name="q2" value="a"> Plan</label>
+                            <label><input type="radio" name="q2" value="b"> Analysis</label>
+                            <label><input type="radio" name="q2" value="c"> Design</label>
+                            <label><input type="radio" name="q2" value="d"> Implement</label>
+                        </div>
+
+                        <div class="question">
+                            <p>3. What is a "Critical Success Factor (CSF)"?</p>
+                            <label><input type="radio" name="q3" value="a"> A factor simply critical to an
+                                organization's success.</label>
+                            <label><input type="radio" name="q3" value="b"> A written definition of the project
+                                scope.</label>
+                            <label><input type="radio" name="q3" value="c"> A meeting of knowledge workers and IT
+                                specialists.</label>
+                            <label><input type="radio" name="q3" value="d"> The final phase of the SDLC.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>4. In which phase are "Business Requirements" gathered?</p>
+                            <label><input type="radio" name="q4" value="a"> Plan</label>
+                            <label><input type="radio" name="q4" value="b"> Analysis</label>
+                            <label><input type="radio" name="q4" value="c"> Design</label>
+                            <label><input type="radio" name="q4" value="d"> Develop</label>
+                        </div>
+
+                        <div class="question">
+                            <p>5. What is a "JAD" (Joint Application Development)?</p>
+                            <label><input type="radio" name="q5" value="a"> The final sign-off from users.</label>
+                            <label><input type="radio" name="q5" value="b"> A meeting of knowledge workers and IT
+                                specialists to define requirements.</label>
+                            <label><input type="radio" name="q5" value="c"> The act of drawing a graphical
+                                representation.</label>
+                            <label><input type="radio" name="q5" value="d"> The process of building a help desk.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>6. Designing the technical architecture (hardware, software) occurs in which phase?</p>
+                            <label><input type="radio" name="q6" value="a"> Analysis</label>
+                            <label><input type="radio" name="q6" value="b"> Design</label>
+                            <label><input type="radio" name="q6" value="c"> Develop</label>
+                            <label><input type="radio" name="q6" value="d"> Implement</label>
+                        </div>
+
+                        <div class="question">
+                            <p>7. Modeling the "GUI" (Graphical User Interface) happens during which phase?</p>
+                            <label><input type="radio" name="q7" value="a"> Plan</label>
+                            <label><input type="radio" name="q7" value="b"> Analysis</label>
+                            <label><input type="radio" name="q7" value="c"> Design</label>
+                            <label><input type="radio" name="q7" value="d"> Test</label>
+                        </div>
+
+                        <div class="question">
+                            <p>8. Transforming design documents into an actual system by coding programs happens in
+                                which phase?</p>
+                            <label><input type="radio" name="q8" value="a"> Design</label>
+                            <label><input type="radio" name="q8" value="b"> Develop</label>
+                            <label><input type="radio" name="q8" value="c"> Test</label>
+                            <label><input type="radio" name="q8" value="d"> Implement</label>
+                        </div>
+
+                        <div class="question">
+                            <p>9. What is "UAT" (User Acceptance Testing)?</p>
+                            <label><input type="radio" name="q9" value="a"> The phase where users are trained.</label>
+                            <label><input type="radio" name="q9" value="b"> The phase where the database is
+                                built.</label>
+                            <label><input type="radio" name="q9" value="c"> A test to determine if the system satisfies
+                                business requirements.</label>
+                            <label><input type="radio" name="q9" value="d"> A document that defines the project
+                                scope.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>10. Creating user documentation and training users happens in which phase?</p>
+                            <label><input type="radio" name="q10" value="a"> Test</label>
+                            <label><input type="radio" name="q10" value="b"> Implement</label>
+                            <label><input type="radio" name="q10" value="c"> Develop</label>
+                            <label><input type="radio" name="q10" value="d"> Maintain</label>
+                        </div>
+
+                        <div class="question">
+                            <p>11. Building a "Help Desk" to support users is part of which phase?</p>
+                            <label><input type="radio" name="q11" value="a"> Test</label>
+                            <label><input type="radio" name="q11" value="b"> Implement</label>
+                            <label><input type="radio" name="q11" value="c"> Maintain</label>
+                            <label><input type="radio" name="q11" value="d"> Plan</label>
+                        </div>
+
+                        <div class="question">
+                            <p>12. According to the notes, what percentage of IT projects fail?</p>
+                            <label><input type="radio" name="q12" value="a"> 20%</label>
+                            <label><input type="radio" name="q12" value="b"> 50%</label>
+                            <label><input type="radio" name="q12" value="c"> 80%</label>
+                            <label><input type="radio" name="q12" value="d"> 100%</label>
+                        </div>
+
+                        <div class="question">
+                            <p>13. When developers add extra features that were NOT part of the initial requirements,
+                                this is called:</p>
+                            <label><input type="radio" name="q13" value="a"> Scope Creep</label>
+                            <label><input type="radio" name="q13" value="b"> Feature Creep</label>
+                            <label><input type="radio" name="q13" value="c"> Insourcing</label>
+                            <label><input type="radio" name="q13" value="d"> Prototyping</label>
+                        </div>
+
+                        <div class="question">
+                            <p>14. When the scope of the project increases beyond what was originally planned, this is
+                                called:</p>
+                            <label><input type="radio" name="q14" value="a"> Scope Creep</label>
+                            <label><input type="radio" name="q14" value="b"> Feature Creep</label>
+                            <label><input type="radio" name="q14" value="c"> Selfsourcing</label>
+                            <label><input type="radio" name="q14" value="d"> Outsourcing</label>
+                        </div>
+
+                        <div class="question">
+                            <p>15. Which of these is NOT listed as a primary reason why systems fail?</p>
+                            <label><input type="radio" name="q15" value="a"> Skipping SDLC phases</label>
+                            <label><input type="radio" name="q15" value="b"> Unclear requirements</label>
+                            <label><input type="radio" name="q15" value="c"> Changing technology</label>
+                            <label><input type="radio" name="q15" value="d"> Hardware is too expensive</label>
+                        </div>
+
+                        <div class="question">
+                            <p>16. What is "Insourcing"?</p>
+                            <label><input type="radio" name="q16" value="a"> Using IT specialists within your
+                                organization to build the system.</label>
+                            <label><input type="radio" name="q16" value="b"> Delegating work to a third party.</label>
+                            <label><input type="radio" name="q16" value="c"> Building the system yourself with no IT
+                                help.</label>
+                            <label><input type="radio" name="q16" value="d"> Building a model to demonstrate
+                                features.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>17. What is "Selfsourcing"?</p>
+                            <label><input type="radio" name="q17" value="a"> Using IT specialists within your
+                                organization.</label>
+                            <label><input type="radio" name="q17" value="b"> Development by Knowledge Workers with
+                                little or no IT help.</label>
+                            <label><input type="radio" name="q17" value="c"> Delegating work to a third party.</label>
+                            <label><input type="radio" name="q17" value="d"> Building a model to prove
+                                feasibility.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>18. Which of these is an ADVANTAGE of Selfsourcing?</p>
+                            <label><input type="radio" name="q18" value="a"> Inadequate user expertise.</label>
+                            <label><input type="radio" name="q18" value="b"> Lack of documentation.</label>
+                            <label><input type="radio" name="q18" value="c"> Increases speed of systems
+                                development.</label>
+                            <label><input type="radio" name="q18" value="d"> Lack of organizational focus.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>19. What is "Outsourcing"?</p>
+                            <label><input type="radio" name="q19" value="a"> Using internal IT specialists.</label>
+                            <label><input type="radio" name="q19" value="b"> Building the system as a knowledge
+                                worker.</label>
+                            <label><input type="radio" name="q19" value="c"> Delegating specific work to a third
+                                party.</label>
+                            <label><input type="radio" name="q19" value="d"> Building a model to sell an idea.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>20. Which of these is a DISADVANTAGE of Outsourcing?</p>
+                            <label><input type="radio" op="a"> Reduces costs.</label>
+                            <label><input type="radio" name="q20" value="b"> Acquires leading-edge technology.</label>
+                            <label><input type="radio" name="q20" value="c"> Reduces degree of control.</label>
+                            <label><input type="radio" name="q20" value="d"> Focuses on unique core
+                                competencies.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>21. What is a "Prototype"?</p>
+                            <label><input type="radio" name="q21" value="a"> The final, completed system.</label>
+                            <label><input type="radio" name="q21" value="b"> The set of business requirements.</label>
+                            <label><input type="radio" name="q21" value="c"> A model that demonstrates the features of a
+                                proposed system.</label>
+                            <label><input type="radio" name="q21" value="d"> A key date in the project plan.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>22. A prototype built to prove the technical feasibility of a system is called:</p>
+                            <label><input type="radio" name="q22" value="a"> Proof-of-concept prototype</label>
+                            <label><input type="radio" name="q22" value="b"> Selling prototype</label>
+                            <label><input type="radio" name="q22" value="c"> JAD prototype</label>
+                            <label><input type="radio" name="q22" value="d"> UAT prototype</label>
+                        </div>
+
+                        <div class="question">
+                            <p>23. A prototype built to convince people of the worth of a proposed system is called:</p>
+                            <label><input type="radio" name="q23" value="a"> Proof-of-concept prototype</label>
+                            <label><input type="radio" name="q23" value="b"> Selling prototype</label>
+                            <label><input type="radio" name="q23" value="c"> JAD prototype</label>
+                            <label><input type="radio" name="q23" value="d"> UAT prototype</label>
+                        </div>
+
+                        <div class="question">
+                            <p>24. Which of these is an ADVANTAGE of Prototyping?</p>
+                            <label><input type="radio" name="q24" value="a"> It gives no indication of
+                                performance.</label>
+                            <label><input type="radio" name="q24" value="b"> It leads people to believe the final system
+                                will follow shortly.</label>
+                            <label><input type="radio" name="q24" value="c"> It encourages active knowledge worker
+                                participation.</label>
+                            <label><input type="radio" name="q24" value="d"> It leads the team to skip proper
+                                testing.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>25. Which of these is a DISADVANTAGE of Prototyping?</p>
+                            <label><input type="radio" name="q25" value="a"> It helps resolve discrepancies among
+                                users.</label>
+                            <label><input type="radio" name="q25" value="b"> It gives users a feel for the final
+                                system.</label>
+                            <label><input type="radio" name="q25" value="c"> It helps determine technical
+                                feasibility.</label>
+                            <label><input type="radio" name="q25" value="d"> It can lead to the team forgoing proper
+                                documentation.</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Check Answers</button>
+                    </form>
+                    <div id="quizResults" class="quiz-results"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

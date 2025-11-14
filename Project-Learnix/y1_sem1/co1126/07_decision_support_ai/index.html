@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Support & AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <h1>Module 07: Decision Support & AI</h1>
+        <p>CO 1126 - Management Information Systems</p>
+    </header>
+
+    <main>
+        <a href="../" class="back-link">&larr; Back to MIS Modules</a>
+
+        <nav class="content-nav">
+            <button class="nav-btn active" data-content="slides">
+                <span class="icon">📄</span> Lecture Slides
+            </button>
+            <button class="nav-btn" data-content="notes">
+                <span class="icon">✍️</span> Detailed Notes
+            </button>
+            <button class="nav-btn" data-content="quiz">
+                <span class="icon">❓</span> Quiz
+            </button>
+        </nav>
+
+        <div class="content-display">
+
+            <div id="slides" class="content-item active">
+                <h2>Lecture Slides</h2>
+
+                <div class="download-container">
+                    <div class="file-card">
+                        <div class="file-icon">📄</div>
+                        <div class="file-details">
+                            <h3>slides.pdf</h3>
+                            <p>Chapter 6: Decision Support & AI</p>
+                        </div>
+                        <a href="slides.pdf" download class="download-btn">
+                            Download PDF ⬇
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="notes" class="content-item">
+                <h2>Detailed Course Notes</h2>
+                <div class="notes-content">
+
+                    <h3>1. Four Phases of Decision Making</h3>
+                    <p>The process of making a decision can be broken down into four distinct phases:</p>
+                    <ol>
+                        <li><strong>Intelligence (Find what to fix):</strong> You find or recognize a problem, need, or
+                            opportunity. [cite_start]This is also called the diagnostic phase of decision making [cite:
+                            1383-1384].</li>
+                        <li><strong>Design (Find fixes):</strong> You consider possible ways of solving the problem,
+                            filling the need, or taking advantage of the opportunity. [cite_start]In this phase, you
+                            develop all the possible solutions you can [cite: 1385-1387].</li>
+                        [cite_start]<li><strong>Choice (Pick a fix):</strong> You examine and weigh the merits of each
+                            solution, estimate the consequences of each, and choose the best one [cite: 1388-1389].</li>
+                        [cite_start]<li><strong>Implementation (Apply the fix):</strong> You carry out the chosen
+                            solution, monitor the results, and make adjustments as necessary [cite: 1390-1391].</li>
+                    </ol>
+
+                    <hr>
+
+                    <h3>2. Types of Decisions You Face</h3>
+                    <p>Decisions can be categorized based on their structure and frequency:</p>
+                    <ul class="law-list">
+                        <li><strong>Structured Decision:</strong> A decision that involves processing a certain kind of
+                            information in a specified way so that you will always get the right answer. [cite_start]No
+                            "feel" or intuition is necessary [cite: 1396-1398].</li>
+                        <li><strong>Unstructured Decision:</strong> A decision for which there may be several "right"
+                            answers, and there is no precise way to get a single right answer. [cite_start]This often
+                            involves intuition and judgment [cite: 1399-1400].</li>
+                        [cite_start]<li><strong>Recurring Decision:</strong> A decision that happens repeatedly, and
+                            often periodically (e.g., weekly, monthly, quarterly) [cite: 1401-1402].</li>
+                        <li><strong>Nonrecurring (Ad Hoc) Decision:</strong> A decision that you make infrequently,
+                            perhaps only once. [cite_start]The criteria for the best solution may be different each time
+                            [cite: 1403-1404].</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>3. Decision Support Systems (DSS)</h3>
+                    [cite_start]<p>A **Decision Support System (DSS)** is a highly flexible and interactive IT system
+                        that is designed to support decision-making when the problem is **not structured**[cite: 1408].
+                    </p>
+
+                    <h4>The DSS Alliance</h4>
+                    [cite_start]<p>A DSS is an alliance between you (the decision maker) and the IT system[cite: 1409].
+                    </p>
+                    <table class="notes-table">
+                        <thead>
+                            <tr>
+                                <th>What You Bring</th>
+                                <th>What IT Brings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                [cite_start]<td>Experience, Intuition, Judgment, Knowledge [cite: 1411]</td>
+                                [cite_start]<td>Speed, Vast Information, Processing Capabilities [cite: 1410]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    [cite_start]<p>The primary objective of a DSS is to improve your **effectiveness** as a decision
+                        maker, not just your efficiency[cite: 1416].</p>
+
+                    [cite_start]<h4>Components of a DSS [cite: 1428-1433]</h4>
+                    <ol>
+                        [cite_start]<li><strong>Model Management Component:</strong> Stores and maintains the DSS's
+                            models (e.g., What-If Models, Optimization Models, Goal-Seeking Models)[cite: 1453, 1455,
+                            1457].</li>
+                        [cite_start]<li><strong>Data Management Component:</strong> Stores and maintains the information
+                            that you want your DSS to use (e.g., Organizational Information, External Information,
+                            Personal Information)[cite: 1456, 1458].</li>
+                        <li><strong>User Interface Management Component:</strong> Allows you to communicate with the
+                            DSS. It consists of the user interface and the system that manages it.</li>
+                    </ol>
+
+                    <hr>
+
+                    <h3>4. Geographic Information Systems (GIS)</h3>
+                    [cite_start]<p>A **Geographic Information System (GIS)** is a decision support system designed
+                        specifically to work with **spatial information**[cite: 1485].</p>
+                    [cite_start]<p>Spatial information is any information that can be shown in map form, such as roads,
+                        property values, or population distributions[cite: 1486].</p>
+                    [cite_start]<p>Businesses use GIS to [cite: 1558-1562]:</p>
+                    <ul>
+                        <li>Identify the best site to locate a new branch office.</li>
+                        <li>Target pockets of potential customers.</li>
+                        <li>Reposition promotions and advertising.</li>
+                        <li>Determine the optimal location for a new distribution outlet.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>5. Artificial Intelligence (AI)</h3>
+                    [cite_start]<p><strong>Artificial Intelligence (AI)</strong> is the science of making machines
+                        imitate human thinking and behavior[cite: 1566].</p>
+                    [cite_start]<p>A **Robot** is a mechanical device equipped with simulated human senses and the
+                        capability of taking action on its own[cite: 1567].</p>
+
+                    [cite_start]<h4>Major Categories of AI in Business [cite: 1587-1591]</h4>
+
+                    <h5>1. Expert Systems (or Knowledge-Based Systems)</h5>
+                    [cite_start]<p>An AI system that applies reasoning capabilities to reach a conclusion[cite: 1595].
+                        [cite_start]They are built for specific application areas called **domains** (e.g., medicine,
+                        finance) [cite: 1604-1611].</p>
+                    <ul>
+                        <li><strong>Diagnostic Problems:</strong> Solves "what's wrong?" (corresponds to the
+                            Intelligence Phase) [cite_start][cite: 1597-1598].</li>
+                        <li><strong>Prescriptive Problems:</strong> Solves "what to do?" (corresponds to the Choice
+                            Phase) [cite_start][cite: 1599-1600].</li>
+                    </ul>
+                    [cite_start]<p>Expert systems **cannot** use common sense or automate all processes [cite:
+                        1625-1627].</p>
+
+                    <h5>2. Neural Networks (or Artificial Neural Network, ANN)</h5>
+                    <p>An AI system that is capable of finding and differentiating patterns. [cite_start]It simulates
+                        the human ability to classify things and can **learn by example** [cite: 1631-1634].</p>
+                    [cite_start]<p>Uses in business include fraud detection, real estate appraisal, and target marketing
+                        [cite: 1647-1652].</p>
+
+                    <h5>3. Genetic Algorithms</h5>
+                    [cite_start]<p>An AI system that mimics the evolutionary, **"survival-of-the-fittest" process** to
+                        generate increasingly better solutions to a problem[cite: 1666].</p>
+                    [cite_start]<p>Genetic algorithms are **optimizing systems**; they find the combination of inputs
+                        that give the best outputs[cite: 1668].</p>
+                    [cite_start]<p>Used to find optimal project combinations or determine the best network
+                        configuration[cite: 1673, 1676].</p>
+
+                    <h5>4. Intelligent Agents</h5>
+                    [cite_start]<p>Software that assists you, or acts on your behalf, in performing repetitive
+                        computer-related tasks[cite: 1680].</p>
+                    [cite_start]<p>Key components are: **Autonomy** (acts on its own), **Adaptively** (learns), and
+                        **Sociability** (confers with other agents) [cite: 1700-1702].</p>
+
+                    <p><strong>Types of Intelligent Agents:</strong></p>
+                    <table class="notes-table">
+                        <thead>
+                            <tr>
+                                <th>Agent Type</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Buyer Agents / Shopping Bots</strong></td>
+                                [cite_start]<td>Helps customers find products and services on a Web site [cite:
+                                    1689-1690].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>User / Personal Agents</strong></td>
+                                [cite_start]<td>Takes action on your behalf (e.g., sorting email, managing your
+                                    calendar) [cite: 1691-1692].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Monitoring-and-Surveillance Agents</strong></td>
+                                [cite_start]<td>Observe and report on equipment or network traffic [cite: 1693-1694].
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data-Mining Agents</strong></td>
+                                [cite_start]<td>Operates in a data warehouse to discover information or patterns [cite:
+                                    1695-1696].</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div id="quiz" class="content-item">
+                <h2>Quiz: Decision Support & AI</h2>
+                <div class="quiz-content">
+                    <form id="quizForm">
+
+                        <div class="question">
+                            <p>1. In which phase of decision-making do you "find or recognize a problem"?</p>
+                            <label><input type="radio" name="q1" value="a"> Intelligence</label>
+                            <label><input type="radio" name="q1" value="b"> Design</label>
+                            <label><input type="radio" name="q1" value="c"> Choice</label>
+                            <label><input type="radio" name="q1" value="d"> Implementation</label>
+                        </div>
+
+                        <div class="question">
+                            <p>2. In which phase do you "develop all possible solutions"?</p>
+                            <label><input type="radio" name="q2" value="a"> Intelligence</label>
+                            <label><input type="radio" name="q2" value="b"> Design</label>
+                            <label><input type="radio" name="q2" value="c"> Choice</label>
+                            <label><input type="radio" name="q2" value="d"> Implementation</label>
+                        </div>
+
+                        <div class="question">
+                            <p>3. In which phase do you "carry out the chosen solution and monitor the results"?</p>
+                            <label><input type="radio" name="q3" value="a"> Intelligence</label>
+                            <label><input type="radio" name="q3" value="b"> Design</label>
+                            <label><input type="radio" name="q3" value="c"> Choice</label>
+                            <label><input type="radio" name="q3" value="d"> Implementation</label>
+                        </div>
+
+                        <div class="question">
+                            <p>4. A decision for which there is "no precise way to get a right answer" is called:</p>
+                            <label><input type="radio" name="q4" value="a"> Structured</label>
+                            <label><input type="radio" name="q4" value="b"> Unstructured</label>
+                            <label><input type="radio" name="q4" value="c"> Recurring</label>
+                            <label><input type="radio" name="q4" value="d"> Nonrecurring</label>
+                        </div>
+
+                        <div class="question">
+                            <p>5. A decision that you make infrequently, perhaps only once, is called:</p>
+                            <label><input type="radio" name="q5" value="a"> Structured</label>
+                            <label><input type="radio" name="q5" value="b"> Unstructured</label>
+                            <label><input type="radio" name="q5" value="c"> Recurring</label>
+                            <label><input type="radio" name="q5" value="d"> Nonrecurring (Ad Hoc)</label>
+                        </div>
+
+                        <div class="question">
+                            <p>6. What is the primary objective of a Decision Support System (DSS)?</p>
+                            <label><input type="radio" name="q6" value="a"> To replace the manager's experience.</label>
+                            <label><input type="radio" name="q6" value="b"> To improve the effectiveness of the decision
+                                maker.</label>
+                            <label><input type="radio" name="q6" value="c"> To solve structured problems only.</label>
+                            <label><input type="radio" name="q6" value="d"> To gather personal information.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>7. A DSS is designed to support what type of problems?</p>
+                            <label><input type="radio" name="q7" value="a"> Recurring</label>
+                            <label><input type="radio" name="q7" value="b"> Structured</label>
+                            <label><input type="radio" name="q7" value="c"> Non-structured</label>
+                            <label><input type="radio" name="q7" value="d"> Simple</label>
+                        </div>
+
+                        <div class="question">
+                            <p>8. Which DSS component stores and maintains the "What-if" and "Optimization" models?</p>
+                            <label><input type="radio" name="q8" value="a"> Model Management Component</label>
+                            <label><input type="radio" name="q8" value="b"> Data Management Component</label>
+                            <label><input type="radio" name="q8" value="c"> User Interface Management Component</label>
+                            <label><input type="radio" name="q8" value="d"> AI Component</label>
+                        </div>
+
+                        <div class="question">
+                            <p>9. Which DSS component stores the organizational and external information?</p>
+                            <label><input type="radio" name="q9" value="a"> Model Management Component</label>
+                            <label><input type="radio" name="q9" value="b"> Data Management Component</label>
+                            <label><input type="radio" name="q9" value="c"> User Interface Management Component</label>
+                            <label><input type="radio" name="q9" value="d"> GIS Component</label>
+                        </div>
+
+                        <div class="question">
+                            <p>10. A system designed to work with spatial information (maps) is called a:</p>
+                            <label><input type="radio" name="q10" value="a"> DSS</label>
+                            <label><input type="radio" name="q10" value="b"> AI</label>
+                            <label><input type="radio" name="q10" value="c"> GIS</label>
+                            <label><input type="radio" name="q10" value="d"> Expert System</label>
+                        </div>
+
+                        <div class="question">
+                            <p>11. What is the science of making machines imitate human thinking and behavior?</p>
+                            <label><input type="radio" name="q11" value="a"> Artificial Intelligence (AI)</label>
+                            <label><input type="radio" name="q11" value="b"> Geographic Information System (GIS)</label>
+                            <label><input type="radio" name="q11" value="c"> Decision Support System (DSS)</label>
+                            <label><input type="radio" name="q11" value="d"> Collaboration System</label>
+                        </div>
+
+                        <div class="question">
+                            <p>12. Which type of AI system applies reasoning capabilities to reach a conclusion?</p>
+                            <label><input type="radio" name="q12" value="a"> Expert System</label>
+                            <label><input type="radio" name="q12" value="b"> Neural Network</label>
+                            <label><input type="radio" name="q12" value="c"> Genetic Algorithm</label>
+                            <label><input type="radio" name="q12" value="d"> Intelligent Agent</label>
+                        </div>
+
+                        <div class="question">
+                            <p>13. An Expert System that answers "what's wrong?" is performing what kind of task?</p>
+                            <label><input type="radio" name="q13" value="a"> Diagnostic</label>
+                            <label><input type="radio" name="q13" value="b"> Prescriptive</label>
+                            <label><input type="radio" name="q13" value="c"> Recurring</label>
+                            <label><input type="radio" name="q13" value="d"> Optimization</label>
+                        </div>
+
+                        <div class="question">
+                            <p>14. An Expert System that answers "what to do?" is performing what kind of task?</p>
+                            <label><input type="radio" name="q14" value="a"> Diagnostic</label>
+                            <label><input type="radio" name="q14" value="b"> Prescriptive</label>
+                            <label><input type="radio" name="q14" value="c"> Recurring</label>
+                            <label><input type="radio" name="q14" value="d"> Optimization</label>
+                        </div>
+
+                        <div class="question">
+                            <p>15. Which AI system is capable of finding and differentiating patterns, and can learn by
+                                example?</p>
+                            <label><input type="radio" name="q15" value="a"> Expert System</label>
+                            <label><input type="radio" name="q15" value="b"> Neural Network</label>
+                            <label><input type="radio" name="q15" value="c"> Genetic Algorithm</label>
+                            <label><input type="radio" name="q15" value="d"> Intelligent Agent</label>
+                        </div>
+
+                        <div class="question">
+                            <p>16. Neural networks are widely used in business for:</p>
+                            <label><input type="radio" name="q16" value="a"> Solving "what's wrong?" problems.</label>
+                            <label><input type="radio" name="q16" value="b"> Fraud detection and target
+                                marketing.</label>
+                            <label><input type="radio" name="q16" value="c"> Mimicking the
+                                survival-of-the-fittest.</label>
+                            <label><input type="radio" name="q16" value="d"> Storing and maintaining DSS models.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>17. Which AI system mimics the "survival-of-the-fittest" process to find the best
+                                solution?</p>
+                            <label><input type="radio" name="q17" value="a"> Expert System</label>
+                            <label><input type="radio" name="q17" value="b"> Neural Network</label>
+                            <label><input type="radio" name="q17" value="c"> Genetic Algorithm</label>
+                            <label><input type="radio" name="q17" value="d"> Intelligent Agent</label>
+                        </div>
+
+                        <div class="question">
+                            <p>18. Genetic Algorithms are best described as what type of systems?</p>
+                            <label><input type="radio" name="q18" value="a"> Diagnostic systems</label>
+                            <label><input type="radio" name="q18" value="b"> Pattern-finding systems</label>
+                            <label><input type="radio" name="q18" value="c"> Optimizing systems</label>
+                            <label><input type="radio" name="q18" value="d"> Data storage systems</label>
+                        </div>
+
+                        <div class="question">
+                            <p>19. What is an Intelligent Agent?</p>
+                            <label><input type="radio" name="q19" value="a"> A mechanical device with simulated
+                                senses.</label>
+                            <label><input type="radio" name="q19" value="b"> A system that mimics human
+                                evolution.</label>
+                            <label><input type="radio" name="q19" value="c"> Software that acts on your behalf for
+                                repetitive tasks.</label>
+                            <label><input type="radio" name="q19" value="d"> A system for showing data on maps.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>20. A "Shopping Bot" is another name for which type of intelligent agent?</p>
+                            <label><input type="radio" name="q20" value="a"> Buyer Agent</label>
+                            <label><input type="radio" name="q20" value="b"> User Agent</label>
+                            <label><input type="radio" name="q20" value="c"> Monitoring Agent</label>
+                            <label><input type="radio" name="q20" value="d"> Data-Mining Agent</label>
+                        </div>
+
+                        <div class="question">
+                            <p>21. Which type of agent observes and reports on equipment or network traffic?</p>
+                            <label><input type="radio" name="q21" value="a"> Buyer Agent</label>
+                            <label><input type="radio" name="q21" value="b"> User Agent</label>
+                            <label><input type="radio" name="q21" value="c"> Monitoring-and-Surveillance Agent</label>
+                            <label><input type="radio" name="q21" value="d"> Data-Mining Agent</label>
+                        </div>
+
+                        <div class="question">
+                            <p>22. Which type of agent operates in a data warehouse to discover information?</p>
+                            <label><input type="radio" name="q22" value="a"> Buyer Agent</label>
+                            <label><input type="radio" name="q22" value="b"> User Agent</label>
+                            <label><input type="radio" name="q22" value="c"> Monitoring Agent</label>
+                            <label><input type="radio" name="q22" value="d"> Data-Mining Agent</label>
+                        </div>
+
+                        <div class="question">
+                            <p>23. What is a "Robot"?</p>
+                            <label><input type="radio" name="q23" value="a"> A mechanical device with simulated senses
+                                and the ability to act on its own.</label>
+                            <label><input type="radio" name="q23" value="b"> Software that sorts your email.</label>
+                            <label><input type="radio" name="q23" value="c"> A system that finds the best solution by
+                                evolution.</label>
+                            <label><input type="radio" name="q23" value="d"> A system that only answers "what's
+                                wrong?".</label>
+                        </div>
+
+                        <div class="question">
+                            <p>24. An expert system's specific application area (e.g., 'medicine' or 'finance') is
+                                called its:</p>
+                            <label><input type="radio" name="q24" value="a"> Domain</label>
+                            <label><input type="radio" name="q24" value="b"> Algorithm</label>
+                            <label><input type="radio" name="q24" value="c"> Interface</label>
+                            <label><input type="radio" name="q24" value="d"> Component</label>
+                        </div>
+
+                        <div class="question">
+                            <p>25. A key limitation of Expert Systems is that they cannot:</p>
+                            <label><input type="radio" name="q25" value="a"> Reduce errors.</label>
+                            <label><input type="radio" name="q25" value="b"> Use common sense.</label>
+                            <label><input type="radio" name="q25" value="c"> Handle massive amounts of
+                                information.</label>
+                            <label><input type="radio" name="q25" value="d"> Provide consistency in decision
+                                making.</label>
+                        </div>
+
+
+                        <button type="submit" class="submit-btn">Check Answers</button>
+                    </form>
+                    <div id="quizResults" class="quiz-results"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
