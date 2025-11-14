@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web & Internet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <h1>Module 05: The World Wide Web & Internet</h1>
+        <p>CO 1126 - Management Information Systems</p>
+    </header>
+
+    <main>
+        <a href="../" class="back-link">&larr; Back to MIS Modules</a>
+
+        <nav class="content-nav">
+            <button class="nav-btn active" data-content="slides">
+                <span class="icon">📄</span> Lecture Slides
+            </button>
+            <button class="nav-btn" data-content="notes">
+                <span class="icon">✍️</span> Detailed Notes
+            </button>
+            <button class="nav-btn" data-content="quiz">
+                <span class="icon">❓</span> Quiz
+            </button>
+        </nav>
+
+        <div class="content-display">
+
+            <div id="slides" class="content-item active">
+                <h2>Lecture Slides</h2>
+
+                <div class="download-container">
+                    <div class="file-card">
+                        <div class="file-icon">📄</div>
+                        <div class="file-details">
+                            <h3>slides.pdf</h3>
+                            <p>Chapter 4: The Web and the Internet</p>
+                        </div>
+                        <a href="slides.pdf" download class="download-btn">
+                            Download PDF ⬇
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="notes" class="content-item">
+                <h2>Detailed Course Notes</h2>
+                <div class="notes-content">
+
+                    <h3>1. The Internet vs. The World Wide Web</h3>
+                    <p>These two terms are often used interchangeably, but they are not the same.</p>
+                    <ul>
+                        <li><strong>The Internet:</strong> A vast, global **network of computers** that connects
+                            millions of people. [cite_start]It is the hardware and infrastructure[cite: 2209].</li>
+                        <li><strong>The World Wide Web (Web):</strong> A **multimedia-based collection of information,
+                            services, and Web sites** that is supported by the Internet. [cite_start]It is the content
+                            that flows over the network[cite: 2208].</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>2. Web Sites, Pages, and Addresses</h3>
+                    <ul>
+                        [cite_start]<li><strong>Web Site:</strong> A specific location on the Web where you visit and
+                            gather information (e.g., Google's site)[cite: 2213].</li>
+                        [cite_start]<li><strong>Web Site Address (Domain Name):</strong> A unique name that identifies a
+                            specific computer on the Web (e.g., `www.google.com`) [cite: 2214-2216].</li>
+                        [cite_start]<li><strong>Web Page:</strong> A specific portion of a Web site that deals with a
+                            certain topic (e.g., the "About Us" page)[cite: 2222].</li>
+                        [cite_start]<li><strong>URL (Uniform Resource Locator):</strong> The full address for a specific
+                            web page (e.g., `http://www.google.com/about`)[cite: 2223].</li>
+                    </ul>
+
+                    <h4>Understanding Addresses</h4>
+                    <p>A URL like `http://www.google.com` can be broken down:</p>
+                    <ul>
+                        <li><strong>http://</strong>: The protocol (Hypertext Transfer Protocol). [cite_start]This part
+                            is often not required to be typed anymore [cite: 2228-2229].</li>
+                        <li><strong>www</strong>: Stands for World Wide Web.</li>
+                        <li><strong>google.com</strong>: The domain name.</li>
+                        <li><strong>.com</strong>: The **Top-Level Domain (TLD)**. [cite_start]This extension identifies
+                            the type of organization [cite: 2234-2235].</li>
+                    </ul>
+
+                    <h4>Common Top-Level Domains (TLDs)</h4>
+                    <table class="notes-table">
+                        <tr>
+                            <th>TLD</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>.com</td>
+                            [cite_start]<td>Commercial [cite: 2239]</td>
+                        </tr>
+                        <tr>
+                            <td>.edu</td>
+                            [cite_start]<td>Educational [cite: 2239]</td>
+                        </tr>
+                        <tr>
+                            <td>.gov</td>
+                            [cite_start]<td>Governmental [cite: 2239]</td>
+                        </tr>
+                        <tr>
+                            <td>.org</td>
+                            [cite_start]<td>Organization [cite: 2239]</td>
+                        </tr>
+                        <tr>
+                            <td>.net</td>
+                            [cite_start]<td>Network [cite: 2239]</td>
+                        </tr>
+                        <tr>
+                            <td>.biz</td>
+                            [cite_start]<td>Business [cite: 2239]</td>
+                        </tr>
+                    </table>
+                    [cite_start]<p>Addresses can also end with a two-character extension to identify the country (e.t.,
+                        .lk for Sri Lanka) [cite: 2242-2243].</p>
+
+                    <hr>
+
+                    <h3>3. Core Internet Technologies</h3>
+
+                    <h4>Web Browser Software</h4>
+                    <p>The software that enables you to surf the Web. [cite_start]Popular examples include Google
+                        Chrome, Microsoft Edge, and Mozilla Firefox [cite: 2247, 2249-2252].</p>
+
+                    <h4>Internet Infrastructure</h4>
+                    <ul class="law-list">
+                        [cite_start]<li><strong>Internet Backbone:</strong> The major set of high-speed connections for
+                            computers on the Internet[cite: 2267].</li>
+                        <li><strong>Network Access Point (NAP):</strong> A point on the Internet where several
+                            connections converge. [cite_start]This is where routing computers are located [cite:
+                            2268-2269].</li>
+                        [cite_start]<li><strong>Network Service Provider (NSP):</strong> A company that owns and
+                            maintains the routing computers at NAPs and the high-speed lines connecting them (e.g.,
+                            AT&T)[cite: 2271].</li>
+                        [cite_start]<li><strong>Internet Service Provider (ISP):</strong> A company that provides
+                            individuals and businesses access to the Internet (e.g., Dialog, SLT)[cite: 2306].</li>
+                    </ul>
+
+                    <h4>Client vs. Server</h4>
+                    <ul>
+                        [cite_start]<li><strong>Client Computer:</strong> The computer you use to access the Internet
+                            (e.g., your laptop or phone)[cite: 2312].</li>
+                        [cite_start]<li><strong>Internet Server Computer:</strong> A computer that provides information
+                            and services on the Internet[cite: 2313].</li>
+                    </ul>
+
+                    [cite_start]<h4>Types of Internet Servers [cite: 2315, 2319-2323]</h4>
+                    <table class="notes-table">
+                        <thead>
+                            <tr>
+                                <th>Server Type</th>
+                                <th>Function</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Web Server</strong></td>
+                                <td>Provides information/services to surfers.</td>
+                                <td>Accessing `www.ebay.com`.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mail Server</strong></td>
+                                <td>Provides e-mail services and accounts.</td>
+                                <td>Using Gmail or Outlook.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FTP Server</strong></td>
+                                <td>Maintains a collection of files to download.</td>
+                                <td>Downloading software or game files.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IRC Server</strong></td>
+                                <td>Supports discussion groups and chat rooms.</td>
+                                <td>Participating in a live chat forum.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h3>4. Communication Protocols</h3>
+                    [cite_start]<p>A **protocol** is a set of rules that computers follow to transfer information[cite:
+                        2327].</p>
+                    <ul>
+                        [cite_start]<li><strong>TCP/IP (Transmission Control Protocol/Internet Protocol):</strong> The
+                            primary protocol for transmitting all information over the Internet[cite: 2329].</li>
+                        [cite_start]<li><strong>HTTP (Hypertext Transfer Protocol):</strong> The protocol that supports
+                            the movement of information (web pages) over the Web[cite: 2330].</li>
+                        [cite_start]<li><strong>FTP (File Transfer Protocol):</strong> The protocol that allows you to
+                            transfer files from one computer to another[cite: 2331].</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>5. Search Engines</h3>
+                    [cite_start]<p>A **search engine** is a software system designed to search for information on the
+                        World Wide Web (e.g., Google, Bing, Yahoo!) [cite: 2335, 2342-2348].</p>
+                    <ul>
+                        [cite_start]<li>Search results are presented in a list called **SERPs** (Search Engine Results
+                            Pages)[cite: 2336].</li>
+                        <li>Search engines are different from **web directories**, which are maintained by human
+                            editors. [cite_start]Search engines maintain real-time information by running an
+                            **algorithm** on a **web crawler**[cite: 2338].</li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div id="quiz" class="content-item">
+                <h2>Quiz: Web & Internet Technologies</h2>
+                <div class="quiz-content">
+                    <form id="quizForm">
+
+                        <div class="question">
+                            <p>1. What is the primary protocol used for transmitting ALL information over the Internet?
+                            </p>
+                            <label><input type="radio" name="q1" value="a"> HTTP</label>
+                            <label><input type="radio" name="q1" value="b"> FTP</label>
+                            <label><input type="radio" name="q1" value="c"> TCP/IP</label>
+                            <label><input type="radio" name="q1" value="d"> IRC</label>
+                        </div>
+
+                        <div class="question">
+                            <p>2. Which TLD is typically used for educational institutions?</p>
+                            <label><input type="radio" name="q2" value="a"> .com</label>
+                            <label><input type="radio" name="q2" value="b"> .edu</label>
+                            <label><input type="radio" name="q2" value="c"> .gov</label>
+                            <label><input type="radio" name="q2" value="d"> .org</label>
+                        </div>
+
+                        <div class="question">
+                            <p>3. What is a NAP in the context of Internet infrastructure?</p>
+                            <label><input type="radio" name="q3" value="a"> Network Access Protocol</label>
+                            <label><input type="radio" name="q3" value="b"> Network Access Point</label>
+                            <label><input type="radio" name="q3" value="c"> New Application Program</label>
+                            <label><input type="radio" name="q3" value="d"> Network Area Provider</label>
+                        </div>
+
+                        <div class="question">
+                            <p>4. Which type of server is specifically designed to maintain a collection of files for
+                                download?</p>
+                            <label><input type="radio" name="q4" value="a"> Web Server</label>
+                            <label><input type="radio" name="q4" value="b"> Mail Server</label>
+                            <label><input type="radio" name="q4" value="c"> FTP Server</label>
+                            <label><input type="radio" name="q4" value="d"> IRC Server</label>
+                        </div>
+
+                        <div class="question">
+                            <p>5. What does URL stand for?</p>
+                            <label><input type="radio" name="q5" value="a"> Uniform Resource Locator</label>
+                            <label><input type="radio" name="q5" value="b"> Universal Resource Link</label>
+                            <label><input type="radio" name="q5" value="c"> United Resource Locator</label>
+                            <label><input type="radio" name="q5" value="d"> Uniform Rapid Link</label>
+                        </div>
+
+                        <div class="question">
+                            <p>6. What is the key difference between the Internet and the World Wide Web?</p>
+                            <label><input type="radio" name="q6" value="a"> They are the same thing.</label>
+                            <label><input type="radio" name="q6" value="b"> The Internet is the network
+                                (infrastructure), while the Web is the information (content) on it.</label>
+                            <label><input type="radio" name="q6" value="c"> The Web is the hardware, and the Internet is
+                                the software.</label>
+                            <label><input type="radio" name="q6" value="d"> The Internet is for email only; the Web is
+                                for websites.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>7. A company like AT&T that owns and maintains the high-speed lines and routing computers
+                                at NAPs is called a(n):</p>
+                            <label><input type="radio" name="q7" value="a"> Internet Service Provider (ISP)</label>
+                            <label><input type="radio" name="q7" value="b"> Network Service Provider (NSP)</label>
+                            <label><input type="radio" name="q7" value="c"> Web Server</label>
+                            <label><input type="radio" name="q7" value="d"> Client Computer</label>
+                        </div>
+
+                        <div class="question">
+                            <p>8. What is the protocol used for transferring files between computers?</p>
+                            <label><input type="radio" name="q8" value="a"> HTTP</label>
+                            <label><input type="radio" name="q8" value="b"> FTP</label>
+                            <label><input type="radio" name="q8" value="c"> TCP/IP</label>
+                            <label><input type="radio" name="q8" value="d"> IRC</label>
+                        </div>
+
+                        <div class="question">
+                            <p>9. What are SERPs?</p>
+                            <label><input type="radio" name="q9" value="a"> A type of internet server.</label>
+                            <label><input type="radio" name="q9" value="b"> The protocol for sending email.</label>
+                            <label><input type="radio" name="q9" value="c"> The list of results from a search
+                                engine.</label>
+                            <label><input type="radio" name="q9" value="d"> The top-level domain for servers.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>10. How do search engines maintain real-time information?</p>
+                            <label><input type="radio" name="q10" value="a"> By hiring human editors to check every
+                                site.</label>
+                            <label><input type="radio" name="q10" value="b"> By running an algorithm on a web
+                                crawler.</label>
+                            <label><input type="radio" name="q10" value="c"> By only listing sites in the .com
+                                domain.</label>
+                            <label><input type="radio" name="q10" value="d"> By waiting for users to submit new
+                                pages.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>11. What is the .gov TLD used for?</p>
+                            <label><input type="radio" name="q11" value="a"> Governmental</label>
+                            <label><input type="radio" name="q11" value="b"> Global Business</label>
+                            <label><input type="radio" name="q11" value="c"> Educational</label>
+                            <label><input type="radio" name="q11" value="d"> Gaming</label>
+                        </div>
+
+                        <div class="question">
+                            <p>12. What does ISP stand for?</p>
+                            <label><input type="radio" name="q12" value="a"> Internet Service Protocol</label>
+                            <label><input type="radio" name="q12" value="b"> Internal Server Provider</label>
+                            <label><input type="radio" name="q12" value="c"> Internet Service Provider</gT>
+                                <label><input type="radio" name="q12" value="d"> Internet Server Protocol</label>
+                        </div>
+
+                        <div class="question">
+                            <p>13. Which server type would you use to participate in a discussion group or chat room?
+                            </p>
+                            <label><input type="radio" name="q13" value="a"> Web Server</label>
+                            <label><input type="radio" name="q13" value="b"> Mail Server</label>
+                            <label><input type="radio" name="q13" value="c"> FTP Server</label>
+                            <label><input type="radio" name="q13" value="d"> IRC Server</label>
+                        </div>
+
+                        <div class="question">
+                            <p>14. What is the computer you use to access the Internet called?</p>
+                            <label><input type="radio" name="q14" value="a"> Client Computer</label>
+                            <label><input type="radio" name="q14" value="b"> Server Computer</label>
+                            <label><input type="radio" name="q14" value="c"> Mainframe</label>
+                            <label><input type="radio" name="q14" value="d"> NSP</label>
+                        </div>
+
+                        <div class="question">
+                            <p>15. What is the protocol that supports the movement of information over the Web?</p>
+                            <label><input type="radio" name="q15" value="a"> TCP/IP</label>
+                            <label><input type="radio" name="q15" value="b"> HTTP</label>
+                            <label><input type="radio" name="q15" value="c"> FTP</label>
+                            <label><input type="radio" name="q15" value="d"> NAP</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Check Answers</button>
+                    </form>
+                    <div id="quizResults" class="quiz-results"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

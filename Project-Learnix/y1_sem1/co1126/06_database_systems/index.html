@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Systems</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <h1>Module 06: Database Systems & Warehousing</h1>
+        <p>CO 1126 - Management Information Systems</p>
+    </header>
+
+    <main>
+        <a href="../" class="back-link">&larr; Back to MIS Modules</a>
+
+        <nav class="content-nav">
+            <button class="nav-btn active" data-content="slides">
+                <span class="icon">📄</span> Lecture Slides
+            </button>
+            <button class="nav-btn" data-content="notes">
+                <span class="icon">✍️</span> Detailed Notes
+            </button>
+            <button class="nav-btn" data-content="quiz">
+                <span class="icon">❓</span> Quiz
+            </button>
+        </nav>
+
+        <div class="content-display">
+
+            <div id="slides" class="content-item active">
+                <h2>Lecture Slides</h2>
+
+                <div class="download-container">
+                    <div class="file-card">
+                        <div class="file-icon">📄</div>
+                        <div class="file-details">
+                            <h3>slides.pdf</h3>
+                            <p>Chapter 5: Databases & Warehousing</p>
+                        </div>
+                        <a href="slides.pdf" download class="download-btn">
+                            Download PDF ⬇
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="notes" class="content-item">
+                <h2>Detailed Course Notes</h2>
+                <div class="notes-content">
+
+                    <h3>1. File Processing vs. Database Systems</h3>
+                    <p>Understanding the limits of old systems helps explain the need for databases.</p>
+
+                    <h4>File Processing Systems</h4>
+                    <p>Stores and manages data in one or more separate files. [cite_start]This was common on mainframe
+                        systems[cite: 2655, 2663].</p>
+                    <p><strong>Potential Problems:</strong></p>
+                    <ul>
+                        [cite_start]<li><strong>Data Redundancy:</strong> Data is stored in several places, wasting
+                            space and making updates expensive [cite: 2676-2677].</li>
+                        [cite_start]<li><strong>Data Integrity:</strong> The validity of data is compromised (e.g., a
+                            customer's address is updated in one file but not another)[cite: 2678].</li>
+                        [cite_start]<li><strong>Rigid Data Structure:</strong> Files are inflexible and tied to the
+                            application [cite: 2679-2680].</li>
+                    </ul>
+
+                    <h4>Database Systems</h4>
+                    [cite_start]<p>A collection of linked data files (tables) that form an overall data structure[cite:
+                        2656, 2728]. [cite_start]A database avoids redundancy and supports a dynamic environment [cite:
+                        2729-2730].</p>
+                    <p><strong>Advantages:</strong></p>
+                    <ul class="law-list">
+                        [cite_start]<li><strong>Scalability:</strong> Can be easily expanded or modified[cite: 2770].
+                        </li>
+                        [cite_start]<li><strong>Controlled Redundancy:</strong> Data is stored in one place, minimizing
+                            duplication[cite: 2788].</li>
+                        [cite_start]<li><strong>Data Independence:</strong> Systems are separate from how the data is
+                            physically stored[cite: 2791].</li>
+                        [cite_start]<li><strong>Better Security:</strong> A Database Administrator (DBA) can define
+                            authorization procedures[cite: 2789].</li>
+                        [cite_start]<li><strong>Flexible Data Sharing:</strong> Allows many users to view the same
+                            information in different ways[cite: 2780].</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>2. The Three-Schema Architecture</h3>
+                    [cite_start]<p>Databases are described at three abstract levels [cite: 1970-1972]:</p>
+                    <table class="notes-table">
+                        <tr>
+                            <th>Level (Schema)</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><strong>External (View)</strong></td>
+                            <td>The highest level. Describes the portion of the database a specific user or application
+                                sees. [cite_start]There can be many external views [cite: 1994-1995].</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conceptual (Logical)</strong></td>
+                            <td>Describes the entire database: all entities, attributes, and relationships.
+                                [cite_start]It is the community view, and there is only one [cite: 1997-1998].</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Internal (Physical)</strong></td>
+                            <td>The lowest level. [cite_start]Describes *how* the data is physically stored (data
+                                structures, access methods) [cite: 2001-2002].</td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+                    <h3>3. Data Independence</h3>
+                    [cite_start]<p>The main goal of the three-schema architecture is to separate user applications from
+                        the physical database[cite: 1977].</p>
+                    <ul>
+                        [cite_start]<li><strong>Logical Data Independence:</strong> The capacity to change the
+                            <strong>conceptual schema</strong> without having to change the external schema (user
+                            views)[cite: 2005].</li>
+                        [cite_start]<li><strong>Physical Data Independence:</strong> The capacity to change the
+                            <strong>internal schema</strong> (e.g., adding an index to improve performance) without
+                            having to change the conceptual schema[cite: 2006].</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>4. Data Models</h3>
+                    [cite_start]<p>A data model is a set of tools used to describe the structure of a database[cite:
+                        2302].</p>
+                    <ul>
+                        <li><strong>High-Level (Conceptual):</strong> Uses concepts like entities, attributes, and
+                            relationships. (e.g., <strong>ER Model</strong>, Object-Oriented Model) [cite_start][cite:
+                            2325, 2334, 2355].</li>
+                        <li><strong>Representational (Implementation):</strong> Used in commercial DBMS. (e.g.,
+                            <strong>Relational Model</strong>, Hierarchical Model, Network Model) [cite_start][cite:
+                            2327-2329, 2395].</li>
+                        [cite_start]<li><strong>Low-Level (Physical):</strong> Describes the details of how data is
+                            stored (e.g., record structures, indexing)[cite: 2330].</li>
+                    </ul>
+                    [cite_start]<p>The <strong>Relational Model</strong> is the most common, viewing data as
+                        two-dimensional tables called relations[cite: 391, 401, 2396].</p>
+
+                    <hr>
+
+                    <h3>5. Database Management System (DBMS)</h3>
+                    [cite_start]<p>A DBMS is a collection of tools, features, and interfaces to add, update, manage,
+                        access, and analyze a database[cite: 476, 2764].</p>
+                    [cite_start]<h4>Five Software Components of a DBMS[cite: 483]:</h4>
+                    <ol>
+                        <li><strong>DBMS Engine:</strong> Accepts logical requests, converts them to their physical
+                            equivalent, and accesses the data. [cite_start]It separates the logical and physical views
+                            [cite: 514-515].</li>
+                        [cite_start]<li><strong>Data Definition Subsystem:</strong> Helps create and maintain the **Data
+                            Dictionary** and define the file structure [cite: 487, 525-526].</li>
+                        <li><strong>Data Manipulation Subsystem:</strong> Helps you add, change, and delete information.
+                            [cite_start]This is the primary user interface and includes tools like <strong>SQL</strong>
+                            and Query-by-Example (QBE) [cite: 489, 532-533, 536-537].</li>
+                        [cite_start]<li><strong>Application Generation Subsystem:</strong> Contains facilities to help
+                            developers create transaction-intensive applications (e.g., data entry forms)[cite: 491,
+                            541, 543].</li>
+                        <li><strong>Data Administration Subsystem:</strong> Helps manage the overall database
+                            environment. This includes:
+                            <ul>
+                                [cite_start]<li>Backup and Recovery [cite: 550, 558]</li>
+                                [cite_start]<li>Security Management [cite: 551, 561]</li>
+                                [cite_start]<li>Concurrency Control (what happens if two people make changes at the same
+                                    time) [cite: 553, 569-570].</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <hr>
+
+                    <h3>6. Data Warehouses and Data Mining</h3>
+                    <h4>Data Warehouse</h4>
+                    <ul>
+                        [cite_start]<li>A **Data Warehouse** is a logical collection of information, gathered from
+                            operational databases, used to create business intelligence that supports decision-making
+                            [cite: 590-594].</li>
+                        [cite_start]<li>Data warehouses support **OLAP** (Online Analytical Processing) for decision
+                            support[cite: 582].</li>
+                        [cite_start]<li>They do **NOT** support **OLTP** (Online Transaction Processing), which is
+                            handled by operational databases[cite: 583].</li>
+                        [cite_start]<li>They are **multidimensional**, often called "hypercubes," allowing users to
+                            "slice and dice" data (e.g., see sales by product, by territory, by year)[cite: 620, 623].
+                        </li>
+                    </ul>
+
+                    <h4>Data Mining</h4>
+                    [cite_start]<p><strong>Data-Mining Tools</strong> are the software tools you use to query and
+                        analyze the information in a data warehouse[cite: 584, 627]. Examples include:
+                        [cite_start]<li>Query-and-Reporting Tools [cite: 628]</li>
+                        [cite_start]<li>Intelligence Agents [cite: 629]</li>
+                        [cite_start]<li>Statistical Tools [cite: 631]</li>
+                    </p>
+
+                </div>
+            </div>
+
+            <div id="quiz" class="content-item">
+                <h2>Quiz: Database Systems</h2>
+                <div class="quiz-content">
+                    <form id="quizForm">
+
+                        <div class="question">
+                            <p>1. Which of the following is a key problem of File Processing systems?</p>
+                            <label><input type="radio" name="q1" value="a"> Data Independence</label>
+                            <label><input type="radio" name="q1" value="b"> Data Redundancy</label>
+                            <label><input type="radio" name="q1" value="c"> Scalability</label>
+                            <label><input type="radio" name="q1" value="d"> Flexible Data Sharing</label>
+                        </div>
+
+                        <div class="question">
+                            <p>2. Which is a key advantage of Database Systems over File Processing?</p>
+                            <label><input type="radio" name="q2" value="a"> Data integrity is compromised.</label>
+                            <label><input type="radio" name="q2" value="b"> Data structure is rigid.</label>
+                            <label><input type="radio" name="q2" value="c"> Controlled redundancy.</label>
+                            <label><input type="radio" name="q2" value="d"> Data is stored in separate files.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>3. In the 3-schema architecture, which level describes *how* the data is physically
+                                stored?</p>
+                            <label><input type="radio" name="q3" value="a"> External Schema</label>
+                            <label><input type="radio" name="q3" value="b"> Conceptual Schema</label>
+                            <label><input type="radio" name="q3" value="c"> Internal Schema</label>
+                            <label><input type="radio" name="q3" value="d"> Relational Schema</label>
+                        </div>
+
+                        <div class="question">
+                            <p>4. Which schema defines the portion of the database that a specific user sees?</p>
+                            <label><input type="radio" name="q4" value="a"> External Schema</label>
+                            <label><input type="radio" name="q4" value="b"> Conceptual Schema</label>
+                            <label><input type="radio" name="q4" value="c"> Internal Schema</label>
+                            <label><input type="radio" name="q4" value="d"> Physical Schema</label>
+                        </div>
+
+                        <div class="question">
+                            <p>5. Which schema defines the *entire* database (all entities and relationships)?</p>
+                            <label><input type="radio" name="q5" value="a"> External Schema</label>
+                            <label><input type="radio" name="q5" value="b"> Conceptual Schema</label>
+                            <label><input type="radio" name="q5" value="c"> Internal Schema</label>
+                            <label><input type="radio" name="q5" value="d"> View Schema</label>
+                        </div>
+
+                        <div class="question">
+                            <p>6. The capacity to change the *internal* schema without changing the *conceptual* schema
+                                is:</p>
+                            <label><input type="radio" name="q6" value="a"> Logical Data Independence</label>
+                            <label><input type="radio" name="q6" value="b"> Physical Data Independence</label>
+                            <label><input type="radio" name="q6" value="c"> Relational Data Independence</label>
+                            <label><input type="radio" name="q6" value="d"> Data Redundancy</label>
+                        </div>
+
+                        <div class="question">
+                            <p>7. The capacity to change the *conceptual* schema without changing the *external* schema
+                                is:</p>
+                            <label><input type="radio" name="q7" value="a"> Logical Data Independence</label>
+                            <label><input type="radio" name="q7" value="b"> Physical Data Independence</label>
+                            <label><input type="radio" name="q7" value="c"> Internal Data Independence</label>
+                            <label><input type="radio" name="q7" value="d"> Data Integrity</label>
+                        </div>
+
+                        <div class="question">
+                            <p>8. The Relational Model represents a database as a collection of:</p>
+                            <label><input type="radio" name="q8" value="a"> Hierarchies</label>
+                            <label><input type="radio" name="q8" value="b"> Networks</label>
+                            <label><input type="radio" name="q8" value="c"> Tables (Relations)</label>
+                            <label><input type="radio" name="q8" value="d"> Objects</label>
+                        </div>
+
+                        <div class="question">
+                            <p>9. The ER Model (Entity-Relationship Model) is an example of what kind of model?</p>
+                            <label><input type="radio" name="q9" value="a"> High-Level (Conceptual) Model</label>
+                            <label><input type="radio" name="q9" value="b"> Representational Model</label>
+                            <label><input type="radio" name="q9" value="c"> Low-Level (Physical) Model</label>
+                            <label><input type="radio" name="q9" value="d"> Hierarchical Model</label>
+                        </div>
+
+                        <div class="question">
+                            <p>10. What does DBMS stand for?</p>
+                            <label><input type="radio" name="q10" value="a"> Data Model and Structure</label>
+                            <label><input type="radio" name="q10" value="b"> Database Management System</label>
+                            <label><input type="radio" name="q10" value="c"> Data Mining Software</label>
+                            <label><input type="radio" name="q10" value="d"> Database Manipulation Standard</label>
+                        </div>
+
+                        <div class="question">
+                            <p>11. Which DBMS component separates the logical and physical views of data?</p>
+                            <label><input type="radio" name="q11" value="a"> Data Definition Subsystem</label>
+                            <label><input type="radio" name="q11" value="b"> Data Administration Subsystem</label>
+                            <label><input type="radio" name="q11" value="c"> DBMS Engine</label>
+                            <label><input type="radio" name="q11" value="d"> Application Generation Subsystem</label>
+                        </div>
+
+                        <div class="question">
+                            <p>12. Which DBMS component helps create and maintain the Data Dictionary?</p>
+                            <label><input type="radio" name="q12" value="a"> Data Definition Subsystem</label>
+                            <label><input type="radio" name="q12" value="b"> Data Administration Subsystem</label>
+                            <label><input type="radio" name="q12" value="c"> DBMS Engine</label>
+                            <label><input type="radio" name="q12" value="d"> Data Manipulation Subsystem</label>
+                        </div>
+
+                        <div class="question">
+                            <p>13. SQL and QBE (Query-by-Example) are tools used in which subsystem?</p>
+                            <label><input type="radio" name="q13" value="a"> Data Definition Subsystem</label>
+                            <label><input type="radio" name="q13" value="b"> Data Administration Subsystem</label>
+                            <label><input type="radio" name="q13" value="c"> DBMS Engine</label>
+                            <label><input type="radio" name="q13" value="d"> Data Manipulation Subsystem</label>
+                        </div>
+
+                        <div class="question">
+                            <p>14. Backup, recovery, and security are managed by which subsystem?</p>
+                            <label><input type="radio" name="q14" value="a"> Data Definition Subsystem</label>
+                            <label><input type="radio" name="q14" value="b"> Data Administration Subsystem</label>
+                            <label><input type="radio" name="q14" value="c"> Application Generation Subsystem</label>
+                            <label><input type="radio" name="q14" value="d"> Data Manipulation Subsystem</label>
+                        </div>
+
+                        <div class="question">
+                            <p>15. What does "Concurrency Control" manage?</p>
+                            <label><input type="radio" name="q15" value="a"> What happens if two people make changes at
+                                the same time.</label>
+                            <label><input type="radio" name="q15" value="b"> Who has access to what information.</label>
+                            <label><input type="radio" name="q15" value="c"> How the database is backed up.</label>
+                            <label><input type="radio" name="q15" value="d"> How data is defined in the data
+                                dictionary.</label>
+                        </div>
+
+                        <div class="question">
+                            <p>16. A logical collection of info from operational databases used for decision-making is
+                                a:</p>
+                            <label><input type="radio" name="q16" value="a"> Data Model</label>
+                            <label><input type="radio" name="q16" value="b"> DBMS</label>
+                            <label><input type="radio" name="q16" value="c"> Data Warehouse</label>
+                            <label><input type="radio" name="q16" value="d"> Relational Schema</label>
+                        </div>
+
+                        <div class="question">
+                            <p>17. Data Warehouses support what kind of processing?</p>
+                            <label><input type="radio" name="q17" value="a"> OLTP (Online Transaction
+                                Processing)</label>
+                            <label><input type="radio" name="q17" value="b"> OLAP (Online Analytical Processing)</label>
+                            <label><input type="radio" name="q17" value="c"> SQL (Structured Query Language)</label>
+                            <label><input type="radio" name="q17" value="d"> FTP (File Transfer Protocol)</label>
+                        </div>
+
+                        <div class="question">
+                            <p>18. Data Warehouses are NOT used for:</p>
+                            <label><input type="radio" name="q18" value="a"> Decision Making</label>
+                            <label><input type="radio" name="q18" value="b"> Business Analysis</label>
+                            <label><input type="radio" name="q18" value="c"> OLTP (Online Transaction
+                                Processing)</label>
+                            <label><input type="radio" name="q18" value="d"> OLAP</label>
+                        </div>
+
+                        <div class="question">
+                            <p>19. The multidimensional structure of a data warehouse is often called a:</p>
+                            <label><input type="radio" name="q19" value="a"> Hypercube</label>
+                            <label><input type="radio" name="q19" value="b"> Data Dictionary</label>
+                            <label><input type="radio" name="q19" value="c"> DBMS Engine</label>
+                            <label><input type="radio" name="q19" value="d"> Data Model</gT>
+                        </div>
+
+                        <div class="question">
+                            <p>20. What are the software tools used to query information in a data warehouse called?</p>
+                            <label><input type="radio" name="q20" value="a"> Data Definition Tools</label>
+                            <label><input type="radio" name="q20" value="b"> Data-Mining Tools</label>
+                            <label><input type="radio" name="q20" value="c"> Concurrency Controls</label>
+                            <label><input type="radio" name="q20" value="d"> Operational Tools</label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Check Answers</button>
+                    </form>
+                    <div id="quizResults" class="quiz-results"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
