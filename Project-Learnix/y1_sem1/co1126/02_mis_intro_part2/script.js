@@ -34,6 +34,16 @@ document.addEventListener("DOMContentLoaded", function () {
         q3: "b", // usernames and passwords
         q4: "d", // Finance Manager
         q5: "a", // Timely, reliable, and useful
+        q6: "a", // prove fatal
+        q7: "b", // taken by competitors
+        q8: "a", // quicker and more accurately
+        q9: "c", // nerve center
+        q10: "d", // Marketing Manager
+        q11: "c", // Every two or three years
+        q12: "b", // Filtering or altering
+        q13: "a", // R&D Manager
+        q14: "d", // Manufacturing Manager
+        q15: "c", // President
       };
 
       let score = 0;
