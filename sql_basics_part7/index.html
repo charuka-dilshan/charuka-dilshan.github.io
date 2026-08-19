@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>SQL Pattern Matching &amp; Regular Expressions (Lecture 07) - Charuuu..^_^</title><meta name="Description" content="Master MySQL pattern matching using LIKE, wildcards like % and _, string length filtering, and regular expressions (REGEXP)."><meta property="og:url" content="http://localhost:1313/sql_basics_part7/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="SQL Pattern Matching & Regular Expressions (Lecture 07)">
+	<meta property="og:description" content="Master MySQL pattern matching using LIKE, wildcards like % and _, string length filtering, and regular expressions (REGEXP).">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-20T00:04:00+05:30">
+		<meta property="article:modified_time" content="2026-08-20T00:04:00+05:30">
+		<meta property="article:tag" content="SQL">
+		<meta property="article:tag" content="MySQL">
+		<meta property="article:tag" content="Pattern Matching">
+		<meta property="article:tag" content="LIKE">
+		<meta property="article:tag" content="REGEXP">
+		<meta property="article:tag" content="Wildcards">
+		<meta property="og:image" content="http://localhost:1313/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:1313/logo.png">
+	<meta name="twitter:title" content="SQL Pattern Matching & Regular Expressions (Lecture 07)">
+	<meta name="twitter:description" content="Master MySQL pattern matching using LIKE, wildcards like % and _, string length filtering, and regular expressions (REGEXP).">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/sql_basics_part7/" /><link rel="prev" href="http://localhost:1313/sql_basics_part6/" /><link rel="next" href="http://localhost:1313/sql_basics_part8/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SQL Pattern Matching \u0026 Regular Expressions (Lecture 07)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/sql_basics_part7\/"
+        },"genre": "posts","keywords": "SQL, MySQL, Pattern Matching, LIKE, REGEXP, Wildcards","wordcount":  2189 ,
+        "url": "http:\/\/localhost:1313\/sql_basics_part7\/","datePublished": "2026-08-20T00:04:00+05:30","dateModified": "2026-08-20T00:04:00+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "Master MySQL pattern matching using LIKE, wildcards like % and _, string length filtering, and regular expressions (REGEXP)."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">SQL Pattern Matching & Regular Expressions (Lecture 07)</h1><h2 class="single-subtitle">An exhaustive study guide covering standard SQL pattern matching with LIKE, wildcards (% and _), and REGEXP expressions.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder" aria-hidden="true"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-20">2026-08-20</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;2189 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-1-overview-of-pattern-matching-in-mysql">Module 1: Overview of Pattern Matching in MySQL</a></li>
+    <li><a href="#module-2-standard-sql-pattern-matching-with-like">Module 2: Standard SQL Pattern Matching with <code>LIKE</code></a>
+      <ul>
+        <li><a href="#21-general-syntax">2.1 General Syntax</a></li>
+        <li><a href="#22-finding-names-beginning-with-a-specific-letter">2.2 Finding Names Beginning with a Specific Letter</a></li>
+        <li><a href="#23-finding-names-ending-with-specific-characters">2.3 Finding Names Ending with Specific Characters</a></li>
+        <li><a href="#24-finding-names-containing-specific-characters">2.4 Finding Names Containing Specific Characters</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-3-the--wildcard">Module 3: The <code>%</code> Wildcard</a>
+      <ul>
+        <li><a href="#important-rule">Important Rule</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-4-the-_-wildcard">Module 4: The <code>_</code> Wildcard</a>
+      <ul>
+        <li><a href="#41-matching-exactly-six-characters">4.1 Matching Exactly Six Characters</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-5-comparing--and-_">Module 5: Comparing <code>%</code> and <code>_</code></a>
+      <ul>
+        <li><a href="#example">Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-6-common-like-patterns">Module 6: Common <code>LIKE</code> Patterns</a>
+      <ul>
+        <li><a href="#names-beginning-with-m">Names Beginning with <code>M</code></a></li>
+        <li><a href="#names-ending-with-na">Names Ending with <code>na</code></a></li>
+        <li><a href="#names-containing-an">Names Containing <code>an</code></a></li>
+        <li><a href="#names-with-exactly-six-characters">Names with Exactly Six Characters</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-7-regular-expression-pattern-matching-with-regexp">Module 7: Regular Expression Pattern Matching with <code>REGEXP</code></a>
+      <ul>
+        <li><a href="#general-syntax">General Syntax</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-8-regular-expression-anchors">Module 8: Regular Expression Anchors</a>
+      <ul>
+        <li><a href="#81-caret-">8.1 Caret (<code>^</code>)</a></li>
+        <li><a href="#82-dollar-sign-">8.2 Dollar Sign (<code>$</code>)</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-9-equivalent-like-and-regexp-queries">Module 9: Equivalent <code>LIKE</code> and <code>REGEXP</code> Queries</a>
+      <ul>
+        <li><a href="#names-beginning-with-m-1">Names Beginning with <code>M</code></a></li>
+        <li><a href="#names-ending-with-na-1">Names Ending with <code>na</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#module-10-matching-exact-lengths-with-regexp">Module 10: Matching Exact Lengths with <code>REGEXP</code></a></li>
+    <li><a href="#module-11-exact-length-using-a-quantifier">Module 11: Exact Length Using a Quantifier</a></li>
+    <li><a href="#module-12-comparing-exact-length-techniques">Module 12: Comparing Exact-Length Techniques</a>
+      <ul>
+        <li><a href="#using-like">Using <code>LIKE</code></a></li>
+        <li><a href="#using-regexp-with-six-dots">Using <code>REGEXP</code> with six dots</a></li>
+        <li><a href="#using-regexp-with-a-quantifier">Using <code>REGEXP</code> with a quantifier</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-13-like-vs-regexp">Module 13: <code>LIKE</code> vs <code>REGEXP</code></a>
+      <ul>
+        <li><a href="#use-like-for-simple-patterns">Use <code>LIKE</code> for Simple Patterns</a></li>
+        <li><a href="#use-regexp-for-more-complex-patterns">Use <code>REGEXP</code> for More Complex Patterns</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-14-pattern-matching-with-column-projection">Module 14: Pattern Matching with Column Projection</a></li>
+    <li><a href="#module-15-pattern-matching-with-order-by">Module 15: Pattern Matching with <code>ORDER BY</code></a></li>
+    <li><a href="#module-16-pattern-matching-with-is-null">Module 16: Pattern Matching with <code>IS NULL</code></a></li>
+    <li><a href="#module-17-common-mistakes">Module 17: Common Mistakes</a>
+      <ul>
+        <li><a href="#mistake-1-forgetting-">Mistake 1: Forgetting <code>%</code></a></li>
+        <li><a href="#mistake-2-confusing--and-_">Mistake 2: Confusing <code>%</code> and <code>_</code></a></li>
+        <li><a href="#mistake-3-using--for-exact-length">Mistake 3: Using <code>%</code> for Exact Length</a></li>
+        <li><a href="#mistake-4-forgetting-regex-anchors">Mistake 4: Forgetting Regex Anchors</a></li>
+        <li><a href="#mistake-5-mixing-like-and-regexp-syntax">Mistake 5: Mixing <code>LIKE</code> and <code>REGEXP</code> Syntax</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-18-practical-query-reference">Module 18: Practical Query Reference</a>
+      <ul>
+        <li><a href="#find-names-beginning-with-m">Find Names Beginning with <code>M</code></a></li>
+        <li><a href="#find-names-ending-with-na">Find Names Ending with <code>na</code></a></li>
+        <li><a href="#find-names-containing-an">Find Names Containing <code>an</code></a></li>
+        <li><a href="#find-six-character-names">Find Six-Character Names</a></li>
+        <li><a href="#regex-names-beginning-with-m">Regex: Names Beginning with <code>M</code></a></li>
+        <li><a href="#regex-names-ending-with-na">Regex: Names Ending with <code>na</code></a></li>
+        <li><a href="#regex-exactly-six-characters">Regex: Exactly Six Characters</a></li>
+        <li><a href="#regex-exactly-six-characters-using-6">Regex: Exactly Six Characters Using <code>{6}</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#module-19-important-pattern-matching-reference">Module 19: Important Pattern Matching Reference</a></li>
+    <li><a href="#module-20-exam-focused-key-concepts">Module 20: Exam-Focused Key Concepts</a>
+      <ul>
+        <li><a href="#like"><code>LIKE</code></a></li>
+        <li><a href="#heading"><code>%</code></a></li>
+        <li><a href="#_"><code>_</code></a></li>
+        <li><a href="#regexp"><code>REGEXP</code></a></li>
+        <li><a href="#heading-1"><code>^</code></a></li>
+        <li><a href="#heading-2"><code>$</code></a></li>
+        <li><a href="#exact-length-with-like">Exact Length with <code>LIKE</code></a></li>
+        <li><a href="#exact-length-with-regexp">Exact Length with <code>REGEXP</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#module-21-complete-practical-workflow">Module 21: Complete Practical Workflow</a></li>
+    <li><a href="#module-22-quick-study-summary-checklist">Module 22: Quick Study Summary Checklist</a></li>
+    <li><a href="#module-23-final-exam-revision">Module 23: Final Exam Revision</a>
+      <ul>
+        <li><a href="#core-like-examples">Core <code>LIKE</code> Examples</a></li>
+        <li><a href="#core-regexp-examples">Core <code>REGEXP</code> Examples</a></li>
+      </ul>
+    </li>
+    <li><a href="#final-pattern-matching-map">Final Pattern-Matching Map</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master study guide covers Lecture 07 notes, focusing on standard SQL pattern matching (<code>LIKE</code>) and advanced regular expressions (<code>REGEXP</code>) for string filtering.</p>
+</blockquote>
+<hr>
+<h2 id="module-1-overview-of-pattern-matching-in-mysql">Module 1: Overview of Pattern Matching in MySQL</h2>
+<p>MySQL provides two primary approaches for matching patterns within string data:</p>
+<ol>
+<li><strong>Standard SQL Pattern Matching</strong> using the <code>LIKE</code> operator and wildcards.</li>
+<li><strong>Regular Expression Pattern Matching</strong> using the <code>REGEXP</code> operator.</li>
+</ol>
+<p>Pattern matching is useful when you want to search for records based on partial text instead of requiring an exact match.</p>
+<p>For example, instead of searching for one specific name:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Mohan&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>you can search for names that begin with, end with, or contain particular characters.</p>
+<hr>
+<h2 id="module-2-standard-sql-pattern-matching-with-like">Module 2: Standard SQL Pattern Matching with <code>LIKE</code></h2>
+<p>The <code>LIKE</code> operator is used to compare a string against a specified pattern.</p>
+<p>MySQL provides two important wildcards for <code>LIKE</code>:</p>
+<ul>
+<li><strong><code>%</code> (Percent sign):</strong> Matches zero or more characters.</li>
+<li><strong><code>_</code> (Underscore):</strong> Matches exactly one character.</li>
+</ul>
+<h3 id="21-general-syntax">2.1 General Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;pattern&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="22-finding-names-beginning-with-a-specific-letter">2.2 Finding Names Beginning with a Specific Letter</h3>
+<p>To display all student records where the first name begins with the letter <code>M</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The pattern:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">M%</span></span></code></pre></div></div>
+<p>means:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">M + zero or more characters</span></span></code></pre></div></div>
+<p>Therefore, names such as:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Mohan
+</span></span><span class="line"><span class="cl">Malith
+</span></span><span class="line"><span class="cl">Mithujan</span></span></code></pre></div></div>
+<p>can match the pattern if they exist in the table.</p>
+<hr>
+<h3 id="23-finding-names-ending-with-specific-characters">2.3 Finding Names Ending with Specific Characters</h3>
+<p>To display all student records where the first name ends with <code>na</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%na&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The pattern:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">%na</span></span></code></pre></div></div>
+<p>means:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">zero or more characters + na</span></span></code></pre></div></div>
+<hr>
+<h3 id="24-finding-names-containing-specific-characters">2.4 Finding Names Containing Specific Characters</h3>
+<p>To find names containing <code>an</code> anywhere in the string:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%an%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The <code>%</code> wildcard can appear before and after the search text.</p>
+<hr>
+<h2 id="module-3-the--wildcard">Module 3: The <code>%</code> Wildcard</h2>
+<p>The percent sign <code>%</code> represents zero or more characters.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The pattern can match:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">M
+</span></span><span class="line"><span class="cl">Mohan
+</span></span><span class="line"><span class="cl">Malith
+</span></span><span class="line"><span class="cl">Mithujan</span></span></code></pre></div></div>
+<p>depending on the actual data.</p>
+<h3 id="important-rule">Important Rule</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">% = zero or more characters</span></span></code></pre></div></div>
+<p>Therefore:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">M%</span></span></code></pre></div></div>
+<p>means the string must begin with <code>M</code>, but there is no restriction on how many characters follow it.</p>
+<hr>
+<h2 id="module-4-the-_-wildcard">Module 4: The <code>_</code> Wildcard</h2>
+<p>The underscore <code>_</code> represents exactly one character.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;_ohan&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The pattern:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">_ohan</span></span></code></pre></div></div>
+<p>means:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">one character + ohan</span></span></code></pre></div></div>
+<p>Therefore, a five-character value such as:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Mohan</span></span></code></pre></div></div>
+<p>can match the pattern.</p>
+<hr>
+<h3 id="41-matching-exactly-six-characters">4.1 Matching Exactly Six Characters</h3>
+<p>To find names containing exactly six characters, use six underscore characters:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;______&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The six underscores represent:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">_ _ _ _ _ _
+</span></span><span class="line"><span class="cl">1 2 3 4 5 6</span></span></code></pre></div></div>
+<p>Therefore:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">______ = exactly six characters</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-5-comparing--and-_">Module 5: Comparing <code>%</code> and <code>_</code></h2>
+<table>
+	<thead>
+			<tr>
+					<th>Symbol</th>
+					<th>Meaning</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>%</code></td>
+					<td>Zero or more characters</td>
+					<td><code>M%</code></td>
+			</tr>
+			<tr>
+					<td><code>_</code></td>
+					<td>Exactly one character</td>
+					<td><code>_ohan</code></td>
+			</tr>
+			<tr>
+					<td><code>______</code></td>
+					<td>Exactly six characters</td>
+					<td><code>______</code></td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="example">Example</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>means:</p>
+<blockquote>
+<p>Find names beginning with <code>M</code>, followed by zero or more characters.</p>
+</blockquote>
+<p>Whereas:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M____&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>means:</p>
+<blockquote>
+<p>Find names beginning with <code>M</code> followed by exactly four characters.</p>
+</blockquote>
+<p>Therefore, the complete name must contain exactly five characters.</p>
+<hr>
+<h2 id="module-6-common-like-patterns">Module 6: Common <code>LIKE</code> Patterns</h2>
+<h3 id="names-beginning-with-m">Names Beginning with <code>M</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="names-ending-with-na">Names Ending with <code>na</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%na&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="names-containing-an">Names Containing <code>an</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%an%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="names-with-exactly-six-characters">Names with Exactly Six Characters</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;______&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-7-regular-expression-pattern-matching-with-regexp">Module 7: Regular Expression Pattern Matching with <code>REGEXP</code></h2>
+<p>Regular expressions provide a more powerful method for searching text patterns.</p>
+<p>MySQL supports regular expression matching using the <code>REGEXP</code> operator.</p>
+<h3 id="general-syntax">General Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;pattern&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This searches for names beginning with <code>M</code>.</p>
+<hr>
+<h2 id="module-8-regular-expression-anchors">Module 8: Regular Expression Anchors</h2>
+<p>Two important regular expression anchors are:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Symbol</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>^</code></td>
+					<td>Beginning of a string</td>
+			</tr>
+			<tr>
+					<td><code>$</code></td>
+					<td>End of a string</td>
+			</tr>
+	</tbody>
+</table>
+<p>These anchors allow you to specify where a pattern must occur.</p>
+<hr>
+<h3 id="81-caret-">8.1 Caret (<code>^</code>)</h3>
+<p>The caret <code>^</code> represents the beginning of a string.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The pattern:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">^M</span></span></code></pre></div></div>
+<p>means:</p>
+<blockquote>
+<p>The string must begin with <code>M</code>.</p>
+</blockquote>
+<hr>
+<h3 id="82-dollar-sign-">8.2 Dollar Sign (<code>$</code>)</h3>
+<p>The dollar sign <code>$</code> represents the end of a string.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;na$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The pattern:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">na$</span></span></code></pre></div></div>
+<p>means:</p>
+<blockquote>
+<p>The string must end with <code>na</code>.</p>
+</blockquote>
+<hr>
+<h2 id="module-9-equivalent-like-and-regexp-queries">Module 9: Equivalent <code>LIKE</code> and <code>REGEXP</code> Queries</h2>
+<h3 id="names-beginning-with-m-1">Names Beginning with <code>M</code></h3>
+<p>Using <code>LIKE</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Using <code>REGEXP</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="names-ending-with-na-1">Names Ending with <code>na</code></h3>
+<p>Using <code>LIKE</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%na&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Using <code>REGEXP</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;na$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Both approaches can be used for simple beginning-of-string and end-of-string searches.</p>
+<hr>
+<h2 id="module-10-matching-exact-lengths-with-regexp">Module 10: Matching Exact Lengths with <code>REGEXP</code></h2>
+<p>Regular expressions can also be used to match strings containing an exact number of characters.</p>
+<p>To find names containing exactly six characters:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^......$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The pattern contains:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">^
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">$</span></span></code></pre></div></div>
+<p>where:</p>
+<ul>
+<li><code>^</code> means beginning of the string.</li>
+<li>Each <code>.</code> represents one character.</li>
+<li><code>$</code> means end of the string.</li>
+</ul>
+<p>Therefore:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">^......$</span></span></code></pre></div></div>
+<p>means:</p>
+<blockquote>
+<p>The complete string must contain exactly six characters.</p>
+</blockquote>
+<hr>
+<h2 id="module-11-exact-length-using-a-quantifier">Module 11: Exact Length Using a Quantifier</h2>
+<p>A shorter regular expression can be written using the <code>{n}</code> quantifier.</p>
+<p>For six characters:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^.{6}$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The expression:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">.{6}</span></span></code></pre></div></div>
+<p>means six occurrences of the preceding expression.</p>
+<p>The complete pattern:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">^.{6}$</span></span></code></pre></div></div>
+<p>means:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Beginning
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">Any character repeated exactly 6 times
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">End</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-12-comparing-exact-length-techniques">Module 12: Comparing Exact-Length Techniques</h2>
+<p>There are several ways to search for six-character names.</p>
+<h3 id="using-like">Using <code>LIKE</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;______&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="using-regexp-with-six-dots">Using <code>REGEXP</code> with six dots</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^......$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="using-regexp-with-a-quantifier">Using <code>REGEXP</code> with a quantifier</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^.{6}$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<table>
+	<thead>
+			<tr>
+					<th>Technique</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>LIKE '______'</code></td>
+					<td>Exactly six characters</td>
+			</tr>
+			<tr>
+					<td><code>REGEXP '^......$'</code></td>
+					<td>Exactly six characters</td>
+			</tr>
+			<tr>
+					<td><code>REGEXP '^.{6}$'</code></td>
+					<td>Exactly six characters</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="module-13-like-vs-regexp">Module 13: <code>LIKE</code> vs <code>REGEXP</code></h2>
+<table>
+	<thead>
+			<tr>
+					<th>Feature</th>
+					<th><code>LIKE</code></th>
+					<th><code>REGEXP</code></th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Standard SQL pattern matching</td>
+					<td>Yes</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td><code>%</code> wildcard</td>
+					<td>Yes</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td><code>_</code> wildcard</td>
+					<td>Yes</td>
+					<td>No</td>
+			</tr>
+			<tr>
+					<td>Regular expressions</td>
+					<td>No</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>Beginning-of-string matching</td>
+					<td>Yes</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>End-of-string matching</td>
+					<td>Yes</td>
+					<td>Yes</td>
+			</tr>
+			<tr>
+					<td>Complex patterns</td>
+					<td>Limited</td>
+					<td>Powerful</td>
+			</tr>
+			<tr>
+					<td>Exact character length</td>
+					<td><code>_</code> repetition</td>
+					<td>Quantifiers</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="use-like-for-simple-patterns">Use <code>LIKE</code> for Simple Patterns</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="use-regexp-for-more-complex-patterns">Use <code>REGEXP</code> for More Complex Patterns</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>Exam Tip:</strong> Remember that <code>LIKE</code> uses <code>%</code> and <code>_</code>, while <code>REGEXP</code> uses regular expression syntax.</p>
+</blockquote>
+<hr>
+<h2 id="module-14-pattern-matching-with-column-projection">Module 14: Pattern Matching with Column Projection</h2>
+<p>Pattern matching can be combined with column projection.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This returns only the <code>fname</code> and <code>birth_date</code> columns for matching records.</p>
+<p>Using <code>REGEXP</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This returns only <code>fname</code> and <code>dept</code> for students whose names begin with <code>M</code>.</p>
+<hr>
+<h2 id="module-15-pattern-matching-with-order-by">Module 15: Pattern Matching with <code>ORDER BY</code></h2>
+<p>Pattern matching can also be combined with sorting.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query performs three operations:</p>
+<ol>
+<li>Selects <code>fname</code> and <code>birth_date</code>.</li>
+<li>Filters names beginning with <code>M</code>.</li>
+<li>Sorts the matching records by birth date in ascending order.</li>
+</ol>
+<p>Using <code>REGEXP</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-16-pattern-matching-with-is-null">Module 16: Pattern Matching with <code>IS NULL</code></h2>
+<p>Pattern matching is normally applied to string values.</p>
+<p>Missing values should be tested using <code>IS NULL</code> rather than <code>LIKE</code>.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>To search for telephone numbers beginning with <code>07</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">tp_no</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;07%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Remember:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">LIKE
+</span></span><span class="line"><span class="cl"> ↓
+</span></span><span class="line"><span class="cl">Pattern matching
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">IS NULL
+</span></span><span class="line"><span class="cl"> ↓
+</span></span><span class="line"><span class="cl">Missing-value testing</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-17-common-mistakes">Module 17: Common Mistakes</h2>
+<h3 id="mistake-1-forgetting-">Mistake 1: Forgetting <code>%</code></h3>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This searches for the exact value <code>M</code>.</p>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This searches for names beginning with <code>M</code>.</p>
+<hr>
+<h3 id="mistake-2-confusing--and-_">Mistake 2: Confusing <code>%</code> and <code>_</code></h3>
+<p>Remember:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">% = zero or more characters
+</span></span><span class="line"><span class="cl">_ = exactly one character</span></span></code></pre></div></div>
+<p>Therefore:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span></span></span></code></pre></div></div>
+<p>and:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M____&#39;</span></span></span></code></pre></div></div>
+<p>do not mean the same thing.</p>
+<hr>
+<h3 id="mistake-3-using--for-exact-length">Mistake 3: Using <code>%</code> for Exact Length</h3>
+<p>This:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%&#39;</span></span></span></code></pre></div></div>
+<p>does not mean a specific length.</p>
+<p>It means zero or more characters.</p>
+<p>For exactly six characters:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;______&#39;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="mistake-4-forgetting-regex-anchors">Mistake 4: Forgetting Regex Anchors</h3>
+<p>This:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;M&#39;</span></span></span></code></pre></div></div>
+<p>searches for <code>M</code> anywhere in the string.</p>
+<p>To require <code>M</code> at the beginning:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span></span></span></code></pre></div></div>
+<p>To require <code>M</code> at the end:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;M$&#39;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="mistake-5-mixing-like-and-regexp-syntax">Mistake 5: Mixing <code>LIKE</code> and <code>REGEXP</code> Syntax</h3>
+<p>Do not assume that <code>%</code> works as the regular-expression equivalent of &ldquo;zero or more characters.&rdquo;</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span></span></span></code></pre></div></div>
+<p>does not represent the normal <code>REGEXP</code> syntax for names beginning with <code>M</code>.</p>
+<p>Use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span></span></span></code></pre></div></div>
+<p>instead.</p>
+<hr>
+<h2 id="module-18-practical-query-reference">Module 18: Practical Query Reference</h2>
+<h3 id="find-names-beginning-with-m">Find Names Beginning with <code>M</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="find-names-ending-with-na">Find Names Ending with <code>na</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%na&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="find-names-containing-an">Find Names Containing <code>an</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%an%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="find-six-character-names">Find Six-Character Names</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;______&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="regex-names-beginning-with-m">Regex: Names Beginning with <code>M</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="regex-names-ending-with-na">Regex: Names Ending with <code>na</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;na$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="regex-exactly-six-characters">Regex: Exactly Six Characters</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^......$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="regex-exactly-six-characters-using-6">Regex: Exactly Six Characters Using <code>{6}</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^.{6}$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-19-important-pattern-matching-reference">Module 19: Important Pattern Matching Reference</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Pattern</th>
+					<th>Operator</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>M%</code></td>
+					<td><code>LIKE</code></td>
+					<td>Starts with <code>M</code></td>
+			</tr>
+			<tr>
+					<td><code>%na</code></td>
+					<td><code>LIKE</code></td>
+					<td>Ends with <code>na</code></td>
+			</tr>
+			<tr>
+					<td><code>%an%</code></td>
+					<td><code>LIKE</code></td>
+					<td>Contains <code>an</code></td>
+			</tr>
+			<tr>
+					<td><code>_</code></td>
+					<td><code>LIKE</code></td>
+					<td>Exactly one character</td>
+			</tr>
+			<tr>
+					<td><code>______</code></td>
+					<td><code>LIKE</code></td>
+					<td>Exactly six characters</td>
+			</tr>
+			<tr>
+					<td><code>^M</code></td>
+					<td><code>REGEXP</code></td>
+					<td>Starts with <code>M</code></td>
+			</tr>
+			<tr>
+					<td><code>na$</code></td>
+					<td><code>REGEXP</code></td>
+					<td>Ends with <code>na</code></td>
+			</tr>
+			<tr>
+					<td><code>^......$</code></td>
+					<td><code>REGEXP</code></td>
+					<td>Exactly six characters</td>
+			</tr>
+			<tr>
+					<td><code>^.{6}$</code></td>
+					<td><code>REGEXP</code></td>
+					<td>Exactly six characters</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="module-20-exam-focused-key-concepts">Module 20: Exam-Focused Key Concepts</h2>
+<h3 id="like"><code>LIKE</code></h3>
+<p><code>LIKE</code> is an SQL operator used for standard pattern matching.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="heading"><code>%</code></h3>
+<p>Matches zero or more characters.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">%</span></span></code></pre></div></div>
+<h3 id="_"><code>_</code></h3>
+<p>Matches exactly one character.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">_</span></span></code></pre></div></div>
+<h3 id="regexp"><code>REGEXP</code></h3>
+<p>Used for regular expression pattern matching.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="heading-1"><code>^</code></h3>
+<p>Represents the beginning of a string.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">^M</span></span></code></pre></div></div>
+<p>means the string starts with <code>M</code>.</p>
+<h3 id="heading-2"><code>$</code></h3>
+<p>Represents the end of a string.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">na$</span></span></code></pre></div></div>
+<p>means the string ends with <code>na</code>.</p>
+<h3 id="exact-length-with-like">Exact Length with <code>LIKE</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;______&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="exact-length-with-regexp">Exact Length with <code>REGEXP</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^.{6}$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-21-complete-practical-workflow">Module 21: Complete Practical Workflow</h2>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. Identify the column to search
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">2. Decide whether the pattern is simple or complex
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">3. Use LIKE for standard SQL patterns
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">4. Use % for zero or more characters
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">5. Use _ for exactly one character
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">6. Use REGEXP for regular-expression patterns
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">7. Use ^ for the beginning of a string
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">8. Use $ for the end of a string
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">9. Use quantifiers when required
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">10. Execute and verify the result</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-22-quick-study-summary-checklist">Module 22: Quick Study Summary Checklist</h2>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the purpose of pattern matching.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know the <code>LIKE</code> operator.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know that <code>%</code> matches zero or more characters.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know that <code>_</code> matches exactly one character.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to find names beginning with a specific character.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to find names ending with specific characters.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to find names containing specific characters.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to find names with an exact character length.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the <code>REGEXP</code> operator.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the <code>^</code> regex anchor.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the <code>$</code> regex anchor.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to match strings beginning with a pattern using <code>REGEXP</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to match strings ending with a pattern using <code>REGEXP</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to use <code>.</code> in regular expressions.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the <code>{n}</code> quantifier.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the difference between <code>LIKE</code> and <code>REGEXP</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know when to use <code>%</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know when to use <code>_</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that <code>%</code> and <code>_</code> are <code>LIKE</code> wildcards.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that regular expressions use different pattern syntax.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand how pattern matching works with <code>WHERE</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand how pattern matching can be combined with <code>ORDER BY</code>.</li>
+</ul>
+<hr>
+<h2 id="module-23-final-exam-revision">Module 23: Final Exam Revision</h2>
+<p>Remember:</p>
+<blockquote>
+<p><strong><code>LIKE</code> = Standard SQL pattern matching</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>%</code> = Zero or more characters</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>_</code> = Exactly one character</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>REGEXP</code> = Regular expression pattern matching</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>^</code> = Beginning of string</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>$</code> = End of string</strong></p>
+</blockquote>
+<h3 id="core-like-examples">Core <code>LIKE</code> Examples</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p>Finds names beginning with <code>M</code>.</p>
+</blockquote>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%na&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p>Finds names ending with <code>na</code>.</p>
+</blockquote>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%an%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p>Finds names containing <code>an</code>.</p>
+</blockquote>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;______&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p>Finds names containing exactly six characters.</p>
+</blockquote>
+<h3 id="core-regexp-examples">Core <code>REGEXP</code> Examples</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p>Finds names beginning with <code>M</code>.</p>
+</blockquote>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;na$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p>Finds names ending with <code>na</code>.</p>
+</blockquote>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^......$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p>Finds names containing exactly six characters.</p>
+</blockquote>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^.{6}$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p>Finds names containing exactly six characters using a quantifier.</p>
+</blockquote>
+<hr>
+<h2 id="final-pattern-matching-map">Final Pattern-Matching Map</h2>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">LIKE
+</span></span><span class="line"><span class="cl"> │
+</span></span><span class="line"><span class="cl"> ├── %  → zero or more characters
+</span></span><span class="line"><span class="cl"> │
+</span></span><span class="line"><span class="cl"> └── _  → exactly one character
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">REGEXP
+</span></span><span class="line"><span class="cl"> │
+</span></span><span class="line"><span class="cl"> ├── ^  → beginning of string
+</span></span><span class="line"><span class="cl"> │
+</span></span><span class="line"><span class="cl"> ├── $  → end of string
+</span></span><span class="line"><span class="cl"> │
+</span></span><span class="line"><span class="cl"> ├── .  → any character
+</span></span><span class="line"><span class="cl"> │
+</span></span><span class="line"><span class="cl"> └── {n} → repeat n times</span></span></code></pre></div></div>
+<blockquote>
+<p><strong>Final Key Takeaway:</strong> Master <code>LIKE</code>, <code>%</code>, <code>_</code>, <code>REGEXP</code>, <code>^</code>, <code>$</code>, and <code>{n}</code>. These pattern-matching concepts provide the foundation for searching and filtering text data efficiently in MySQL.</p>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-08-20</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sql_basics_part7/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/sql_basics_part7/" data-title="SQL Pattern Matching &amp; Regular Expressions (Lecture 07)" data-hashtags="SQL,MySQL,Pattern Matching,LIKE,REGEXP,Wildcards"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/sql_basics_part7/" data-title="SQL Pattern Matching &amp; Regular Expressions (Lecture 07)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/sql_basics_part7/" data-hashtag="SQL"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/sql_basics_part7/" data-title="SQL Pattern Matching &amp; Regular Expressions (Lecture 07)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/sql_basics_part7/" data-title="SQL Pattern Matching &amp; Regular Expressions (Lecture 07)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/sql_basics_part7/" data-title="SQL Pattern Matching &amp; Regular Expressions (Lecture 07)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/sql_basics_part7/" data-title="SQL Pattern Matching &amp; Regular Expressions (Lecture 07)" data-description="Master MySQL pattern matching using LIKE, wildcards like % and _, string length filtering, and regular expressions (REGEXP)."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fsql_basics_part7%2f&amp;text=SQL%20Pattern%20Matching%20%26%20Regular%20Expressions%20%28Lecture%2007%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/mysql/">MySQL</a>,&nbsp;<a href="/tags/pattern-matching/">Pattern Matching</a>,&nbsp;<a href="/tags/like/">LIKE</a>,&nbsp;<a href="/tags/regexp/">REGEXP</a>,&nbsp;<a href="/tags/wildcards/">Wildcards</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sql_basics_part6/" class="prev" rel="prev" title="Sorting Data and Working with NULL in MySQL (Lecture 06)"><i class="fas fa-angle-left" aria-hidden="true"></i>Sorting Data and Working with NULL in MySQL (Lecture 06)</a>
+            <a href="/sql_basics_part8/" class="next" rel="next" title="Creating &amp; Handling Multiple Tables in a Database (Lecture 08)">Creating & Handling Multiple Tables in a Database (Lecture 08)<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>

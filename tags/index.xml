@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tags on Charuuu..^_^</title>
+		<link>http://localhost:1313/tags/</link>
+		<description>Recent content in Tags on Charuuu..^_^</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 20 Aug 2026 00:45:00 +0530</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>ALTER TABLE</title>
+				<link>http://localhost:1313/tags/alter-table/</link>
+				<pubDate>Thu, 20 Aug 2026 00:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/alter-table/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Constraints</title>
+				<link>http://localhost:1313/tags/constraints/</link>
+				<pubDate>Thu, 20 Aug 2026 00:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/constraints/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Database Design</title>
+				<link>http://localhost:1313/tags/database-design/</link>
+				<pubDate>Thu, 20 Aug 2026 00:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/database-design/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Foreign Key</title>
+				<link>http://localhost:1313/tags/foreign-key/</link>
+				<pubDate>Thu, 20 Aug 2026 00:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/foreign-key/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MySQL</title>
+				<link>http://localhost:1313/tags/mysql/</link>
+				<pubDate>Thu, 20 Aug 2026 00:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/mysql/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Primary Key</title>
+				<link>http://localhost:1313/tags/primary-key/</link>
+				<pubDate>Thu, 20 Aug 2026 00:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/primary-key/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>SQL</title>
+				<link>http://localhost:1313/tags/sql/</link>
+				<pubDate>Thu, 20 Aug 2026 00:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/sql/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Database</title>
+				<link>http://localhost:1313/tags/database/</link>
+				<pubDate>Thu, 20 Aug 2026 00:38:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/database/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Exam Guide</title>
+				<link>http://localhost:1313/tags/exam-guide/</link>
+				<pubDate>Thu, 20 Aug 2026 00:38:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/exam-guide/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Master Summary</title>
+				<link>http://localhost:1313/tags/master-summary/</link>
+				<pubDate>Thu, 20 Aug 2026 00:38:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/master-summary/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Database Relationships</title>
+				<link>http://localhost:1313/tags/database-relationships/</link>
+				<pubDate>Thu, 20 Aug 2026 00:17:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/database-relationships/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>INNER JOIN</title>
+				<link>http://localhost:1313/tags/inner-join/</link>
+				<pubDate>Thu, 20 Aug 2026 00:17:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/inner-join/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Joins</title>
+				<link>http://localhost:1313/tags/joins/</link>
+				<pubDate>Thu, 20 Aug 2026 00:17:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/joins/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LEFT JOIN</title>
+				<link>http://localhost:1313/tags/left-join/</link>
+				<pubDate>Thu, 20 Aug 2026 00:17:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/left-join/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Aggregate Functions</title>
+				<link>http://localhost:1313/tags/aggregate-functions/</link>
+				<pubDate>Thu, 20 Aug 2026 00:07:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/aggregate-functions/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Relational Database</title>
+				<link>http://localhost:1313/tags/relational-database/</link>
+				<pubDate>Thu, 20 Aug 2026 00:07:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/relational-database/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>LIKE</title>
+				<link>http://localhost:1313/tags/like/</link>
+				<pubDate>Thu, 20 Aug 2026 00:04:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/like/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Pattern Matching</title>
+				<link>http://localhost:1313/tags/pattern-matching/</link>
+				<pubDate>Thu, 20 Aug 2026 00:04:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/pattern-matching/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>REGEXP</title>
+				<link>http://localhost:1313/tags/regexp/</link>
+				<pubDate>Thu, 20 Aug 2026 00:04:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/regexp/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Wildcards</title>
+				<link>http://localhost:1313/tags/wildcards/</link>
+				<pubDate>Thu, 20 Aug 2026 00:04:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/wildcards/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Database Sorting</title>
+				<link>http://localhost:1313/tags/database-sorting/</link>
+				<pubDate>Wed, 19 Aug 2026 23:47:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/database-sorting/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>NULL</title>
+				<link>http://localhost:1313/tags/null/</link>
+				<pubDate>Wed, 19 Aug 2026 23:47:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/null/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>ORDER BY</title>
+				<link>http://localhost:1313/tags/order-by/</link>
+				<pubDate>Wed, 19 Aug 2026 23:47:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/order-by/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Databases</title>
+				<link>http://localhost:1313/tags/databases/</link>
+				<pubDate>Wed, 19 Aug 2026 23:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/databases/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>SQL Console</title>
+				<link>http://localhost:1313/tags/sql-console/</link>
+				<pubDate>Wed, 19 Aug 2026 23:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/sql-console/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>WAMP</title>
+				<link>http://localhost:1313/tags/wamp/</link>
+				<pubDate>Wed, 19 Aug 2026 23:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/wamp/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>XAMPP</title>
+				<link>http://localhost:1313/tags/xampp/</link>
+				<pubDate>Wed, 19 Aug 2026 23:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/xampp/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>PhpMyAdmin</title>
+				<link>http://localhost:1313/tags/phpmyadmin/</link>
+				<pubDate>Wed, 19 Aug 2026 22:30:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/phpmyadmin/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Backend</title>
+				<link>http://localhost:1313/tags/backend/</link>
+				<pubDate>Wed, 19 Aug 2026 20:30:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/backend/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Computer Science</title>
+				<link>http://localhost:1313/tags/computer-science/</link>
+				<pubDate>Wed, 19 Aug 2026 20:30:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/computer-science/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Introduction</title>
+				<link>http://localhost:1313/tags/introduction/</link>
+				<pubDate>Wed, 19 Aug 2026 16:45:00 +0530</pubDate>
+				<guid>http://localhost:1313/tags/introduction/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Introduction to MySQL (SQL Part 03) - Charuuu..^_^</title><meta name="Description" content="Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface."><meta property="og:url" content="http://localhost:1313/sql_basics_part3/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="Introduction to MySQL (SQL Part 03)">
+	<meta property="og:description" content="Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-19T23:00:00+05:30">
+		<meta property="article:modified_time" content="2026-08-19T23:00:00+05:30">
+		<meta property="article:tag" content="MySQL">
+		<meta property="article:tag" content="WAMP">
+		<meta property="article:tag" content="XAMPP">
+		<meta property="article:tag" content="Databases">
+		<meta property="article:tag" content="SQL Console">
+		<meta property="og:image" content="http://localhost:1313/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:1313/logo.png">
+	<meta name="twitter:title" content="Introduction to MySQL (SQL Part 03)">
+	<meta name="twitter:description" content="Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface.">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/sql_basics_part3/" /><link rel="prev" href="http://localhost:1313/sql_basics_part2/" /><link rel="next" href="http://localhost:1313/sql_basics_part4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Introduction to MySQL (SQL Part 03)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/sql_basics_part3\/"
+        },"genre": "posts","keywords": "MySQL, WAMP, XAMPP, Databases, SQL Console","wordcount":  1639 ,
+        "url": "http:\/\/localhost:1313\/sql_basics_part3\/","datePublished": "2026-08-19T23:00:00+05:30","dateModified": "2026-08-19T23:00:00+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Introduction to MySQL (SQL Part 03)</h1><h2 class="single-subtitle">An exhaustive study guide covering MySQL architecture, core features, console access, SQL syntax, queries, calculations, multi-line commands, and command cancellation.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder" aria-hidden="true"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-19">2026-08-19</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;1639 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-1-what-is-mysql">Module 1: What is MySQL?</a>
+      <ul>
+        <li><a href="#11-pronunciation-and-performance">1.1 Pronunciation and Performance</a></li>
+        <li><a href="#12-why-use-mysql-in-academic-and-enterprise-settings">1.2 Why Use MySQL in Academic and Enterprise Settings?</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-2-connecting-and-exiting-the-mysql-console">Module 2: Connecting and Exiting the MySQL Console</a>
+      <ul>
+        <li><a href="#21-connecting-to-the-console">2.1 Connecting to the Console</a></li>
+        <li><a href="#22-exiting-the-console">2.2 Exiting the Console</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-3-executing-basic-queries">Module 3: Executing Basic Queries</a>
+      <ul>
+        <li><a href="#31-syntax-rules-and-case-sensitivity">3.1 Syntax Rules and Case Sensitivity</a></li>
+        <li><a href="#32-example-1-checking-version-and-current-date">3.2 Example 1: Checking Version and Current Date</a>
+          <ul>
+            <li><a href="#output-information">Output Information</a></li>
+          </ul>
+        </li>
+        <li><a href="#33-example-2-using-mysql-as-a-calculator">3.3 Example 2: Using MySQL as a Calculator</a></li>
+        <li><a href="#34-example-3-multiple-statements-on-a-single-line">3.4 Example 3: Multiple Statements on a Single Line</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-4-multi-line-commands-and-cancellation">Module 4: Multi-Line Commands and Cancellation</a>
+      <ul>
+        <li><a href="#41-writing-multi-line-statements">4.1 Writing Multi-Line Statements</a></li>
+        <li><a href="#42-canceling-an-in-progress-command-c">4.2 Canceling an In-Progress Command (<code>\c</code>)</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-5-understanding-the-mysql-monitor-prompt">Module 5: Understanding the MySQL Monitor Prompt</a>
+      <ul>
+        <li><a href="#normal-prompt">Normal Prompt</a></li>
+        <li><a href="#continuation-prompt">Continuation Prompt</a></li>
+        <li><a href="#cancelling-the-current-statement">Cancelling the Current Statement</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-6-important-mysql-commands-to-remember">Module 6: Important MySQL Commands to Remember</a>
+      <ul>
+        <li><a href="#check-mysql-version">Check MySQL Version</a></li>
+        <li><a href="#display-current-date">Display Current Date</a></li>
+        <li><a href="#display-current-date-and-time">Display Current Date and Time</a></li>
+        <li><a href="#display-current-user">Display Current User</a></li>
+        <li><a href="#perform-a-calculation">Perform a Calculation</a></li>
+        <li><a href="#display-available-databases">Display Available Databases</a></li>
+        <li><a href="#exit-the-mysql-monitor">Exit the MySQL Monitor</a></li>
+        <li><a href="#cancel-an-incomplete-statement">Cancel an Incomplete Statement</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-7-understanding-sql-statement-termination">Module 7: Understanding SQL Statement Termination</a>
+      <ul>
+        <li><a href="#what-happens-without-a-terminator">What Happens Without a Terminator?</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-8-sql-keyword-case-sensitivity">Module 8: SQL Keyword Case Sensitivity</a></li>
+    <li><a href="#module-9-mysql-as-a-calculator">Module 9: MySQL as a Calculator</a>
+      <ul>
+        <li><a href="#addition">Addition</a></li>
+        <li><a href="#subtraction">Subtraction</a></li>
+        <li><a href="#multiplication">Multiplication</a></li>
+        <li><a href="#division">Division</a></li>
+        <li><a href="#mathematical-functions">Mathematical Functions</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-10-practical-mysql-console-workflow">Module 10: Practical MySQL Console Workflow</a></li>
+    <li><a href="#module-11-common-errors-and-troubleshooting">Module 11: Common Errors and Troubleshooting</a>
+      <ul>
+        <li><a href="#problem-1-incorrect-password">Problem 1: Incorrect Password</a></li>
+        <li><a href="#problem-2-missing-semicolon">Problem 2: Missing Semicolon</a></li>
+        <li><a href="#problem-3-accidental-incomplete-query">Problem 3: Accidental Incomplete Query</a></li>
+        <li><a href="#problem-4-mysql-console-will-not-open">Problem 4: MySQL Console Will Not Open</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-12-exam-focused-key-concepts">Module 12: Exam-Focused Key Concepts</a>
+      <ul>
+        <li><a href="#mysql">MySQL</a></li>
+        <li><a href="#rdbms">RDBMS</a></li>
+        <li><a href="#mysql-monitor">MySQL Monitor</a></li>
+        <li><a href="#select"><code>SELECT</code></a></li>
+        <li><a href="#version"><code>VERSION()</code></a></li>
+        <li><a href="#current_date"><code>CURRENT_DATE</code></a></li>
+        <li><a href="#now"><code>NOW()</code></a></li>
+        <li><a href="#user"><code>USER()</code></a></li>
+        <li><a href="#quit"><code>QUIT</code></a></li>
+        <li><a href="#exit"><code>exit</code></a></li>
+        <li><a href="#c"><code>\c</code></a></li>
+        <li><a href="#g"><code>\g</code></a></li>
+        <li><a href="#mysql-1"><code>mysql&gt;</code></a></li>
+        <li><a href="#-"><code>-&gt;</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#quick-study-summary-checklist">Quick Study Summary Checklist</a></li>
+    <li><a href="#final-exam-revision">Final Exam Revision</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master study guide covers Lecture 03 notes, focusing on MySQL architecture, core features, and practical command-line operations inside the MySQL monitor.</p>
+</blockquote>
+<hr>
+<h2 id="module-1-what-is-mysql">Module 1: What is MySQL?</h2>
+<p>MySQL is an extremely popular, open-source Relational Database Management System (RDBMS).</p>
+<h3 id="11-pronunciation-and-performance">1.1 Pronunciation and Performance</h3>
+<ul>
+<li><strong>Official Pronunciation:</strong> Pronounced <em>&ldquo;my Ess Que Ell&rdquo;</em> (not &ldquo;my sequel&rdquo;).</li>
+<li><strong>Capabilities:</strong> Handles very large databases with extremely fast performance.</li>
+</ul>
+<h3 id="12-why-use-mysql-in-academic-and-enterprise-settings">1.2 Why Use MySQL in Academic and Enterprise Settings?</h3>
+<ol>
+<li><strong>Cost:</strong> Free and open-source, making it significantly cheaper than commercial solutions such as Oracle.</li>
+<li><strong>Local Installation:</strong> Students can easily install MySQL locally through WAMP or XAMPP.</li>
+<li><strong>Usability:</strong> Provides an easy-to-use command-line shell and graphical interfaces for creating and querying tables.</li>
+<li><strong>Integration:</strong> Works smoothly with backend technologies such as Java JDBC, PHP, and Python.</li>
+</ol>
+<hr>
+<h2 id="module-2-connecting-and-exiting-the-mysql-console">Module 2: Connecting and Exiting the MySQL Console</h2>
+<h3 id="21-connecting-to-the-console">2.1 Connecting to the Console</h3>
+<ol>
+<li>Start all required services in your WAMP/XAMPP server stack.</li>
+<li>Open the <strong>MySQL Console</strong> from the server menu.</li>
+<li>When prompted with:</li>
+</ol>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Enter password:</span></span></code></pre></div></div>
+<p>leave the password blank if no password has been configured and press <strong>Enter</strong>.</p>
+<blockquote>
+<p><strong>Security Note:</strong> A blank root password is not required for every MySQL installation. Always use the credentials configured for your own server.</p>
+</blockquote>
+<h3 id="22-exiting-the-console">2.2 Exiting the Console</h3>
+<p>To close your session and exit the MySQL monitor, type either <code>QUIT</code> or <code>exit</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="n">QUIT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">-- OR --
+</span></span></span><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="n">exit</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-3-executing-basic-queries">Module 3: Executing Basic Queries</h2>
+<p>Once logged into the MySQL monitor, you can execute simple SQL queries to test server functionality.</p>
+<h3 id="31-syntax-rules-and-case-sensitivity">3.1 Syntax Rules and Case Sensitivity</h3>
+<ul>
+<li><strong>Semicolon Termination:</strong> Most MySQL statements must end with a semicolon (<code>;</code>) or <code>\g</code>. The MySQL client uses the terminator to determine when a statement is complete rather than simply using the end of a line.</li>
+<li><strong>Case Insensitivity:</strong> SQL keywords are generally case-insensitive. The following queries are equivalent:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">VERSION</span><span class="p">(),</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="k">version</span><span class="p">(),</span><span class="w"> </span><span class="k">current_date</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SeLeCt</span><span class="w"> </span><span class="k">vErSiOn</span><span class="p">(),</span><span class="w"> </span><span class="k">current_DATE</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="32-example-1-checking-version-and-current-date">3.2 Example 1: Checking Version and Current Date</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">VERSION</span><span class="p">(),</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">-----------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="o">|</span><span class="w"> </span><span class="k">VERSION</span><span class="p">()</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">-----------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">7</span><span class="p">.</span><span class="mi">14</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">14</span><span class="w">   </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">-----------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">07</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span></span></span></code></pre></div></div>
+<h4 id="output-information">Output Information</h4>
+<p>MySQL returns information about the query result, including the number of rows returned and the execution time.</p>
+<blockquote>
+<p><strong>Note:</strong> The exact version, date, and execution time displayed on your system will depend on your MySQL installation and the current date.</p>
+</blockquote>
+<h3 id="33-example-2-using-mysql-as-a-calculator">3.3 Example 2: Using MySQL as a Calculator</h3>
+<p>You can perform mathematical operations and invoke functions directly in the MySQL query monitor:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">SIN</span><span class="p">(</span><span class="n">PI</span><span class="p">()</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">--------------------+-------------+
+</span></span></span><span class="line"><span class="cl"><span class="o">|</span><span class="w"> </span><span class="n">SIN</span><span class="p">(</span><span class="n">PI</span><span class="p">()</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="w">     </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">--------------------+-------------+
+</span></span></span><span class="line"><span class="cl"><span class="o">|</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">7071067811865476</span><span class="w"> </span><span class="o">|</span><span class="w">          </span><span class="mi">25</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">--------------------+-------------+
+</span></span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">07</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span></span></span></code></pre></div></div>
+<p>This demonstrates that MySQL can evaluate mathematical expressions and built-in functions without requiring a table.</p>
+<h3 id="34-example-3-multiple-statements-on-a-single-line">3.4 Example 3: Multiple Statements on a Single Line</h3>
+<p>You can execute multiple queries on one line when the MySQL client configuration permits multiple statements, with each statement ending with its own semicolon.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">VERSION</span><span class="p">();</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">NOW</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">-----------+
+</span></span></span><span class="line"><span class="cl"><span class="o">|</span><span class="w"> </span><span class="k">VERSION</span><span class="p">()</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">-----------+
+</span></span></span><span class="line"><span class="cl"><span class="o">|</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">7</span><span class="p">.</span><span class="mi">14</span><span class="w">    </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">-----------+
+</span></span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">---------------------+
+</span></span></span><span class="line"><span class="cl"><span class="o">|</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span><span class="w">               </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">---------------------+
+</span></span></span><span class="line"><span class="cl"><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="mi">21</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">19</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">---------------------+
+</span></span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>Important:</strong> In some client environments or application APIs, multiple statements may be disabled or require explicit configuration. The interactive MySQL monitor can process separate statements entered sequentially.</p>
+</blockquote>
+<hr>
+<h2 id="module-4-multi-line-commands-and-cancellation">Module 4: Multi-Line Commands and Cancellation</h2>
+<h3 id="41-writing-multi-line-statements">4.1 Writing Multi-Line Statements</h3>
+<p>Because MySQL uses the semicolon (<code>;</code>) to determine statement boundaries rather than line breaks, a single query can span multiple lines.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">USER</span><span class="p">(),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="o">|</span><span class="w"> </span><span class="k">USER</span><span class="p">()</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="o">|</span><span class="w"> </span><span class="n">root</span><span class="o">@</span><span class="n">localhost</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">14</span><span class="w">   </span><span class="o">|</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">+</span><span class="c1">----------------+--------------+
+</span></span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">05</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>Note:</strong> The <code>-&gt;</code> prompt indicates that MySQL is waiting for you to complete the current statement.</p>
+</blockquote>
+<h3 id="42-canceling-an-in-progress-command-c">4.2 Canceling an In-Progress Command (<code>\c</code>)</h3>
+<p>If you make a mistake while typing a query or decide to abandon a multi-line statement before executing it, you can cancel the current statement by typing <code>\c</code>.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT
+</span></span><span class="line"><span class="cl">    -&gt; USER()
+</span></span><span class="line"><span class="cl">    -&gt; \c
+</span></span><span class="line"><span class="cl">mysql&gt;</span></span></code></pre></div></div>
+<p>The <code>\c</code> command clears the current unfinished statement and returns you to the normal <code>mysql&gt;</code> prompt.</p>
+<hr>
+<h2 id="module-5-understanding-the-mysql-monitor-prompt">Module 5: Understanding the MySQL Monitor Prompt</h2>
+<p>The MySQL monitor uses different prompts to indicate its current state.</p>
+<h3 id="normal-prompt">Normal Prompt</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt;</span></span></code></pre></div></div>
+<p>This means the MySQL client is ready to receive a new command.</p>
+<h3 id="continuation-prompt">Continuation Prompt</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-&gt;</span></span></code></pre></div></div>
+<p>This means the current statement has not been completed and MySQL is waiting for additional input.</p>
+<h3 id="cancelling-the-current-statement">Cancelling the Current Statement</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">\c</span></span></code></pre></div></div>
+<p>This cancels the current unfinished statement and returns to:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt;</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-6-important-mysql-commands-to-remember">Module 6: Important MySQL Commands to Remember</h2>
+<h3 id="check-mysql-version">Check MySQL Version</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">VERSION</span><span class="p">();</span></span></span></code></pre></div></div>
+<h3 id="display-current-date">Display Current Date</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="display-current-date-and-time">Display Current Date and Time</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">NOW</span><span class="p">();</span></span></span></code></pre></div></div>
+<h3 id="display-current-user">Display Current User</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">USER</span><span class="p">();</span></span></span></code></pre></div></div>
+<h3 id="perform-a-calculation">Perform a Calculation</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="display-available-databases">Display Available Databases</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="exit-the-mysql-monitor">Exit the MySQL Monitor</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">QUIT</span></span></code></pre></div></div>
+<p>or:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">exit</span></span></code></pre></div></div>
+<h3 id="cancel-an-incomplete-statement">Cancel an Incomplete Statement</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">\c</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-7-understanding-sql-statement-termination">Module 7: Understanding SQL Statement Termination</h2>
+<p>The MySQL console normally uses the semicolon (<code>;</code>) to identify the end of a SQL statement.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">VERSION</span><span class="p">();</span></span></span></code></pre></div></div>
+<p>The semicolon indicates that the statement is complete and can be executed.</p>
+<p>The <code>\g</code> command can also be used:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">SELECT VERSION()\g</span></span></code></pre></div></div>
+<h3 id="what-happens-without-a-terminator">What Happens Without a Terminator?</h3>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT VERSION()
+</span></span><span class="line"><span class="cl">    -&gt;</span></span></code></pre></div></div>
+<p>The MySQL monitor does not execute the statement yet because it is still waiting for the statement terminator.</p>
+<p>You can complete it by entering:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">;</span></span></code></pre></div></div>
+<p>or:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">\g</span></span></code></pre></div></div>
+<p>Alternatively, cancel it with:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">\c</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-8-sql-keyword-case-sensitivity">Module 8: SQL Keyword Case Sensitivity</h2>
+<p>SQL keywords in MySQL are generally case-insensitive.</p>
+<p>These commands are equivalent:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">VERSION</span><span class="p">();</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="k">version</span><span class="p">();</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SeLeCt</span><span class="w"> </span><span class="k">vErSiOn</span><span class="p">();</span></span></span></code></pre></div></div>
+<p>However, identifiers such as database names, table names, and column names can have case-sensitivity behavior that depends on the operating system, server configuration, and object type.</p>
+<p>For this reason, it is good practice to use a consistent naming convention.</p>
+<hr>
+<h2 id="module-9-mysql-as-a-calculator">Module 9: MySQL as a Calculator</h2>
+<p>MySQL can perform calculations directly.</p>
+<h3 id="addition">Addition</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="subtraction">Subtraction</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="multiplication">Multiplication</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="division">Division</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="mathematical-functions">Mathematical Functions</h3>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">SIN</span><span class="p">(</span><span class="n">PI</span><span class="p">()</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span></span></span></code></pre></div></div>
+<p>MySQL provides many mathematical functions that can be used when processing numerical data.</p>
+<hr>
+<h2 id="module-10-practical-mysql-console-workflow">Module 10: Practical MySQL Console Workflow</h2>
+<p>A basic workflow for using the MySQL console is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. Start WAMP/XAMPP
+</span></span><span class="line"><span class="cl">2. Start MySQL
+</span></span><span class="line"><span class="cl">3. Open MySQL Console
+</span></span><span class="line"><span class="cl">4. Enter the configured password
+</span></span><span class="line"><span class="cl">5. Wait for the mysql&gt; prompt
+</span></span><span class="line"><span class="cl">6. Execute SQL statements
+</span></span><span class="line"><span class="cl">7. Check the returned results
+</span></span><span class="line"><span class="cl">8. Use \c if an incomplete statement needs to be cancelled
+</span></span><span class="line"><span class="cl">9. Use QUIT or exit when finished</span></span></code></pre></div></div>
+<p>Example session:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT VERSION();
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT CURRENT_DATE;
+</span></span><span class="line"><span class="cl">mysql&gt; SHOW DATABASES;
+</span></span><span class="line"><span class="cl">mysql&gt; SELECT USER();
+</span></span><span class="line"><span class="cl">mysql&gt; QUIT</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-11-common-errors-and-troubleshooting">Module 11: Common Errors and Troubleshooting</h2>
+<h3 id="problem-1-incorrect-password">Problem 1: Incorrect Password</h3>
+<p>If MySQL reports an authentication error, verify:</p>
+<ul>
+<li>Username</li>
+<li>Password</li>
+<li>MySQL server instance</li>
+<li>Authentication configuration</li>
+</ul>
+<p>Do not assume that every local installation uses a blank root password.</p>
+<h3 id="problem-2-missing-semicolon">Problem 2: Missing Semicolon</h3>
+<p>If you enter:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT VERSION()</span></span></code></pre></div></div>
+<p>the monitor may display:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-&gt;</span></span></code></pre></div></div>
+<p>This means it is waiting for the statement to be completed.</p>
+<p>Enter:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">;</span></span></code></pre></div></div>
+<p>to execute it.</p>
+<h3 id="problem-3-accidental-incomplete-query">Problem 3: Accidental Incomplete Query</h3>
+<p>If you start a query and decide not to execute it:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT
+</span></span><span class="line"><span class="cl">    -&gt;</span></span></code></pre></div></div>
+<p>Enter:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">\c</span></span></code></pre></div></div>
+<p>to cancel it.</p>
+<h3 id="problem-4-mysql-console-will-not-open">Problem 4: MySQL Console Will Not Open</h3>
+<p>Check:</p>
+<ul>
+<li>WAMP/XAMPP is installed correctly.</li>
+<li>MySQL is running.</li>
+<li>The MySQL executable exists.</li>
+<li>Required permissions are available.</li>
+<li>The correct MySQL installation is being accessed.</li>
+</ul>
+<hr>
+<h2 id="module-12-exam-focused-key-concepts">Module 12: Exam-Focused Key Concepts</h2>
+<h3 id="mysql">MySQL</h3>
+<p>An open-source relational database management system used to store, manage, and retrieve structured data.</p>
+<h3 id="rdbms">RDBMS</h3>
+<p><strong>Relational Database Management System</strong></p>
+<p>A database management system that organizes information into related tables.</p>
+<h3 id="mysql-monitor">MySQL Monitor</h3>
+<p>The command-line interface used to interact directly with the MySQL server.</p>
+<h3 id="select"><code>SELECT</code></h3>
+<p>Used to retrieve data or evaluate expressions.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">VERSION</span><span class="p">();</span></span></span></code></pre></div></div>
+<h3 id="version"><code>VERSION()</code></h3>
+<p>Returns the version of the connected MySQL server.</p>
+<h3 id="current_date"><code>CURRENT_DATE</code></h3>
+<p>Returns the current date.</p>
+<h3 id="now"><code>NOW()</code></h3>
+<p>Returns the current date and time.</p>
+<h3 id="user"><code>USER()</code></h3>
+<p>Returns information about the current MySQL user and connection.</p>
+<h3 id="quit"><code>QUIT</code></h3>
+<p>Terminates the MySQL monitor session.</p>
+<h3 id="exit"><code>exit</code></h3>
+<p>Also exits the MySQL monitor.</p>
+<h3 id="c"><code>\c</code></h3>
+<p>Cancels the current unfinished SQL statement.</p>
+<h3 id="g"><code>\g</code></h3>
+<p>Executes the current SQL statement.</p>
+<h3 id="mysql-1"><code>mysql&gt;</code></h3>
+<p>Indicates that the MySQL monitor is ready for a new command.</p>
+<h3 id="-"><code>-&gt;</code></h3>
+<p>Indicates that the MySQL monitor is waiting for additional input to complete the current statement.</p>
+<hr>
+<h2 id="quick-study-summary-checklist">Quick Study Summary Checklist</h2>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Know what MySQL is.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know that MySQL is an open-source RDBMS.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Remember the pronunciation: <em>&ldquo;my Ess Que Ell&rdquo;</em>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand why MySQL is commonly used in academic and enterprise environments.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to start and access the MySQL console.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that local root passwords depend on the installation configuration.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to exit the MySQL monitor:
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>QUIT</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>exit</code></li>
+</ul>
+</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Remember that SQL statements normally end with:
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>;</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>\g</code></li>
+</ul>
+</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that SQL keywords are generally case-insensitive.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to check the MySQL version:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">VERSION</span><span class="p">();</span></span></span></code></pre></div></div>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to display the current date:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">;</span></span></span></code></pre></div></div>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to display the current date and time:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">NOW</span><span class="p">();</span></span></span></code></pre></div></div>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to display the current user:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">USER</span><span class="p">();</span></span></span></code></pre></div></div>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that MySQL can perform mathematical calculations.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Recognize the <code>mysql&gt;</code> prompt.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Recognize the <code>-&gt;</code> continuation prompt.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to cancel an unfinished statement using:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">\c</span></span></code></pre></div></div>
+<hr>
+<h2 id="final-exam-revision">Final Exam Revision</h2>
+<p>Remember the following key concepts:</p>
+<blockquote>
+<p><strong>MySQL = Open-Source Relational Database Management System</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>RDBMS = Relational Database Management System</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>MySQL Monitor = Command-Line Interface for MySQL</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>SELECT VERSION();</code> = Display MySQL Version</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>SELECT CURRENT_DATE;</code> = Display Current Date</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>SELECT NOW();</code> = Display Current Date and Time</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>SELECT USER();</code> = Display Current MySQL User</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>;</code> = SQL Statement Terminator</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>\g</code> = Execute Current Statement</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>\c</code> = Cancel Current Statement</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>mysql&gt;</code> = Ready for a New Command</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>-&gt;</code> = Waiting for More Input</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>QUIT</code> / <code>exit</code> = Leave the MySQL Monitor</strong></p>
+</blockquote>
+<p>The basic practical workflow is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. Start WAMP/XAMPP
+</span></span><span class="line"><span class="cl">2. Start MySQL
+</span></span><span class="line"><span class="cl">3. Open the MySQL Console
+</span></span><span class="line"><span class="cl">4. Authenticate using the configured credentials
+</span></span><span class="line"><span class="cl">5. Wait for the mysql&gt; prompt
+</span></span><span class="line"><span class="cl">6. Execute SQL commands
+</span></span><span class="line"><span class="cl">7. Use ; or \g to terminate statements
+</span></span><span class="line"><span class="cl">8. Use \c to cancel incomplete statements
+</span></span><span class="line"><span class="cl">9. Use QUIT or exit to leave the console</span></span></code></pre></div></div>
+<p>If these concepts and commands are understood, you have the fundamental knowledge required to work with the MySQL command-line monitor and execute basic SQL operations.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-08-19</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sql_basics_part3/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/sql_basics_part3/" data-title="Introduction to MySQL (SQL Part 03)" data-hashtags="MySQL,WAMP,XAMPP,Databases,SQL Console"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/sql_basics_part3/" data-title="Introduction to MySQL (SQL Part 03)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/sql_basics_part3/" data-hashtag="MySQL"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/sql_basics_part3/" data-title="Introduction to MySQL (SQL Part 03)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/sql_basics_part3/" data-title="Introduction to MySQL (SQL Part 03)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/sql_basics_part3/" data-title="Introduction to MySQL (SQL Part 03)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/sql_basics_part3/" data-title="Introduction to MySQL (SQL Part 03)" data-description="Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fsql_basics_part3%2f&amp;text=Introduction%20to%20MySQL%20%28SQL%20Part%2003%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">MySQL</a>,&nbsp;<a href="/tags/wamp/">WAMP</a>,&nbsp;<a href="/tags/xampp/">XAMPP</a>,&nbsp;<a href="/tags/databases/">Databases</a>,&nbsp;<a href="/tags/sql-console/">SQL Console</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sql_basics_part2/" class="prev" rel="prev" title="Managing Databases Using MySQL in Local Servers  (SQL Part 02)"><i class="fas fa-angle-left" aria-hidden="true"></i>Managing Databases Using MySQL in Local Servers  (SQL Part 02)</a>
+            <a href="/sql_basics_part4/" class="next" rel="next" title="Creating and Using Databases &amp; Tables in MySQL (SQL Part 04)">Creating and Using Databases & Tables in MySQL (SQL Part 04)<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>

@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Mastering SQL SELECT Statements &amp; Filtering (SQL Part 05) - Charuuu..^_^</title><meta name="Description" content="Master MySQL SELECT queries, conditional filtering using WHERE, comparison operators, logical AND/OR conditions, and projecting specific columns."><meta property="og:url" content="http://localhost:1313/sql_basics_part5/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="Mastering SQL SELECT Statements & Filtering (SQL Part 05)">
+	<meta property="og:description" content="Master MySQL SELECT queries, conditional filtering using WHERE, comparison operators, logical AND/OR conditions, and projecting specific columns.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-19T23:45:00+05:30">
+		<meta property="article:modified_time" content="2026-08-19T23:45:00+05:30">
+		<meta property="article:tag" content="MySQL">
+		<meta property="article:tag" content="WAMP">
+		<meta property="article:tag" content="XAMPP">
+		<meta property="article:tag" content="Databases">
+		<meta property="article:tag" content="SQL Console">
+		<meta property="og:image" content="http://localhost:1313/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:1313/logo.png">
+	<meta name="twitter:title" content="Mastering SQL SELECT Statements & Filtering (SQL Part 05)">
+	<meta name="twitter:description" content="Master MySQL SELECT queries, conditional filtering using WHERE, comparison operators, logical AND/OR conditions, and projecting specific columns.">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/sql_basics_part5/" /><link rel="prev" href="http://localhost:1313/sql_basics_part4/" /><link rel="next" href="http://localhost:1313/sql_basics_part6/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Mastering SQL SELECT Statements \u0026 Filtering (SQL Part 05)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/sql_basics_part5\/"
+        },"genre": "posts","keywords": "MySQL, WAMP, XAMPP, Databases, SQL Console","wordcount":  2235 ,
+        "url": "http:\/\/localhost:1313\/sql_basics_part5\/","datePublished": "2026-08-19T23:45:00+05:30","dateModified": "2026-08-19T23:45:00+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "Master MySQL SELECT queries, conditional filtering using WHERE, comparison operators, logical AND/OR conditions, and projecting specific columns."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Mastering SQL SELECT Statements & Filtering (SQL Part 05)</h1><h2 class="single-subtitle">An exhaustive study guide covering basic SELECT queries, row filtering with WHERE, logical operators (AND/OR), and column projections.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder" aria-hidden="true"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-19">2026-08-19</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;2235 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-1-the-anatomy-of-the-select-statement">Module 1: The Anatomy of the <code>SELECT</code> Statement</a>
+      <ul>
+        <li><a href="#11-general-query-syntax">1.1 General Query Syntax</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-2-selecting-all-data-">Module 2: Selecting All Data (<code>*</code>)</a>
+      <ul>
+        <li><a href="#21-basic-select--query">2.1 Basic <code>SELECT *</code> Query</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-3-selecting-particular-rows-where-clause">Module 3: Selecting Particular Rows (<code>WHERE</code> Clause)</a>
+      <ul>
+        <li><a href="#31-filtering-by-exact-match-">3.1 Filtering by Exact Match (<code>=</code>)</a></li>
+        <li><a href="#32-using-comparison-operators-">3.2 Using Comparison Operators (<code>&gt;=</code>)</a></li>
+        <li><a href="#common-comparison-operators">Common Comparison Operators</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-4-combining-conditions-with-logical-operators">Module 4: Combining Conditions with Logical Operators</a>
+      <ul>
+        <li><a href="#41-combining-conditions-with-and">4.1 Combining Conditions with <code>AND</code></a></li>
+        <li><a href="#42-combining-conditions-with-or">4.2 Combining Conditions with <code>OR</code></a></li>
+        <li><a href="#43-and-vs-or">4.3 <code>AND</code> vs <code>OR</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#module-5-selecting-particular-columns-column-projection">Module 5: Selecting Particular Columns (Column Projection)</a>
+      <ul>
+        <li><a href="#51-selecting-specific-columns">5.1 Selecting Specific Columns</a></li>
+        <li><a href="#52-selecting-multiple-columns">5.2 Selecting Multiple Columns</a></li>
+        <li><a href="#53-projection-vs-select-">5.3 Projection vs <code>SELECT *</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#module-6-example-output-for-column-projection">Module 6: Example Output for Column Projection</a></li>
+    <li><a href="#module-7-combining-projection-and-filtering">Module 7: Combining Projection and Filtering</a>
+      <ul>
+        <li><a href="#projection">Projection</a></li>
+        <li><a href="#filtering">Filtering</a></li>
+        <li><a href="#example-female-students">Example: Female Students</a></li>
+        <li><a href="#example-phy-students">Example: PHY Students</a></li>
+        <li><a href="#example-female-phy-students">Example: Female PHY Students</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-8-practical-query-examples">Module 8: Practical Query Examples</a>
+      <ul>
+        <li><a href="#example-1-retrieve-every-column-and-row">Example 1: Retrieve Every Column and Row</a></li>
+        <li><a href="#example-2-find-a-student-by-name">Example 2: Find a Student by Name</a></li>
+        <li><a href="#example-3-find-students-born-on-or-after-a-date">Example 3: Find Students Born on or After a Date</a></li>
+        <li><a href="#example-4-find-female-phy-students">Example 4: Find Female PHY Students</a></li>
+        <li><a href="#example-5-find-female-or-com-students">Example 5: Find Female or COM Students</a></li>
+        <li><a href="#example-6-display-only-names-and-birth-dates">Example 6: Display Only Names and Birth Dates</a></li>
+        <li><a href="#example-7-display-selected-columns-with-filtering">Example 7: Display Selected Columns with Filtering</a></li>
+        <li><a href="#example-8-display-female-students-from-phy">Example 8: Display Female Students from PHY</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-9-understanding-rows-and-columns">Module 9: Understanding Rows and Columns</a>
+      <ul>
+        <li><a href="#row-filtering">Row Filtering</a></li>
+        <li><a href="#column-projection">Column Projection</a></li>
+        <li><a href="#both-together">Both Together</a></li>
+        <li><a href="#easy-way-to-remember">Easy Way to Remember</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-10-important-sql-syntax-rules">Module 10: Important SQL Syntax Rules</a>
+      <ul>
+        <li><a href="#rule-1-select-comes-before-from">Rule 1: <code>SELECT</code> comes before <code>FROM</code></a></li>
+        <li><a href="#rule-2-from-specifies-the-table">Rule 2: <code>FROM</code> specifies the table</a></li>
+        <li><a href="#rule-3-where-comes-after-from">Rule 3: <code>WHERE</code> comes after <code>FROM</code></a></li>
+        <li><a href="#rule-4-separate-multiple-columns-using-commas">Rule 4: Separate multiple columns using commas</a></li>
+        <li><a href="#rule-5-use-and-when-every-condition-is-required">Rule 5: Use <code>AND</code> when every condition is required</a></li>
+        <li><a href="#rule-6-use-or-when-either-condition-can-satisfy-the-query">Rule 6: Use <code>OR</code> when either condition can satisfy the query</a></li>
+        <li><a href="#rule-7-end-sql-statements-with-a-semicolon">Rule 7: End SQL statements with a semicolon</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-11-common-query-patterns">Module 11: Common Query Patterns</a>
+      <ul>
+        <li><a href="#pattern-1-all-columns">Pattern 1: All Columns</a></li>
+        <li><a href="#pattern-2-specific-columns">Pattern 2: Specific Columns</a></li>
+        <li><a href="#pattern-3-filter-by-equality">Pattern 3: Filter by Equality</a></li>
+        <li><a href="#pattern-4-filter-using-comparison">Pattern 4: Filter Using Comparison</a></li>
+        <li><a href="#pattern-5-combine-conditions-with-and">Pattern 5: Combine Conditions with <code>AND</code></a></li>
+        <li><a href="#pattern-6-combine-conditions-with-or">Pattern 6: Combine Conditions with <code>OR</code></a></li>
+        <li><a href="#pattern-7-projection--filtering">Pattern 7: Projection + Filtering</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-12-exam-focused-key-concepts">Module 12: Exam-Focused Key Concepts</a>
+      <ul>
+        <li><a href="#what-is-select">What is <code>SELECT</code>?</a></li>
+        <li><a href="#what-is-from">What is <code>FROM</code>?</a></li>
+        <li><a href="#what-is-where">What is <code>WHERE</code>?</a></li>
+        <li><a href="#what-does--mean">What does <code>*</code> mean?</a></li>
+        <li><a href="#what-does--mean-1">What does <code>=</code> mean?</a></li>
+        <li><a href="#what-does--mean-2">What does <code>&gt;=</code> mean?</a></li>
+        <li><a href="#what-is-and">What is <code>AND</code>?</a></li>
+        <li><a href="#what-is-or">What is <code>OR</code>?</a></li>
+        <li><a href="#what-is-column-projection">What is column projection?</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-13-complete-practical-workflow">Module 13: Complete Practical Workflow</a></li>
+    <li><a href="#module-14-common-mistakes-and-troubleshooting">Module 14: Common Mistakes and Troubleshooting</a>
+      <ul>
+        <li><a href="#problem-1-forgetting-the-from-clause">Problem 1: Forgetting the <code>FROM</code> Clause</a></li>
+        <li><a href="#problem-2-forgetting-where">Problem 2: Forgetting <code>WHERE</code></a></li>
+        <li><a href="#problem-3-using-and-when-or-is-required">Problem 3: Using <code>AND</code> When <code>OR</code> Is Required</a></li>
+        <li><a href="#problem-4-selecting-too-many-columns">Problem 4: Selecting Too Many Columns</a></li>
+        <li><a href="#problem-5-incorrect-comparison-operator">Problem 5: Incorrect Comparison Operator</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-15-important-sql-commands">Module 15: Important SQL Commands</a>
+      <ul>
+        <li><a href="#retrieve-all-data">Retrieve All Data</a></li>
+        <li><a href="#retrieve-a-specific-student">Retrieve a Specific Student</a></li>
+        <li><a href="#retrieve-students-by-date">Retrieve Students by Date</a></li>
+        <li><a href="#retrieve-female-phy-students">Retrieve Female PHY Students</a></li>
+        <li><a href="#retrieve-female-or-com-students">Retrieve Female or COM Students</a></li>
+        <li><a href="#retrieve-specific-columns">Retrieve Specific Columns</a></li>
+        <li><a href="#retrieve-specific-columns-with-a-condition">Retrieve Specific Columns with a Condition</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-16-quick-study-summary">Module 16: Quick Study Summary</a>
+      <ul>
+        <li><a href="#essential-query-structure">Essential Query Structure</a></li>
+        <li><a href="#retrieve-everything">Retrieve Everything</a></li>
+        <li><a href="#filter-rows">Filter Rows</a></li>
+        <li><a href="#use-and">Use <code>AND</code></a></li>
+        <li><a href="#use-or">Use <code>OR</code></a></li>
+        <li><a href="#project-specific-columns">Project Specific Columns</a></li>
+        <li><a href="#project-and-filter">Project and Filter</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-17-final-revision-checklist">Module 17: Final Revision Checklist</a></li>
+    <li><a href="#final-exam-revision">Final Exam Revision</a>
+      <ul>
+        <li><a href="#the-three-most-important-questions">The Three Most Important Questions</a></li>
+        <li><a href="#final-key-takeaway">Final Key Takeaway</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master study guide covers Lecture 05 notes, focusing on data retrieval, row filtering, logical conditions, comparison operators, and column projection using the SQL <code>SELECT</code> statement in MySQL.</p>
+</blockquote>
+<hr>
+<h2 id="module-1-the-anatomy-of-the-select-statement">Module 1: The Anatomy of the <code>SELECT</code> Statement</h2>
+<p>The <code>SELECT</code> statement is the primary SQL command used to retrieve information from a database table.</p>
+<h3 id="11-general-query-syntax">1.1 General Query Syntax</h3>
+<p>The basic structure of a <code>SELECT</code> statement is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">what_to_select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">which_table</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">conditions_to_satisfy</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>A basic <code>SELECT</code> statement consists of three main parts:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Clause</th>
+					<th>Purpose</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>SELECT</code></td>
+					<td>Specifies which columns should be retrieved</td>
+			</tr>
+			<tr>
+					<td><code>FROM</code></td>
+					<td>Specifies the table from which data is retrieved</td>
+			</tr>
+			<tr>
+					<td><code>WHERE</code></td>
+					<td>Specifies conditions used to filter rows</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p><strong>Important:</strong> The <code>WHERE</code> clause is optional. If it is omitted, all rows from the selected table are returned.</p>
+</blockquote>
+<hr>
+<h2 id="module-2-selecting-all-data-">Module 2: Selecting All Data (<code>*</code>)</h2>
+<p>To retrieve every column and every row from a table, use the asterisk (<code>*</code>) wildcard.</p>
+<h3 id="21-basic-select--query">2.1 Basic <code>SELECT *</code> Query</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query retrieves the complete dataset stored in the <code>students</code> table.</p>
+<p>The <code>*</code> symbol means:</p>
+<blockquote>
+<p><strong>All columns</strong></p>
+</blockquote>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>returns every column for every row in the <code>students</code> table.</p>
+<hr>
+<h2 id="module-3-selecting-particular-rows-where-clause">Module 3: Selecting Particular Rows (<code>WHERE</code> Clause)</h2>
+<p>Instead of retrieving every row, you can filter records using the <code>WHERE</code> clause.</p>
+<p>The general syntax is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The condition determines which rows are included in the result.</p>
+<h3 id="31-filtering-by-exact-match-">3.1 Filtering by Exact Match (<code>=</code>)</h3>
+<p>To find a specific student whose first name is <code>Barath</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;Barath&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Equivalent formatted query:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;Barath&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The <code>=</code> operator checks whether the value stored in the <code>fname</code> column is equal to <code>&quot;Barath&quot;</code>.</p>
+<hr>
+<h3 id="32-using-comparison-operators-">3.2 Using Comparison Operators (<code>&gt;=</code>)</h3>
+<p>To find students born on or after January 1, 1991:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Equivalent formatted query:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The <code>&gt;=</code> operator means:</p>
+<blockquote>
+<p><strong>Greater than or equal to</strong></p>
+</blockquote>
+<h3 id="common-comparison-operators">Common Comparison Operators</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Operator</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>=</code></td>
+					<td>Equal to</td>
+			</tr>
+			<tr>
+					<td><code>&gt;</code></td>
+					<td>Greater than</td>
+			</tr>
+			<tr>
+					<td><code>&lt;</code></td>
+					<td>Less than</td>
+			</tr>
+			<tr>
+					<td><code>&gt;=</code></td>
+					<td>Greater than or equal to</td>
+			</tr>
+			<tr>
+					<td><code>&lt;=</code></td>
+					<td>Less than or equal to</td>
+			</tr>
+			<tr>
+					<td><code>&lt;&gt;</code></td>
+					<td>Not equal to</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="module-4-combining-conditions-with-logical-operators">Module 4: Combining Conditions with Logical Operators</h2>
+<p>SQL allows multiple conditions to be combined using logical operators.</p>
+<p>The two fundamental logical operators covered in this lecture are:</p>
+<ol>
+<li><code>AND</code></li>
+<li><code>OR</code></li>
+</ol>
+<h3 id="41-combining-conditions-with-and">4.1 Combining Conditions with <code>AND</code></h3>
+<p>The <code>AND</code> operator is used when <strong>all specified conditions must be true</strong>.</p>
+<p>For example, to find female students belonging to the <code>PHY</code> department:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;PHY&#34;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Equivalent formatted query:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;PHY&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>A row is returned only when both conditions are satisfied:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">dept = &#34;PHY&#34;
+</span></span><span class="line"><span class="cl">AND
+</span></span><span class="line"><span class="cl">sex = &#34;f&#34;</span></span></code></pre></div></div>
+<blockquote>
+<p><strong>AND requires every connected condition to be true.</strong></p>
+</blockquote>
+<h3 id="42-combining-conditions-with-or">4.2 Combining Conditions with <code>OR</code></h3>
+<p>The <code>OR</code> operator is used when <strong>at least one condition must be true</strong>.</p>
+<p>For example, to find female students or students belonging to the <code>COM</code> department:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;COM&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Equivalent formatted query:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;COM&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>A row is returned when either condition is true, or when both conditions are true.</p>
+<blockquote>
+<p><strong>OR requires at least one connected condition to be true.</strong></p>
+</blockquote>
+<h3 id="43-and-vs-or">4.3 <code>AND</code> vs <code>OR</code></h3>
+<table>
+	<thead>
+			<tr>
+					<th>Operator</th>
+					<th>Requirement</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>AND</code></td>
+					<td>All conditions must be true</td>
+			</tr>
+			<tr>
+					<td><code>OR</code></td>
+					<td>At least one condition must be true</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="module-5-selecting-particular-columns-column-projection">Module 5: Selecting Particular Columns (Column Projection)</h2>
+<p>Sometimes you do not want to retrieve every column from a table.</p>
+<p>Instead, you can specify only the columns that you need.</p>
+<p>This is called <strong>column projection</strong>.</p>
+<h3 id="51-selecting-specific-columns">5.1 Selecting Specific Columns</h3>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Equivalent formatted query:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Only the <code>fname</code> and <code>birth_date</code> columns are returned.</p>
+<h3 id="52-selecting-multiple-columns">5.2 Selecting Multiple Columns</h3>
+<p>Multiple columns are separated using commas:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">lname</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Another example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">index_no</span><span class="p">,</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="53-projection-vs-select-">5.3 Projection vs <code>SELECT *</code></h3>
+<p>Using:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>retrieves all columns.</p>
+<p>Using:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>retrieves only the selected columns.</p>
+<blockquote>
+<p><strong>Projection controls which columns appear in the result.</strong></p>
+</blockquote>
+<hr>
+<h2 id="module-6-example-output-for-column-projection">Module 6: Example Output for Column Projection</h2>
+<p>The following query:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>produces output similar to:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">+---------------+------------+
+</span></span><span class="line"><span class="cl">| fname         | birth_date |
+</span></span><span class="line"><span class="cl">+---------------+------------+
+</span></span><span class="line"><span class="cl">| Mohan         | 1990-01-01 |
+</span></span><span class="line"><span class="cl">| Malith        | 1991-03-02 |
+</span></span><span class="line"><span class="cl">| Utpala        | 1992-04-12 |
+</span></span><span class="line"><span class="cl">| Barath        | 1992-05-04 |
+</span></span><span class="line"><span class="cl">| Darmarathna   | 1993-05-05 |
+</span></span><span class="line"><span class="cl">| Rukzana       | 1990-03-06 |
+</span></span><span class="line"><span class="cl">| Yuhatharshana | 1990-05-07 |
+</span></span><span class="line"><span class="cl">| Shirmal       | 1993-02-08 |
+</span></span><span class="line"><span class="cl">| Mithujan      | 1990-12-09 |
+</span></span><span class="line"><span class="cl">| Thuvarakan    | 1990-11-10 |
+</span></span><span class="line"><span class="cl">+---------------+------------+
+</span></span><span class="line"><span class="cl">10 rows in set (0.00 sec)</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-7-combining-projection-and-filtering">Module 7: Combining Projection and Filtering</h2>
+<p>Projection and filtering can be used together.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query performs two operations.</p>
+<h3 id="projection">Projection</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span></span></span></code></pre></div></div>
+<p>determines which columns are displayed.</p>
+<h3 id="filtering">Filtering</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span></span></span></code></pre></div></div>
+<p>determines which rows are displayed.</p>
+<blockquote>
+<p><strong>Projection controls columns, while filtering controls rows.</strong></p>
+</blockquote>
+<h3 id="example-female-students">Example: Female Students</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">sex</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-phy-students">Example: PHY Students</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;PHY&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-female-phy-students">Example: Female PHY Students</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="p">,</span><span class="w"> </span><span class="n">sex</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;PHY&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-8-practical-query-examples">Module 8: Practical Query Examples</h2>
+<h3 id="example-1-retrieve-every-column-and-row">Example 1: Retrieve Every Column and Row</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-2-find-a-student-by-name">Example 2: Find a Student by Name</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;Barath&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-3-find-students-born-on-or-after-a-date">Example 3: Find Students Born on or After a Date</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-4-find-female-phy-students">Example 4: Find Female PHY Students</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;PHY&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-5-find-female-or-com-students">Example 5: Find Female or COM Students</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;COM&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-6-display-only-names-and-birth-dates">Example 6: Display Only Names and Birth Dates</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-7-display-selected-columns-with-filtering">Example 7: Display Selected Columns with Filtering</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-8-display-female-students-from-phy">Example 8: Display Female Students from PHY</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">lname</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="p">,</span><span class="w"> </span><span class="n">sex</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;PHY&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-9-understanding-rows-and-columns">Module 9: Understanding Rows and Columns</h2>
+<p>A very important concept in SQL is the difference between <strong>row filtering</strong> and <strong>column projection</strong>.</p>
+<h3 id="row-filtering">Row Filtering</h3>
+<p>The <code>WHERE</code> clause controls which rows are returned.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This may return fewer rows than the original table.</p>
+<h3 id="column-projection">Column Projection</h3>
+<p>The column list after <code>SELECT</code> controls which columns are returned.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This returns fewer columns than the original table.</p>
+<h3 id="both-together">Both Together</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query:</p>
+<ul>
+<li>selects only <code>fname</code> and <code>birth_date</code>;</li>
+<li>returns only rows where <code>sex = &quot;f&quot;</code>.</li>
+</ul>
+<h3 id="easy-way-to-remember">Easy Way to Remember</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">SELECT → Which columns?
+</span></span><span class="line"><span class="cl">WHERE  → Which rows?
+</span></span><span class="line"><span class="cl">FROM   → Which table?</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-10-important-sql-syntax-rules">Module 10: Important SQL Syntax Rules</h2>
+<h3 id="rule-1-select-comes-before-from">Rule 1: <code>SELECT</code> comes before <code>FROM</code></h3>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="rule-2-from-specifies-the-table">Rule 2: <code>FROM</code> specifies the table</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="rule-3-where-comes-after-from">Rule 3: <code>WHERE</code> comes after <code>FROM</code></h3>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="rule-4-separate-multiple-columns-using-commas">Rule 4: Separate multiple columns using commas</h3>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">lname</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="rule-5-use-and-when-every-condition-is-required">Rule 5: Use <code>AND</code> when every condition is required</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;PHY&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="rule-6-use-or-when-either-condition-can-satisfy-the-query">Rule 6: Use <code>OR</code> when either condition can satisfy the query</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;PHY&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;COM&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="rule-7-end-sql-statements-with-a-semicolon">Rule 7: End SQL statements with a semicolon</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-11-common-query-patterns">Module 11: Common Query Patterns</h2>
+<h3 id="pattern-1-all-columns">Pattern 1: All Columns</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="pattern-2-specific-columns">Pattern 2: Specific Columns</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="pattern-3-filter-by-equality">Pattern 3: Filter by Equality</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">column1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="pattern-4-filter-using-comparison">Pattern 4: Filter Using Comparison</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">column1</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="pattern-5-combine-conditions-with-and">Pattern 5: Combine Conditions with <code>AND</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">condition1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">condition2</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="pattern-6-combine-conditions-with-or">Pattern 6: Combine Conditions with <code>OR</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">condition1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">condition2</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="pattern-7-projection--filtering">Pattern 7: Projection + Filtering</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-12-exam-focused-key-concepts">Module 12: Exam-Focused Key Concepts</h2>
+<h3 id="what-is-select">What is <code>SELECT</code>?</h3>
+<p><code>SELECT</code> is the SQL statement used to retrieve data from database tables.</p>
+<h3 id="what-is-from">What is <code>FROM</code>?</h3>
+<p><code>FROM</code> specifies the table from which the data should be retrieved.</p>
+<h3 id="what-is-where">What is <code>WHERE</code>?</h3>
+<p><code>WHERE</code> filters rows based on one or more conditions.</p>
+<h3 id="what-does--mean">What does <code>*</code> mean?</h3>
+<p><code>*</code> represents all columns.</p>
+<h3 id="what-does--mean-1">What does <code>=</code> mean?</h3>
+<p><code>=</code> tests whether two values are equal.</p>
+<h3 id="what-does--mean-2">What does <code>&gt;=</code> mean?</h3>
+<p><code>&gt;=</code> means greater than or equal to.</p>
+<h3 id="what-is-and">What is <code>AND</code>?</h3>
+<p><code>AND</code> requires all specified conditions to be true.</p>
+<h3 id="what-is-or">What is <code>OR</code>?</h3>
+<p><code>OR</code> requires at least one specified condition to be true.</p>
+<h3 id="what-is-column-projection">What is column projection?</h3>
+<p>Column projection means selecting only the required columns instead of retrieving every column.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-13-complete-practical-workflow">Module 13: Complete Practical Workflow</h2>
+<p>The basic workflow for retrieving information from the <code>students</code> table is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. Select the database
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">2. Identify the table
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">3. Decide which columns are required
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">4. Write the SELECT statement
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">5. Add WHERE if filtering is required
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">6. Combine conditions using AND/OR when necessary
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">7. Execute the query
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">8. Examine the result</span></span></code></pre></div></div>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">USE</span><span class="w"> </span><span class="n">tceusl</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-14-common-mistakes-and-troubleshooting">Module 14: Common Mistakes and Troubleshooting</h2>
+<h3 id="problem-1-forgetting-the-from-clause">Problem 1: Forgetting the <code>FROM</code> Clause</h3>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="problem-2-forgetting-where">Problem 2: Forgetting <code>WHERE</code></h3>
+<p>If you want to filter rows but omit <code>WHERE</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>the query retrieves every row.</p>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="problem-3-using-and-when-or-is-required">Problem 3: Using <code>AND</code> When <code>OR</code> Is Required</h3>
+<p>This query:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;COM&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>requires both conditions to be true.</p>
+<p>If the requirement is:</p>
+<blockquote>
+<p>Female students <strong>or</strong> COM students</p>
+</blockquote>
+<p>use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;COM&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="problem-4-selecting-too-many-columns">Problem 4: Selecting Too Many Columns</h3>
+<p>Instead of:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>if only the name and birth date are needed, use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="problem-5-incorrect-comparison-operator">Problem 5: Incorrect Comparison Operator</h3>
+<p>For &ldquo;on or after January 1, 1991&rdquo;:</p>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Using only:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>would exclude exactly January 1, 1991.</p>
+<hr>
+<h2 id="module-15-important-sql-commands">Module 15: Important SQL Commands</h2>
+<h3 id="retrieve-all-data">Retrieve All Data</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="retrieve-a-specific-student">Retrieve a Specific Student</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;Barath&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="retrieve-students-by-date">Retrieve Students by Date</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="retrieve-female-phy-students">Retrieve Female PHY Students</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;PHY&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="retrieve-female-or-com-students">Retrieve Female or COM Students</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;COM&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="retrieve-specific-columns">Retrieve Specific Columns</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="retrieve-specific-columns-with-a-condition">Retrieve Specific Columns with a Condition</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-16-quick-study-summary">Module 16: Quick Study Summary</h2>
+<p>The most important concepts from Lecture 05 are:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Concept</th>
+					<th>SQL</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Retrieve data</td>
+					<td><code>SELECT</code></td>
+			</tr>
+			<tr>
+					<td>Specify table</td>
+					<td><code>FROM</code></td>
+			</tr>
+			<tr>
+					<td>Filter rows</td>
+					<td><code>WHERE</code></td>
+			</tr>
+			<tr>
+					<td>All columns</td>
+					<td><code>*</code></td>
+			</tr>
+			<tr>
+					<td>Equality</td>
+					<td><code>=</code></td>
+			</tr>
+			<tr>
+					<td>Greater than or equal</td>
+					<td><code>&gt;=</code></td>
+			</tr>
+			<tr>
+					<td>All conditions required</td>
+					<td><code>AND</code></td>
+			</tr>
+			<tr>
+					<td>At least one condition required</td>
+					<td><code>OR</code></td>
+			</tr>
+			<tr>
+					<td>Select specific columns</td>
+					<td>Column projection</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="essential-query-structure">Essential Query Structure</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="retrieve-everything">Retrieve Everything</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="filter-rows">Filter Rows</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="use-and">Use <code>AND</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">condition1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">condition2</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="use-or">Use <code>OR</code></h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">condition1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">condition2</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="project-specific-columns">Project Specific Columns</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="project-and-filter">Project and Filter</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-17-final-revision-checklist">Module 17: Final Revision Checklist</h2>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the purpose of the <code>SELECT</code> statement.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the role of the <code>FROM</code> clause.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the role of the <code>WHERE</code> clause.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know that <code>*</code> represents all columns.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to retrieve all rows and columns.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to filter rows using <code>=</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to filter dates using <code>&gt;=</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the comparison operators.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the difference between <code>AND</code> and <code>OR</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know that <code>AND</code> requires all conditions to be true.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know that <code>OR</code> requires at least one condition to be true.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand column projection.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to select multiple columns using commas.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to combine projection and filtering.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know the difference between row filtering and column projection.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Remember to terminate SQL statements with <code>;</code>.</li>
+</ul>
+<hr>
+<h2 id="final-exam-revision">Final Exam Revision</h2>
+<p>Remember these core patterns:</p>
+<blockquote>
+<p><strong><code>SELECT * FROM students;</code> = Retrieve all columns and all rows</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>SELECT ... FROM ... WHERE ...;</code> = Retrieve data that satisfies a condition</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>=</code> = Equal to</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>&gt;=</code> = Greater than or equal to</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>AND</code> = Every condition must be true</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>OR</code> = At least one condition must be true</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Column projection = Select only the columns you need</strong></p>
+</blockquote>
+<h3 id="the-three-most-important-questions">The Three Most Important Questions</h3>
+<p>When writing a <code>SELECT</code> query, ask:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. FROM which table?
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">2. SELECT which columns?
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">3. WHERE which rows?</span></span></code></pre></div></div>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This means:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">FROM students
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">SELECT fname and birth_date
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">WHERE birth_date is 1991-01-01 or later</span></span></code></pre></div></div>
+<h3 id="final-key-takeaway">Final Key Takeaway</h3>
+<p>The SQL <code>SELECT</code> statement is the foundation of database querying.</p>
+<p>By mastering:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">=</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">&gt;=</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">AND</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">OR</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="o">*</span></span></span></code></pre></div></div>
+<p>you can retrieve specific information from a database efficiently.</p>
+<p>The fundamental query patterns are:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;Barath&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;PHY&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;COM&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s2">&#34;1991-01-01&#34;</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>Master these query patterns first. They form the foundation for more advanced SQL topics such as <code>ORDER BY</code>, <code>GROUP BY</code>, aggregate functions, joins, subqueries, and database reporting.</strong></p>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-08-19</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sql_basics_part5/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/sql_basics_part5/" data-title="Mastering SQL SELECT Statements &amp; Filtering (SQL Part 05)" data-hashtags="MySQL,WAMP,XAMPP,Databases,SQL Console"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/sql_basics_part5/" data-title="Mastering SQL SELECT Statements &amp; Filtering (SQL Part 05)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/sql_basics_part5/" data-hashtag="MySQL"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/sql_basics_part5/" data-title="Mastering SQL SELECT Statements &amp; Filtering (SQL Part 05)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/sql_basics_part5/" data-title="Mastering SQL SELECT Statements &amp; Filtering (SQL Part 05)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/sql_basics_part5/" data-title="Mastering SQL SELECT Statements &amp; Filtering (SQL Part 05)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/sql_basics_part5/" data-title="Mastering SQL SELECT Statements &amp; Filtering (SQL Part 05)" data-description="Master MySQL SELECT queries, conditional filtering using WHERE, comparison operators, logical AND/OR conditions, and projecting specific columns."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fsql_basics_part5%2f&amp;text=Mastering%20SQL%20SELECT%20Statements%20%26%20Filtering%20%28SQL%20Part%2005%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">MySQL</a>,&nbsp;<a href="/tags/wamp/">WAMP</a>,&nbsp;<a href="/tags/xampp/">XAMPP</a>,&nbsp;<a href="/tags/databases/">Databases</a>,&nbsp;<a href="/tags/sql-console/">SQL Console</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sql_basics_part4/" class="prev" rel="prev" title="Creating and Using Databases &amp; Tables in MySQL (SQL Part 04)"><i class="fas fa-angle-left" aria-hidden="true"></i>Creating and Using Databases & Tables in MySQL (SQL Part 04)</a>
+            <a href="/sql_basics_part6/" class="next" rel="next" title="Sorting Data and Working with NULL in MySQL (Lecture 06)">Sorting Data and Working with NULL in MySQL (Lecture 06)<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>

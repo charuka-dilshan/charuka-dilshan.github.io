@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ALTER TABLE - Tag - Charuuu..^_^</title>
+        <link>http://localhost:1313/tags/alter-table/</link>
+        <description>ALTER TABLE - Tag - Charuuu..^_^</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 20 Aug 2026 00:45:00 &#43;0530</lastBuildDate><atom:link href="http://localhost:1313/tags/alter-table/" rel="self" type="application/rss+xml" /><item>
+    <title>Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)</title>
+    <link>http://localhost:1313/sql_basics_part11/</link>
+    <pubDate>Thu, 20 Aug 2026 00:45:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part11/</guid>
+    <description><![CDATA[Master SQL table creation syntax, constraints, primary keys, foreign keys, composite keys, and the ALTER TABLE statement for schema modifications.]]></description>
+</item>
+</channel>
+</rss>

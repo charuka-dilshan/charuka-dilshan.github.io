@@ -1,0 +1,31 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Computer Science - Tag - Charuuu..^_^</title>
+        <link>http://localhost:1313/tags/computer-science/</link>
+        <description>Computer Science - Tag - Charuuu..^_^</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 19 Aug 2026 20:30:00 &#43;0530</lastBuildDate><atom:link href="http://localhost:1313/tags/computer-science/" rel="self" type="application/rss+xml" /><item>
+    <title>Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP &amp; MySQL (SQL Part 01)</title>
+    <link>http://localhost:1313/sql_basics/</link>
+    <pubDate>Wed, 19 Aug 2026 20:30:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics/</guid>
+    <description><![CDATA[Master SQL from foundational queries to advanced database concepts like joins, subqueries, and window functions.]]></description>
+</item>
+<item>
+    <title>My First Post</title>
+    <link>http://localhost:1313/first_post/</link>
+    <pubDate>Wed, 19 Aug 2026 16:45:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/first_post/</guid>
+    <description><![CDATA[An introduction to my personal blog tracking my academic progress and computer science studies.]]></description>
+</item>
+<item>
+    <title>My First Post</title>
+    <link>http://localhost:1313/sql-from-basic-to-advanced/</link>
+    <pubDate>Wed, 19 Aug 2026 16:45:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql-from-basic-to-advanced/</guid>
+    <description><![CDATA[An introduction to my personal blog tracking my academic progress and computer science studies.]]></description>
+</item>
+</channel>
+</rss>

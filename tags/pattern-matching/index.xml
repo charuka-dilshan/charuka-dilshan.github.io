@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Pattern Matching - Tag - Charuuu..^_^</title>
+        <link>http://localhost:1313/tags/pattern-matching/</link>
+        <description>Pattern Matching - Tag - Charuuu..^_^</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 20 Aug 2026 00:04:00 &#43;0530</lastBuildDate><atom:link href="http://localhost:1313/tags/pattern-matching/" rel="self" type="application/rss+xml" /><item>
+    <title>SQL Pattern Matching &amp; Regular Expressions (Lecture 07)</title>
+    <link>http://localhost:1313/sql_basics_part7/</link>
+    <pubDate>Thu, 20 Aug 2026 00:04:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part7/</guid>
+    <description><![CDATA[Master MySQL pattern matching using LIKE, wildcards like % and _, string length filtering, and regular expressions (REGEXP).]]></description>
+</item>
+</channel>
+</rss>

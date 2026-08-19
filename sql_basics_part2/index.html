@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Managing Databases Using MySQL in Local Servers  (SQL Part 02) - Charuuu..^_^</title><meta name="Description" content="Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface."><meta property="og:url" content="http://localhost:1313/sql_basics_part2/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="Managing Databases Using MySQL in Local Servers  (SQL Part 02)">
+	<meta property="og:description" content="Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-19T22:30:00+05:30">
+		<meta property="article:modified_time" content="2026-08-19T22:30:00+05:30">
+		<meta property="article:tag" content="MySQL">
+		<meta property="article:tag" content="WAMP">
+		<meta property="article:tag" content="XAMPP">
+		<meta property="article:tag" content="PhpMyAdmin">
+		<meta property="article:tag" content="Databases">
+		<meta property="article:tag" content="SQL Console">
+		<meta property="og:image" content="http://localhost:1313/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:1313/logo.png">
+	<meta name="twitter:title" content="Managing Databases Using MySQL in Local Servers  (SQL Part 02)">
+	<meta name="twitter:description" content="Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface.">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/sql_basics_part2/" /><link rel="prev" href="http://localhost:1313/sql_basics/" /><link rel="next" href="http://localhost:1313/sql_basics_part3/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Managing Databases Using MySQL in Local Servers  (SQL Part 02)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/sql_basics_part2\/"
+        },"genre": "posts","keywords": "MySQL, WAMP, XAMPP, phpMyAdmin, Databases, SQL Console","wordcount":  1587 ,
+        "url": "http:\/\/localhost:1313\/sql_basics_part2\/","datePublished": "2026-08-19T22:30:00+05:30","dateModified": "2026-08-19T22:30:00+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Managing Databases Using MySQL in Local Servers  (SQL Part 02)</h1><h2 class="single-subtitle">An exhaustive study guide covering local MySQL console commands, PuTTY remote access, and phpMyAdmin GUI operations.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder" aria-hidden="true"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-19">2026-08-19</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;1587 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-1-three-ways-to-manage-databases-in-mysql">Module 1: Three Ways to Manage Databases in MySQL</a></li>
+    <li><a href="#module-2-method-1---using-the-local-mysql-console">Module 2: Method 1 - Using the Local MySQL Console</a>
+      <ul>
+        <li><a href="#21-launching-the-console">2.1 Launching the Console</a></li>
+        <li><a href="#22-authentication">2.2 Authentication</a></li>
+        <li><a href="#23-successful-connection-output">2.3 Successful Connection Output</a></li>
+        <li><a href="#24-basic-console-commands">2.4 Basic Console Commands</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-3-method-2---managing-remotely-via-putty">Module 3: Method 2 - Managing Remotely via PuTTY</a></li>
+    <li><a href="#module-4-method-3---phpmyadmin-on-localhost-gui">Module 4: Method 3 - phpMyAdmin on Localhost (GUI)</a>
+      <ul>
+        <li><a href="#41-launching-phpmyadmin">4.1 Launching phpMyAdmin</a></li>
+        <li><a href="#42-features-of-the-phpmyadmin-dashboard">4.2 Features of the phpMyAdmin Dashboard</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-5-comparing-the-three-management-methods">Module 5: Comparing the Three Management Methods</a>
+      <ul>
+        <li><a href="#local-mysql-console">Local MySQL Console</a></li>
+        <li><a href="#putty">PuTTY</a></li>
+        <li><a href="#phpmyadmin">phpMyAdmin</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-6-important-mysql-console-commands">Module 6: Important MySQL Console Commands</a>
+      <ul>
+        <li><a href="#display-available-databases">Display Available Databases</a></li>
+        <li><a href="#select-a-database">Select a Database</a></li>
+        <li><a href="#display-tables">Display Tables</a></li>
+        <li><a href="#display-table-structure">Display Table Structure</a></li>
+        <li><a href="#create-a-database">Create a Database</a></li>
+        <li><a href="#delete-a-database">Delete a Database</a></li>
+        <li><a href="#create-a-table">Create a Table</a></li>
+        <li><a href="#insert-data">Insert Data</a></li>
+        <li><a href="#view-data">View Data</a></li>
+        <li><a href="#update-data">Update Data</a></li>
+        <li><a href="#delete-data">Delete Data</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-7-understanding-sql-command-termination">Module 7: Understanding SQL Command Termination</a></li>
+    <li><a href="#module-8-understanding-the-mysql-prompt">Module 8: Understanding the MySQL Prompt</a>
+      <ul>
+        <li><a href="#cancelling-an-incomplete-statement">Cancelling an Incomplete Statement</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-9-basic-database-management-workflow">Module 9: Basic Database Management Workflow</a></li>
+    <li><a href="#module-10-common-problems-and-troubleshooting">Module 10: Common Problems and Troubleshooting</a>
+      <ul>
+        <li><a href="#problem-1-access-denied">Problem 1: Access Denied</a></li>
+        <li><a href="#problem-2-unknown-database">Problem 2: Unknown Database</a></li>
+        <li><a href="#problem-3-table-does-not-exist">Problem 3: Table Does Not Exist</a></li>
+        <li><a href="#problem-4-mysql-server-is-not-running">Problem 4: MySQL Server Is Not Running</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-11-exam-focused-key-concepts">Module 11: Exam-Focused Key Concepts</a>
+      <ul>
+        <li><a href="#mysql-console">MySQL Console</a></li>
+        <li><a href="#putty-1">PuTTY</a></li>
+        <li><a href="#phpmyadmin-1">phpMyAdmin</a></li>
+        <li><a href="#show-databases"><code>SHOW DATABASES;</code></a></li>
+        <li><a href="#use-database_name"><code>USE database_name;</code></a></li>
+        <li><a href="#show-tables"><code>SHOW TABLES;</code></a></li>
+        <li><a href="#describe-table_name"><code>DESCRIBE table_name;</code></a></li>
+        <li><a href="#create-database"><code>CREATE DATABASE</code></a></li>
+        <li><a href="#drop-database"><code>DROP DATABASE</code></a></li>
+        <li><a href="#create-table"><code>CREATE TABLE</code></a></li>
+        <li><a href="#insert"><code>INSERT</code></a></li>
+        <li><a href="#select"><code>SELECT</code></a></li>
+        <li><a href="#update"><code>UPDATE</code></a></li>
+        <li><a href="#delete"><code>DELETE</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#quick-study-summary-checklist">Quick Study Summary Checklist</a></li>
+    <li><a href="#final-exam-revision">Final Exam Revision</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master study guide covers Lecture 02 notes, detailing the three primary methods for managing MySQL databases within a local development stack (WAMP/XAMPP).</p>
+</blockquote>
+<hr>
+<h2 id="module-1-three-ways-to-manage-databases-in-mysql">Module 1: Three Ways to Manage Databases in MySQL</h2>
+<p>When working with a local server stack like WAMP, administrators and developers can interact with the MySQL database engine through three distinct interfaces:</p>
+<ol>
+<li><strong>Local MySQL Console</strong> (Command Line Interface)</li>
+<li><strong>Remotely via PuTTY</strong> (SSH / Network Terminal)</li>
+<li><strong>phpMyAdmin on Localhost</strong> (Web-based Graphical User Interface)</li>
+</ol>
+<hr>
+<h2 id="module-2-method-1---using-the-local-mysql-console">Module 2: Method 1 - Using the Local MySQL Console</h2>
+<p>The MySQL console is a command-line monitor tool used to execute direct SQL queries and administrative commands.</p>
+<h3 id="21-launching-the-console">2.1 Launching the Console</h3>
+<ol>
+<li>Click the <strong>WAMP / XAMPP</strong> icon in your system notification area.</li>
+<li>Navigate through the menu and select <strong>MySQL console</strong> or open the terminal shell directly from your control panel.</li>
+</ol>
+<h3 id="22-authentication">2.2 Authentication</h3>
+<ul>
+<li><strong>Password Prompt:</strong> When the console opens:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">c:\wamp64\bin\mysql\mysql5.7.14\bin\mysql.exe</span></span></code></pre></div></div>
+<p>it will display:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Enter password:</span></span></code></pre></div></div>
+<ul>
+<li><strong>Default Login:</strong> By default in standard local development installs, there may be no password set for the root user. If the root account has no password, simply <strong>press the Enter key</strong> to bypass the prompt.</li>
+</ul>
+<blockquote>
+<p><strong>Security Note:</strong> Never assume that the root account has a blank password on every installation. Production and secured development environments should use a strong password and appropriate user privileges.</p>
+</blockquote>
+<h3 id="23-successful-connection-output">2.3 Successful Connection Output</h3>
+<p>Once authenticated, you may see the MySQL monitor greeting and connection details similar to:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Welcome to the MySQL monitor. Commands end with ; or \g.
+</span></span><span class="line"><span class="cl">Your MySQL connection id is 2
+</span></span><span class="line"><span class="cl">Server version: 5.7.14 MySQL Community Server (GPL)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt;</span></span></code></pre></div></div>
+<h3 id="24-basic-console-commands">2.4 Basic Console Commands</h3>
+<p>To view all existing databases stored on the MySQL server, execute:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Example output:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SHOW DATABASES;
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl">| Database           |
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl">| information_schema |
+</span></span><span class="line"><span class="cl">| mysql              |
+</span></span><span class="line"><span class="cl">| performance_schema |
+</span></span><span class="line"><span class="cl">| sys                |
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl">4 rows in set (0.08 sec)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt;</span></span></code></pre></div></div>
+<blockquote>
+<p><strong>Important Rule:</strong> Every SQL command in the console must be terminated with a semicolon (<code>;</code>) or <code>\g</code>.</p>
+</blockquote>
+<hr>
+<h2 id="module-3-method-2---managing-remotely-via-putty">Module 3: Method 2 - Managing Remotely via PuTTY</h2>
+<ul>
+<li><strong>Purpose:</strong> PuTTY is an SSH/Telnet client used to connect remotely to a server over a network.</li>
+<li><strong>Usage:</strong> It is commonly used when the database server or development environment is hosted on a remote virtual machine, cloud instance, or separate test server rather than on your local machine.</li>
+<li><strong>SSH Access:</strong> After connecting to the remote server through SSH, database administration commands can be executed through the server&rsquo;s terminal.</li>
+<li><strong>Security:</strong> SSH is generally preferred over unencrypted Telnet for remote administration.</li>
+</ul>
+<hr>
+<h2 id="module-4-method-3---phpmyadmin-on-localhost-gui">Module 4: Method 3 - phpMyAdmin on Localhost (GUI)</h2>
+<p><code>phpMyAdmin</code> is a free, web-based software tool written in PHP that is designed to handle the administration of MySQL and MariaDB databases through a web browser.</p>
+<h3 id="41-launching-phpmyadmin">4.1 Launching phpMyAdmin</h3>
+<ol>
+<li>Start Apache and MySQL from the WAMP/XAMPP control panel.</li>
+<li>Open a web browser.</li>
+<li>Navigate to:</li>
+</ol>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost/phpmyadmin/</span></span></code></pre></div></div>
+<ol start="4">
+<li>If prompted for credentials, enter the username configured for your local MySQL installation.</li>
+</ol>
+<p>For a default development installation where the root account has no password:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Username: root
+</span></span><span class="line"><span class="cl">Password: [blank]</span></span></code></pre></div></div>
+<blockquote>
+<p><strong>Security Note:</strong> The default credentials vary between installations. Always use the credentials configured for your own MySQL server.</p>
+</blockquote>
+<h3 id="42-features-of-the-phpmyadmin-dashboard">4.2 Features of the phpMyAdmin Dashboard</h3>
+<p>The graphical interface provides point-and-click database management capabilities, allowing users to:</p>
+<ul>
+<li><strong>CREATE DATABASE</strong> and <strong>DROP DATABASE</strong></li>
+<li><strong>CREATE TABLE</strong> and <strong>DROP TABLE</strong></li>
+<li>Insert, update, and delete records</li>
+<li>Execute raw SQL queries through the <strong>SQL</strong> tab</li>
+<li>Browse database tables and records</li>
+<li>Search table data</li>
+<li>Create and modify table structures</li>
+<li>Manage user accounts</li>
+<li>Manage privileges</li>
+<li>Export databases and tables</li>
+<li>Import SQL files</li>
+<li>View server variables</li>
+<li>Monitor database information</li>
+</ul>
+<hr>
+<h2 id="module-5-comparing-the-three-management-methods">Module 5: Comparing the Three Management Methods</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Method</th>
+					<th>Interface</th>
+					<th>Main Advantage</th>
+					<th>Typical Usage</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>MySQL Console</td>
+					<td>Command Line</td>
+					<td>Fast and powerful</td>
+					<td>Local administration and SQL practice</td>
+			</tr>
+			<tr>
+					<td>PuTTY</td>
+					<td>Remote Terminal</td>
+					<td>Remote server access</td>
+					<td>Server and database administration</td>
+			</tr>
+			<tr>
+					<td>phpMyAdmin</td>
+					<td>Web GUI</td>
+					<td>Easy visual management</td>
+					<td>Local development and database management</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="local-mysql-console">Local MySQL Console</h3>
+<p>Best when:</p>
+<ul>
+<li>Learning SQL commands</li>
+<li>Practicing database administration</li>
+<li>Working directly on the local machine</li>
+<li>Running commands quickly</li>
+</ul>
+<h3 id="putty">PuTTY</h3>
+<p>Best when:</p>
+<ul>
+<li>Accessing a remote server</li>
+<li>Managing a remote development environment</li>
+<li>Working with a Linux server through SSH</li>
+<li>Performing server-side administration</li>
+</ul>
+<h3 id="phpmyadmin">phpMyAdmin</h3>
+<p>Best when:</p>
+<ul>
+<li>Learning database structures visually</li>
+<li>Creating databases and tables through a GUI</li>
+<li>Browsing records</li>
+<li>Importing and exporting databases</li>
+<li>Managing MySQL/MariaDB through a browser</li>
+</ul>
+<hr>
+<h2 id="module-6-important-mysql-console-commands">Module 6: Important MySQL Console Commands</h2>
+<h3 id="display-available-databases">Display Available Databases</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="select-a-database">Select a Database</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">USE</span><span class="w"> </span><span class="n">database_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="display-tables">Display Tables</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="display-table-structure">Display Table Structure</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DESCRIBE</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>or:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DESC</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="create-a-database">Create a Database</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">database_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="delete-a-database">Delete a Database</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">database_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>Warning:</strong> <code>DROP DATABASE</code> permanently removes the selected database and its tables. Use it carefully.</p>
+</blockquote>
+<h3 id="create-a-table">Create a Table</h3>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<h3 id="insert-data">Insert Data</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;john@example.com&#39;</span><span class="p">);</span></span></span></code></pre></div></div>
+<h3 id="view-data">View Data</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="update-data">Update Data</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">UPDATE</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">SET</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;newemail@example.com&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="delete-data">Delete Data</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-7-understanding-sql-command-termination">Module 7: Understanding SQL Command Termination</h2>
+<p>In the MySQL console, SQL statements are normally terminated using a semicolon:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The semicolon tells the MySQL client that the current SQL statement has ended.</p>
+<p>The <code>\g</code> command can also be used to execute the current statement:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">SHOW DATABASES\g</span></span></code></pre></div></div>
+<p>If the semicolon is omitted, the MySQL console may continue waiting for additional input.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT *
+</span></span><span class="line"><span class="cl">    -&gt; FROM students
+</span></span><span class="line"><span class="cl">    -&gt; WHERE id = 1;</span></span></code></pre></div></div>
+<p>The <code>-&gt;</code> prompt indicates that MySQL is waiting for the remainder of the statement.</p>
+<hr>
+<h2 id="module-8-understanding-the-mysql-prompt">Module 8: Understanding the MySQL Prompt</h2>
+<p>When the MySQL console is ready to receive a command, you will normally see:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt;</span></span></code></pre></div></div>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SHOW DATABASES;</span></span></code></pre></div></div>
+<p>If a statement is incomplete, the prompt can change to:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">-&gt;</span></span></code></pre></div></div>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT *
+</span></span><span class="line"><span class="cl">    -&gt; FROM students
+</span></span><span class="line"><span class="cl">    -&gt; WHERE id = 1;</span></span></code></pre></div></div>
+<h3 id="cancelling-an-incomplete-statement">Cancelling an Incomplete Statement</h3>
+<p>Use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">\c</span></span></code></pre></div></div>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mysql&gt; SELECT *
+</span></span><span class="line"><span class="cl">    -&gt; FROM students
+</span></span><span class="line"><span class="cl">    -&gt; \c
+</span></span><span class="line"><span class="cl">mysql&gt;</span></span></code></pre></div></div>
+<p>This clears the current unfinished SQL statement.</p>
+<hr>
+<h2 id="module-9-basic-database-management-workflow">Module 9: Basic Database Management Workflow</h2>
+<p>A common database creation workflow is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. Start MySQL
+</span></span><span class="line"><span class="cl">2. Open MySQL Console
+</span></span><span class="line"><span class="cl">3. Authenticate
+</span></span><span class="line"><span class="cl">4. Display existing databases
+</span></span><span class="line"><span class="cl">5. Create a new database
+</span></span><span class="line"><span class="cl">6. Select the database
+</span></span><span class="line"><span class="cl">7. Create tables
+</span></span><span class="line"><span class="cl">8. Insert records
+</span></span><span class="line"><span class="cl">9. Query records
+</span></span><span class="line"><span class="cl">10. Update or delete records when required</span></span></code></pre></div></div>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">college</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">USE</span><span class="w"> </span><span class="n">college</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;john@example.com&#39;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-10-common-problems-and-troubleshooting">Module 10: Common Problems and Troubleshooting</h2>
+<h3 id="problem-1-access-denied">Problem 1: Access Denied</h3>
+<p>If you receive an error such as:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">ERROR 1045 (28000): Access denied for user</span></span></code></pre></div></div>
+<p>Possible causes include:</p>
+<ul>
+<li>Incorrect username</li>
+<li>Incorrect password</li>
+<li>Root account authentication configuration</li>
+<li>MySQL user privileges</li>
+<li>Connecting to a different MySQL server than expected</li>
+</ul>
+<p>Check the configured credentials and verify which MySQL server instance is running.</p>
+<h3 id="problem-2-unknown-database">Problem 2: Unknown Database</h3>
+<p>If you see:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">ERROR 1049 (42000): Unknown database</span></span></code></pre></div></div>
+<p>The specified database does not exist.</p>
+<p>Check the available databases:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Then select an existing database:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">USE</span><span class="w"> </span><span class="n">database_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="problem-3-table-does-not-exist">Problem 3: Table Does Not Exist</h3>
+<p>If you see an error indicating that a table does not exist:</p>
+<ol>
+<li>Check the selected database.</li>
+<li>Run:</li>
+</ol>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span></span></span></code></pre></div></div>
+<ol start="3">
+<li>Verify the table name.</li>
+<li>Check whether the table was created successfully.</li>
+</ol>
+<h3 id="problem-4-mysql-server-is-not-running">Problem 4: MySQL Server Is Not Running</h3>
+<p>If the console cannot connect to MySQL:</p>
+<ol>
+<li>Open WAMP/XAMPP.</li>
+<li>Check the MySQL service status.</li>
+<li>Start MySQL.</li>
+<li>Try connecting again.</li>
+</ol>
+<hr>
+<h2 id="module-11-exam-focused-key-concepts">Module 11: Exam-Focused Key Concepts</h2>
+<h3 id="mysql-console">MySQL Console</h3>
+<p>A command-line interface used to communicate directly with the MySQL server.</p>
+<h3 id="putty-1">PuTTY</h3>
+<p>A terminal and SSH client commonly used to access remote servers.</p>
+<h3 id="phpmyadmin-1">phpMyAdmin</h3>
+<p>A web-based graphical interface for administering MySQL/MariaDB databases.</p>
+<h3 id="show-databases"><code>SHOW DATABASES;</code></h3>
+<p>Displays databases available to the currently connected MySQL user.</p>
+<h3 id="use-database_name"><code>USE database_name;</code></h3>
+<p>Selects a database for subsequent SQL operations.</p>
+<h3 id="show-tables"><code>SHOW TABLES;</code></h3>
+<p>Displays the tables available in the currently selected database.</p>
+<h3 id="describe-table_name"><code>DESCRIBE table_name;</code></h3>
+<p>Displays the structure of a table.</p>
+<h3 id="create-database"><code>CREATE DATABASE</code></h3>
+<p>Creates a new database.</p>
+<h3 id="drop-database"><code>DROP DATABASE</code></h3>
+<p>Deletes a database and its contents.</p>
+<h3 id="create-table"><code>CREATE TABLE</code></h3>
+<p>Creates a new table.</p>
+<h3 id="insert"><code>INSERT</code></h3>
+<p>Adds new records to a table.</p>
+<h3 id="select"><code>SELECT</code></h3>
+<p>Retrieves data from a table.</p>
+<h3 id="update"><code>UPDATE</code></h3>
+<p>Modifies existing records.</p>
+<h3 id="delete"><code>DELETE</code></h3>
+<p>Removes records from a table.</p>
+<hr>
+<h2 id="quick-study-summary-checklist">Quick Study Summary Checklist</h2>
+<ul>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Know the <strong>3 primary ways</strong> to manage MySQL:</p>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Local MySQL Console</li>
+<li><i class="far fa-square" aria-hidden="true"></i> PuTTY / SSH remote terminal</li>
+<li><i class="far fa-square" aria-hidden="true"></i> phpMyAdmin on Localhost</li>
+</ul>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Understand MySQL console authentication.</p>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Know that local root passwords depend on the installation configuration.</p>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Memorize:</p>
+</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span></span></span></code></pre></div></div>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Memorize:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">USE</span><span class="w"> </span><span class="n">database_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Memorize:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span></span></span></code></pre></div></div>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DESCRIBE</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<ul>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Understand the difference between:</p>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>CREATE</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>INSERT</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>SELECT</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>UPDATE</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>DELETE</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>DROP</code></li>
+</ul>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Remember the phpMyAdmin URL:</p>
+</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost/phpmyadmin/</span></span></code></pre></div></div>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Remember that SQL statements normally end with <code>;</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the purpose of PuTTY and SSH for remote server access.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand how to troubleshoot basic MySQL connection problems.</li>
+</ul>
+<hr>
+<h2 id="final-exam-revision">Final Exam Revision</h2>
+<p>Remember the following:</p>
+<blockquote>
+<p><strong>MySQL Console = Command-Line Database Management</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>PuTTY = Remote Terminal / SSH Access</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>phpMyAdmin = Web-Based Database Management GUI</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>SHOW DATABASES;</code> = Display Databases</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>USE database_name;</code> = Select Database</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>SHOW TABLES;</code> = Display Tables</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>DESCRIBE table_name;</code> = Display Table Structure</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>CREATE DATABASE</code> = Create Database</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>DROP DATABASE</code> = Delete Database</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>INSERT</code> = Add Records</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>SELECT</code> = Retrieve Records</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>UPDATE</code> = Modify Records</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>DELETE</code> = Remove Records</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>;</code> = Terminates a SQL Statement</strong></p>
+</blockquote>
+<p>The basic practical workflow is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. Start MySQL
+</span></span><span class="line"><span class="cl">2. Open the MySQL Console
+</span></span><span class="line"><span class="cl">3. Authenticate
+</span></span><span class="line"><span class="cl">4. Run SHOW DATABASES;
+</span></span><span class="line"><span class="cl">5. Create or select a database
+</span></span><span class="line"><span class="cl">6. Create tables
+</span></span><span class="line"><span class="cl">7. Insert records
+</span></span><span class="line"><span class="cl">8. Query records
+</span></span><span class="line"><span class="cl">9. Update or delete records when necessary
+</span></span><span class="line"><span class="cl">10. Use phpMyAdmin when a graphical interface is preferred
+</span></span><span class="line"><span class="cl">11. Use PuTTY/SSH when remote server access is required</span></span></code></pre></div></div>
+<p>If these concepts and commands are understood, you have the fundamental knowledge required to manage MySQL databases using both command-line and graphical tools in a local development environment.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-08-19</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sql_basics_part2/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="http://localhost:1313/sql_basics_part2/" data-title="Managing Databases Using MySQL in Local Servers  (SQL Part 02)" data-hashtags="MySQL,WAMP,XAMPP,phpMyAdmin,Databases,SQL Console"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="http://localhost:1313/sql_basics_part2/" data-title="Managing Databases Using MySQL in Local Servers  (SQL Part 02)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/sql_basics_part2/" data-hashtag="MySQL"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/sql_basics_part2/" data-title="Managing Databases Using MySQL in Local Servers  (SQL Part 02)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/sql_basics_part2/" data-title="Managing Databases Using MySQL in Local Servers  (SQL Part 02)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/sql_basics_part2/" data-title="Managing Databases Using MySQL in Local Servers  (SQL Part 02)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="http://localhost:1313/sql_basics_part2/" data-title="Managing Databases Using MySQL in Local Servers  (SQL Part 02)" data-description="Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=http%3a%2f%2flocalhost%3a1313%2fsql_basics_part2%2f&amp;text=Managing%20Databases%20Using%20MySQL%20in%20Local%20Servers%20%20%28SQL%20Part%2002%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/mysql/">MySQL</a>,&nbsp;<a href="/tags/wamp/">WAMP</a>,&nbsp;<a href="/tags/xampp/">XAMPP</a>,&nbsp;<a href="/tags/phpmyadmin/">PhpMyAdmin</a>,&nbsp;<a href="/tags/databases/">Databases</a>,&nbsp;<a href="/tags/sql-console/">SQL Console</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sql_basics/" class="prev" rel="prev" title="Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP &amp; MySQL (SQL Part 01)"><i class="fas fa-angle-left" aria-hidden="true"></i>Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP & MySQL (SQL Part 01)</a>
+            <a href="/sql_basics_part3/" class="next" rel="next" title="Introduction to MySQL (SQL Part 03)">Introduction to MySQL (SQL Part 03)<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>

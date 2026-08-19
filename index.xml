@@ -1,0 +1,89 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Charuuu..^_^</title>
+        <link>http://localhost:1313/</link>
+        <description>Tracking my academic progress, software projects, and growth.</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 20 Aug 2026 00:45:00 &#43;0530</lastBuildDate>
+            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)</title>
+    <link>http://localhost:1313/sql_basics_part11/</link>
+    <pubDate>Thu, 20 Aug 2026 00:45:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part11/</guid>
+    <description><![CDATA[Master SQL table creation syntax, constraints, primary keys, foreign keys, composite keys, and the ALTER TABLE statement for schema modifications.]]></description>
+</item>
+<item>
+    <title>The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09)</title>
+    <link>http://localhost:1313/sql_basics_part10/</link>
+    <pubDate>Thu, 20 Aug 2026 00:38:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part10/</guid>
+    <description><![CDATA[The ultimate student study guide consolidating all core SQL concepts, console commands, table creation, operators, patterns, multiple tables, and join types.]]></description>
+</item>
+<item>
+    <title>SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)</title>
+    <link>http://localhost:1313/sql_basics_part9/</link>
+    <pubDate>Thu, 20 Aug 2026 00:17:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part9/</guid>
+    <description><![CDATA[Master all types of SQL joins in MySQL including INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, NATURAL JOIN, CROSS JOIN, and SELF JOIN with complete examples.]]></description>
+</item>
+<item>
+    <title>Creating &amp; Handling Multiple Tables in a Database (Lecture 08)</title>
+    <link>http://localhost:1313/sql_basics_part8/</link>
+    <pubDate>Thu, 20 Aug 2026 00:07:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part8/</guid>
+    <description><![CDATA[Master multi-table database creation, primary and foreign keys, composite keys, data insertion, aggregate functions, filtering, sorting, pattern matching, and NULL handling across relational schemas.]]></description>
+</item>
+<item>
+    <title>SQL Pattern Matching &amp; Regular Expressions (Lecture 07)</title>
+    <link>http://localhost:1313/sql_basics_part7/</link>
+    <pubDate>Thu, 20 Aug 2026 00:04:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part7/</guid>
+    <description><![CDATA[Master MySQL pattern matching using LIKE, wildcards like % and _, string length filtering, and regular expressions (REGEXP).]]></description>
+</item>
+<item>
+    <title>Sorting Data and Working with NULL in MySQL (Lecture 06)</title>
+    <link>http://localhost:1313/sql_basics_part6/</link>
+    <pubDate>Wed, 19 Aug 2026 23:47:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part6/</guid>
+    <description><![CDATA[Master sorting SQL query results using ORDER BY (ASC/DESC) and handling missing or unknown data using IS NULL and IS NOT NULL operators.]]></description>
+</item>
+<item>
+    <title>Mastering SQL SELECT Statements &amp; Filtering (SQL Part 05)</title>
+    <link>http://localhost:1313/sql_basics_part5/</link>
+    <pubDate>Wed, 19 Aug 2026 23:45:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part5/</guid>
+    <description><![CDATA[Master MySQL SELECT queries, conditional filtering using WHERE, comparison operators, logical AND/OR conditions, and projecting specific columns.]]></description>
+</item>
+<item>
+    <title>Creating and Using Databases &amp; Tables in MySQL (SQL Part 04)</title>
+    <link>http://localhost:1313/sql_basics_part4/</link>
+    <pubDate>Wed, 19 Aug 2026 23:00:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part4/</guid>
+    <description><![CDATA[Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface.]]></description>
+</item>
+<item>
+    <title>Introduction to MySQL (SQL Part 03)</title>
+    <link>http://localhost:1313/sql_basics_part3/</link>
+    <pubDate>Wed, 19 Aug 2026 23:00:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part3/</guid>
+    <description><![CDATA[Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface.]]></description>
+</item>
+<item>
+    <title>Managing Databases Using MySQL in Local Servers  (SQL Part 02)</title>
+    <link>http://localhost:1313/sql_basics_part2/</link>
+    <pubDate>Wed, 19 Aug 2026 22:30:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part2/</guid>
+    <description><![CDATA[Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface.]]></description>
+</item>
+</channel>
+</rss>

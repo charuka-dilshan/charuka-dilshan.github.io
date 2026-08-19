@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Relational Database - Tag - Charuuu..^_^</title>
+        <link>http://localhost:1313/tags/relational-database/</link>
+        <description>Relational Database - Tag - Charuuu..^_^</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 20 Aug 2026 00:07:00 &#43;0530</lastBuildDate><atom:link href="http://localhost:1313/tags/relational-database/" rel="self" type="application/rss+xml" /><item>
+    <title>Creating &amp; Handling Multiple Tables in a Database (Lecture 08)</title>
+    <link>http://localhost:1313/sql_basics_part8/</link>
+    <pubDate>Thu, 20 Aug 2026 00:07:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>http://localhost:1313/sql_basics_part8/</guid>
+    <description><![CDATA[Master multi-table database creation, primary and foreign keys, composite keys, data insertion, aggregate functions, filtering, sorting, pattern matching, and NULL handling across relational schemas.]]></description>
+</item>
+</channel>
+</rss>
