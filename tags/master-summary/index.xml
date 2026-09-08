@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Master Summary - Tag - Charuuu..^_^</title>
+        <link>https://charuka-dilshan.github.io/tags/master-summary/</link>
+        <description>Master Summary - Tag - Charuuu..^_^</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 20 Aug 2026 00:38:00 &#43;0530</lastBuildDate><atom:link href="https://charuka-dilshan.github.io/tags/master-summary/" rel="self" type="application/rss+xml" /><item>
+    <title>The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09)</title>
+    <link>https://charuka-dilshan.github.io/sql_basics_part10/</link>
+    <pubDate>Thu, 20 Aug 2026 00:38:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>https://charuka-dilshan.github.io/sql_basics_part10/</guid>
+    <description><![CDATA[The ultimate student study guide consolidating all core SQL concepts, console commands, table creation, operators, patterns, multiple tables, and join types.]]></description>
+</item>
+</channel>
+</rss>

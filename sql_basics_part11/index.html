@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide) - Charuuu..^_^</title><meta name="Description" content="Master SQL table creation syntax, constraints, primary keys, foreign keys, composite keys, and the ALTER TABLE statement for schema modifications."><meta property="og:url" content="https://charuka-dilshan.github.io/sql_basics_part11/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)">
+	<meta property="og:description" content="Master SQL table creation syntax, constraints, primary keys, foreign keys, composite keys, and the ALTER TABLE statement for schema modifications.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-20T00:45:00+05:30">
+		<meta property="article:modified_time" content="2026-09-09T00:45:56+05:30">
+		<meta property="article:tag" content="SQL">
+		<meta property="article:tag" content="MySQL">
+		<meta property="article:tag" content="ALTER TABLE">
+		<meta property="article:tag" content="Constraints">
+		<meta property="article:tag" content="Primary Key">
+		<meta property="article:tag" content="Foreign Key">
+		<meta property="og:image" content="https://charuka-dilshan.github.io/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://charuka-dilshan.github.io/logo.png">
+	<meta name="twitter:title" content="Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)">
+	<meta name="twitter:description" content="Master SQL table creation syntax, constraints, primary keys, foreign keys, composite keys, and the ALTER TABLE statement for schema modifications.">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://charuka-dilshan.github.io/sql_basics_part11/" /><link rel="prev" href="https://charuka-dilshan.github.io/sql_basics_part10/" /><link rel="next" href="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part01/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/charuka-dilshan.github.io\/sql_basics_part11\/"
+        },"genre": "posts","keywords": "SQL, MySQL, ALTER TABLE, Constraints, Primary Key, Foreign Key, Database Design","wordcount":  589 ,
+        "url": "https:\/\/charuka-dilshan.github.io\/sql_basics_part11\/","datePublished": "2026-08-20T00:45:00+05:30","dateModified": "2026-09-09T00:45:56+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "Master SQL table creation syntax, constraints, primary keys, foreign keys, composite keys, and the ALTER TABLE statement for schema modifications."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)</h1><h2 class="single-subtitle">An exhaustive study guide covering DDL table creation techniques, adding Primary and Foreign keys, Composite keys, and modifying table schemas using ALTER.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder" aria-hidden="true"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-20">2026-08-20</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;589 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-1-core-table-creation-techniques--key-syntaxes">Module 1: Core Table Creation Techniques &amp; Key Syntaxes</a>
+      <ul>
+        <li><a href="#11-column-level-vs-table-level-constraints">1.1 Column-Level vs. Table-Level Constraints</a></li>
+        <li><a href="#12-primary-key-primary-key">1.2 Primary Key (<code>PRIMARY KEY</code>)</a></li>
+        <li><a href="#13-composite-primary-keys">1.3 Composite Primary Keys</a></li>
+        <li><a href="#14-foreign-key-foreign-key">1.4 Foreign Key (<code>FOREIGN KEY</code>)</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-2-modifying-existing-tables-using-alter-table">Module 2: Modifying Existing Tables Using <code>ALTER TABLE</code></a>
+      <ul>
+        <li><a href="#21-adding-a-new-column-add-column">2.1 Adding a New Column (<code>ADD COLUMN</code>)</a></li>
+        <li><a href="#22-dropping-a-column-drop-column">2.2 Dropping a Column (<code>DROP COLUMN</code>)</a></li>
+        <li><a href="#23-modifying-column-data-types-modify-or-change">2.3 Modifying Column Data Types (<code>MODIFY</code> or <code>CHANGE</code>)</a></li>
+        <li><a href="#24-adding-a-primary-key-constraint-via-alter">2.4 Adding a Primary Key Constraint via <code>ALTER</code></a></li>
+        <li><a href="#25-adding-a-foreign-key-constraint-via-alter">2.5 Adding a Foreign Key Constraint via <code>ALTER</code></a></li>
+        <li><a href="#26-dropping-constraints-drop-foreign-key--drop-primary-key">2.6 Dropping Constraints (<code>DROP FOREIGN KEY</code> / <code>DROP PRIMARY KEY</code>)</a></li>
+      </ul>
+    </li>
+    <li><a href="#quick-study-summary-checklist">Quick Study Summary Checklist</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master study guide focuses on advanced Data Definition Language (DDL) concepts, exploring robust table creation techniques, relational constraint enforcement, and schema modifications using the <code>ALTER TABLE</code> statement.</p>
+</blockquote>
+<hr>
+<h2 id="module-1-core-table-creation-techniques--key-syntaxes">Module 1: Core Table Creation Techniques &amp; Key Syntaxes</h2>
+<p>When designing a relational database, enforcing data integrity through keys is crucial. Keys dictate how rows are uniquely identified and how tables relate to one another.</p>
+<h3 id="11-column-level-vs-table-level-constraints">1.1 Column-Level vs. Table-Level Constraints</h3>
+<ul>
+<li><strong>Column-Level Constraints:</strong> Applied directly inline after a column&rsquo;s data type (best for simple single-column keys).</li>
+<li><strong>Table-Level Constraints:</strong> Defined at the bottom of the <code>CREATE TABLE</code> statement (mandatory for <strong>composite keys</strong> consisting of two or more columns).</li>
+</ul>
+<h3 id="12-primary-key-primary-key">1.2 Primary Key (<code>PRIMARY KEY</code>)</h3>
+<p>A primary key uniquely identifies each record in a table. It cannot contain <code>NULL</code> values, and all values must be unique.</p>
+<p><strong>Example (Column-Level):</strong></p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Guest</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">GuestNo</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">GuestName</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<p><strong>Example (Table-Level):</strong></p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Guest</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">GuestNo</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">GuestName</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">pk_guest</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">GuestNo</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<h3 id="13-composite-primary-keys">1.3 Composite Primary Keys</h3>
+<p>When a single column is insufficient to uniquely identify a row, a combination of two or more columns forms a composite primary key. <em>(As seen in Lecture 08 with Room and Booking tables).</em></p>
+<p><strong>Syntax Example:</strong></p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Room</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">RoomNo</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">HotelNo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">Type</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Price</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">RoomNo</span><span class="p">,</span><span class="w"> </span><span class="n">HotelNo</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<h3 id="14-foreign-key-foreign-key">1.4 Foreign Key (<code>FOREIGN KEY</code>)</h3>
+<p>A foreign key is a field (or collection of fields) in one table that references a key in another table, establishing a parent-child relationship and ensuring referential integrity.</p>
+<p><strong>Syntax Example:</strong></p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Booking</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">HotelNo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">GuestNo</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">DateFrom</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">RoomNo</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">HotelNo</span><span class="p">,</span><span class="w"> </span><span class="n">GuestNo</span><span class="p">,</span><span class="w"> </span><span class="n">DateFrom</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">HotelNo</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Hotel</span><span class="p">(</span><span class="n">HotelNo</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">GuestNo</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Guest</span><span class="p">(</span><span class="n">GuestNo</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-2-modifying-existing-tables-using-alter-table">Module 2: Modifying Existing Tables Using <code>ALTER TABLE</code></h2>
+<p>The <code>ALTER TABLE</code> statement is used to add, delete, or modify columns and constraints in an existing table without dropping and recreating it.</p>
+<h3 id="21-adding-a-new-column-add-column">2.1 Adding a New Column (<code>ADD COLUMN</code>)</h3>
+<p>To add a new column (e.g., <code>email</code> to the <code>Guest</code> table):</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Guest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span></span></span></code></pre></div></div>
+<h3 id="22-dropping-a-column-drop-column">2.2 Dropping a Column (<code>DROP COLUMN</code>)</h3>
+<p>To remove an unwanted column from a table:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Guest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">email</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="23-modifying-column-data-types-modify-or-change">2.3 Modifying Column Data Types (<code>MODIFY</code> or <code>CHANGE</code>)</h3>
+<p>To change a column&rsquo;s data type or constraints:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Guest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">MODIFY</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">GuestName</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="24-adding-a-primary-key-constraint-via-alter">2.4 Adding a Primary Key Constraint via <code>ALTER</code></h3>
+<p>If a table was created without a primary key, you can add it afterward:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ADD</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">index_no</span><span class="p">);</span></span></span></code></pre></div></div>
+<h3 id="25-adding-a-foreign-key-constraint-via-alter">2.5 Adding a Foreign Key Constraint via <code>ALTER</code></h3>
+<p>To establish a foreign key relationship on an existing table:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">fk_hotel_room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">HotelNo</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">Hotel</span><span class="p">(</span><span class="n">HotelNo</span><span class="p">);</span></span></span></code></pre></div></div>
+<h3 id="26-dropping-constraints-drop-foreign-key--drop-primary-key">2.6 Dropping Constraints (<code>DROP FOREIGN KEY</code> / <code>DROP PRIMARY KEY</code>)</h3>
+<p>To remove a foreign key constraint, you usually reference its constraint name:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">fk_hotel_room</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>To remove a primary key:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">DROP</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="quick-study-summary-checklist">Quick Study Summary Checklist</h2>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Primary key rule: Must be unique and cannot contain <code>NULL</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Composite key rule: Must be defined at the table-level when using multiple columns.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Foreign key rule: Links child table columns to parent table keys to maintain referential integrity.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>ALTER TABLE ADD</code>: Used to insert new columns or apply constraints post-creation.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>ALTER TABLE DROP</code>: Used to remove columns or constraints safely.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>ALTER TABLE MODIFY</code>: Used to update data types or column rules.</li>
+</ul>
+<p>I have successfully generated your study guide on table creation and the <code>ALTER</code> statement at <code>content/posts/sql-alter-and-table-creation-master-guide.md</code>.</p>
+<p>Run your terminal build command:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-bash">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server --cleanDestinationDir</span></span></code></pre></div></div>
+<p>Refresh your browser at <code>http://localhost:1313/</code> to view your new post live!</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-09-09</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sql_basics_part11/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://charuka-dilshan.github.io/sql_basics_part11/" data-title="Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)" data-hashtags="SQL,MySQL,ALTER TABLE,Constraints,Primary Key,Foreign Key,Database Design"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://charuka-dilshan.github.io/sql_basics_part11/" data-title="Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://charuka-dilshan.github.io/sql_basics_part11/" data-hashtag="SQL"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://charuka-dilshan.github.io/sql_basics_part11/" data-title="Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://charuka-dilshan.github.io/sql_basics_part11/" data-title="Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://charuka-dilshan.github.io/sql_basics_part11/" data-title="Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://charuka-dilshan.github.io/sql_basics_part11/" data-title="Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)" data-description="Master SQL table creation syntax, constraints, primary keys, foreign keys, composite keys, and the ALTER TABLE statement for schema modifications."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fcharuka-dilshan.github.io%2fsql_basics_part11%2f&amp;text=Advanced%20Table%20Creation%2c%20Constraints%2c%20and%20the%20ALTER%20Statement%20%28SQL%20Master%20Guide%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/mysql/">MySQL</a>,&nbsp;<a href="/tags/alter-table/">ALTER TABLE</a>,&nbsp;<a href="/tags/constraints/">Constraints</a>,&nbsp;<a href="/tags/primary-key/">Primary Key</a>,&nbsp;<a href="/tags/foreign-key/">Foreign Key</a>,&nbsp;<a href="/tags/database-design/">Database Design</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sql_basics_part10/" class="prev" rel="prev" title="The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09)"><i class="fas fa-angle-left" aria-hidden="true"></i>The Ultimate Master Summary Guide: MySQL & SQL Fundamentals (Lectures 03–09)</a>
+            <a href="/multimedia_and_hypermedia_development_part01/" class="next" rel="next" title="Introduction to Multimedia: Fundamentals &amp; History (CO1224 Lecture 01)">Introduction to Multimedia: Fundamentals & History (CO1224 Lecture 01)<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>

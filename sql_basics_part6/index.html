@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Sorting Data and Working with NULL in MySQL (Lecture 06) - Charuuu..^_^</title><meta name="Description" content="Master sorting SQL query results using ORDER BY (ASC/DESC) and handling missing or unknown data using IS NULL and IS NOT NULL operators."><meta property="og:url" content="https://charuka-dilshan.github.io/sql_basics_part6/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="Sorting Data and Working with NULL in MySQL (Lecture 06)">
+	<meta property="og:description" content="Master sorting SQL query results using ORDER BY (ASC/DESC) and handling missing or unknown data using IS NULL and IS NOT NULL operators.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-19T23:47:00+05:30">
+		<meta property="article:modified_time" content="2026-09-09T00:45:56+05:30">
+		<meta property="article:tag" content="SQL">
+		<meta property="article:tag" content="MySQL">
+		<meta property="article:tag" content="ORDER BY">
+		<meta property="article:tag" content="NULL">
+		<meta property="article:tag" content="Database Sorting">
+		<meta property="og:image" content="https://charuka-dilshan.github.io/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://charuka-dilshan.github.io/logo.png">
+	<meta name="twitter:title" content="Sorting Data and Working with NULL in MySQL (Lecture 06)">
+	<meta name="twitter:description" content="Master sorting SQL query results using ORDER BY (ASC/DESC) and handling missing or unknown data using IS NULL and IS NOT NULL operators.">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://charuka-dilshan.github.io/sql_basics_part6/" /><link rel="prev" href="https://charuka-dilshan.github.io/sql_basics_part5/" /><link rel="next" href="https://charuka-dilshan.github.io/sql_basics_part7/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Sorting Data and Working with NULL in MySQL (Lecture 06)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/charuka-dilshan.github.io\/sql_basics_part6\/"
+        },"genre": "posts","keywords": "SQL, MySQL, ORDER BY, NULL, Database Sorting","wordcount":  2544 ,
+        "url": "https:\/\/charuka-dilshan.github.io\/sql_basics_part6\/","datePublished": "2026-08-19T23:47:00+05:30","dateModified": "2026-09-09T00:45:56+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "Master sorting SQL query results using ORDER BY (ASC/DESC) and handling missing or unknown data using IS NULL and IS NOT NULL operators."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Sorting Data and Working with NULL in MySQL (Lecture 06)</h1><h2 class="single-subtitle">An exhaustive study guide covering result ordering with ORDER BY, ascending and descending sorting, and NULL value handling with IS NULL and IS NOT NULL.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder" aria-hidden="true"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-19">2026-08-19</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;2544 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-1-sorting-data-with-order-by">Module 1: Sorting Data with <code>ORDER BY</code></a>
+      <ul>
+        <li><a href="#11-general-syntax">1.1 General Syntax</a></li>
+        <li><a href="#12-ascending-sort">1.2 Ascending Sort</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-2-ascending-sorting-with-asc">Module 2: Ascending Sorting with <code>ASC</code></a>
+      <ul>
+        <li><a href="#meaning-of-asc">Meaning of <code>ASC</code></a></li>
+        <li><a href="#examples">Examples</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-3-descending-sorting-with-desc">Module 3: Descending Sorting with <code>DESC</code></a></li>
+    <li><a href="#module-4-asc-vs-desc">Module 4: <code>ASC</code> vs <code>DESC</code></a>
+      <ul>
+        <li><a href="#ascending">Ascending</a></li>
+        <li><a href="#descending">Descending</a></li>
+        <li><a href="#easy-way-to-remember">Easy Way to Remember</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-5-sorting-different-types-of-data">Module 5: Sorting Different Types of Data</a>
+      <ul>
+        <li><a href="#51-sorting-names">5.1 Sorting Names</a></li>
+        <li><a href="#52-sorting-names-in-reverse">5.2 Sorting Names in Reverse</a></li>
+        <li><a href="#53-sorting-dates">5.3 Sorting Dates</a></li>
+        <li><a href="#54-sorting-dates-in-reverse">5.4 Sorting Dates in Reverse</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-6-combining-order-by-with-where">Module 6: Combining <code>ORDER BY</code> with <code>WHERE</code></a>
+      <ul>
+        <li><a href="#query-processing-concept">Query Processing Concept</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-7-combining-order-by-with-column-projection">Module 7: Combining <code>ORDER BY</code> with Column Projection</a></li>
+    <li><a href="#module-8-understanding-null-values">Module 8: Understanding <code>NULL</code> Values</a>
+      <ul>
+        <li><a href="#81-null-is-not-zero">8.1 <code>NULL</code> Is Not Zero</a></li>
+        <li><a href="#82-null-is-not-an-empty-string">8.2 <code>NULL</code> Is Not an Empty String</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-9-the-problem-with-comparing-null">Module 9: The Problem with Comparing <code>NULL</code></a>
+      <ul>
+        <li><a href="#why">Why?</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-10-using-is-null">Module 10: Using <code>IS NULL</code></a>
+      <ul>
+        <li><a href="#general-syntax">General Syntax</a></li>
+        <li><a href="#example">Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-11-using-is-not-null">Module 11: Using <code>IS NOT NULL</code></a>
+      <ul>
+        <li><a href="#general-syntax-1">General Syntax</a></li>
+        <li><a href="#example-1">Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-12-is-null-vs-is-not-null">Module 12: <code>IS NULL</code> vs <code>IS NOT NULL</code></a>
+      <ul>
+        <li><a href="#find-missing-telephone-numbers">Find Missing Telephone Numbers</a></li>
+        <li><a href="#find-available-telephone-numbers">Find Available Telephone Numbers</a></li>
+        <li><a href="#easy-way-to-remember-1">Easy Way to Remember</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-13-practical-null-examples">Module 13: Practical <code>NULL</code> Examples</a>
+      <ul>
+        <li><a href="#example-1-find-students-without-telephone-numbers">Example 1: Find Students Without Telephone Numbers</a></li>
+        <li><a href="#example-2-find-students-with-telephone-numbers">Example 2: Find Students With Telephone Numbers</a></li>
+        <li><a href="#example-3-find-students-with-missing-telephone-numbers-and-sort-by-name">Example 3: Find Students With Missing Telephone Numbers and Sort by Name</a></li>
+        <li><a href="#example-4-find-students-with-telephone-numbers-and-sort-by-name">Example 4: Find Students With Telephone Numbers and Sort by Name</a></li>
+        <li><a href="#example-5-find-students-with-telephone-numbers-and-sort-by-name-descending">Example 5: Find Students With Telephone Numbers and Sort by Name Descending</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-14-combining-null-handling-with-order-by">Module 14: Combining <code>NULL</code> Handling with <code>ORDER BY</code></a></li>
+    <li><a href="#module-15-sql-query-processing-order">Module 15: SQL Query Processing Order</a></li>
+    <li><a href="#module-16-multiple-sorting-columns">Module 16: Multiple Sorting Columns</a>
+      <ul>
+        <li><a href="#descending-secondary-sort">Descending Secondary Sort</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-17-common-mistakes">Module 17: Common Mistakes</a>
+      <ul>
+        <li><a href="#mistake-1-using--null">Mistake 1: Using <code>= NULL</code></a></li>
+        <li><a href="#mistake-2-using--null">Mistake 2: Using <code>!= NULL</code></a></li>
+        <li><a href="#mistake-3-forgetting-desc">Mistake 3: Forgetting <code>DESC</code></a></li>
+        <li><a href="#mistake-4-assuming-order-by-is-automatically-applied">Mistake 4: Assuming <code>ORDER BY</code> Is Automatically Applied</a></li>
+        <li><a href="#mistake-5-confusing-null-with-an-empty-string">Mistake 5: Confusing <code>NULL</code> with an Empty String</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-18-common-query-patterns">Module 18: Common Query Patterns</a>
+      <ul>
+        <li><a href="#sort-ascending">Sort Ascending</a></li>
+        <li><a href="#sort-descending">Sort Descending</a></li>
+        <li><a href="#sort-using-default-ascending-order">Sort Using Default Ascending Order</a></li>
+        <li><a href="#find-null-values">Find <code>NULL</code> Values</a></li>
+        <li><a href="#find-non-null-values">Find Non-<code>NULL</code> Values</a></li>
+        <li><a href="#filter-and-sort">Filter and Sort</a></li>
+        <li><a href="#filter-null-values-and-sort">Filter <code>NULL</code> Values and Sort</a></li>
+        <li><a href="#multiple-column-sorting">Multiple Column Sorting</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-19-important-sql-commands">Module 19: Important SQL Commands</a>
+      <ul>
+        <li><a href="#ascending-sort">Ascending Sort</a></li>
+        <li><a href="#descending-sort">Descending Sort</a></li>
+        <li><a href="#find-null-telephone-numbers">Find <code>NULL</code> Telephone Numbers</a></li>
+        <li><a href="#find-non-null-telephone-numbers">Find Non-<code>NULL</code> Telephone Numbers</a></li>
+        <li><a href="#filter-and-sort-1">Filter and Sort</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-20-exam-focused-key-concepts">Module 20: Exam-Focused Key Concepts</a>
+      <ul>
+        <li><a href="#what-is-order-by">What is <code>ORDER BY</code>?</a></li>
+        <li><a href="#what-is-the-default-sort-direction">What is the default sort direction?</a></li>
+        <li><a href="#how-do-you-sort-in-descending-order">How do you sort in descending order?</a></li>
+        <li><a href="#what-does-asc-mean">What does <code>ASC</code> mean?</a></li>
+        <li><a href="#what-does-desc-mean">What does <code>DESC</code> mean?</a></li>
+        <li><a href="#what-is-null">What is <code>NULL</code>?</a></li>
+        <li><a href="#can-you-use--null">Can you use <code>= NULL</code>?</a></li>
+        <li><a href="#how-do-you-find-null-values">How do you find <code>NULL</code> values?</a></li>
+        <li><a href="#how-do-you-find-non-null-values">How do you find non-<code>NULL</code> values?</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-21-complete-practical-workflow">Module 21: Complete Practical Workflow</a></li>
+    <li><a href="#module-22-quick-comparison-table">Module 22: Quick Comparison Table</a></li>
+    <li><a href="#module-23-quick-study-summary">Module 23: Quick Study Summary</a>
+      <ul>
+        <li><a href="#order-by"><code>ORDER BY</code></a></li>
+        <li><a href="#asc"><code>ASC</code></a></li>
+        <li><a href="#desc"><code>DESC</code></a></li>
+        <li><a href="#null"><code>NULL</code></a></li>
+        <li><a href="#is-null"><code>IS NULL</code></a></li>
+        <li><a href="#is-not-null"><code>IS NOT NULL</code></a></li>
+        <li><a href="#never-use--null">Never Use <code>= NULL</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#module-24-revision-checklist">Module 24: Revision Checklist</a></li>
+    <li><a href="#module-25-final-exam-revision">Module 25: Final Exam Revision</a>
+      <ul>
+        <li><a href="#core-sorting-examples">Core Sorting Examples</a></li>
+        <li><a href="#core-null-examples">Core NULL Examples</a></li>
+        <li><a href="#combining-filtering-null-handling-and-sorting">Combining Filtering, NULL Handling, and Sorting</a></li>
+        <li><a href="#final-key-takeaway">Final Key Takeaway</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master study guide covers Lecture 06 notes, focusing on how to organize query results using the <code>ORDER BY</code> clause and how to correctly query missing or unknown data using <code>NULL</code> operators.</p>
+</blockquote>
+<hr>
+<h2 id="module-1-sorting-data-with-order-by">Module 1: Sorting Data with <code>ORDER BY</code></h2>
+<p>When retrieving data using a <code>SELECT</code> statement, rows are not guaranteed to appear in a particular order unless an explicit sorting rule is specified.</p>
+<p>The <code>ORDER BY</code> clause is used to organize the rows returned by a query.</p>
+<h3 id="11-general-syntax">1.1 General Syntax</h3>
+<p>The basic syntax is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The <code>ORDER BY</code> clause specifies the column that should be used to sort the result.</p>
+<h3 id="12-ascending-sort">1.2 Ascending Sort</h3>
+<p>Ascending order is the default sorting direction.</p>
+<p>For example, to display students&rsquo; first names and birth dates ordered from the earliest birth date to the latest:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Example output:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">+---------------+------------+
+</span></span><span class="line"><span class="cl">| fname         | birth_date |
+</span></span><span class="line"><span class="cl">+---------------+------------+
+</span></span><span class="line"><span class="cl">| Mohan         | 1990-01-01 |
+</span></span><span class="line"><span class="cl">| Rukzana       | 1990-03-06 |
+</span></span><span class="line"><span class="cl">| Yuhatharshana | 1990-05-07 |
+</span></span><span class="line"><span class="cl">| Thuvarakan    | 1990-11-10 |
+</span></span><span class="line"><span class="cl">| Mithujan      | 1990-12-09 |
+</span></span><span class="line"><span class="cl">| Malith        | 1991-03-02 |
+</span></span><span class="line"><span class="cl">| Utpala        | 1992-04-12 |
+</span></span><span class="line"><span class="cl">| Barath        | 1992-05-04 |
+</span></span><span class="line"><span class="cl">| Shirmal       | 1993-02-08 |
+</span></span><span class="line"><span class="cl">| Darmarathna   | 1993-05-05 |
+</span></span><span class="line"><span class="cl">+---------------+------------+
+</span></span><span class="line"><span class="cl">10 rows in set (0.00 sec)</span></span></code></pre></div></div>
+<p>The query:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>sorts the records according to <code>birth_date</code> in ascending order.</p>
+<blockquote>
+<p><strong>Important:</strong> <code>ASC</code> is the default sorting direction, so it does not have to be written explicitly.</p>
+</blockquote>
+<hr>
+<h2 id="module-2-ascending-sorting-with-asc">Module 2: Ascending Sorting with <code>ASC</code></h2>
+<p>Although ascending order is the default, you can explicitly specify it using the <code>ASC</code> keyword.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This produces the same ordering as:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="meaning-of-asc">Meaning of <code>ASC</code></h3>
+<p><code>ASC</code> means:</p>
+<blockquote>
+<p><strong>Ascending order</strong></p>
+</blockquote>
+<p>For numerical values, ascending means smallest to largest.</p>
+<p>For dates, ascending means earliest to latest.</p>
+<p>For text, ascending generally means alphabetical order.</p>
+<h3 id="examples">Examples</h3>
+<p>Numerical values:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">10
+</span></span><span class="line"><span class="cl">20
+</span></span><span class="line"><span class="cl">30
+</span></span><span class="line"><span class="cl">40
+</span></span><span class="line"><span class="cl">50</span></span></code></pre></div></div>
+<p>Dates:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1990-01-01
+</span></span><span class="line"><span class="cl">1991-03-02
+</span></span><span class="line"><span class="cl">1992-04-12
+</span></span><span class="line"><span class="cl">1993-05-05</span></span></code></pre></div></div>
+<p>Names:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Barath
+</span></span><span class="line"><span class="cl">Malith
+</span></span><span class="line"><span class="cl">Mohan
+</span></span><span class="line"><span class="cl">Rukzana</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-3-descending-sorting-with-desc">Module 3: Descending Sorting with <code>DESC</code></h2>
+<p>To sort results in reverse order, use the <code>DESC</code> keyword.</p>
+<p><code>DESC</code> means:</p>
+<blockquote>
+<p><strong>Descending order</strong></p>
+</blockquote>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Example output:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">+---------------+------------+
+</span></span><span class="line"><span class="cl">| fname         | birth_date |
+</span></span><span class="line"><span class="cl">+---------------+------------+
+</span></span><span class="line"><span class="cl">| Darmarathna   | 1993-05-05 |
+</span></span><span class="line"><span class="cl">| Shirmal       | 1993-02-08 |
+</span></span><span class="line"><span class="cl">| Barath        | 1992-05-04 |
+</span></span><span class="line"><span class="cl">| Utpala        | 1992-04-12 |
+</span></span><span class="line"><span class="cl">| Malith        | 1991-03-02 |
+</span></span><span class="line"><span class="cl">| Mithujan      | 1990-12-09 |
+</span></span><span class="line"><span class="cl">| Thuvarakan    | 1990-11-10 |
+</span></span><span class="line"><span class="cl">| Yuhatharshana | 1990-05-07 |
+</span></span><span class="line"><span class="cl">| Rukzana       | 1990-03-06 |
+</span></span><span class="line"><span class="cl">| Mohan         | 1990-01-01 |
+</span></span><span class="line"><span class="cl">+---------------+------------+
+</span></span><span class="line"><span class="cl">10 rows in set (0.00 sec)</span></span></code></pre></div></div>
+<p>The query:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>returns the latest birth date first and the earliest birth date last.</p>
+<hr>
+<h2 id="module-4-asc-vs-desc">Module 4: <code>ASC</code> vs <code>DESC</code></h2>
+<p>The two main sorting directions are:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Keyword</th>
+					<th>Meaning</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>ASC</code></td>
+					<td>Ascending</td>
+					<td>Smallest → Largest</td>
+			</tr>
+			<tr>
+					<td><code>DESC</code></td>
+					<td>Descending</td>
+					<td>Largest → Smallest</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="ascending">Ascending</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Result conceptually:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Oldest date
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Newest date</span></span></code></pre></div></div>
+<h3 id="descending">Descending</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Result conceptually:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Newest date
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Oldest date</span></span></code></pre></div></div>
+<h3 id="easy-way-to-remember">Easy Way to Remember</h3>
+<blockquote>
+<p><strong>ASC = Ascending</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>DESC = Descending</strong></p>
+</blockquote>
+<hr>
+<h2 id="module-5-sorting-different-types-of-data">Module 5: Sorting Different Types of Data</h2>
+<p><code>ORDER BY</code> can be used with different types of columns.</p>
+<h3 id="51-sorting-names">5.1 Sorting Names</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This sorts first names alphabetically.</p>
+<h3 id="52-sorting-names-in-reverse">5.2 Sorting Names in Reverse</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This sorts names in reverse alphabetical order.</p>
+<h3 id="53-sorting-dates">5.3 Sorting Dates</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="54-sorting-dates-in-reverse">5.4 Sorting Dates in Reverse</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-6-combining-order-by-with-where">Module 6: Combining <code>ORDER BY</code> with <code>WHERE</code></h2>
+<p><code>ORDER BY</code> can be combined with the <code>WHERE</code> clause.</p>
+<p>For example, to find female students and sort them by birth date:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;f&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The query performs two operations:</p>
+<ol>
+<li><code>WHERE</code> filters the rows.</li>
+<li><code>ORDER BY</code> sorts the filtered result.</li>
+</ol>
+<h3 id="query-processing-concept">Query Processing Concept</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">students table
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">WHERE sex = &#34;f&#34;
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">filtered rows
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">ORDER BY birth_date
+</span></span><span class="line"><span class="cl">      ↓
+</span></span><span class="line"><span class="cl">sorted result</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-7-combining-order-by-with-column-projection">Module 7: Combining <code>ORDER BY</code> with Column Projection</h2>
+<p>You can also select only the columns that you need.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Here:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span></span></span></code></pre></div></div>
+<p>controls the columns displayed.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span></span></span></code></pre></div></div>
+<p>controls the order of the rows.</p>
+<blockquote>
+<p><strong>Projection controls columns; <code>ORDER BY</code> controls row ordering.</strong></p>
+</blockquote>
+<hr>
+<h2 id="module-8-understanding-null-values">Module 8: Understanding <code>NULL</code> Values</h2>
+<p><code>NULL</code> is used to represent missing, unknown, or unavailable data.</p>
+<p>For example, suppose a student&rsquo;s telephone number is not available:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">tp_no = NULL</span></span></code></pre></div></div>
+<p>This does not mean that the telephone number is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">0</span></span></code></pre></div></div>
+<p>or:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">&#34;&#34;</span></span></code></pre></div></div>
+<p>Instead, <code>NULL</code> means that there is no known value.</p>
+<h3 id="81-null-is-not-zero">8.1 <code>NULL</code> Is Not Zero</h3>
+<p>These are different:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">NULL
+</span></span><span class="line"><span class="cl">0</span></span></code></pre></div></div>
+<p><code>NULL</code> means the value is unknown or missing.</p>
+<p><code>0</code> is an actual numerical value.</p>
+<h3 id="82-null-is-not-an-empty-string">8.2 <code>NULL</code> Is Not an Empty String</h3>
+<p>These are also different:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">NULL
+</span></span><span class="line"><span class="cl">&#34;&#34;</span></span></code></pre></div></div>
+<p>An empty string is a string containing zero characters.</p>
+<p><code>NULL</code> represents the absence of a known value.</p>
+<hr>
+<h2 id="module-9-the-problem-with-comparing-null">Module 9: The Problem with Comparing <code>NULL</code></h2>
+<p>A common SQL mistake is attempting to compare <code>NULL</code> using the normal equality operator.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This is incorrect.</p>
+<p>You should <strong>not</strong> use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">=</span><span class="w"> </span><span class="k">NULL</span></span></span></code></pre></div></div>
+<p>to test for a <code>NULL</code> value.</p>
+<p>Similarly, do not use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">!=</span><span class="w"> </span><span class="k">NULL</span></span></span></code></pre></div></div>
+<p>or:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">&lt;&gt;</span><span class="w"> </span><span class="k">NULL</span></span></span></code></pre></div></div>
+<p>to test whether a value is not <code>NULL</code>.</p>
+<h3 id="why">Why?</h3>
+<p><code>NULL</code> represents an unknown value.</p>
+<p>SQL uses special operators for testing whether a value is <code>NULL</code>.</p>
+<p>These operators are:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span></span></span></code></pre></div></div>
+<p>and:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-10-using-is-null">Module 10: Using <code>IS NULL</code></h2>
+<p>The <code>IS NULL</code> operator is used to find rows where a column contains a <code>NULL</code> value.</p>
+<h3 id="general-syntax">General Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example">Example</h3>
+<p>To find students who do not have a telephone number:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query returns students whose <code>tp_no</code> value is missing.</p>
+<hr>
+<h2 id="module-11-using-is-not-null">Module 11: Using <code>IS NOT NULL</code></h2>
+<p>The <code>IS NOT NULL</code> operator is used to find rows where a column contains a value.</p>
+<h3 id="general-syntax-1">General Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-1">Example</h3>
+<p>To find students who have a telephone number:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query returns students whose <code>tp_no</code> value is not <code>NULL</code>.</p>
+<hr>
+<h2 id="module-12-is-null-vs-is-not-null">Module 12: <code>IS NULL</code> vs <code>IS NOT NULL</code></h2>
+<table>
+	<thead>
+			<tr>
+					<th>Operator</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>IS NULL</code></td>
+					<td>Finds missing/unknown values</td>
+			</tr>
+			<tr>
+					<td><code>IS NOT NULL</code></td>
+					<td>Finds values that are present</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="find-missing-telephone-numbers">Find Missing Telephone Numbers</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="find-available-telephone-numbers">Find Available Telephone Numbers</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="easy-way-to-remember-1">Easy Way to Remember</h3>
+<blockquote>
+<p><strong>IS NULL → Find missing values</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>IS NOT NULL → Find existing values</strong></p>
+</blockquote>
+<hr>
+<h2 id="module-13-practical-null-examples">Module 13: Practical <code>NULL</code> Examples</h2>
+<h3 id="example-1-find-students-without-telephone-numbers">Example 1: Find Students Without Telephone Numbers</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">tp_no</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-2-find-students-with-telephone-numbers">Example 2: Find Students With Telephone Numbers</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">tp_no</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-3-find-students-with-missing-telephone-numbers-and-sort-by-name">Example 3: Find Students With Missing Telephone Numbers and Sort by Name</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">tp_no</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">fname</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-4-find-students-with-telephone-numbers-and-sort-by-name">Example 4: Find Students With Telephone Numbers and Sort by Name</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">tp_no</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">fname</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="example-5-find-students-with-telephone-numbers-and-sort-by-name-descending">Example 5: Find Students With Telephone Numbers and Sort by Name Descending</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">tp_no</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-14-combining-null-handling-with-order-by">Module 14: Combining <code>NULL</code> Handling with <code>ORDER BY</code></h2>
+<p><code>IS NULL</code> and <code>IS NOT NULL</code> can be combined with <code>ORDER BY</code>.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">tp_no</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query:</p>
+<ol>
+<li>selects <code>fname</code> and <code>tp_no</code>;</li>
+<li>removes rows where <code>tp_no</code> is <code>NULL</code>;</li>
+<li>sorts the remaining records alphabetically by <code>fname</code>.</li>
+</ol>
+<p>Another example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This returns students with known birth dates and sorts them from the latest date to the earliest.</p>
+<hr>
+<h2 id="module-15-sql-query-processing-order">Module 15: SQL Query Processing Order</h2>
+<p>A useful way to understand these queries is to think about the logical processing sequence.</p>
+<p>Consider:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Conceptually:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">FROM
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Identify the students table
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">WHERE
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Remove rows with NULL birth_date
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">SELECT
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Choose fname and birth_date
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">ORDER BY
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Sort birth_date from newest to oldest</span></span></code></pre></div></div>
+<p>This helps explain how filtering and sorting work together.</p>
+<hr>
+<h2 id="module-16-multiple-sorting-columns">Module 16: Multiple Sorting Columns</h2>
+<p><code>ORDER BY</code> can sort using more than one column.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The result is first sorted by:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">dept</span></span></code></pre></div></div>
+<p>and then by:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">birth_date</span></span></code></pre></div></div>
+<p>within each department.</p>
+<h3 id="descending-secondary-sort">Descending Secondary Sort</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This means:</p>
+<ol>
+<li>Sort departments alphabetically.</li>
+<li>Within each department, sort birth dates from latest to earliest.</li>
+</ol>
+<blockquote>
+<p><strong>Important:</strong> When multiple columns are supplied to <code>ORDER BY</code>, the first column has the highest sorting priority.</p>
+</blockquote>
+<hr>
+<h2 id="module-17-common-mistakes">Module 17: Common Mistakes</h2>
+<h3 id="mistake-1-using--null">Mistake 1: Using <code>= NULL</code></h3>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="mistake-2-using--null">Mistake 2: Using <code>!= NULL</code></h3>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="mistake-3-forgetting-desc">Mistake 3: Forgetting <code>DESC</code></h3>
+<p>If you need reverse ordering:</p>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="mistake-4-assuming-order-by-is-automatically-applied">Mistake 4: Assuming <code>ORDER BY</code> Is Automatically Applied</h3>
+<p>SQL does not guarantee a particular result order unless an <code>ORDER BY</code> clause is specified.</p>
+<p>If the order matters, explicitly use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="mistake-5-confusing-null-with-an-empty-string">Mistake 5: Confusing <code>NULL</code> with an Empty String</h3>
+<p>These are different:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">NULL
+</span></span><span class="line"><span class="cl">&#34;&#34;</span></span></code></pre></div></div>
+<p>An empty string is a value.</p>
+<p><code>NULL</code> represents a missing or unknown value.</p>
+<hr>
+<h2 id="module-18-common-query-patterns">Module 18: Common Query Patterns</h2>
+<h3 id="sort-ascending">Sort Ascending</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="sort-descending">Sort Descending</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="sort-using-default-ascending-order">Sort Using Default Ascending Order</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="find-null-values">Find <code>NULL</code> Values</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="find-non-null-values">Find Non-<code>NULL</code> Values</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="filter-and-sort">Filter and Sort</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="filter-null-values-and-sort">Filter <code>NULL</code> Values and Sort</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">another_column</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="multiple-column-sorting">Multiple Column Sorting</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">column1</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-19-important-sql-commands">Module 19: Important SQL Commands</h2>
+<h3 id="ascending-sort">Ascending Sort</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="descending-sort">Descending Sort</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="find-null-telephone-numbers">Find <code>NULL</code> Telephone Numbers</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="find-non-null-telephone-numbers">Find Non-<code>NULL</code> Telephone Numbers</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="filter-and-sort-1">Filter and Sort</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-20-exam-focused-key-concepts">Module 20: Exam-Focused Key Concepts</h2>
+<h3 id="what-is-order-by">What is <code>ORDER BY</code>?</h3>
+<p><code>ORDER BY</code> is used to sort the rows returned by a query.</p>
+<h3 id="what-is-the-default-sort-direction">What is the default sort direction?</h3>
+<p>The default sort direction is ascending (<code>ASC</code>).</p>
+<h3 id="how-do-you-sort-in-descending-order">How do you sort in descending order?</h3>
+<p>Use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="what-does-asc-mean">What does <code>ASC</code> mean?</h3>
+<p><code>ASC</code> means ascending order.</p>
+<h3 id="what-does-desc-mean">What does <code>DESC</code> mean?</h3>
+<p><code>DESC</code> means descending order.</p>
+<h3 id="what-is-null">What is <code>NULL</code>?</h3>
+<p><code>NULL</code> represents missing, unknown, or unavailable data.</p>
+<h3 id="can-you-use--null">Can you use <code>= NULL</code>?</h3>
+<p>No.</p>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="how-do-you-find-null-values">How do you find <code>NULL</code> values?</h3>
+<p>Use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="how-do-you-find-non-null-values">How do you find non-<code>NULL</code> values?</h3>
+<p>Use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-21-complete-practical-workflow">Module 21: Complete Practical Workflow</h2>
+<p>A typical query workflow involving sorting and <code>NULL</code> values is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. Select the required columns
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">2. Select the table
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">3. Filter rows using WHERE if required
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">4. Check NULL values using IS NULL / IS NOT NULL
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">5. Sort the result using ORDER BY
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">6. Choose ASC or DESC
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">7. Execute and examine the result</span></span></code></pre></div></div>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">SELECT
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Choose fname and birth_date
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">FROM
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Use students table
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WHERE
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Keep only rows with a known birth date
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ORDER BY
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Sort by birth date
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DESC
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Newest date first</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-22-quick-comparison-table">Module 22: Quick Comparison Table</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Requirement</th>
+					<th>SQL</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Sort ascending</td>
+					<td><code>ORDER BY column ASC</code></td>
+			</tr>
+			<tr>
+					<td>Sort descending</td>
+					<td><code>ORDER BY column DESC</code></td>
+			</tr>
+			<tr>
+					<td>Default sorting</td>
+					<td><code>ORDER BY column</code></td>
+			</tr>
+			<tr>
+					<td>Find missing values</td>
+					<td><code>IS NULL</code></td>
+			</tr>
+			<tr>
+					<td>Find existing values</td>
+					<td><code>IS NOT NULL</code></td>
+			</tr>
+			<tr>
+					<td>Incorrect NULL comparison</td>
+					<td><code>= NULL</code></td>
+			</tr>
+			<tr>
+					<td>Multiple sorting columns</td>
+					<td><code>ORDER BY column1, column2</code></td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="module-23-quick-study-summary">Module 23: Quick Study Summary</h2>
+<p>Remember these fundamental concepts:</p>
+<h3 id="order-by"><code>ORDER BY</code></h3>
+<p>Used to organize query results.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="asc"><code>ASC</code></h3>
+<p>Sorts in ascending order.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="desc"><code>DESC</code></h3>
+<p>Sorts in descending order.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="null"><code>NULL</code></h3>
+<p>Represents a missing or unknown value.</p>
+<h3 id="is-null"><code>IS NULL</code></h3>
+<p>Finds rows containing <code>NULL</code>.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="is-not-null"><code>IS NOT NULL</code></h3>
+<p>Finds rows that contain a value.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="never-use--null">Never Use <code>= NULL</code></h3>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-24-revision-checklist">Module 24: Revision Checklist</h2>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the purpose of <code>ORDER BY</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know that ascending order is the default.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the <code>ASC</code> keyword.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the <code>DESC</code> keyword.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to sort dates.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to sort text values.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to combine <code>WHERE</code> with <code>ORDER BY</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand what <code>NULL</code> represents.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that <code>NULL</code> is not zero.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that <code>NULL</code> is not an empty string.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Never use <code>= NULL</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Never use <code>!= NULL</code> to test for <code>NULL</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Use <code>IS NULL</code> to find missing values.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Use <code>IS NOT NULL</code> to find existing values.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to combine <code>IS NULL</code> with <code>ORDER BY</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to combine <code>IS NOT NULL</code> with <code>ORDER BY</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand multiple-column sorting.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know that the first <code>ORDER BY</code> column has the highest priority.</li>
+</ul>
+<hr>
+<h2 id="module-25-final-exam-revision">Module 25: Final Exam Revision</h2>
+<p>Remember these commands:</p>
+<blockquote>
+<p><strong><code>ORDER BY column_name;</code> = Sort query results in ascending order</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>ORDER BY column_name ASC;</code> = Explicit ascending sort</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>ORDER BY column_name DESC;</code> = Descending sort</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>IS NULL</code> = Find missing or unknown values</strong></p>
+</blockquote>
+<blockquote>
+<p><strong><code>IS NOT NULL</code> = Find values that are present</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Never use <code>= NULL</code> to test for NULL</strong></p>
+</blockquote>
+<h3 id="core-sorting-examples">Core Sorting Examples</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="core-null-examples">Core NULL Examples</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="combining-filtering-null-handling-and-sorting">Combining Filtering, NULL Handling, and Sorting</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query means:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Select student name and birth date
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">From students
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Ignore records with missing birth dates
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Sort remaining records
+</span></span><span class="line"><span class="cl">        ↓
+</span></span><span class="line"><span class="cl">Show newest birth dates first</span></span></code></pre></div></div>
+<h3 id="final-key-takeaway">Final Key Takeaway</h3>
+<p>The most important concepts from Lecture 06 are:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">ORDER BY
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Controls result ordering
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ASC
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Ascending order
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DESC
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Descending order
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">NULL
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Missing / unknown value
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">IS NULL
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Find missing values
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">IS NOT NULL
+</span></span><span class="line"><span class="cl">    ↓
+</span></span><span class="line"><span class="cl">Find existing values</span></span></code></pre></div></div>
+<p>The fundamental query patterns are:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>Master <code>ORDER BY</code>, <code>ASC</code>, <code>DESC</code>, <code>IS NULL</code>, and <code>IS NOT NULL</code>. These concepts form an important foundation for more advanced SQL querying and data analysis.</strong></p>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-09-09</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sql_basics_part6/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://charuka-dilshan.github.io/sql_basics_part6/" data-title="Sorting Data and Working with NULL in MySQL (Lecture 06)" data-hashtags="SQL,MySQL,ORDER BY,NULL,Database Sorting"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://charuka-dilshan.github.io/sql_basics_part6/" data-title="Sorting Data and Working with NULL in MySQL (Lecture 06)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://charuka-dilshan.github.io/sql_basics_part6/" data-hashtag="SQL"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://charuka-dilshan.github.io/sql_basics_part6/" data-title="Sorting Data and Working with NULL in MySQL (Lecture 06)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://charuka-dilshan.github.io/sql_basics_part6/" data-title="Sorting Data and Working with NULL in MySQL (Lecture 06)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://charuka-dilshan.github.io/sql_basics_part6/" data-title="Sorting Data and Working with NULL in MySQL (Lecture 06)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://charuka-dilshan.github.io/sql_basics_part6/" data-title="Sorting Data and Working with NULL in MySQL (Lecture 06)" data-description="Master sorting SQL query results using ORDER BY (ASC/DESC) and handling missing or unknown data using IS NULL and IS NOT NULL operators."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fcharuka-dilshan.github.io%2fsql_basics_part6%2f&amp;text=Sorting%20Data%20and%20Working%20with%20NULL%20in%20MySQL%20%28Lecture%2006%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/mysql/">MySQL</a>,&nbsp;<a href="/tags/order-by/">ORDER BY</a>,&nbsp;<a href="/tags/null/">NULL</a>,&nbsp;<a href="/tags/database-sorting/">Database Sorting</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sql_basics_part5/" class="prev" rel="prev" title="Mastering SQL SELECT Statements &amp; Filtering (SQL Part 05)"><i class="fas fa-angle-left" aria-hidden="true"></i>Mastering SQL SELECT Statements & Filtering (SQL Part 05)</a>
+            <a href="/sql_basics_part7/" class="next" rel="next" title="SQL Pattern Matching &amp; Regular Expressions (Lecture 07)">SQL Pattern Matching & Regular Expressions (Lecture 07)<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>

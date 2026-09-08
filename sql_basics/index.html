@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP &amp; MySQL (SQL Part 01) - Charuuu..^_^</title><meta name="Description" content="Master SQL from foundational queries to advanced database concepts like joins, subqueries, and window functions."><meta property="og:url" content="https://charuka-dilshan.github.io/sql_basics/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP & MySQL (SQL Part 01)">
+	<meta property="og:description" content="Master SQL from foundational queries to advanced database concepts like joins, subqueries, and window functions.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-19T20:30:00+05:30">
+		<meta property="article:modified_time" content="2026-09-09T00:45:56+05:30">
+		<meta property="article:tag" content="SQL">
+		<meta property="article:tag" content="Databases">
+		<meta property="article:tag" content="Computer Science">
+		<meta property="article:tag" content="Backend">
+		<meta property="og:image" content="https://charuka-dilshan.github.io/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://charuka-dilshan.github.io/logo.png">
+	<meta name="twitter:title" content="Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP & MySQL (SQL Part 01)">
+	<meta name="twitter:description" content="Master SQL from foundational queries to advanced database concepts like joins, subqueries, and window functions.">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://charuka-dilshan.github.io/sql_basics/" /><link rel="prev" href="https://charuka-dilshan.github.io/first_post/" /><link rel="next" href="https://charuka-dilshan.github.io/sql_basics_part2/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP \u0026 MySQL (SQL Part 01)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/charuka-dilshan.github.io\/sql_basics\/"
+        },"genre": "posts","keywords": "SQL, Databases, Computer Science, Backend","wordcount":  1991 ,
+        "url": "https:\/\/charuka-dilshan.github.io\/sql_basics\/","datePublished": "2026-08-19T20:30:00+05:30","dateModified": "2026-09-09T00:45:56+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "Master SQL from foundational queries to advanced database concepts like joins, subqueries, and window functions."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP & MySQL (SQL Part 01)</h1><h2 class="single-subtitle">A comprehensive guide to mastering Structured Query Language for computer science students and developers.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder" aria-hidden="true"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-19">2026-08-19</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;1991 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-1-architectural-foundation-of-local-server-environments">Module 1: Architectural Foundation of Local Server Environments</a>
+      <ul>
+        <li><a href="#11-what-is-an-environment-stack">1.1 What is an Environment Stack?</a></li>
+        <li><a href="#12-core-component-breakdown">1.2 Core Component Breakdown</a>
+          <ul>
+            <li><a href="#1-apache-http-server-httpd">1. Apache HTTP Server (<code>httpd</code>)</a></li>
+            <li><a href="#2-mysql--mariadb">2. MySQL / MariaDB</a></li>
+            <li><a href="#3-php-hypertext-preprocessor">3. PHP (Hypertext Preprocessor)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#module-2-complete-installation-procedure">Module 2: Complete Installation Procedure</a>
+      <ul>
+        <li><a href="#phase-1-acquisition">Phase 1: Acquisition</a></li>
+        <li><a href="#architecture-check">Architecture Check</a></li>
+        <li><a href="#phase-2-execution-and-setup-wizard">Phase 2: Execution and Setup Wizard</a>
+          <ul>
+            <li><a href="#step-1-locate-the-installer">Step 1: Locate the Installer</a></li>
+            <li><a href="#step-2-run-the-installer">Step 2: Run the Installer</a></li>
+            <li><a href="#step-3-select-the-language">Step 3: Select the Language</a></li>
+            <li><a href="#step-4-accept-the-license-agreement">Step 4: Accept the License Agreement</a></li>
+            <li><a href="#step-5-review-prerequisites-and-information">Step 5: Review Prerequisites and Information</a></li>
+            <li><a href="#step-6-select-the-destination-directory">Step 6: Select the Destination Directory</a></li>
+            <li><a href="#step-7-select-components">Step 7: Select Components</a></li>
+            <li><a href="#step-8-start-installation">Step 8: Start Installation</a></li>
+            <li><a href="#step-9-finish-installation">Step 9: Finish Installation</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#module-3-service-management-and-operations">Module 3: Service Management and Operations</a>
+      <ul>
+        <li><a href="#31-managing-services-using-wamp-server">3.1 Managing Services Using WAMP Server</a>
+          <ul>
+            <li><a href="#finding-the-wamp-icon">Finding the WAMP Icon</a></li>
+            <li><a href="#starting-all-services">Starting All Services</a></li>
+            <li><a href="#stopping-all-services">Stopping All Services</a></li>
+            <li><a href="#restarting-all-services">Restarting All Services</a></li>
+          </ul>
+        </li>
+        <li><a href="#32-managing-services-using-the-xampp-control-panel">3.2 Managing Services Using the XAMPP Control Panel</a>
+          <ul>
+            <li><a href="#starting-apache">Starting Apache</a></li>
+            <li><a href="#starting-mysql">Starting MySQL</a></li>
+            <li><a href="#stopping-a-service">Stopping a Service</a></li>
+            <li><a href="#restarting-a-service">Restarting a Service</a></li>
+          </ul>
+        </li>
+        <li><a href="#33-configuration-files">3.3 Configuration Files</a>
+          <ul>
+            <li><a href="#apache-configuration">Apache Configuration</a></li>
+            <li><a href="#php-configuration">PHP Configuration</a></li>
+            <li><a href="#mysql-configuration">MySQL Configuration</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#module-4-testing-and-validating-the-development-environment">Module 4: Testing and Validating the Development Environment</a>
+      <ul>
+        <li><a href="#41-testing-the-web-server-with-localhost">4.1 Testing the Web Server with Localhost</a></li>
+        <li><a href="#expected-result">Expected Result</a></li>
+        <li><a href="#42-accessing-phpmyadmin">4.2 Accessing phpMyAdmin</a></li>
+        <li><a href="#expected-result-1">Expected Result</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-5-understanding-the-document-root">Module 5: Understanding the Document Root</a>
+      <ul>
+        <li><a href="#51-wamp-document-root">5.1 WAMP Document Root</a></li>
+        <li><a href="#52-xampp-document-root">5.2 XAMPP Document Root</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-6-creating-and-testing-a-php-project">Module 6: Creating and Testing a PHP Project</a>
+      <ul>
+        <li><a href="#expected-result-2">Expected Result</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-7-basic-architecture-of-a-php--mysql-application">Module 7: Basic Architecture of a PHP + MySQL Application</a>
+      <ul>
+        <li><a href="#request-flow">Request Flow</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-8-common-problems-and-basic-troubleshooting">Module 8: Common Problems and Basic Troubleshooting</a>
+      <ul>
+        <li><a href="#problem-1-apache-will-not-start">Problem 1: Apache Will Not Start</a></li>
+        <li><a href="#basic-troubleshooting">Basic Troubleshooting</a></li>
+        <li><a href="#problem-2-mysql-will-not-start">Problem 2: MySQL Will Not Start</a></li>
+        <li><a href="#problem-3-localhost-does-not-open">Problem 3: <code>localhost</code> Does Not Open</a></li>
+        <li><a href="#problem-4-php-file-downloads-instead-of-executing">Problem 4: PHP File Downloads Instead of Executing</a></li>
+        <li><a href="#problem-5-phpmyadmin-does-not-open">Problem 5: phpMyAdmin Does Not Open</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-9-important-terms-for-exams">Module 9: Important Terms for Exams</a>
+      <ul>
+        <li><a href="#localhost">Localhost</a></li>
+        <li><a href="#web-server">Web Server</a></li>
+        <li><a href="#database-server">Database Server</a></li>
+        <li><a href="#rdbms">RDBMS</a></li>
+        <li><a href="#sql">SQL</a></li>
+        <li><a href="#php">PHP</a></li>
+        <li><a href="#phpmyadmin">phpMyAdmin</a></li>
+        <li><a href="#document-root">Document Root</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-10-essential-urls-to-memorize">Module 10: Essential URLs to Memorize</a>
+      <ul>
+        <li><a href="#localhost-1">Localhost</a></li>
+        <li><a href="#phpmyadmin-1">phpMyAdmin</a></li>
+        <li><a href="#custom-project">Custom Project</a></li>
+      </ul>
+    </li>
+    <li><a href="#quick-study-summary-checklist">Quick Study Summary Checklist</a></li>
+    <li><a href="#final-exam-revision">Final Exam Revision</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master study guide compiles all technical details, definitions, step-by-step installation instructions, and service operations required for mastering local web and database server environments.</p>
+</blockquote>
+<hr>
+<h2 id="module-1-architectural-foundation-of-local-server-environments">Module 1: Architectural Foundation of Local Server Environments</h2>
+<p>Before writing or deploying dynamic database-driven applications, such as PHP and MySQL systems, developers require a local testing environment that mirrors a live production web server.</p>
+<h3 id="11-what-is-an-environment-stack">1.1 What is an Environment Stack?</h3>
+<p>Local development stacks bundle an operating system, web server, database management system, and scripting language together.</p>
+<ul>
+<li>
+<p><strong>WAMP:</strong> Specifically tailored for Windows environments:</p>
+<ul>
+<li><strong>W</strong> — Windows</li>
+<li><strong>A</strong> — Apache</li>
+<li><strong>M</strong> — MySQL</li>
+<li><strong>P</strong> — PHP</li>
+</ul>
+</li>
+<li>
+<p><strong>XAMPP:</strong> A cross-platform development environment:</p>
+<ul>
+<li><strong>X</strong> — Cross-platform</li>
+<li><strong>A</strong> — Apache</li>
+<li><strong>M</strong> — MySQL/MariaDB</li>
+<li><strong>P</strong> — PHP</li>
+<li><strong>P</strong> — Perl</li>
+</ul>
+</li>
+</ul>
+<p>XAMPP can be used across Windows, Linux, and macOS.</p>
+<h3 id="12-core-component-breakdown">1.2 Core Component Breakdown</h3>
+<h4 id="1-apache-http-server-httpd">1. Apache HTTP Server (<code>httpd</code>)</h4>
+<ul>
+<li>Acts as the core web server software.</li>
+<li>Receives incoming HTTP requests from web browsers.</li>
+<li>Processes and serves web resources back to clients over the network.</li>
+<li>Commonly listens on <strong>Port 80</strong> for HTTP traffic and <strong>Port 443</strong> for HTTPS traffic.</li>
+</ul>
+<h4 id="2-mysql--mariadb">2. MySQL / MariaDB</h4>
+<ul>
+<li>A <strong>Relational Database Management System (RDBMS)</strong>.</li>
+<li>Stores structured application data.</li>
+<li>Uses <strong>Structured Query Language (SQL)</strong>.</li>
+<li>Can store:
+<ul>
+<li>User accounts</li>
+<li>Product information</li>
+<li>Transactions</li>
+<li>Customer records</li>
+<li>Application settings</li>
+<li>Other structured data</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-php-hypertext-preprocessor">3. PHP (Hypertext Preprocessor)</h4>
+<ul>
+<li>A server-side scripting language designed for web development.</li>
+<li>Executes on the web server rather than directly in the user&rsquo;s browser.</li>
+<li>Can communicate with databases such as MySQL/MariaDB.</li>
+<li>Dynamically generates HTML output that is returned to the client browser.</li>
+</ul>
+<hr>
+<h2 id="module-2-complete-installation-procedure">Module 2: Complete Installation Procedure</h2>
+<p>Installing a local server package requires careful attention to administrative privileges, component selections, prerequisites, and installation paths.</p>
+<h3 id="phase-1-acquisition">Phase 1: Acquisition</h3>
+<p>Always download installation packages from official and trusted sources.</p>
+<ul>
+<li><strong>WAMP Server:</strong> <a href="http://www.wampserver.com/en/" target="_blank" rel="noopener noreffer ">Official WAMP Server Website</a></li>
+<li><strong>XAMPP:</strong> <a href="https://www.apachefriends.org/" target="_blank" rel="noopener noreffer ">Apache Friends XAMPP Website</a></li>
+</ul>
+<h3 id="architecture-check">Architecture Check</h3>
+<p>Before downloading, ensure that the selected installer matches your operating system architecture.</p>
+<p>For most modern Windows computers, this will normally be the <strong>64-bit (x64)</strong> version.</p>
+<hr>
+<h3 id="phase-2-execution-and-setup-wizard">Phase 2: Execution and Setup Wizard</h3>
+<h4 id="step-1-locate-the-installer">Step 1: Locate the Installer</h4>
+<p>Locate the downloaded executable file in your Downloads folder or another location where you saved it.</p>
+<p>Examples:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">wampserver3.x.x_x64.exe
+</span></span><span class="line"><span class="cl">xampp-windows-x64-...-installer.exe</span></span></code></pre></div></div>
+<h4 id="step-2-run-the-installer">Step 2: Run the Installer</h4>
+<p>Double-click the installer.</p>
+<p>Windows may display a <strong>User Account Control (UAC)</strong> prompt asking:</p>
+<blockquote>
+<p>Do you want to allow this app to make changes to your device?</p>
+</blockquote>
+<p>Click <strong>Yes</strong> if you trust the installer and downloaded it from the official source.</p>
+<h4 id="step-3-select-the-language">Step 3: Select the Language</h4>
+<p>Choose the preferred installation language, such as:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">English</span></span></code></pre></div></div>
+<p>Click <strong>OK</strong>.</p>
+<h4 id="step-4-accept-the-license-agreement">Step 4: Accept the License Agreement</h4>
+<p>Read the license information provided by the installer.</p>
+<p>Select:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">I accept the agreement</span></span></code></pre></div></div>
+<p>Then click <strong>Next</strong>.</p>
+<h4 id="step-5-review-prerequisites-and-information">Step 5: Review Prerequisites and Information</h4>
+<p>The installer may display important information about:</p>
+<ul>
+<li>Visual C++ Redistributable requirements</li>
+<li>Windows permissions</li>
+<li>Port conflicts</li>
+<li>Existing web servers</li>
+<li>IIS</li>
+<li>Skype or other applications using Port 80</li>
+</ul>
+<p>Review these requirements and click <strong>Next</strong>.</p>
+<h4 id="step-6-select-the-destination-directory">Step 6: Select the Destination Directory</h4>
+<p>Choose the directory where the server environment will be installed.</p>
+<p>Typical locations include:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">C:\wamp64\</span></span></code></pre></div></div>
+<p>or:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">C:\xampp\</span></span></code></pre></div></div>
+<p>Using a simple installation path is generally recommended.</p>
+<p>Click <strong>Next</strong>.</p>
+<h4 id="step-7-select-components">Step 7: Select Components</h4>
+<p>For XAMPP, ensure the core components required for PHP/MySQL development are selected.</p>
+<p>Recommended components include:</p>
+<ul>
+<li>Apache</li>
+<li>MySQL/MariaDB</li>
+<li>PHP</li>
+<li>phpMyAdmin</li>
+</ul>
+<p>Additional components can be installed depending on the project requirements.</p>
+<h4 id="step-8-start-installation">Step 8: Start Installation</h4>
+<p>Review the selected settings.</p>
+<p>Click:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Install</span></span></code></pre></div></div>
+<p>The installer will extract and copy the required files.</p>
+<p>Wait for the installation process to finish.</p>
+<h4 id="step-9-finish-installation">Step 9: Finish Installation</h4>
+<p>Once installation is complete, click:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Finish</span></span></code></pre></div></div>
+<p>The XAMPP Control Panel or WAMP environment may then be launched.</p>
+<hr>
+<h2 id="module-3-service-management-and-operations">Module 3: Service Management and Operations</h2>
+<p>A local server environment depends on background services or processes.</p>
+<p>Apache and MySQL must be running before applications that depend on them can operate correctly.</p>
+<hr>
+<h3 id="31-managing-services-using-wamp-server">3.1 Managing Services Using WAMP Server</h3>
+<p>WAMP Server provides a notification-area icon that indicates the status of its services.</p>
+<h4 id="finding-the-wamp-icon">Finding the WAMP Icon</h4>
+<p>Look for the WAMP icon in the Windows Notification Area/System Tray, normally located at the bottom-right of the taskbar.</p>
+<p>The icon may indicate different service states.</p>
+<p>Typical meanings:</p>
+<ul>
+<li><strong>Red:</strong> Services are stopped or unavailable.</li>
+<li><strong>Orange:</strong> Some services are running while others are stopped.</li>
+<li><strong>Green:</strong> Required services are running correctly.</li>
+</ul>
+<h4 id="starting-all-services">Starting All Services</h4>
+<ol>
+<li>Click the WAMP notification-area icon.</li>
+<li>Select <strong>Start All Services</strong>.</li>
+<li>Wait for Apache and MySQL to start.</li>
+<li>Verify that the indicator becomes <strong>green</strong>.</li>
+</ol>
+<h4 id="stopping-all-services">Stopping All Services</h4>
+<ol>
+<li>Click the WAMP notification-area icon.</li>
+<li>Select <strong>Stop All Services</strong>.</li>
+<li>Apache and MySQL will be stopped.</li>
+<li>Network ports and system resources used by the services will be released.</li>
+</ol>
+<h4 id="restarting-all-services">Restarting All Services</h4>
+<p>If configuration files or PHP extensions are modified:</p>
+<ol>
+<li>Open the WAMP menu.</li>
+<li>Select <strong>Restart All Services</strong>.</li>
+<li>Wait for the services to stop and start again.</li>
+<li>Verify that the services return to the expected state.</li>
+</ol>
+<hr>
+<h3 id="32-managing-services-using-the-xampp-control-panel">3.2 Managing Services Using the XAMPP Control Panel</h3>
+<p>Open the:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">XAMPP Control Panel</span></span></code></pre></div></div>
+<p>The panel provides controls for individual server modules.</p>
+<h4 id="starting-apache">Starting Apache</h4>
+<ol>
+<li>Locate <strong>Apache</strong> in the module list.</li>
+<li>Click <strong>Start</strong>.</li>
+<li>The Apache process should start.</li>
+<li>The PID and Port information should appear.</li>
+<li>The Apache row should indicate that it is running.</li>
+</ol>
+<h4 id="starting-mysql">Starting MySQL</h4>
+<ol>
+<li>Locate <strong>MySQL</strong> in the module list.</li>
+<li>Click <strong>Start</strong>.</li>
+<li>Wait for the database server to initialize.</li>
+<li>Verify that MySQL is running.</li>
+</ol>
+<h4 id="stopping-a-service">Stopping a Service</h4>
+<p>Click <strong>Stop</strong> next to the corresponding service.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Apache → Stop
+</span></span><span class="line"><span class="cl">MySQL  → Stop</span></span></code></pre></div></div>
+<h4 id="restarting-a-service">Restarting a Service</h4>
+<p>Stop the required service and then click <strong>Start</strong> again.</p>
+<p>This can be useful after configuration changes.</p>
+<hr>
+<h3 id="33-configuration-files">3.3 Configuration Files</h3>
+<p>The XAMPP Control Panel provides access to important configuration files.</p>
+<p>Common files include:</p>
+<h4 id="apache-configuration">Apache Configuration</h4>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">httpd.conf</span></span></code></pre></div></div>
+<p>This file controls Apache&rsquo;s main configuration settings.</p>
+<h4 id="php-configuration">PHP Configuration</h4>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">php.ini</span></span></code></pre></div></div>
+<p>This file controls PHP configuration options such as:</p>
+<ul>
+<li>Extensions</li>
+<li>Upload limits</li>
+<li>Memory limits</li>
+<li>Error reporting</li>
+<li>Execution limits</li>
+<li>Time zones</li>
+</ul>
+<h4 id="mysql-configuration">MySQL Configuration</h4>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">my.ini</span></span></code></pre></div></div>
+<p>This file contains MySQL server configuration settings.</p>
+<blockquote>
+<p><strong>Important:</strong> Configuration files should be modified carefully. Incorrect configuration changes can prevent a service from starting.</p>
+</blockquote>
+<hr>
+<h2 id="module-4-testing-and-validating-the-development-environment">Module 4: Testing and Validating the Development Environment</h2>
+<p>After installing and starting the services, the environment should be tested.</p>
+<p>Testing confirms that:</p>
+<ul>
+<li>Apache is working.</li>
+<li>PHP is available.</li>
+<li>MySQL is running.</li>
+<li>phpMyAdmin can communicate with the database server.</li>
+<li>The document root is configured correctly.</li>
+</ul>
+<hr>
+<h3 id="41-testing-the-web-server-with-localhost">4.1 Testing the Web Server with Localhost</h3>
+<p>Open a web browser such as:</p>
+<ul>
+<li>Google Chrome</li>
+<li>Mozilla Firefox</li>
+<li>Microsoft Edge</li>
+</ul>
+<p>Enter:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost/</span></span></code></pre></div></div>
+<p>Press <strong>Enter</strong>.</p>
+<h3 id="expected-result">Expected Result</h3>
+<p>You should see the local server dashboard or default page.</p>
+<p>This confirms that the web server is responding to HTTP requests.</p>
+<hr>
+<h3 id="42-accessing-phpmyadmin">4.2 Accessing phpMyAdmin</h3>
+<p>phpMyAdmin is a web-based administration interface commonly included with XAMPP and WAMP installations.</p>
+<p>Open:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost/phpmyadmin/</span></span></code></pre></div></div>
+<h3 id="expected-result-1">Expected Result</h3>
+<p>The phpMyAdmin interface should load.</p>
+<p>From phpMyAdmin, you can:</p>
+<ul>
+<li>Create databases</li>
+<li>Delete databases</li>
+<li>Create tables</li>
+<li>Modify table structures</li>
+<li>Insert records</li>
+<li>Update records</li>
+<li>Delete records</li>
+<li>Execute SQL queries</li>
+<li>Manage database users</li>
+<li>Manage privileges</li>
+<li>Inspect database structures</li>
+</ul>
+<hr>
+<h2 id="module-5-understanding-the-document-root">Module 5: Understanding the Document Root</h2>
+<p>The <strong>document root</strong> is the directory from which the web server serves website files.</p>
+<p>The location depends on the server environment being used.</p>
+<h3 id="51-wamp-document-root">5.1 WAMP Document Root</h3>
+<p>The typical WAMP web directory is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">C:\wamp64\www\</span></span></code></pre></div></div>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">C:\wamp64\www\my_project\</span></span></code></pre></div></div>
+<h3 id="52-xampp-document-root">5.2 XAMPP Document Root</h3>
+<p>The typical XAMPP web directory is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">C:\xampp\htdocs\</span></span></code></pre></div></div>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">C:\xampp\htdocs\my_project\</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-6-creating-and-testing-a-php-project">Module 6: Creating and Testing a PHP Project</h2>
+<p>Suppose you create a project named:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">my_project</span></span></code></pre></div></div>
+<p>Inside the XAMPP document root, the folder structure would be:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">C:\xampp\htdocs\my_project\</span></span></code></pre></div></div>
+<p>Create an <code>index.php</code> file:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">C:\xampp\htdocs\my_project\index.php</span></span></code></pre></div></div>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-php">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">echo</span> <span class="s2">&#34;Hello, World!&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div></div>
+<p>Start Apache using the XAMPP Control Panel.</p>
+<p>Then open:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost/my_project/</span></span></code></pre></div></div>
+<h3 id="expected-result-2">Expected Result</h3>
+<p>The browser should display:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Hello, World!</span></span></code></pre></div></div>
+<p>This confirms that Apache is successfully serving and executing the PHP file.</p>
+<hr>
+<h2 id="module-7-basic-architecture-of-a-php--mysql-application">Module 7: Basic Architecture of a PHP + MySQL Application</h2>
+<p>A typical local PHP/MySQL application works approximately as follows:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">User
+</span></span><span class="line"><span class="cl">  |
+</span></span><span class="line"><span class="cl">  | HTTP Request
+</span></span><span class="line"><span class="cl">  v
+</span></span><span class="line"><span class="cl">Web Browser
+</span></span><span class="line"><span class="cl">  |
+</span></span><span class="line"><span class="cl">  v
+</span></span><span class="line"><span class="cl">Apache Web Server
+</span></span><span class="line"><span class="cl">  |
+</span></span><span class="line"><span class="cl">  v
+</span></span><span class="line"><span class="cl">PHP Application
+</span></span><span class="line"><span class="cl">  |
+</span></span><span class="line"><span class="cl">  | SQL Query
+</span></span><span class="line"><span class="cl">  v
+</span></span><span class="line"><span class="cl">MySQL / MariaDB
+</span></span><span class="line"><span class="cl">  |
+</span></span><span class="line"><span class="cl">  | Database Result
+</span></span><span class="line"><span class="cl">  v
+</span></span><span class="line"><span class="cl">PHP Application
+</span></span><span class="line"><span class="cl">  |
+</span></span><span class="line"><span class="cl">  | Generated HTML
+</span></span><span class="line"><span class="cl">  v
+</span></span><span class="line"><span class="cl">Apache
+</span></span><span class="line"><span class="cl">  |
+</span></span><span class="line"><span class="cl">  v
+</span></span><span class="line"><span class="cl">Web Browser</span></span></code></pre></div></div>
+<h3 id="request-flow">Request Flow</h3>
+<ol>
+<li>The user enters a URL in the browser.</li>
+<li>The browser sends an HTTP request.</li>
+<li>Apache receives the request.</li>
+<li>Apache identifies the requested PHP file.</li>
+<li>PHP executes the application logic.</li>
+<li>PHP communicates with MySQL/MariaDB if database information is required.</li>
+<li>MySQL processes the SQL query.</li>
+<li>The database returns the requested data.</li>
+<li>PHP generates the response.</li>
+<li>Apache sends the response back to the browser.</li>
+<li>The browser displays the resulting webpage.</li>
+</ol>
+<hr>
+<h2 id="module-8-common-problems-and-basic-troubleshooting">Module 8: Common Problems and Basic Troubleshooting</h2>
+<h3 id="problem-1-apache-will-not-start">Problem 1: Apache Will Not Start</h3>
+<p>Possible causes include:</p>
+<ul>
+<li>Port 80 is already being used.</li>
+<li>Port 443 is already being used.</li>
+<li>IIS is running.</li>
+<li>Another web server is active.</li>
+<li>Apache configuration contains an error.</li>
+<li>Windows firewall or security software is interfering.</li>
+</ul>
+<h3 id="basic-troubleshooting">Basic Troubleshooting</h3>
+<ol>
+<li>Open the XAMPP Control Panel.</li>
+<li>Check the Apache log.</li>
+<li>Identify which port is being used.</li>
+<li>Check whether another service is occupying the port.</li>
+<li>Stop the conflicting service if appropriate.</li>
+<li>Restart Apache.</li>
+</ol>
+<hr>
+<h3 id="problem-2-mysql-will-not-start">Problem 2: MySQL Will Not Start</h3>
+<p>Possible causes include:</p>
+<ul>
+<li>MySQL/MariaDB is already running.</li>
+<li>Another database server is using the required port.</li>
+<li>Database files have been damaged.</li>
+<li>MySQL configuration is incorrect.</li>
+<li>Another MySQL service is installed on Windows.</li>
+</ul>
+<p>Check the MySQL error log before making configuration changes.</p>
+<hr>
+<h3 id="problem-3-localhost-does-not-open">Problem 3: <code>localhost</code> Does Not Open</h3>
+<p>Check the following:</p>
+<ul>
+<li>Apache is running.</li>
+<li>The browser URL is correct.</li>
+<li>The selected port is correct.</li>
+<li>Windows firewall is not blocking the server.</li>
+<li>Apache configuration is valid.</li>
+</ul>
+<p>Try:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost/</span></span></code></pre></div></div>
+<p>If Apache uses another port, the URL may need to include it, for example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost:8080/</span></span></code></pre></div></div>
+<hr>
+<h3 id="problem-4-php-file-downloads-instead-of-executing">Problem 4: PHP File Downloads Instead of Executing</h3>
+<p>If a <code>.php</code> file is downloaded instead of executed, PHP may not be correctly configured with the web server.</p>
+<p>Check:</p>
+<ul>
+<li>Apache configuration</li>
+<li>PHP installation</li>
+<li>PHP module configuration</li>
+<li>PHP file location</li>
+<li>Whether Apache is actually serving the file</li>
+</ul>
+<hr>
+<h3 id="problem-5-phpmyadmin-does-not-open">Problem 5: phpMyAdmin Does Not Open</h3>
+<p>Check:</p>
+<ol>
+<li>Apache is running.</li>
+<li>MySQL/MariaDB is running.</li>
+<li>phpMyAdmin is installed.</li>
+<li>The URL is correct:</li>
+</ol>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost/phpmyadmin/</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-9-important-terms-for-exams">Module 9: Important Terms for Exams</h2>
+<h3 id="localhost">Localhost</h3>
+<p><code>localhost</code> refers to the computer on which the web server is currently running.</p>
+<p>The common loopback address is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">127.0.0.1</span></span></code></pre></div></div>
+<h3 id="web-server">Web Server</h3>
+<p>A web server receives HTTP/HTTPS requests and returns web resources to clients.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Apache HTTP Server</span></span></code></pre></div></div>
+<h3 id="database-server">Database Server</h3>
+<p>A database server manages databases and processes database queries.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">MySQL
+</span></span><span class="line"><span class="cl">MariaDB</span></span></code></pre></div></div>
+<h3 id="rdbms">RDBMS</h3>
+<p><strong>RDBMS</strong> stands for:</p>
+<blockquote>
+<p>Relational Database Management System</p>
+</blockquote>
+<p>It organizes information into related tables consisting of rows and columns.</p>
+<h3 id="sql">SQL</h3>
+<p><strong>SQL</strong> stands for:</p>
+<blockquote>
+<p>Structured Query Language</p>
+</blockquote>
+<p>SQL is used to interact with relational databases.</p>
+<p>Examples include:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span></span></span></code></pre></div></div>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;John&#39;</span><span class="p">);</span></span></span></code></pre></div></div>
+<h3 id="php">PHP</h3>
+<p>PHP is a server-side scripting language commonly used to create dynamic websites and web applications.</p>
+<h3 id="phpmyadmin">phpMyAdmin</h3>
+<p>phpMyAdmin is a browser-based graphical interface for managing MySQL/MariaDB databases.</p>
+<h3 id="document-root">Document Root</h3>
+<p>The document root is the directory from which Apache serves web content.</p>
+<p>Examples:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">C:\xampp\htdocs\</span></span></code></pre></div></div>
+<p>and:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">C:\wamp64\www\</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-10-essential-urls-to-memorize">Module 10: Essential URLs to Memorize</h2>
+<h3 id="localhost-1">Localhost</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost/</span></span></code></pre></div></div>
+<p>Used to test the local web server.</p>
+<h3 id="phpmyadmin-1">phpMyAdmin</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost/phpmyadmin/</span></span></code></pre></div></div>
+<p>Used to access the database administration interface.</p>
+<h3 id="custom-project">Custom Project</h3>
+<p>For a project named <code>my_project</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">http://localhost/my_project/</span></span></code></pre></div></div>
+<hr>
+<h2 id="quick-study-summary-checklist">Quick Study Summary Checklist</h2>
+<ul>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Understand the meaning of WAMP:</p>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Windows</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Apache</li>
+<li><i class="far fa-square" aria-hidden="true"></i> MySQL</li>
+<li><i class="far fa-square" aria-hidden="true"></i> PHP</li>
+</ul>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Understand the meaning of XAMPP:</p>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Cross-platform</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Apache</li>
+<li><i class="far fa-square" aria-hidden="true"></i> MySQL/MariaDB</li>
+<li><i class="far fa-square" aria-hidden="true"></i> PHP</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Perl</li>
+</ul>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Know the core components:</p>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Apache</li>
+<li><i class="far fa-square" aria-hidden="true"></i> MySQL/MariaDB</li>
+<li><i class="far fa-square" aria-hidden="true"></i> PHP</li>
+<li><i class="far fa-square" aria-hidden="true"></i> phpMyAdmin</li>
+</ul>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Know the installation sequence:</p>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Download</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Execute installer</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Confirm UAC</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Select language</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Accept license</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Review prerequisites</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Select installation directory</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Select components</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Install</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Finish</li>
+</ul>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Understand service management:</p>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Start Apache</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Start MySQL</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Stop services</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Restart services</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Check service status</li>
+</ul>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Memorize the main testing URLs:</p>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>http://localhost/</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> <code>http://localhost/phpmyadmin/</code></li>
+</ul>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Know the document root directories:</p>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> WAMP → <code>C:\wamp64\www\</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> XAMPP → <code>C:\xampp\htdocs\</code></li>
+</ul>
+</li>
+<li>
+<p><i class="far fa-square" aria-hidden="true"></i> Understand the PHP request flow:</p>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Browser</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Apache</li>
+<li><i class="far fa-square" aria-hidden="true"></i> PHP</li>
+<li><i class="far fa-square" aria-hidden="true"></i> MySQL/MariaDB</li>
+<li><i class="far fa-square" aria-hidden="true"></i> PHP</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Apache</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Browser</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="final-exam-revision">Final Exam Revision</h2>
+<p>Remember the following key concepts:</p>
+<blockquote>
+<p><strong>Apache = Web Server</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>PHP = Server-Side Programming Language</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>MySQL/MariaDB = Database Server</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>phpMyAdmin = Database Management Interface</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>localhost = This Computer</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>htdocs = XAMPP Web Root</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>www = WAMP Web Root</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Port 80 = Common HTTP Port</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>SQL = Language Used to Communicate with Relational Databases</strong></p>
+</blockquote>
+<p>The most important practical validation steps are:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. Start Apache
+</span></span><span class="line"><span class="cl">2. Start MySQL
+</span></span><span class="line"><span class="cl">3. Open http://localhost/
+</span></span><span class="line"><span class="cl">4. Open http://localhost/phpmyadmin/
+</span></span><span class="line"><span class="cl">5. Create a project inside the document root
+</span></span><span class="line"><span class="cl">6. Create index.php
+</span></span><span class="line"><span class="cl">7. Open http://localhost/project_name/</span></span></code></pre></div></div>
+<p>If all of these steps work correctly, the basic local PHP and MySQL development environment is operational.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-09-09</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sql_basics/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://charuka-dilshan.github.io/sql_basics/" data-title="Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP &amp; MySQL (SQL Part 01)" data-hashtags="SQL,Databases,Computer Science,Backend"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://charuka-dilshan.github.io/sql_basics/" data-title="Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP &amp; MySQL (SQL Part 01)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://charuka-dilshan.github.io/sql_basics/" data-hashtag="SQL"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://charuka-dilshan.github.io/sql_basics/" data-title="Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP &amp; MySQL (SQL Part 01)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://charuka-dilshan.github.io/sql_basics/" data-title="Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP &amp; MySQL (SQL Part 01)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://charuka-dilshan.github.io/sql_basics/" data-title="Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP &amp; MySQL (SQL Part 01)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://charuka-dilshan.github.io/sql_basics/" data-title="Comprehensive Study Guide: Installing, Configuring, and Testing XAMPP &amp; MySQL (SQL Part 01)" data-description="Master SQL from foundational queries to advanced database concepts like joins, subqueries, and window functions."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fcharuka-dilshan.github.io%2fsql_basics%2f&amp;text=Comprehensive%20Study%20Guide%3a%20Installing%2c%20Configuring%2c%20and%20Testing%20XAMPP%20%26%20MySQL%20%28SQL%20Part%2001%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/databases/">Databases</a>,&nbsp;<a href="/tags/computer-science/">Computer Science</a>,&nbsp;<a href="/tags/backend/">Backend</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/first_post/" class="prev" rel="prev" title="My First Post"><i class="fas fa-angle-left" aria-hidden="true"></i>My First Post</a>
+            <a href="/sql_basics_part2/" class="next" rel="next" title="Managing Databases Using MySQL in Local Servers  (SQL Part 02)">Managing Databases Using MySQL in Local Servers  (SQL Part 02)<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>

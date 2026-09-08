@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09) - Charuuu..^_^</title><meta name="Description" content="Master all types of SQL joins in MySQL including INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, NATURAL JOIN, CROSS JOIN, and SELF JOIN with complete examples."><meta property="og:url" content="https://charuka-dilshan.github.io/sql_basics_part9/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)">
+	<meta property="og:description" content="Master all types of SQL joins in MySQL including INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, NATURAL JOIN, CROSS JOIN, and SELF JOIN with complete examples.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-20T00:17:00+05:30">
+		<meta property="article:modified_time" content="2026-09-09T00:45:56+05:30">
+		<meta property="article:tag" content="SQL">
+		<meta property="article:tag" content="MySQL">
+		<meta property="article:tag" content="Joins">
+		<meta property="article:tag" content="INNER JOIN">
+		<meta property="article:tag" content="LEFT JOIN">
+		<meta property="article:tag" content="Database Relationships">
+		<meta property="og:image" content="https://charuka-dilshan.github.io/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://charuka-dilshan.github.io/logo.png">
+	<meta name="twitter:title" content="SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)">
+	<meta name="twitter:description" content="Master all types of SQL joins in MySQL including INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, NATURAL JOIN, CROSS JOIN, and SELF JOIN with complete examples.">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://charuka-dilshan.github.io/sql_basics_part9/" /><link rel="prev" href="https://charuka-dilshan.github.io/sql_basics_part8/" /><link rel="next" href="https://charuka-dilshan.github.io/sql_basics_part10/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/charuka-dilshan.github.io\/sql_basics_part9\/"
+        },"genre": "posts","keywords": "SQL, MySQL, Joins, INNER JOIN, LEFT JOIN, Database Relationships","wordcount":  3012 ,
+        "url": "https:\/\/charuka-dilshan.github.io\/sql_basics_part9\/","datePublished": "2026-08-20T00:17:00+05:30","dateModified": "2026-09-09T00:45:56+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "Master all types of SQL joins in MySQL including INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, NATURAL JOIN, CROSS JOIN, and SELF JOIN with complete examples."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)</h1><h2 class="single-subtitle">An exhaustive study guide covering Equi-Joins, Non-Equi-Joins, Inner, Outer (Left/Right/Full), Natural, Cross, and Self Joins.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder" aria-hidden="true"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-20">2026-08-20</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;3012 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;15 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#module-1-what-is-an-sql-join">Module 1: What is an SQL Join?</a>
+      <ul>
+        <li><a href="#11-why-are-joins-needed">1.1 Why Are Joins Needed?</a></li>
+        <li><a href="#12-classifications-of-joins">1.2 Classifications of Joins</a>
+          <ul>
+            <li><a href="#equi-join">EQUI JOIN</a></li>
+            <li><a href="#non-equi-join">NON-EQUI JOIN</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#module-2-complete-list-of-sql-joins">Module 2: Complete List of SQL Joins</a></li>
+    <li><a href="#module-3-inner-join">Module 3: INNER JOIN</a>
+      <ul>
+        <li><a href="#31-definition">3.1 Definition</a></li>
+        <li><a href="#32-general-syntax">3.2 General Syntax</a></li>
+        <li><a href="#33-basic-example">3.3 Basic Example</a></li>
+        <li><a href="#34-hotel-database-example">3.4 Hotel Database Example</a></li>
+        <li><a href="#35-important-rule">3.5 Important Rule</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-4-left-join">Module 4: LEFT JOIN</a>
+      <ul>
+        <li><a href="#41-general-syntax">4.1 General Syntax</a></li>
+        <li><a href="#42-example">4.2 Example</a></li>
+        <li><a href="#43-hotel-example">4.3 Hotel Example</a></li>
+        <li><a href="#44-important-rule">4.4 Important Rule</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-5-right-join">Module 5: RIGHT JOIN</a>
+      <ul>
+        <li><a href="#51-general-syntax">5.1 General Syntax</a></li>
+        <li><a href="#52-example">5.2 Example</a></li>
+        <li><a href="#53-hotel-example">5.3 Hotel Example</a></li>
+        <li><a href="#54-important-rule">5.4 Important Rule</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-6-full-outer-join">Module 6: FULL OUTER JOIN</a>
+      <ul>
+        <li><a href="#61-concept">6.1 Concept</a></li>
+        <li><a href="#62-standard-sql-syntax">6.2 Standard SQL Syntax</a></li>
+        <li><a href="#63-important-mysql-note">6.3 Important MySQL Note</a></li>
+        <li><a href="#64-important-rule">6.4 Important Rule</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-7-natural-join">Module 7: NATURAL JOIN</a>
+      <ul>
+        <li><a href="#71-definition">7.1 Definition</a></li>
+        <li><a href="#72-syntax">7.2 Syntax</a></li>
+        <li><a href="#73-hotel-example">7.3 Hotel Example</a></li>
+        <li><a href="#74-important-rule">7.4 Important Rule</a></li>
+        <li><a href="#75-important-warning">7.5 Important Warning</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-8-cross-join">Module 8: CROSS JOIN</a>
+      <ul>
+        <li><a href="#81-definition">8.1 Definition</a></li>
+        <li><a href="#82-syntax">8.2 Syntax</a></li>
+        <li><a href="#83-example">8.3 Example</a></li>
+        <li><a href="#84-cartesian-product-formula">8.4 Cartesian Product Formula</a></li>
+        <li><a href="#85-cross-join-with-where">8.5 CROSS JOIN with WHERE</a></li>
+        <li><a href="#86-important-rule">8.6 Important Rule</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-9-self-join">Module 9: SELF JOIN</a>
+      <ul>
+        <li><a href="#91-why-use-a-self-join">9.1 Why Use a Self Join?</a></li>
+        <li><a href="#92-basic-syntax">9.2 Basic Syntax</a></li>
+        <li><a href="#93-example">9.3 Example</a></li>
+        <li><a href="#94-employee-example">9.4 Employee Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-10-equi-join-vs-non-equi-join">Module 10: Equi-Join vs Non-Equi-Join</a>
+      <ul>
+        <li><a href="#101-equi-join">10.1 Equi-Join</a></li>
+        <li><a href="#102-non-equi-join">10.2 Non-Equi-Join</a></li>
+        <li><a href="#103-comparison">10.3 Comparison</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-11-practical-hotel-database-join-queries">Module 11: Practical Hotel Database Join Queries</a>
+      <ul>
+        <li><a href="#111-display-hotels-and-their-rooms">11.1 Display Hotels and Their Rooms</a></li>
+        <li><a href="#112-display-all-hotels-including-hotels-without-rooms">11.2 Display All Hotels Including Hotels Without Rooms</a></li>
+        <li><a href="#113-display-all-rooms-with-their-hotel-names">11.3 Display All Rooms with Their Hotel Names</a></li>
+        <li><a href="#114-display-guests-and-their-bookings">11.4 Display Guests and Their Bookings</a></li>
+        <li><a href="#115-display-booking-information-with-hotel-names">11.5 Display Booking Information with Hotel Names</a></li>
+        <li><a href="#116-display-room-information-with-hotel-and-city">11.6 Display Room Information with Hotel and City</a></li>
+        <li><a href="#117-display-all-hotels-and-their-available-rooms">11.7 Display All Hotels and Their Available Rooms</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-12-joining-multiple-tables">Module 12: Joining Multiple Tables</a>
+      <ul>
+        <li><a href="#121-three-table-join">12.1 Three-Table Join</a></li>
+        <li><a href="#122-four-table-join">12.2 Four-Table Join</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-13-join-conditions-and-the-on-clause">Module 13: JOIN Conditions and the <code>ON</code> Clause</a>
+      <ul>
+        <li><a href="#131-why-is-on-important">13.1 Why Is <code>ON</code> Important?</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-14-table-aliases">Module 14: Table Aliases</a>
+      <ul>
+        <li><a href="#141-alias-syntax">14.1 Alias Syntax</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-15-inner-join-vs-outer-join">Module 15: INNER JOIN vs OUTER JOIN</a>
+      <ul>
+        <li><a href="#inner-join">INNER JOIN</a></li>
+        <li><a href="#left-join">LEFT JOIN</a></li>
+        <li><a href="#right-join">RIGHT JOIN</a></li>
+        <li><a href="#full-outer-join">FULL OUTER JOIN</a></li>
+        <li><a href="#quick-comparison">Quick Comparison</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-16-null-values-in-outer-joins">Module 16: NULL Values in Outer Joins</a></li>
+    <li><a href="#module-17-common-join-errors">Module 17: Common JOIN Errors</a>
+      <ul>
+        <li><a href="#problem-1-missing-join-condition">Problem 1: Missing JOIN Condition</a></li>
+        <li><a href="#problem-2-incorrect-join-columns">Problem 2: Incorrect Join Columns</a></li>
+        <li><a href="#problem-3-ambiguous-column-names">Problem 3: Ambiguous Column Names</a></li>
+        <li><a href="#problem-4-forgetting-the-relationship">Problem 4: Forgetting the Relationship</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-18-join-selection-guide">Module 18: Join Selection Guide</a></li>
+    <li><a href="#module-19-exam-focused-join-examples">Module 19: Exam-Focused JOIN Examples</a>
+      <ul>
+        <li><a href="#example-1-inner-join">Example 1: Inner Join</a></li>
+        <li><a href="#example-2-left-join">Example 2: Left Join</a></li>
+        <li><a href="#example-3-right-join">Example 3: Right Join</a></li>
+        <li><a href="#example-4-natural-join">Example 4: Natural Join</a></li>
+        <li><a href="#example-5-cross-join">Example 5: Cross Join</a></li>
+        <li><a href="#example-6-self-join">Example 6: Self Join</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-20-join-syntax-summary">Module 20: JOIN Syntax Summary</a>
+      <ul>
+        <li><a href="#inner-join-1">INNER JOIN</a></li>
+        <li><a href="#left-join-1">LEFT JOIN</a></li>
+        <li><a href="#right-join-1">RIGHT JOIN</a></li>
+        <li><a href="#full-outer-join-1">FULL OUTER JOIN</a></li>
+        <li><a href="#natural-join">NATURAL JOIN</a></li>
+        <li><a href="#cross-join">CROSS JOIN</a></li>
+        <li><a href="#self-join">SELF JOIN</a></li>
+      </ul>
+    </li>
+    <li><a href="#module-21-quick-study-summary-checklist">Module 21: Quick Study Summary Checklist</a></li>
+    <li><a href="#final-exam-revision">Final Exam Revision</a></li>
+    <li><a href="#complete-join-workflow">Complete JOIN Workflow</a></li>
+    <li><a href="#core-join-examples-to-memorize">Core JOIN Examples to Memorize</a>
+      <ul>
+        <li><a href="#inner-join-2">INNER JOIN</a></li>
+        <li><a href="#left-join-2">LEFT JOIN</a></li>
+        <li><a href="#right-join-2">RIGHT JOIN</a></li>
+        <li><a href="#natural-join-1">NATURAL JOIN</a></li>
+        <li><a href="#cross-join-1">CROSS JOIN</a></li>
+        <li><a href="#self-join-1">SELF JOIN</a></li>
+        <li><a href="#multiple-table-join">Multiple Table JOIN</a></li>
+      </ul>
+    </li>
+    <li><a href="#final-reminder">Final Reminder</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master study guide covers Lecture 09 notes, detailing how to combine data from two or more tables using various types of SQL Joins.</p>
+</blockquote>
+<hr>
+<h2 id="module-1-what-is-an-sql-join">Module 1: What is an SQL Join?</h2>
+<p>A <strong>JOIN</strong> clause is used to combine rows from two or more tables based on a related column between them, creating a temporary result set of rows.</p>
+<p>Joins are one of the most important concepts in relational databases because information is normally distributed across multiple related tables.</p>
+<h3 id="11-why-are-joins-needed">1.1 Why Are Joins Needed?</h3>
+<p>Consider a hotel database containing separate tables such as:</p>
+<ul>
+<li><code>Hotel</code></li>
+<li><code>Room</code></li>
+<li><code>Guest</code></li>
+<li><code>Booking</code></li>
+</ul>
+<p>The <code>Hotel</code> table may contain hotel information, while the <code>Room</code> table contains room information. To display a hotel name together with its rooms, information from both tables must be combined.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="k">Type</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The <code>JOIN</code> operation allows related records from different tables to be displayed together.</p>
+<hr>
+<h3 id="12-classifications-of-joins">1.2 Classifications of Joins</h3>
+<p>SQL joins can be classified according to the condition used to match rows.</p>
+<h4 id="equi-join">EQUI JOIN</h4>
+<p>An <strong>Equi-Join</strong> uses the equality operator (<code>=</code>) as the comparison operator.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The rows are matched when:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Hotel.HotelNo = Room.HotelNo</span></span></code></pre></div></div>
+<h4 id="non-equi-join">NON-EQUI JOIN</h4>
+<p>A <strong>Non-Equi-Join</strong> uses comparison operators other than <code>=</code>.</p>
+<p>Examples include:</p>
+<ul>
+<li><code>&gt;</code></li>
+<li><code>&lt;</code></li>
+<li><code>&gt;=</code></li>
+<li><code>&lt;=</code></li>
+<li><code>&lt;&gt;</code></li>
+</ul>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Room</span><span class="w"> </span><span class="n">R1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w"> </span><span class="n">R2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="n">Price</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="n">Price</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-2-complete-list-of-sql-joins">Module 2: Complete List of SQL Joins</h2>
+<p>The major SQL join types are:</p>
+<ol>
+<li><strong>INNER JOIN</strong></li>
+<li><strong>LEFT JOIN</strong></li>
+<li><strong>RIGHT JOIN</strong></li>
+<li><strong>FULL OUTER JOIN</strong></li>
+<li><strong>NATURAL JOIN</strong></li>
+<li><strong>CROSS JOIN</strong></li>
+<li><strong>SELF JOIN</strong></li>
+</ol>
+<p>The following sections explain each type in detail.</p>
+<hr>
+<h2 id="module-3-inner-join">Module 3: INNER JOIN</h2>
+<p>An <strong>INNER JOIN</strong> returns only rows where a matching record exists in both tables.</p>
+<h3 id="31-definition">3.1 Definition</h3>
+<p>An Inner Join compares related columns from two tables and returns only the matching records.</p>
+<p>If a record exists in the first table but has no matching record in the second table, it is excluded from the result.</p>
+<h3 id="32-general-syntax">3.2 General Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="k">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="k">column</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="33-basic-example">3.3 Basic Example</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="34-hotel-database-example">3.4 Hotel Database Example</h3>
+<p>To display hotel names together with their rooms:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="k">Type</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">Price</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query returns only hotels that have matching records in the <code>Room</code> table.</p>
+<h3 id="35-important-rule">3.5 Important Rule</h3>
+<blockquote>
+<p><strong>INNER JOIN = Return only matching rows from both tables.</strong></p>
+</blockquote>
+<hr>
+<h2 id="module-4-left-join">Module 4: LEFT JOIN</h2>
+<p>A <strong>LEFT JOIN</strong>, also called a <strong>LEFT OUTER JOIN</strong>, returns every row from the left table and matching rows from the right table.</p>
+<p>If no matching row exists in the right table, the right-side columns contain <code>NULL</code>.</p>
+<h3 id="41-general-syntax">4.1 General Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="k">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="k">column</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="42-example">4.2 Example</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="43-hotel-example">4.3 Hotel Example</h3>
+<p>To display all hotels, including hotels that do not currently have rooms:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="k">Type</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This is particularly useful when you want to preserve every record from the left table.</p>
+<h3 id="44-important-rule">4.4 Important Rule</h3>
+<blockquote>
+<p><strong>LEFT JOIN = Keep all rows from the left table.</strong></p>
+</blockquote>
+<p>If there is no matching record on the right:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Right-side columns = NULL</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-5-right-join">Module 5: RIGHT JOIN</h2>
+<p>A <strong>RIGHT JOIN</strong>, also called a <strong>RIGHT OUTER JOIN</strong>, returns every row from the right table and matching rows from the left table.</p>
+<p>If there is no matching row in the left table, the left-side columns contain <code>NULL</code>.</p>
+<h3 id="51-general-syntax">5.1 General Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="k">column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="k">column</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="52-example">5.2 Example</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="53-hotel-example">5.3 Hotel Example</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="k">Type</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query preserves every row from the <code>Room</code> table.</p>
+<h3 id="54-important-rule">5.4 Important Rule</h3>
+<blockquote>
+<p><strong>RIGHT JOIN = Keep all rows from the right table.</strong></p>
+</blockquote>
+<hr>
+<h2 id="module-6-full-outer-join">Module 6: FULL OUTER JOIN</h2>
+<p>A <strong>FULL OUTER JOIN</strong> returns all matching and non-matching rows from both tables.</p>
+<p>It combines the behavior of:</p>
+<ul>
+<li><code>LEFT JOIN</code></li>
+<li><code>RIGHT JOIN</code></li>
+</ul>
+<h3 id="61-concept">6.1 Concept</h3>
+<p>A Full Outer Join returns:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Matching rows
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Unmatched rows from the left table
+</span></span><span class="line"><span class="cl">+
+</span></span><span class="line"><span class="cl">Unmatched rows from the right table</span></span></code></pre></div></div>
+<p>Missing values are represented by <code>NULL</code>.</p>
+<h3 id="62-standard-sql-syntax">6.2 Standard SQL Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FULL</span><span class="w"> </span><span class="k">OUTER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="63-important-mysql-note">6.3 Important MySQL Note</h3>
+<p>MySQL does <strong>not</strong> directly support the <code>FULL OUTER JOIN</code> syntax.</p>
+<p>A Full Outer Join can instead be simulated using <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, and <code>UNION</code>.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="n">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">UNION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="64-important-rule">6.4 Important Rule</h3>
+<blockquote>
+<p><strong>FULL OUTER JOIN = Keep all rows from both tables.</strong></p>
+</blockquote>
+<hr>
+<h2 id="module-7-natural-join">Module 7: NATURAL JOIN</h2>
+<p>A <strong>NATURAL JOIN</strong> is a special type of Equi-Join.</p>
+<p>It automatically matches columns that have the same name in both tables.</p>
+<h3 id="71-definition">7.1 Definition</h3>
+<p>A Natural Join automatically identifies columns with matching names and compatible data types.</p>
+<p>For example, if both tables contain:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">HotelNo</span></span></code></pre></div></div>
+<p>MySQL can automatically use that column as the joining condition.</p>
+<h3 id="72-syntax">7.2 Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">NATURAL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="73-hotel-example">7.3 Hotel Example</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">NATURAL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>If both tables contain a compatible column called <code>HotelNo</code>, MySQL automatically uses it to establish the relationship.</p>
+<h3 id="74-important-rule">7.4 Important Rule</h3>
+<p>Do <strong>not</strong> use an <code>ON</code> clause with a Natural Join.</p>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">NATURAL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">NATURAL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="75-important-warning">7.5 Important Warning</h3>
+<p>Natural Joins should be used carefully because adding another column with the same name to either table can change the automatic joining behavior.</p>
+<hr>
+<h2 id="module-8-cross-join">Module 8: CROSS JOIN</h2>
+<p>A <strong>CROSS JOIN</strong> produces a Cartesian product.</p>
+<p>Every row from the first table is combined with every row from the second table.</p>
+<h3 id="81-definition">8.1 Definition</h3>
+<p>If:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Table A = 5 rows
+</span></span><span class="line"><span class="cl">Table B = 4 rows</span></span></code></pre></div></div>
+<p>then:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">CROSS JOIN result = 5 × 4 = 20 rows</span></span></code></pre></div></div>
+<h3 id="82-syntax">8.2 Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">CROSS</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="83-example">8.3 Example</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">CROSS</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Every hotel is combined with every room record.</p>
+<h3 id="84-cartesian-product-formula">8.4 Cartesian Product Formula</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Number of result rows =
+</span></span><span class="line"><span class="cl">Rows in Table A × Rows in Table B</span></span></code></pre></div></div>
+<h3 id="85-cross-join-with-where">8.5 CROSS JOIN with WHERE</h3>
+<p>A Cross Join can be combined with a <code>WHERE</code> condition.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="p">,</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This produces results similar to an Inner Join.</p>
+<h3 id="86-important-rule">8.6 Important Rule</h3>
+<blockquote>
+<p><strong>CROSS JOIN = Every row from Table A × Every row from Table B.</strong></p>
+</blockquote>
+<hr>
+<h2 id="module-9-self-join">Module 9: SELF JOIN</h2>
+<p>A <strong>SELF JOIN</strong> occurs when a table is joined with itself.</p>
+<p>The same table is treated as two separate logical instances by using aliases.</p>
+<h3 id="91-why-use-a-self-join">9.1 Why Use a Self Join?</h3>
+<p>Self Joins are useful when records within the same table have relationships with other records in that same table.</p>
+<p>Common examples include:</p>
+<ul>
+<li>Employee and manager relationships</li>
+<li>Parent and child relationships</li>
+<li>Hierarchical structures</li>
+<li>Comparing records within the same table</li>
+</ul>
+<h3 id="92-basic-syntax">9.2 Basic Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w"> </span><span class="n">X</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">table_A</span><span class="w"> </span><span class="n">Y</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">X</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Y</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="93-example">9.3 Example</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">table_A</span><span class="w"> </span><span class="n">Y</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">X</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Y</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Here:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">X = first logical copy of table_A
+</span></span><span class="line"><span class="cl">Y = second logical copy of table_A</span></span></code></pre></div></div>
+<h3 id="94-employee-example">9.4 Employee Example</h3>
+<p>Suppose an employee table contains:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">EmployeeID
+</span></span><span class="line"><span class="cl">EmployeeName
+</span></span><span class="line"><span class="cl">ManagerID</span></span></code></pre></div></div>
+<p>A Self Join can be used to display employees and their managers:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">E</span><span class="p">.</span><span class="n">EmployeeName</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Employee</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">M</span><span class="p">.</span><span class="n">EmployeeName</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">Manager</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">E</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Employee</span><span class="w"> </span><span class="n">M</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">E</span><span class="p">.</span><span class="n">ManagerID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">M</span><span class="p">.</span><span class="n">EmployeeID</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-10-equi-join-vs-non-equi-join">Module 10: Equi-Join vs Non-Equi-Join</h2>
+<h3 id="101-equi-join">10.1 Equi-Join</h3>
+<p>An Equi-Join uses:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="o">=</span></span></span></code></pre></div></div>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="102-non-equi-join">10.2 Non-Equi-Join</h3>
+<p>A Non-Equi-Join uses operators such as:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">&gt;
+</span></span><span class="line"><span class="cl">&lt;
+</span></span><span class="line"><span class="cl">&gt;=
+</span></span><span class="line"><span class="cl">&lt;=
+</span></span><span class="line"><span class="cl">&lt;&gt;</span></span></code></pre></div></div>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">R1</span><span class="p">.</span><span class="n">Price</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">R2</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">R2</span><span class="p">.</span><span class="n">Price</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Room</span><span class="w"> </span><span class="n">R1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w"> </span><span class="n">R2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">R1</span><span class="p">.</span><span class="n">Price</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">R2</span><span class="p">.</span><span class="n">Price</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="103-comparison">10.3 Comparison</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Join Type</th>
+					<th>Condition</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Equi-Join</td>
+					<td><code>=</code></td>
+			</tr>
+			<tr>
+					<td>Non-Equi-Join</td>
+					<td><code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;&gt;</code></td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="module-11-practical-hotel-database-join-queries">Module 11: Practical Hotel Database Join Queries</h2>
+<p>The following examples demonstrate how joins can be applied to the hotel database.</p>
+<h3 id="111-display-hotels-and-their-rooms">11.1 Display Hotels and Their Rooms</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="k">Type</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">Price</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This displays only hotels that have corresponding room records.</p>
+<hr>
+<h3 id="112-display-all-hotels-including-hotels-without-rooms">11.2 Display All Hotels Including Hotels Without Rooms</h3>
+<p>Use a <code>LEFT JOIN</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="k">Type</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This ensures that hotels without rooms are still displayed.</p>
+<p>Their room-related columns will contain:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">NULL</span></span></code></pre></div></div>
+<hr>
+<h3 id="113-display-all-rooms-with-their-hotel-names">11.3 Display All Rooms with Their Hotel Names</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="k">Type</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">Price</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This combines room information with the corresponding hotel name.</p>
+<hr>
+<h3 id="114-display-guests-and-their-bookings">11.4 Display Guests and Their Bookings</h3>
+<p>To display guests together with their booking information:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Guest</span><span class="p">.</span><span class="n">GuestName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">DateFrom</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">DateTo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Guest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Booking</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Guest</span><span class="p">.</span><span class="n">GuestNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">GuestNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="115-display-booking-information-with-hotel-names">11.5 Display Booking Information with Hotel Names</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Guest</span><span class="p">.</span><span class="n">GuestName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">DateFrom</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">DateTo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Booking</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Guest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">GuestNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Guest</span><span class="p">.</span><span class="n">GuestNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query combines information from three tables:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Booking
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">Guest
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">Hotel</span></span></code></pre></div></div>
+<hr>
+<h3 id="116-display-room-information-with-hotel-and-city">11.6 Display Room Information with Hotel and City</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Hotel</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="k">Type</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">Price</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="117-display-all-hotels-and-their-available-rooms">11.7 Display All Hotels and Their Available Rooms</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Hotel</span><span class="p">.</span><span class="n">City</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="k">Type</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">Price</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-12-joining-multiple-tables">Module 12: Joining Multiple Tables</h2>
+<p>SQL allows more than two tables to be joined in a single query.</p>
+<p>For example, the hotel database can connect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Hotel
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Room
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Hotel
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Booking
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Guest</span></span></code></pre></div></div>
+<h3 id="121-three-table-join">12.1 Three-Table Join</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Guest</span><span class="p">.</span><span class="n">GuestName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">DateFrom</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">DateTo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Booking</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Guest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">GuestNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Guest</span><span class="p">.</span><span class="n">GuestNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This query combines:</p>
+<ul>
+<li><code>Booking</code></li>
+<li><code>Hotel</code></li>
+<li><code>Guest</code></li>
+</ul>
+<hr>
+<h3 id="122-four-table-join">12.2 Four-Table Join</h3>
+<p>To combine all four hotel database tables:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="k">Type</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Guest</span><span class="p">.</span><span class="n">GuestName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">DateFrom</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">DateTo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Booking</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">AND</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">RoomNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Guest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">GuestNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Guest</span><span class="p">.</span><span class="n">GuestNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This demonstrates how multiple relationships can be used in one query.</p>
+<hr>
+<h2 id="module-13-join-conditions-and-the-on-clause">Module 13: JOIN Conditions and the <code>ON</code> Clause</h2>
+<p>The <code>ON</code> clause specifies how two tables are related.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The condition:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span></span></span></code></pre></div></div>
+<p>tells MySQL which records should be matched.</p>
+<h3 id="131-why-is-on-important">13.1 Why Is <code>ON</code> Important?</h3>
+<p>Without an appropriate join condition, the query may produce incorrect results or a Cartesian product.</p>
+<p>Always identify the relationship between the tables before writing the Join condition.</p>
+<hr>
+<h2 id="module-14-table-aliases">Module 14: Table Aliases</h2>
+<p>Table aliases make complex Join queries shorter and easier to read.</p>
+<p>Instead of:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">Price</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>we can write:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">H</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">R</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">R</span><span class="p">.</span><span class="n">Price</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w"> </span><span class="n">H</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w"> </span><span class="n">R</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">H</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Here:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">H = Hotel
+</span></span><span class="line"><span class="cl">R = Room</span></span></code></pre></div></div>
+<h3 id="141-alias-syntax">14.1 Alias Syntax</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w"> </span><span class="n">H</span></span></span></code></pre></div></div>
+<p>means:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Hotel → H</span></span></code></pre></div></div>
+<p>and:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Room</span><span class="w"> </span><span class="n">R</span></span></span></code></pre></div></div>
+<p>means:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Room → R</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-15-inner-join-vs-outer-join">Module 15: INNER JOIN vs OUTER JOIN</h2>
+<h3 id="inner-join">INNER JOIN</h3>
+<p>Returns only matching records.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Table A     Table B
+</span></span><span class="line"><span class="cl">   ○─────────○
+</span></span><span class="line"><span class="cl">    Matching</span></span></code></pre></div></div>
+<h3 id="left-join">LEFT JOIN</h3>
+<p>Returns all records from the left table.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">LEFT TABLE + matching RIGHT TABLE</span></span></code></pre></div></div>
+<h3 id="right-join">RIGHT JOIN</h3>
+<p>Returns all records from the right table.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">RIGHT TABLE + matching LEFT TABLE</span></span></code></pre></div></div>
+<h3 id="full-outer-join">FULL OUTER JOIN</h3>
+<p>Returns all records from both tables.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">LEFT TABLE + RIGHT TABLE</span></span></code></pre></div></div>
+<h3 id="quick-comparison">Quick Comparison</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Join</th>
+					<th style="text-align: right">Matching Rows</th>
+					<th style="text-align: right">Unmatched Left</th>
+					<th style="text-align: right">Unmatched Right</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>INNER JOIN</td>
+					<td style="text-align: right">Yes</td>
+					<td style="text-align: right">No</td>
+					<td style="text-align: right">No</td>
+			</tr>
+			<tr>
+					<td>LEFT JOIN</td>
+					<td style="text-align: right">Yes</td>
+					<td style="text-align: right">Yes</td>
+					<td style="text-align: right">No</td>
+			</tr>
+			<tr>
+					<td>RIGHT JOIN</td>
+					<td style="text-align: right">Yes</td>
+					<td style="text-align: right">No</td>
+					<td style="text-align: right">Yes</td>
+			</tr>
+			<tr>
+					<td>FULL OUTER JOIN</td>
+					<td style="text-align: right">Yes</td>
+					<td style="text-align: right">Yes</td>
+					<td style="text-align: right">Yes</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="module-16-null-values-in-outer-joins">Module 16: NULL Values in Outer Joins</h2>
+<p>Outer Joins commonly produce <code>NULL</code> values.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>If a hotel does not have a matching room:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">HotelName      RoomNo
+</span></span><span class="line"><span class="cl">-------------  ------
+</span></span><span class="line"><span class="cl">Some Hotel     NULL</span></span></code></pre></div></div>
+<p>The <code>NULL</code> does not mean that the hotel does not exist.</p>
+<p>It means that no matching record was found in the <code>Room</code> table.</p>
+<hr>
+<h2 id="module-17-common-join-errors">Module 17: Common JOIN Errors</h2>
+<h3 id="problem-1-missing-join-condition">Problem 1: Missing JOIN Condition</h3>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>A Join normally requires a condition unless a Cartesian product is intentionally required.</p>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="problem-2-incorrect-join-columns">Problem 2: Incorrect Join Columns</h3>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">City</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">Price</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>The columns being compared must represent a meaningful relationship.</p>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="problem-3-ambiguous-column-names">Problem 3: Ambiguous Column Names</h3>
+<p>When multiple tables contain columns with the same name, specify the table name or alias.</p>
+<p>Instead of:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">HotelNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h3 id="problem-4-forgetting-the-relationship">Problem 4: Forgetting the Relationship</h3>
+<p>Before creating a Join, identify:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Which table?
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">Which related column?
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">What type of Join?
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">What output is required?</span></span></code></pre></div></div>
+<hr>
+<h2 id="module-18-join-selection-guide">Module 18: Join Selection Guide</h2>
+<p>Use an <strong>INNER JOIN</strong> when:</p>
+<blockquote>
+<p>You only want matching records.</p>
+</blockquote>
+<p>Use a <strong>LEFT JOIN</strong> when:</p>
+<blockquote>
+<p>You want every record from the left table, even when no match exists.</p>
+</blockquote>
+<p>Use a <strong>RIGHT JOIN</strong> when:</p>
+<blockquote>
+<p>You want every record from the right table, even when no match exists.</p>
+</blockquote>
+<p>Use a <strong>FULL OUTER JOIN</strong> when:</p>
+<blockquote>
+<p>You want every record from both tables.</p>
+</blockquote>
+<p>Use a <strong>NATURAL JOIN</strong> when:</p>
+<blockquote>
+<p>Tables have appropriately named common columns and automatic matching is desired.</p>
+</blockquote>
+<p>Use a <strong>CROSS JOIN</strong> when:</p>
+<blockquote>
+<p>You intentionally need every possible combination of rows.</p>
+</blockquote>
+<p>Use a <strong>SELF JOIN</strong> when:</p>
+<blockquote>
+<p>A table needs to be compared or related to itself.</p>
+</blockquote>
+<hr>
+<h2 id="module-19-exam-focused-join-examples">Module 19: Exam-Focused JOIN Examples</h2>
+<h3 id="example-1-inner-join">Example 1: Inner Join</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p><strong>Purpose:</strong> Display hotels that have matching rooms.</p>
+<hr>
+<h3 id="example-2-left-join">Example 2: Left Join</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p><strong>Purpose:</strong> Display all hotels, including hotels without rooms.</p>
+<hr>
+<h3 id="example-3-right-join">Example 3: Right Join</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<p><strong>Purpose:</strong> Display all rooms, including any rooms without a matching hotel.</p>
+<hr>
+<h3 id="example-4-natural-join">Example 4: Natural Join</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">NATURAL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="p">;</span></span></span></code></pre></div></div>
+<p><strong>Purpose:</strong> Automatically join tables using identically named compatible columns.</p>
+<hr>
+<h3 id="example-5-cross-join">Example 5: Cross Join</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">CROSS</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="p">;</span></span></span></code></pre></div></div>
+<p><strong>Purpose:</strong> Generate every possible hotel-room combination.</p>
+<hr>
+<h3 id="example-6-self-join">Example 6: Self Join</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">X</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Y</span><span class="p">.</span><span class="n">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w"> </span><span class="n">X</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">table_A</span><span class="w"> </span><span class="n">Y</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">X</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Y</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<p><strong>Purpose:</strong> Compare or relate records within the same table.</p>
+<hr>
+<h2 id="module-20-join-syntax-summary">Module 20: JOIN Syntax Summary</h2>
+<h3 id="inner-join-1">INNER JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="k">key</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="left-join-1">LEFT JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="k">key</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="right-join-1">RIGHT JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="k">key</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="full-outer-join-1">FULL OUTER JOIN</h3>
+<p>Standard SQL:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FULL</span><span class="w"> </span><span class="k">OUTER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="k">key</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>MySQL alternative:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="k">key</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">UNION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="k">key</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="natural-join">NATURAL JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">NATURAL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="cross-join">CROSS JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">CROSS</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="self-join">SELF JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w"> </span><span class="n">X</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">table_A</span><span class="w"> </span><span class="n">Y</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">X</span><span class="p">.</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Y</span><span class="p">.</span><span class="k">key</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="module-21-quick-study-summary-checklist">Module 21: Quick Study Summary Checklist</h2>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that a <code>JOIN</code> combines rows from multiple related tables.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the difference between Equi-Joins and Non-Equi-Joins.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know that Equi-Joins use <code>=</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know that Non-Equi-Joins use operators such as <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, and <code>&lt;&gt;</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that <code>INNER JOIN</code> returns only matching rows.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that <code>LEFT JOIN</code> preserves all rows from the left table.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that <code>RIGHT JOIN</code> preserves all rows from the right table.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that <code>FULL OUTER JOIN</code> preserves rows from both tables.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Remember that MySQL does not directly support <code>FULL OUTER JOIN</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how <code>UNION</code> can be used to simulate a Full Outer Join in MySQL.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that <code>NATURAL JOIN</code> automatically matches columns with the same name.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Remember that a Natural Join does not use an <code>ON</code> clause.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand that <code>CROSS JOIN</code> creates a Cartesian product.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Remember the formula:</li>
+</ul>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Rows(A) × Rows(B)</span></span></code></pre></div></div>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the purpose of a <code>SELF JOIN</code>.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to use table aliases.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the purpose of the <code>ON</code> clause.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how to join three or more tables.</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand why outer joins can produce <code>NULL</code> values.</li>
+</ul>
+<hr>
+<h2 id="final-exam-revision">Final Exam Revision</h2>
+<p>Remember these definitions:</p>
+<blockquote>
+<p><strong>INNER JOIN</strong> = Only matching rows.</p>
+</blockquote>
+<blockquote>
+<p><strong>LEFT JOIN</strong> = All left rows + matching right rows.</p>
+</blockquote>
+<blockquote>
+<p><strong>RIGHT JOIN</strong> = All right rows + matching left rows.</p>
+</blockquote>
+<blockquote>
+<p><strong>FULL OUTER JOIN</strong> = All rows from both tables.</p>
+</blockquote>
+<blockquote>
+<p><strong>NATURAL JOIN</strong> = Automatically joins same-named compatible columns.</p>
+</blockquote>
+<blockquote>
+<p><strong>CROSS JOIN</strong> = Cartesian product of two tables.</p>
+</blockquote>
+<blockquote>
+<p><strong>SELF JOIN</strong> = A table joined with itself.</p>
+</blockquote>
+<blockquote>
+<p><strong>EQUI JOIN</strong> = Join condition uses <code>=</code>.</p>
+</blockquote>
+<blockquote>
+<p><strong>NON-EQUI JOIN</strong> = Join condition uses operators other than <code>=</code>.</p>
+</blockquote>
+<hr>
+<h2 id="complete-join-workflow">Complete JOIN Workflow</h2>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Identify Tables
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">Identify Related Columns
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">Choose JOIN Type
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">Write FROM Clause
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">Write JOIN Clause
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">Write ON Condition
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">Select Required Columns
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">Add WHERE / ORDER BY if Required
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">Execute Query
+</span></span><span class="line"><span class="cl">       ↓
+</span></span><span class="line"><span class="cl">Verify Results</span></span></code></pre></div></div>
+<hr>
+<h2 id="core-join-examples-to-memorize">Core JOIN Examples to Memorize</h2>
+<h3 id="inner-join-2">INNER JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="left-join-2">LEFT JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="right-join-2">RIGHT JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Room</span><span class="p">.</span><span class="n">RoomNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Room</span><span class="p">.</span><span class="n">HotelNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="natural-join-1">NATURAL JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">NATURAL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="cross-join-1">CROSS JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">CROSS</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Room</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="self-join-1">SELF JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">X</span><span class="p">.</span><span class="n">A</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Y</span><span class="p">.</span><span class="n">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w"> </span><span class="n">X</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">table_A</span><span class="w"> </span><span class="n">Y</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">X</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Y</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="multiple-table-join">Multiple Table JOIN</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Guest</span><span class="p">.</span><span class="n">GuestName</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">RoomNo</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">       </span><span class="n">Booking</span><span class="p">.</span><span class="n">DateFrom</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Booking</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Hotel</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">HotelNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Hotel</span><span class="p">.</span><span class="n">HotelNo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">Guest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">Booking</span><span class="p">.</span><span class="n">GuestNo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Guest</span><span class="p">.</span><span class="n">GuestNo</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="final-reminder">Final Reminder</h2>
+<p>The most important concept in SQL Joins is understanding <strong>how tables are related</strong>.</p>
+<p>For the hotel database:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Hotel
+</span></span><span class="line"><span class="cl">  │
+</span></span><span class="line"><span class="cl">  │ HotelNo
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Room</span></span></code></pre></div></div>
+<p>and:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Hotel
+</span></span><span class="line"><span class="cl">  │
+</span></span><span class="line"><span class="cl">  │ HotelNo
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Booking
+</span></span><span class="line"><span class="cl">  │
+</span></span><span class="line"><span class="cl">  │ GuestNo
+</span></span><span class="line"><span class="cl">  ↓
+</span></span><span class="line"><span class="cl">Guest</span></span></code></pre></div></div>
+<p>Once the relationships between tables are understood, selecting the appropriate Join becomes much easier.</p>
+<p>The key rules to remember are:</p>
+<blockquote>
+<p><strong>INNER JOIN → Matching records only</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>LEFT JOIN → Everything from the left</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>RIGHT JOIN → Everything from the right</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>FULL OUTER JOIN → Everything from both</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>NATURAL JOIN → Automatic matching by common column names</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>CROSS JOIN → Every possible combination</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>SELF JOIN → Table joined with itself</strong></p>
+</blockquote>
+<p>Understanding these Join types provides the foundation for writing complex relational database queries in MySQL.</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-09-09</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sql_basics_part9/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://charuka-dilshan.github.io/sql_basics_part9/" data-title="SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)" data-hashtags="SQL,MySQL,Joins,INNER JOIN,LEFT JOIN,Database Relationships"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://charuka-dilshan.github.io/sql_basics_part9/" data-title="SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://charuka-dilshan.github.io/sql_basics_part9/" data-hashtag="SQL"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://charuka-dilshan.github.io/sql_basics_part9/" data-title="SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://charuka-dilshan.github.io/sql_basics_part9/" data-title="SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://charuka-dilshan.github.io/sql_basics_part9/" data-title="SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://charuka-dilshan.github.io/sql_basics_part9/" data-title="SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)" data-description="Master all types of SQL joins in MySQL including INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, NATURAL JOIN, CROSS JOIN, and SELF JOIN with complete examples."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fcharuka-dilshan.github.io%2fsql_basics_part9%2f&amp;text=SQL%20Joins%3a%20Comprehensive%20Guide%20to%20Combining%20Tables%20%28Lecture%2009%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/mysql/">MySQL</a>,&nbsp;<a href="/tags/joins/">Joins</a>,&nbsp;<a href="/tags/inner-join/">INNER JOIN</a>,&nbsp;<a href="/tags/left-join/">LEFT JOIN</a>,&nbsp;<a href="/tags/database-relationships/">Database Relationships</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sql_basics_part8/" class="prev" rel="prev" title="Creating &amp; Handling Multiple Tables in a Database (Lecture 08)"><i class="fas fa-angle-left" aria-hidden="true"></i>Creating & Handling Multiple Tables in a Database (Lecture 08)</a>
+            <a href="/sql_basics_part10/" class="next" rel="next" title="The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09)">The Ultimate Master Summary Guide: MySQL & SQL Fundamentals (Lectures 03–09)<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>

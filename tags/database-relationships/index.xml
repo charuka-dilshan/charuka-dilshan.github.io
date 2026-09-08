@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Database Relationships - Tag - Charuuu..^_^</title>
+        <link>https://charuka-dilshan.github.io/tags/database-relationships/</link>
+        <description>Database Relationships - Tag - Charuuu..^_^</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 20 Aug 2026 00:17:00 &#43;0530</lastBuildDate><atom:link href="https://charuka-dilshan.github.io/tags/database-relationships/" rel="self" type="application/rss+xml" /><item>
+    <title>SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)</title>
+    <link>https://charuka-dilshan.github.io/sql_basics_part9/</link>
+    <pubDate>Thu, 20 Aug 2026 00:17:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>https://charuka-dilshan.github.io/sql_basics_part9/</guid>
+    <description><![CDATA[Master all types of SQL joins in MySQL including INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, NATURAL JOIN, CROSS JOIN, and SELF JOIN with complete examples.]]></description>
+</item>
+</channel>
+</rss>

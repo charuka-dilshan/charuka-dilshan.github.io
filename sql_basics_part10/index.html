@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09) - Charuuu..^_^</title><meta name="Description" content="The ultimate student study guide consolidating all core SQL concepts, console commands, table creation, operators, patterns, multiple tables, and join types."><meta property="og:url" content="https://charuka-dilshan.github.io/sql_basics_part10/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="The Ultimate Master Summary Guide: MySQL & SQL Fundamentals (Lectures 03–09)">
+	<meta property="og:description" content="The ultimate student study guide consolidating all core SQL concepts, console commands, table creation, operators, patterns, multiple tables, and join types.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-20T00:38:00+05:30">
+		<meta property="article:modified_time" content="2026-09-09T00:45:56+05:30">
+		<meta property="article:tag" content="SQL">
+		<meta property="article:tag" content="MySQL">
+		<meta property="article:tag" content="Master Summary">
+		<meta property="article:tag" content="Database">
+		<meta property="article:tag" content="Exam Guide">
+		<meta property="og:image" content="https://charuka-dilshan.github.io/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://charuka-dilshan.github.io/logo.png">
+	<meta name="twitter:title" content="The Ultimate Master Summary Guide: MySQL & SQL Fundamentals (Lectures 03–09)">
+	<meta name="twitter:description" content="The ultimate student study guide consolidating all core SQL concepts, console commands, table creation, operators, patterns, multiple tables, and join types.">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://charuka-dilshan.github.io/sql_basics_part10/" /><link rel="prev" href="https://charuka-dilshan.github.io/sql_basics_part9/" /><link rel="next" href="https://charuka-dilshan.github.io/sql_basics_part11/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "The Ultimate Master Summary Guide: MySQL \u0026 SQL Fundamentals (Lectures 03–09)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/charuka-dilshan.github.io\/sql_basics_part10\/"
+        },"genre": "posts","keywords": "SQL, MySQL, Master Summary, Database, Exam Guide","wordcount":  1850 ,
+        "url": "https:\/\/charuka-dilshan.github.io\/sql_basics_part10\/","datePublished": "2026-08-20T00:38:00+05:30","dateModified": "2026-09-09T00:45:56+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "The ultimate student study guide consolidating all core SQL concepts, console commands, table creation, operators, patterns, multiple tables, and join types."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">The Ultimate Master Summary Guide: MySQL & SQL Fundamentals (Lectures 03–09)</h1><h2 class="single-subtitle">An exhaustive, consolidated review covering database setup, basic queries, schema creation, data manipulation, filtering, sorting, and advanced joins.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder" aria-hidden="true"></i>MySQL</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-08-20">2026-08-20</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;1850 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#part-1-console-operations--basic-queries-lecture-03">Part 1: Console Operations &amp; Basic Queries (Lecture 03)</a>
+      <ul>
+        <li><a href="#mysql-identity--pronunciation">MySQL Identity &amp; Pronunciation</a></li>
+        <li><a href="#authentication">Authentication</a></li>
+        <li><a href="#syntax-rules">Syntax Rules</a></li>
+        <li><a href="#essential-diagnostic-commands">Essential Diagnostic Commands</a></li>
+      </ul>
+    </li>
+    <li><a href="#part-2-databases--table-schemas-lecture-04">Part 2: Databases &amp; Table Schemas (Lecture 04)</a>
+      <ul>
+        <li><a href="#database-management">Database Management</a></li>
+        <li><a href="#table-creation--data-types">Table Creation &amp; Data Types</a></li>
+        <li><a href="#schema-inspection">Schema Inspection</a></li>
+        <li><a href="#table-deletion">Table Deletion</a></li>
+        <li><a href="#data-insertion">Data Insertion</a></li>
+      </ul>
+    </li>
+    <li><a href="#part-3-data-retrieval--filtering-lecture-05">Part 3: Data Retrieval &amp; Filtering (Lecture 05)</a>
+      <ul>
+        <li><a href="#the-core-select-format">The Core <code>SELECT</code> Format</a></li>
+        <li><a href="#selecting-all-columns">Selecting All Columns</a></li>
+        <li><a href="#exact-matching">Exact Matching</a></li>
+        <li><a href="#comparison-operators">Comparison Operators</a></li>
+        <li><a href="#logical-and">Logical <code>AND</code></a></li>
+        <li><a href="#logical-or">Logical <code>OR</code></a></li>
+        <li><a href="#column-projection">Column Projection</a></li>
+      </ul>
+    </li>
+    <li><a href="#part-4-sorting--null-handling-lecture-06">Part 4: Sorting &amp; NULL Handling (Lecture 06)</a>
+      <ul>
+        <li><a href="#result-ordering-with-order-by">Result Ordering with <code>ORDER BY</code></a></li>
+        <li><a href="#descending-order">Descending Order</a></li>
+        <li><a href="#sorting-by-multiple-columns">Sorting by Multiple Columns</a></li>
+        <li><a href="#handling-null">Handling <code>NULL</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#part-5-pattern-matching--regular-expressions-lecture-07">Part 5: Pattern Matching &amp; Regular Expressions (Lecture 07)</a>
+      <ul>
+        <li><a href="#like-pattern-matching"><code>LIKE</code> Pattern Matching</a></li>
+        <li><a href="#-wildcard"><code>%</code> Wildcard</a></li>
+        <li><a href="#_-wildcard"><code>_</code> Wildcard</a></li>
+        <li><a href="#regular-expressions-with-regexp">Regular Expressions with <code>REGEXP</code></a></li>
+        <li><a href="#important-regular-expression-symbols">Important Regular Expression Symbols</a></li>
+      </ul>
+    </li>
+    <li><a href="#part-6-multiple-tables--relational-design-lecture-08">Part 6: Multiple Tables &amp; Relational Design (Lecture 08)</a>
+      <ul>
+        <li><a href="#primary-keys">Primary Keys</a></li>
+        <li><a href="#foreign-keys">Foreign Keys</a></li>
+        <li><a href="#composite-primary-keys">Composite Primary Keys</a></li>
+        <li><a href="#aggregate-functions">Aggregate Functions</a>
+          <ul>
+            <li><a href="#count"><code>COUNT()</code></a></li>
+            <li><a href="#avg"><code>AVG()</code></a></li>
+            <li><a href="#sum"><code>SUM()</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#part-7-sql-joins-lecture-09">Part 7: SQL Joins (Lecture 09)</a>
+      <ul>
+        <li><a href="#equi-join-vs-non-equi-join">Equi-Join vs Non-Equi-Join</a></li>
+        <li><a href="#inner-join"><code>INNER JOIN</code></a></li>
+        <li><a href="#left-join"><code>LEFT JOIN</code></a></li>
+        <li><a href="#right-join"><code>RIGHT JOIN</code></a></li>
+        <li><a href="#full-outer-join"><code>FULL OUTER JOIN</code></a></li>
+        <li><a href="#natural-join"><code>NATURAL JOIN</code></a></li>
+        <li><a href="#cross-join"><code>CROSS JOIN</code></a></li>
+        <li><a href="#self-join"><code>SELF JOIN</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#quick-study-reference-checklist">Quick Study Reference Checklist</a></li>
+    <li><a href="#final-exam-revision-summary">Final Exam Revision Summary</a>
+      <ul>
+        <li><a href="#essential-sql-command-pattern">Essential SQL Command Pattern</a></li>
+        <li><a href="#essential-join-pattern">Essential Join Pattern</a></li>
+        <li><a href="#remember-these-exam-rules">Remember These Exam Rules</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master summary consolidates the entire course series (Lectures 03 through 09), serving as the definitive review guide for mastering relational databases and MySQL queries.</p>
+</blockquote>
+<hr>
+<h2 id="part-1-console-operations--basic-queries-lecture-03">Part 1: Console Operations &amp; Basic Queries (Lecture 03)</h2>
+<h3 id="mysql-identity--pronunciation">MySQL Identity &amp; Pronunciation</h3>
+<p>MySQL is pronounced <strong>&ldquo;my Ess Que Ell&rdquo;</strong>.</p>
+<p>MySQL is an <strong>open-source Relational Database Management System (RDBMS)</strong>.</p>
+<h3 id="authentication">Authentication</h3>
+<p>For a default local MySQL root-user installation, login may require no password. If the prompt asks for a password and your installation has none configured, simply press <strong>Enter</strong>.</p>
+<h3 id="syntax-rules">Syntax Rules</h3>
+<ul>
+<li>Every SQL command must end with a semicolon (<code>;</code>) or <code>\g</code>.</li>
+<li>SQL keywords are <strong>case-insensitive</strong>. For example, <code>SELECT</code> and <code>select</code> are equivalent.</li>
+<li>Multi-line commands use the <code>-&gt;</code> continuation prompt.</li>
+<li>Abort an ongoing command using <code>\c</code>.</li>
+</ul>
+<h3 id="essential-diagnostic-commands">Essential Diagnostic Commands</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">VERSION</span><span class="p">(),</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">SIN</span><span class="p">(</span><span class="n">PI</span><span class="p">()</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">QUIT</span><span class="p">;</span></span></span></code></pre></div></div>
+<p><code>SELECT VERSION(), CURRENT_DATE;</code> displays the MySQL version and current date.</p>
+<p><code>SELECT SIN(PI()/4), (4+1)*5;</code> demonstrates that MySQL can also perform mathematical calculations.</p>
+<p><code>QUIT;</code> exits the MySQL client. You can also use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">exit</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="part-2-databases--table-schemas-lecture-04">Part 2: Databases &amp; Table Schemas (Lecture 04)</h2>
+<h3 id="database-management">Database Management</h3>
+<p>List all available databases:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Create a database:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">tceusl</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Select the database you want to work with:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">USE</span><span class="w"> </span><span class="n">tceusl</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>List the tables inside the current database:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SHOW</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="table-creation--data-types">Table Creation &amp; Data Types</h3>
+<p>Create a <code>students</code> table:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">index_no</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">fname</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">lname</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">address</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">sex</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">birth_date</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">dept</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">campus</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">tp_no</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<h3 id="schema-inspection">Schema Inspection</h3>
+<p>Use <code>DESCRIBE</code> to inspect the structure of a table:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>You can also use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DESC</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="table-deletion">Table Deletion</h3>
+<p>To permanently delete a table:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>Warning:</strong> <code>DROP TABLE</code> removes the table structure and its data.</p>
+</blockquote>
+<h3 id="data-insertion">Data Insertion</h3>
+<p>Insert a single row using:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;001&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;Barath&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;Perera&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;Colombo&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;1995-05-10&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;COM&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;CMB&#39;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s1">&#39;0712345678&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<p>You can also explicitly specify the columns:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">index_no</span><span class="p">,</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">lname</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="n">sex</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="p">,</span><span class="w"> </span><span class="n">dept</span><span class="p">,</span><span class="w"> </span><span class="n">campus</span><span class="p">,</span><span class="w"> </span><span class="n">tp_no</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">VALUES</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">(</span><span class="s1">&#39;001&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Barath&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Perera&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Colombo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1995-05-10&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;COM&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CMB&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;0712345678&#39;</span><span class="p">);</span></span></span></code></pre></div></div>
+<p>For bulk data import, MySQL can use:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">LOAD</span><span class="w"> </span><span class="k">DATA</span><span class="w"> </span><span class="k">LOCAL</span><span class="w"> </span><span class="n">INFILE</span><span class="w"> </span><span class="s1">&#39;students.csv&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INTO</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">FIELDS</span><span class="w"> </span><span class="n">TERMINATED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">LINES</span><span class="w"> </span><span class="n">TERMINATED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<hr>
+<h2 id="part-3-data-retrieval--filtering-lecture-05">Part 3: Data Retrieval &amp; Filtering (Lecture 05)</h2>
+<h3 id="the-core-select-format">The Core <code>SELECT</code> Format</h3>
+<p>The basic structure of a query is:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">what_to_select</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">which_table</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">conditions</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="selecting-all-columns">Selecting All Columns</h3>
+<p>To retrieve every column and every row:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="exact-matching">Exact Matching</h3>
+<p>Find students whose first name is exactly <code>Barath</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Barath&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="comparison-operators">Comparison Operators</h3>
+<p>SQL supports common comparison operators:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Operator</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>=</code></td>
+					<td>Equal to</td>
+			</tr>
+			<tr>
+					<td><code>&lt;&gt;</code></td>
+					<td>Not equal to</td>
+			</tr>
+			<tr>
+					<td><code>!=</code></td>
+					<td>Not equal to</td>
+			</tr>
+			<tr>
+					<td><code>&gt;</code></td>
+					<td>Greater than</td>
+			</tr>
+			<tr>
+					<td><code>&lt;</code></td>
+					<td>Less than</td>
+			</tr>
+			<tr>
+					<td><code>&gt;=</code></td>
+					<td>Greater than or equal to</td>
+			</tr>
+			<tr>
+					<td><code>&lt;=</code></td>
+					<td>Less than or equal to</td>
+			</tr>
+	</tbody>
+</table>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;1991-01-01&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="logical-and">Logical <code>AND</code></h3>
+<p>Both conditions must be true:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;PHY&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;f&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="logical-or">Logical <code>OR</code></h3>
+<p>At least one condition must be true:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;f&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">OR</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;COM&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="column-projection">Column Projection</h3>
+<p>You do not need to retrieve every column. Specify only the columns you need:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This is called <strong>projection</strong>.</p>
+<hr>
+<h2 id="part-4-sorting--null-handling-lecture-06">Part 4: Sorting &amp; NULL Handling (Lecture 06)</h2>
+<h3 id="result-ordering-with-order-by">Result Ordering with <code>ORDER BY</code></h3>
+<p>Sort students by birth date in ascending order:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Ascending order is the default.</p>
+<p>You can also write:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="descending-order">Descending Order</h3>
+<p>To sort from newest to oldest:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="sorting-by-multiple-columns">Sorting by Multiple Columns</h3>
+<p>You can sort using more than one column:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">birth_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="handling-null">Handling <code>NULL</code></h3>
+<p><code>NULL</code> represents a missing, unknown, or unavailable value.</p>
+<p><strong>Never use <code>=</code> to test for <code>NULL</code>.</strong></p>
+<p>Incorrect:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Correct:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>To find rows where the phone number is available:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">fname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">tp_no</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Remember:</p>
+<ul>
+<li><code>IS NULL</code> → value is missing/unknown.</li>
+<li><code>IS NOT NULL</code> → value exists/is not <code>NULL</code>.</li>
+</ul>
+<hr>
+<h2 id="part-5-pattern-matching--regular-expressions-lecture-07">Part 5: Pattern Matching &amp; Regular Expressions (Lecture 07)</h2>
+<h3 id="like-pattern-matching"><code>LIKE</code> Pattern Matching</h3>
+<p>The <code>LIKE</code> operator is used for standard SQL pattern matching.</p>
+<h3 id="-wildcard"><code>%</code> Wildcard</h3>
+<p><code>%</code> matches zero or more arbitrary characters.</p>
+<p>Find names beginning with <code>M</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;M%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Find names ending with <code>na</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%na&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Find names containing <code>ar</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%ar%&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="_-wildcard"><code>_</code> Wildcard</h3>
+<p><code>_</code> matches exactly one character.</p>
+<p>For example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;______&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>This matches names containing exactly six characters.</p>
+<h3 id="regular-expressions-with-regexp">Regular Expressions with <code>REGEXP</code></h3>
+<p>MySQL also supports regular-expression pattern matching through <code>REGEXP</code>.</p>
+<p>Find names beginning with <code>M</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^M&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Find names ending with <code>a</code>:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;a$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Find names containing exactly six characters:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">fname</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^.{6}$&#39;</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="important-regular-expression-symbols">Important Regular Expression Symbols</h3>
+<table>
+	<thead>
+			<tr>
+					<th>Symbol</th>
+					<th>Meaning</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>^</code></td>
+					<td>Start of string</td>
+			</tr>
+			<tr>
+					<td><code>$</code></td>
+					<td>End of string</td>
+			</tr>
+			<tr>
+					<td><code>.</code></td>
+					<td>Any single character</td>
+			</tr>
+			<tr>
+					<td><code>*</code></td>
+					<td>Zero or more occurrences</td>
+			</tr>
+			<tr>
+					<td><code>+</code></td>
+					<td>One or more occurrences</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="part-6-multiple-tables--relational-design-lecture-08">Part 6: Multiple Tables &amp; Relational Design (Lecture 08)</h2>
+<h3 id="primary-keys">Primary Keys</h3>
+<p>A <strong>primary key</strong> uniquely identifies each record in a table.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">index_no</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">fname</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">lname</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<p>A primary key:</p>
+<ul>
+<li>Must uniquely identify each row.</li>
+<li>Cannot contain duplicate values.</li>
+<li>Cannot contain <code>NULL</code> values.</li>
+</ul>
+<h3 id="foreign-keys">Foreign Keys</h3>
+<p>A <strong>foreign key</strong> creates a relationship between tables.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">departments</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">dept_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">dept_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<p>A student table can reference the department:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">index_no</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">fname</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">dept_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">dept_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">departments</span><span class="p">(</span><span class="n">dept_id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<h3 id="composite-primary-keys">Composite Primary Keys</h3>
+<p>A <strong>composite primary key</strong> consists of two or more columns.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">enrollment</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">student_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">course_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span><span class="w"> </span><span class="n">course_id</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">);</span></span></span></code></pre></div></div>
+<p>Together, <code>student_id</code> and <code>course_id</code> uniquely identify a record.</p>
+<h3 id="aggregate-functions">Aggregate Functions</h3>
+<p>Aggregate functions perform calculations over multiple rows.</p>
+<h4 id="count"><code>COUNT()</code></h4>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="p">;</span></span></span></code></pre></div></div>
+<h4 id="avg"><code>AVG()</code></h4>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="p">;</span></span></span></code></pre></div></div>
+<h4 id="sum"><code>SUM()</code></h4>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">price</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">products</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Common aggregate functions include:</p>
+<ul>
+<li><code>COUNT()</code> — counts rows/values.</li>
+<li><code>AVG()</code> — calculates an average.</li>
+<li><code>SUM()</code> — calculates a total.</li>
+<li><code>MIN()</code> — finds the smallest value.</li>
+<li><code>MAX()</code> — finds the largest value.</li>
+</ul>
+<hr>
+<h2 id="part-7-sql-joins-lecture-09">Part 7: SQL Joins (Lecture 09)</h2>
+<p>Joins allow data from multiple related tables to be retrieved in a single query.</p>
+<h3 id="equi-join-vs-non-equi-join">Equi-Join vs Non-Equi-Join</h3>
+<p>An <strong>equi-join</strong> uses the equality operator (<code>=</code>) to match rows.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">departments</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dept_id</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>A <strong>non-equi-join</strong> uses comparison operators such as <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, or <code>&lt;=</code>.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">salary_grades</span><span class="w"> </span><span class="k">g</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="k">g</span><span class="p">.</span><span class="n">min_salary</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">AND</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="k">g</span><span class="p">.</span><span class="n">max_salary</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="inner-join"><code>INNER JOIN</code></h3>
+<p>An <code>INNER JOIN</code> returns only rows that have matching values in both tables.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departments</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dept_id</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>INNER JOIN = Only matching rows from both tables.</strong></p>
+</blockquote>
+<h3 id="left-join"><code>LEFT JOIN</code></h3>
+<p>A <code>LEFT JOIN</code> returns every row from the left table and matching rows from the right table.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departments</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dept_id</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>If no match exists, the right-side columns contain <code>NULL</code>.</p>
+<blockquote>
+<p><strong>LEFT JOIN = Keep all rows from the left table.</strong></p>
+</blockquote>
+<h3 id="right-join"><code>RIGHT JOIN</code></h3>
+<p>A <code>RIGHT JOIN</code> returns every row from the right table and matching rows from the left table.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departments</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dept_id</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>RIGHT JOIN = Keep all rows from the right table.</strong></p>
+</blockquote>
+<h3 id="full-outer-join"><code>FULL OUTER JOIN</code></h3>
+<p>A <code>FULL OUTER JOIN</code> returns all matching and non-matching rows from both tables.</p>
+<p>Standard SQL syntax:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FULL</span><span class="w"> </span><span class="k">OUTER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>MySQL Note:</strong> MySQL does not directly support <code>FULL OUTER JOIN</code>. It can be simulated using <code>LEFT JOIN</code>, <code>RIGHT JOIN</code>, and <code>UNION</code>.</p>
+</blockquote>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="n">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">UNION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table_A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">table_B</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ON</span><span class="w"> </span><span class="n">table_A</span><span class="p">.</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table_B</span><span class="p">.</span><span class="n">A</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>FULL OUTER JOIN = Keep all rows from both tables.</strong></p>
+</blockquote>
+<h3 id="natural-join"><code>NATURAL JOIN</code></h3>
+<p>A <code>NATURAL JOIN</code> automatically joins tables using compatible columns with the same names.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">NATURAL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departments</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>No explicit <code>ON</code> clause is required.</p>
+<blockquote>
+<p><strong>Caution:</strong> <code>NATURAL JOIN</code> can produce unexpected results if tables contain multiple identically named columns. Explicit <code>JOIN ... ON ...</code> syntax is usually clearer and safer.</p>
+</blockquote>
+<h3 id="cross-join"><code>CROSS JOIN</code></h3>
+<p>A <code>CROSS JOIN</code> generates a Cartesian product.</p>
+<p>If Table A has 5 rows and Table B has 3 rows:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">5 × 3 = 15 rows</span></span></code></pre></div></div>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">students</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">CROSS</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">courses</span><span class="p">;</span></span></span></code></pre></div></div>
+<blockquote>
+<p><strong>CROSS JOIN = Every possible combination of rows.</strong></p>
+</blockquote>
+<h3 id="self-join"><code>SELF JOIN</code></h3>
+<p>A self join joins a table with itself.</p>
+<p>Example:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="n">employee_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">employee</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">m</span><span class="p">.</span><span class="n">employee_name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">manager</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">employees</span><span class="w"> </span><span class="n">m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">manager_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">employee_id</span><span class="p">;</span></span></span></code></pre></div></div>
+<p>Here:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">e = employee
+</span></span><span class="line"><span class="cl">m = manager</span></span></code></pre></div></div>
+<blockquote>
+<p><strong>SELF JOIN = A table joined with itself.</strong></p>
+</blockquote>
+<hr>
+<h2 id="quick-study-reference-checklist">Quick Study Reference Checklist</h2>
+<ul>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand MySQL console connection and command terminators (<code>;</code> and <code>\g</code>)</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know basic console commands such as <code>QUIT</code>, <code>exit</code>, and <code>\c</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand <code>CREATE DATABASE</code>, <code>USE</code>, and <code>SHOW DATABASES</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand <code>CREATE TABLE</code>, <code>DESCRIBE</code>, and <code>DROP TABLE</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know common SQL data types such as <code>VARCHAR</code>, <code>CHAR</code>, and <code>DATE</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand <code>INSERT INTO</code> and bulk data loading</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Master <code>SELECT</code> and column projections</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand <code>WHERE</code> filtering</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know comparison operators such as <code>=</code>, <code>&lt;&gt;</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, and <code>&lt;=</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand logical operators <code>AND</code> and <code>OR</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Master <code>ORDER BY</code>, <code>ASC</code>, and <code>DESC</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand <code>NULL</code>, <code>IS NULL</code>, and <code>IS NOT NULL</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know <code>LIKE</code> with <code>%</code> and <code>_</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand <code>REGEXP</code>, <code>^</code>, <code>$</code>, and <code>.</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand primary keys and foreign keys</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand composite primary keys</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know aggregate functions such as <code>COUNT()</code>, <code>AVG()</code>, and <code>SUM()</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand equi-joins and non-equi-joins</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Master <code>INNER JOIN</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Master <code>LEFT JOIN</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Master <code>RIGHT JOIN</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand the concept of <code>FULL OUTER JOIN</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Know how MySQL can simulate a full outer join</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand <code>NATURAL JOIN</code></li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand <code>CROSS JOIN</code> and Cartesian products</li>
+<li><i class="far fa-square" aria-hidden="true"></i> Understand <code>SELF JOIN</code> and table aliases</li>
+</ul>
+<hr>
+<h2 id="final-exam-revision-summary">Final Exam Revision Summary</h2>
+<p>The most important SQL concepts to remember are:</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-text">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">DATABASE
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">TABLE
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">ROWS + COLUMNS
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">PRIMARY KEY
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">FOREIGN KEY
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">RELATIONSHIPS
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">SELECT + WHERE
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">ORDER BY
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">LIKE / REGEXP
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">AGGREGATE FUNCTIONS
+</span></span><span class="line"><span class="cl">   ↓
+</span></span><span class="line"><span class="cl">JOINS</span></span></code></pre></div></div>
+<h3 id="essential-sql-command-pattern">Essential SQL Command Pattern</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="k">table</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">WHERE</span><span class="w"> </span><span class="n">conditions</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="essential-join-pattern">Essential Join Pattern</h3>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-sql">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">SELECT</span><span class="w"> </span><span class="n">columns</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">JOIN</span><span class="w"> </span><span class="n">table2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="k">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table2</span><span class="p">.</span><span class="k">key</span><span class="p">;</span></span></span></code></pre></div></div>
+<h3 id="remember-these-exam-rules">Remember These Exam Rules</h3>
+<ul>
+<li>Use <code>=</code> for normal value comparison.</li>
+<li>Use <code>IS NULL</code> or <code>IS NOT NULL</code> for <code>NULL</code>.</li>
+<li>Use <code>%</code> for zero or more characters with <code>LIKE</code>.</li>
+<li>Use <code>_</code> for exactly one character with <code>LIKE</code>.</li>
+<li>Use <code>^</code> for the beginning of a regular expression.</li>
+<li>Use <code>$</code> for the end of a regular expression.</li>
+<li><code>INNER JOIN</code> keeps only matching rows.</li>
+<li><code>LEFT JOIN</code> keeps every row from the left table.</li>
+<li><code>RIGHT JOIN</code> keeps every row from the right table.</li>
+<li><code>CROSS JOIN</code> produces every possible combination of rows.</li>
+<li>A primary key uniquely identifies a row.</li>
+<li>A foreign key establishes a relationship between tables.</li>
+<li>Aggregate functions operate on groups or sets of rows.</li>
+<li><code>ORDER BY ... DESC</code> sorts results in descending order.</li>
+<li>SQL keywords are generally case-insensitive.</li>
+</ul>
+<blockquote>
+<p><strong>Academic Note:</strong> Use this guide as a consolidated revision sheet for Lectures 03–09. For practical mastery, reproduce each example in a MySQL environment and experiment by changing the conditions, columns, and join relationships.</p>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-09-09</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sql_basics_part10/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://charuka-dilshan.github.io/sql_basics_part10/" data-title="The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09)" data-hashtags="SQL,MySQL,Master Summary,Database,Exam Guide"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://charuka-dilshan.github.io/sql_basics_part10/" data-title="The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://charuka-dilshan.github.io/sql_basics_part10/" data-hashtag="SQL"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://charuka-dilshan.github.io/sql_basics_part10/" data-title="The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://charuka-dilshan.github.io/sql_basics_part10/" data-title="The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://charuka-dilshan.github.io/sql_basics_part10/" data-title="The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://charuka-dilshan.github.io/sql_basics_part10/" data-title="The Ultimate Master Summary Guide: MySQL &amp; SQL Fundamentals (Lectures 03–09)" data-description="The ultimate student study guide consolidating all core SQL concepts, console commands, table creation, operators, patterns, multiple tables, and join types."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fcharuka-dilshan.github.io%2fsql_basics_part10%2f&amp;text=The%20Ultimate%20Master%20Summary%20Guide%3a%20MySQL%20%26%20SQL%20Fundamentals%20%28Lectures%2003%e2%80%9309%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/mysql/">MySQL</a>,&nbsp;<a href="/tags/master-summary/">Master Summary</a>,&nbsp;<a href="/tags/database/">Database</a>,&nbsp;<a href="/tags/exam-guide/">Exam Guide</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sql_basics_part9/" class="prev" rel="prev" title="SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)"><i class="fas fa-angle-left" aria-hidden="true"></i>SQL Joins: Comprehensive Guide to Combining Tables (Lecture 09)</a>
+            <a href="/sql_basics_part11/" class="next" rel="next" title="Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)">Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)<i class="fas fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>

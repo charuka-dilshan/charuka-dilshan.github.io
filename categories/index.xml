@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Categories on Charuuu..^_^</title>
+		<link>https://charuka-dilshan.github.io/categories/</link>
+		<description>Recent content in Categories on Charuuu..^_^</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 09 Sep 2026 00:45:56 +0530</lastBuildDate>
+		
+			<atom:link href="https://charuka-dilshan.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Academic Notes</title>
+				<link>https://charuka-dilshan.github.io/categories/academic-notes/</link>
+				<pubDate>Thu, 20 Aug 2026 01:00:00 +0530</pubDate>
+				<guid>https://charuka-dilshan.github.io/categories/academic-notes/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Development</title>
+				<link>https://charuka-dilshan.github.io/categories/development/</link>
+				<pubDate>Thu, 20 Aug 2026 01:00:00 +0530</pubDate>
+				<guid>https://charuka-dilshan.github.io/categories/development/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>MySQL</title>
+				<link>https://charuka-dilshan.github.io/categories/mysql/</link>
+				<pubDate>Thu, 20 Aug 2026 00:45:00 +0530</pubDate>
+				<guid>https://charuka-dilshan.github.io/categories/mysql/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Personal</title>
+				<link>https://charuka-dilshan.github.io/categories/personal/</link>
+				<pubDate>Wed, 19 Aug 2026 16:45:00 +0530</pubDate>
+				<guid>https://charuka-dilshan.github.io/categories/personal/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

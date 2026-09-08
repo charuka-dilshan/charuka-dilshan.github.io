@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Introduction - Tag - Charuuu..^_^</title>
+        <link>https://charuka-dilshan.github.io/tags/introduction/</link>
+        <description>Introduction - Tag - Charuuu..^_^</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 19 Aug 2026 16:45:00 &#43;0530</lastBuildDate><atom:link href="https://charuka-dilshan.github.io/tags/introduction/" rel="self" type="application/rss+xml" /><item>
+    <title>My First Post</title>
+    <link>https://charuka-dilshan.github.io/first_post/</link>
+    <pubDate>Wed, 19 Aug 2026 16:45:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>https://charuka-dilshan.github.io/first_post/</guid>
+    <description><![CDATA[An introduction to my personal blog tracking my academic progress and computer science studies.]]></description>
+</item>
+<item>
+    <title>My First Post</title>
+    <link>https://charuka-dilshan.github.io/sql-from-basic-to-advanced/</link>
+    <pubDate>Wed, 19 Aug 2026 16:45:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>https://charuka-dilshan.github.io/sql-from-basic-to-advanced/</guid>
+    <description><![CDATA[An introduction to my personal blog tracking my academic progress and computer science studies.]]></description>
+</item>
+</channel>
+</rss>
