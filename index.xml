@@ -14,6 +14,14 @@
     <description><![CDATA[Master the fundamentals of multimedia, including component modalities, research topics, early history, hypermedia (HTML/XML), and key timeline milestones up to 2020.]]></description>
 </item>
 <item>
+    <title>Mastering Multimedia Systems &amp; Signals (Lecture 02)</title>
+    <link>https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part02/</link>
+    <pubDate>Thu, 20 Aug 2026 01:00:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part02/</guid>
+    <description><![CDATA[Detailed lecture notes covering CO 1224 Multimedia Systems, characteristics, components, continuous vs. discrete media, and analog-to-digital signal conversion.]]></description>
+</item>
+<item>
     <title>Advanced Table Creation, Constraints, and the ALTER Statement (SQL Master Guide)</title>
     <link>https://charuka-dilshan.github.io/sql_basics_part11/</link>
     <pubDate>Thu, 20 Aug 2026 00:45:00 &#43;0530</pubDate>
@@ -75,14 +83,6 @@
     <pubDate>Wed, 19 Aug 2026 23:00:00 &#43;0530</pubDate>
     <author>Charuuu..^_^</author>
     <guid>https://charuka-dilshan.github.io/sql_basics_part4/</guid>
-    <description><![CDATA[Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface.]]></description>
-</item>
-<item>
-    <title>Introduction to MySQL (SQL Part 03)</title>
-    <link>https://charuka-dilshan.github.io/sql_basics_part3/</link>
-    <pubDate>Wed, 19 Aug 2026 23:00:00 &#43;0530</pubDate>
-    <author>Charuuu..^_^</author>
-    <guid>https://charuka-dilshan.github.io/sql_basics_part3/</guid>
     <description><![CDATA[Master database management using local MySQL console, remote PuTTY connections, and phpMyAdmin graphical user interface.]]></description>
 </item>
 </channel>

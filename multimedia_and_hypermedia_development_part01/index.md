@@ -117,6 +117,6 @@ Core software tools used in multimedia development include:
 - [ ] Define multimedia as the computer-controlled digital integration of text, graphics, images, video, animation, and audio.
 - [ ] Understand the 3 main CS research pillars: Processing/Coding, Systems/Networking, and Tools/Applications.
 - [ ] Distinguish between analog media (continuous representation) and digital media (binary format).
-- [ ] Explain the difference between linear presentations (cinema) and non-linear/interactive presentations (games, hypermedia).
+- [ ] Explain the difference between linear presentations (cinema) and non-linear/interactive presentations (games, hype  rmedia).
 - [ ] Know the historical milestones: Ted Nelson (Hypertext, 1965), Tim Berners-Lee (WWW, 1989), and NCSA Mosaic (1993).
 
