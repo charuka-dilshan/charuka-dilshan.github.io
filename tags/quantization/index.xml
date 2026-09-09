@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Quantization - Tag - Charuuu..^_^</title>
+        <link>https://charuka-dilshan.github.io/tags/quantization/</link>
+        <description>Quantization - Tag - Charuuu..^_^</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 09 Sep 2026 04:00:00 &#43;0530</lastBuildDate><atom:link href="https://charuka-dilshan.github.io/tags/quantization/" rel="self" type="application/rss+xml" /><item>
+    <title>Digital Audio &amp; Sound Processing (Lecture 06)</title>
+    <link>https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part06/</link>
+    <pubDate>Wed, 09 Sep 2026 04:00:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part06/</guid>
+    <description><![CDATA[Comprehensive notes for CO 1224 Digital Audio, detailing analog-to-digital conversion, sampling rates, Nyquist frequency, and SQNR calculations.]]></description>
+</item>
+</channel>
+</rss>

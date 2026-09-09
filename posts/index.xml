@@ -3,7 +3,15 @@
         <title>All Posts - Charuuu..^_^</title>
         <link>https://charuka-dilshan.github.io/posts/</link>
         <description>All Posts | Charuuu..^_^</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 09 Sep 2026 03:30:00 &#43;0530</lastBuildDate><atom:link href="https://charuka-dilshan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 09 Sep 2026 04:00:00 &#43;0530</lastBuildDate><atom:link href="https://charuka-dilshan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Digital Audio &amp; Sound Processing (Lecture 06)</title>
+    <link>https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part06/</link>
+    <pubDate>Wed, 09 Sep 2026 04:00:00 &#43;0530</pubDate>
+    <author>Charuuu..^_^</author>
+    <guid>https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part06/</guid>
+    <description><![CDATA[Comprehensive notes for CO 1224 Digital Audio, detailing analog-to-digital conversion, sampling rates, Nyquist frequency, and SQNR calculations.]]></description>
+</item>
+<item>
     <title>Graphics &amp; Image File Formats (Lecture 04)</title>
     <link>https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part04/</link>
     <pubDate>Wed, 09 Sep 2026 03:30:00 &#43;0530</pubDate>
@@ -74,14 +82,6 @@
     <author>Charuuu..^_^</author>
     <guid>https://charuka-dilshan.github.io/sql_basics_part7/</guid>
     <description><![CDATA[Master MySQL pattern matching using LIKE, wildcards like % and _, string length filtering, and regular expressions (REGEXP).]]></description>
-</item>
-<item>
-    <title>Sorting Data and Working with NULL in MySQL (Lecture 06)</title>
-    <link>https://charuka-dilshan.github.io/sql_basics_part6/</link>
-    <pubDate>Wed, 19 Aug 2026 23:47:00 &#43;0530</pubDate>
-    <author>Charuuu..^_^</author>
-    <guid>https://charuka-dilshan.github.io/sql_basics_part6/</guid>
-    <description><![CDATA[Master sorting SQL query results using ORDER BY (ASC/DESC) and handling missing or unknown data using IS NULL and IS NOT NULL operators.]]></description>
 </item>
 </channel>
 </rss>
