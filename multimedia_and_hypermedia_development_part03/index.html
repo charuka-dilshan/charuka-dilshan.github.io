@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Graphics &amp; Image Data Representation (Lecture 03) - Charuuu..^_^</title><meta name="Description" content="Comprehensive notes for CO 1224 Graphics and Image Data Representation, breaking down pixels, LUTs, quantization artifacts, and image formulas."><meta property="og:url" content="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part03/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="Graphics & Image Data Representation (Lecture 03)">
+	<meta property="og:description" content="Comprehensive notes for CO 1224 Graphics and Image Data Representation, breaking down pixels, LUTs, quantization artifacts, and image formulas.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-09T03:00:00+05:30">
+		<meta property="article:modified_time" content="2026-09-09T03:00:00+05:30">
+		<meta property="article:tag" content="Graphics">
+		<meta property="article:tag" content="CO1224">
+		<meta property="article:tag" content="Computer Science">
+		<meta property="article:tag" content="Raster">
+		<meta property="article:tag" content="Vector">
+		<meta property="article:tag" content="Master Summary">
+		<meta property="og:image" content="https://charuka-dilshan.github.io/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://charuka-dilshan.github.io/logo.png">
+	<meta name="twitter:title" content="Graphics & Image Data Representation (Lecture 03)">
+	<meta name="twitter:description" content="Comprehensive notes for CO 1224 Graphics and Image Data Representation, breaking down pixels, LUTs, quantization artifacts, and image formulas.">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part03/" /><link rel="prev" href="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part02/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Graphics \u0026 Image Data Representation (Lecture 03)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/charuka-dilshan.github.io\/multimedia_and_hypermedia_development_part03\/"
+        },"genre": "posts","keywords": "Graphics, CO1224, Computer Science, Raster, Vector, Master Summary","wordcount":  345 ,
+        "url": "https:\/\/charuka-dilshan.github.io\/multimedia_and_hypermedia_development_part03\/","datePublished": "2026-09-09T03:00:00+05:30","dateModified": "2026-09-09T03:00:00+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "Comprehensive notes for CO 1224 Graphics and Image Data Representation, breaking down pixels, LUTs, quantization artifacts, and image formulas."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Graphics & Image Data Representation (Lecture 03)</h1><h2 class="single-subtitle">An easy-to-study master guide covering digital image fundamentals, sampling, quantization, color depths, and raster vs. vector graphics.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/academic-notes/"><i class="far fa-folder" aria-hidden="true"></i>Academic Notes</a>&nbsp;<a href="/categories/development/"><i class="far fa-folder" aria-hidden="true"></i>Development</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-09-09">2026-09-09</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;345 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-digital-image-fundamentals">1. Digital Image Fundamentals</a></li>
+    <li><a href="#2-sampling-and-spatial-resolution">2. Sampling and Spatial Resolution</a></li>
+    <li><a href="#3-quantization-and-color-depths">3. Quantization and Color Depths</a></li>
+    <li><a href="#4-bitmap-vs-vector-graphics">4. Bitmap vs. Vector Graphics</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master study guide covers <strong>Lecture 03: Graphics and Image Data Representation</strong>, explaining how continuous optical scenes are digitized into numerical data structures for computer processing[cite: 2].</p>
+</blockquote>
+<hr>
+<h2 id="1-digital-image-fundamentals">1. Digital Image Fundamentals</h2>
+<ul>
+<li><strong>Definition:</strong> A digital image is a numeric representation of a two-dimensional image, expressed mathematically as a sampled, quantized function $f(x,y)$[cite: 2].</li>
+<li><strong>Matrix Structure:</strong> In linear algebra terms, $f(x,y)$ functions as a matrix where each row or column acts as a vector[cite: 2].</li>
+<li><strong>Digitization Steps:</strong> Converting an optical image into digital format requires two core operations[cite: 2]:
+<ol>
+<li><strong>Sampling:</strong> Discretizing spatial coordinates $x$ and $y$[cite: 2].</li>
+<li><strong>Quantization:</strong> Assigning integer gray/brightness levels to pixels[cite: 2].</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="2-sampling-and-spatial-resolution">2. Sampling and Spatial Resolution</h2>
+<ul>
+<li><strong>Sampling:</strong> Measures the value of the image function $f(x,y)$ at discrete spatial intervals, where each sample forms a pixel[cite: 2].</li>
+<li><strong>Spatial Resolution:</strong> Defined by the sampling rate and measured in pixels or pixels per inch (PPI)[cite: 2]. Lowering spatial resolution too much introduces blocky artifacts and graininess[cite: 2].</li>
+<li><strong>Core Image Size Formula:</strong>
+$$\text{Image Size} = \text{width} \times \text{height} \times \text{bits per pixel}$$[cite: 2]</li>
+</ul>
+<hr>
+<h2 id="3-quantization-and-color-depths">3. Quantization and Color Depths</h2>
+<ul>
+<li><strong>Quantization:</strong> Replaces continuous brightness values with a discrete set of integers[cite: 2]. Using too few levels causes <strong>false contours</strong> (visible banding) in smooth tonal transitions[cite: 2].</li>
+<li><strong>Bitmap Storage Types:</strong>
+<ul>
+<li><strong>Monochrome:</strong> 1 bit per pixel ($0$ or $1$ for black/white); a $640\times480$ image requires $37.5\text{ KB}$[cite: 2].</li>
+<li><strong>Grayscale:</strong> 8 bits (1 byte) per pixel, yielding 256 gray levels ($300\text{ KB}$)[cite: 2].</li>
+<li><strong>8-Bit Color:</strong> Uses 1 byte per pixel pointing to a <strong>Color Look-Up Table (LUT)</strong> containing 3-byte RGB definitions ($300\text{ KB}$)[cite: 2].</li>
+<li><strong>24-Bit Color:</strong> Uses 3 bytes per pixel (Red, Green, Blue) to support $16,777,216$ colors ($900\text{ KB}$)[cite: 2]. Often stored as 32-bit to include an alpha channel for transparency[cite: 2].</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="4-bitmap-vs-vector-graphics">4. Bitmap vs. Vector Graphics</h2>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left">Feature</th>
+					<th style="text-align: left">Bitmap (Raster) Graphics</th>
+					<th style="text-align: left">Vector Graphics</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left"><strong>Core Structure</strong></td>
+					<td style="text-align: left">A rectangular grid of colored pixels[cite: 2].</td>
+					<td style="text-align: left">Mathematical primitives (lines, curves, arcs, polygons)[cite: 2].</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Primary Use</strong></td>
+					<td style="text-align: left">Digital photographs and continuous-tone images[cite: 2].</td>
+					<td style="text-align: left">Line drawings, logos, and typographies[cite: 2].</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Scalability</strong></td>
+					<td style="text-align: left">Loses quality and becomes pixelated when enlarged.</td>
+					<td style="text-align: left">Infinitely scalable without losing resolution or sharpness[cite: 2].</td>
+			</tr>
+	</tbody>
+</table></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-09-09</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/multimedia_and_hypermedia_development_part03/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part03/" data-title="Graphics &amp; Image Data Representation (Lecture 03)" data-hashtags="Graphics,CO1224,Computer Science,Raster,Vector,Master Summary"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part03/" data-title="Graphics &amp; Image Data Representation (Lecture 03)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part03/" data-hashtag="Graphics"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part03/" data-title="Graphics &amp; Image Data Representation (Lecture 03)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part03/" data-title="Graphics &amp; Image Data Representation (Lecture 03)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part03/" data-title="Graphics &amp; Image Data Representation (Lecture 03)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part03/" data-title="Graphics &amp; Image Data Representation (Lecture 03)" data-description="Comprehensive notes for CO 1224 Graphics and Image Data Representation, breaking down pixels, LUTs, quantization artifacts, and image formulas."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fcharuka-dilshan.github.io%2fmultimedia_and_hypermedia_development_part03%2f&amp;text=Graphics%20%26%20Image%20Data%20Representation%20%28Lecture%2003%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/graphics/">Graphics</a>,&nbsp;<a href="/tags/co1224/">CO1224</a>,&nbsp;<a href="/tags/computer-science/">Computer Science</a>,&nbsp;<a href="/tags/raster/">Raster</a>,&nbsp;<a href="/tags/vector/">Vector</a>,&nbsp;<a href="/tags/master-summary/">Master Summary</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/multimedia_and_hypermedia_development_part02/" class="prev" rel="prev" title="Mastering Multimedia Systems &amp; Signals (Lecture 02)"><i class="fas fa-angle-left" aria-hidden="true"></i>Mastering Multimedia Systems & Signals (Lecture 02)</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/contrib/auto-render.min.js"></script><script src="/lib/katex/contrib/copy-tex.min.js"></script><script src="/lib/katex/contrib/mhchem.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>
