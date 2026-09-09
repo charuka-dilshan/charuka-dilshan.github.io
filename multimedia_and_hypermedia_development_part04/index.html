@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Graphics &amp; Image File Formats (Lecture 04) - Charuuu..^_^</title><meta name="Description" content="Comprehensive notes for CO 1224 Graphics and Image File Formats, detailing compression, color depths, interlacing, and practical use cases."><meta property="og:url" content="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part04/">
+	<meta property="og:site_name" content="Charuuu..^_^">
+	<meta property="og:title" content="Graphics & Image File Formats (Lecture 04)">
+	<meta property="og:description" content="Comprehensive notes for CO 1224 Graphics and Image File Formats, detailing compression, color depths, interlacing, and practical use cases.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-09-09T03:30:00+05:30">
+		<meta property="article:modified_time" content="2026-09-09T03:30:00+05:30">
+		<meta property="article:tag" content="File Formats">
+		<meta property="article:tag" content="CO1224">
+		<meta property="article:tag" content="GIF">
+		<meta property="article:tag" content="JPEG">
+		<meta property="article:tag" content="PNG">
+		<meta property="article:tag" content="TIFF">
+		<meta property="og:image" content="https://charuka-dilshan.github.io/logo.png">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://charuka-dilshan.github.io/logo.png">
+	<meta name="twitter:title" content="Graphics & Image File Formats (Lecture 04)">
+	<meta name="twitter:description" content="Comprehensive notes for CO 1224 Graphics and Image File Formats, detailing compression, color depths, interlacing, and practical use cases.">
+<meta name="application-name" content="My Computer Science Journey">
+<meta name="apple-mobile-web-app-title" content="My Computer Science Journey">
+<meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part04/" /><link rel="prev" href="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part03/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Graphics \u0026 Image File Formats (Lecture 04)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/charuka-dilshan.github.io\/multimedia_and_hypermedia_development_part04\/"
+        },"genre": "posts","keywords": "File Formats, CO1224, GIF, JPEG, PNG, TIFF, Master Summary","wordcount":  351 ,
+        "url": "https:\/\/charuka-dilshan.github.io\/multimedia_and_hypermedia_development_part04\/","datePublished": "2026-09-09T03:30:00+05:30","dateModified": "2026-09-09T03:30:00+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Charuka Dilshan"
+            },"description": "Comprehensive notes for CO 1224 Graphics and Image File Formats, detailing compression, color depths, interlacing, and practical use cases."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script>
+          const query = window.matchMedia('(prefers-color-scheme: dark)');
+          function applyTheme() {
+            let theme = window.localStorage?.getItem('theme') || 'auto';
+            let isDark = theme === 'dark' || (theme === 'auto' && query.matches);
+            document.body.setAttribute('theme', isDark? 'dark' : 'light');
+            document.body.setAttribute('cfg-theme', theme);
+          }
+
+          applyTheme();
+          query.addEventListener('change', applyTheme);
+        </script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Charuuu..^_^">Charuuu.. ^_^&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Graphics & Image File Formats (Lecture 04)</h1><h2 class="single-subtitle">An easy-to-study master guide covering GIF, JPEG, PNG, TIFF, BMP, EXIF, and their compression methods.</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Charuka Dilshan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/academic-notes/"><i class="far fa-folder" aria-hidden="true"></i>Academic Notes</a>&nbsp;<a href="/categories/development/"><i class="far fa-folder" aria-hidden="true"></i>Development</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-09-09">2026-09-09</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;351 words&nbsp;
+                <i class="far fa-clock" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-overview-of-common-image-file-formats">1. Overview of Common Image File Formats</a></li>
+    <li><a href="#2-image-format-comparison-matrix">2. Image Format Comparison Matrix</a></li>
+    <li><a href="#3-practical-rule-of-thumb">3. Practical Rule of Thumb</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p><strong>Academic Note:</strong> This master study guide covers <strong>Lecture 04: Graphics and Image File Formats</strong>, examining how different file standards manage compression, color depth, transparency, and metadata for specific applications[cite: 3].</p>
+</blockquote>
+<hr>
+<h2 id="1-overview-of-common-image-file-formats">1. Overview of Common Image File Formats</h2>
+<ul>
+<li><strong>GIF (Graphics Interchange Format):</strong> Developed by UNISYS and CompuServe for phone-line transmission[cite: 3]. It features 8-bit color (limited to 256 colors), lossless LZW compression, simple frame-based animation, and a four-pass interlacing method for progressive display[cite: 3].</li>
+<li><strong>JPEG (Joint Photographic Experts Group):</strong> The dominant standard for photographic compression[cite: 3]. It leverages a human vision model (exploiting the eye-brain limitation regarding fine detail) to provide adjustable lossy compression without animation or transparency support[cite: 3].</li>
+<li><strong>PNG (Portable Network Graphics):</strong> Designed as a web-ready replacement for GIF[cite: 3]. It supports up to 48-bit color depth, full alpha-channel transparency, 2D interlacing across seven passes, and superior lossless/lossy compression modes[cite: 3].</li>
+<li><strong>TIFF (Tagged Image File Format):</strong> Created by Aldus and Microsoft using a flexible tag-based architecture[cite: 3]. It supports multiple image types (1-bit, grayscale, 8-bit, 24-bit RGB) and flexible compression options including optional JPEG tags[cite: 3].</li>
+<li><strong>BMP (Bitmap / Device Independent Bitmap):</strong> A Windows system standard supporting indexed color up to 8 bits, plus 16, 24, and 32-bit color[cite: 3]. It utilizes Run-Length Encoding (RLE) or uncompressed storage (with 16/32-bit alpha channel images always stored uncompressed)[cite: 3].</li>
+<li><strong>EXIF (Exchangeable Image File):</strong> A digital camera format designed to store rich metadata (exposure, flash, white balance) to aid printer color-correction algorithms, typically embedded within JPEG files[cite: 3].</li>
+</ul>
+<hr>
+<h2 id="2-image-format-comparison-matrix">2. Image Format Comparison Matrix</h2>
+<table>
+	<thead>
+			<tr>
+					<th style="text-align: left">Format</th>
+					<th style="text-align: left">Animation</th>
+					<th style="text-align: left">Transparency</th>
+					<th style="text-align: left">Compression Type</th>
+					<th style="text-align: left">Color Depth</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td style="text-align: left"><strong>GIF</strong></td>
+					<td style="text-align: left">Yes[cite: 3]</td>
+					<td style="text-align: left">Basic[cite: 3]</td>
+					<td style="text-align: left">LZW Lossless[cite: 3]</td>
+					<td style="text-align: left">8-bit (256 colors)[cite: 3]</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>JPEG</strong></td>
+					<td style="text-align: left">No[cite: 3]</td>
+					<td style="text-align: left">No[cite: 3]</td>
+					<td style="text-align: left">Lossy / Adjustable[cite: 3]</td>
+					<td style="text-align: left">24-bit[cite: 3]</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>PNG</strong></td>
+					<td style="text-align: left">No[cite: 3]</td>
+					<td style="text-align: left">Full Alpha[cite: 3]</td>
+					<td style="text-align: left">Lossless / Lossy[cite: 3]</td>
+					<td style="text-align: left">Up to 48-bit[cite: 3]</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>TIFF</strong></td>
+					<td style="text-align: left">No[cite: 3]</td>
+					<td style="text-align: left">Optional[cite: 3]</td>
+					<td style="text-align: left">Flexible (Lossless/JPEG)[cite: 3]</td>
+					<td style="text-align: left">Multiple Types[cite: 3]</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>BMP</strong></td>
+					<td style="text-align: left">No[cite: 3]</td>
+					<td style="text-align: left">No[cite: 3]</td>
+					<td style="text-align: left">None / RLE[cite: 3]</td>
+					<td style="text-align: left">Various (up to 32-bit)[cite: 3]</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 id="3-practical-rule-of-thumb">3. Practical Rule of Thumb</h2>
+<ul>
+<li>Use <strong>JPEG</strong> for photographs[cite: 3].</li>
+<li>Use <strong>PNG</strong> for graphics requiring transparency[cite: 3].</li>
+<li>Use <strong>GIF</strong> for simple animations[cite: 3].</li>
+<li>Use <strong>TIFF</strong> for archival or print-quality images[cite: 3].</li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2026-09-09</span>
+            </div><div id="page-views" class="post-info-mod">
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/multimedia_and_hypermedia_development_part04/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part04/" data-title="Graphics &amp; Image File Formats (Lecture 04)" data-hashtags="File Formats,CO1224,GIF,JPEG,PNG,TIFF,Master Summary"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Threads" data-sharer="threads" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part04/" data-title="Graphics &amp; Image File Formats (Lecture 04)"><i class="fab fa-threads" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part04/" data-hashtag="File Formats"><i class="fab fa-facebook-square" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part04/" data-title="Graphics &amp; Image File Formats (Lecture 04)"><i class="fab fa-hacker-news" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part04/" data-title="Graphics &amp; Image File Formats (Lecture 04)"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part04/" data-title="Graphics &amp; Image File Formats (Lecture 04)"><i class="fab fa-weibo" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Diaspora" data-sharer="diaspora" data-url="https://charuka-dilshan.github.io/multimedia_and_hypermedia_development_part04/" data-title="Graphics &amp; Image File Formats (Lecture 04)" data-description="Comprehensive notes for CO 1224 Graphics and Image File Formats, detailing compression, color depths, interlacing, and practical use cases."><i class="fab fa-diaspora" aria-hidden="true"></i></a><a href="https://t.me/share/url?url=https%3a%2f%2fcharuka-dilshan.github.io%2fmultimedia_and_hypermedia_development_part04%2f&amp;text=Graphics%20%26%20Image%20File%20Formats%20%28Lecture%2004%29" target="_blank" title="Share on Telegram"><i class="fab fa-telegram" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags" aria-hidden="true"></i>&nbsp;<a href="/tags/file-formats/">File Formats</a>,&nbsp;<a href="/tags/co1224/">CO1224</a>,&nbsp;<a href="/tags/gif/">GIF</a>,&nbsp;<a href="/tags/jpeg/">JPEG</a>,&nbsp;<a href="/tags/png/">PNG</a>,&nbsp;<a href="/tags/tiff/">TIFF</a>,&nbsp;<a href="/tags/master-summary/">Master Summary</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/multimedia_and_hypermedia_development_part03/" class="prev" rel="prev" title="Graphics &amp; Image Data Representation (Lecture 03)"><i class="fas fa-angle-left" aria-hidden="true"></i>Graphics & Image Data Representation (Lecture 03)</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.165.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 1.0.0"><i class="far fa-kiss-wink-heart" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright" aria-hidden="true"></i><span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Charuuu..^_^</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up" aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <div id="fixed-buttons-hidden"><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/cookieconsent/cookieconsent.min.js"></script><script>window.config={"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.js"></script></body>
+</html>
