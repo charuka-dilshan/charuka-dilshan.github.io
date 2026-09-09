@@ -10,7 +10,7 @@
 		
 		
 		
-			<lastBuildDate>Wed, 09 Sep 2026 19:58:46 +0530</lastBuildDate>
+			<lastBuildDate>Wed, 09 Sep 2026 20:06:42 +0530</lastBuildDate>
 		
 			<atom:link href="https://charuka-dilshan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
 			<item>
@@ -53,6 +53,41 @@
 				<link>https://charuka-dilshan.github.io/tags/sampling/</link>
 				<pubDate>Wed, 09 Sep 2026 04:00:00 +0530</pubDate>
 				<guid>https://charuka-dilshan.github.io/tags/sampling/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>CMYK</title>
+				<link>https://charuka-dilshan.github.io/tags/cmyk/</link>
+				<pubDate>Wed, 09 Sep 2026 03:45:00 +0530</pubDate>
+				<guid>https://charuka-dilshan.github.io/tags/cmyk/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Color Models</title>
+				<link>https://charuka-dilshan.github.io/tags/color-models/</link>
+				<pubDate>Wed, 09 Sep 2026 03:45:00 +0530</pubDate>
+				<guid>https://charuka-dilshan.github.io/tags/color-models/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>HSB</title>
+				<link>https://charuka-dilshan.github.io/tags/hsb/</link>
+				<pubDate>Wed, 09 Sep 2026 03:45:00 +0530</pubDate>
+				<guid>https://charuka-dilshan.github.io/tags/hsb/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>RGB</title>
+				<link>https://charuka-dilshan.github.io/tags/rgb/</link>
+				<pubDate>Wed, 09 Sep 2026 03:45:00 +0530</pubDate>
+				<guid>https://charuka-dilshan.github.io/tags/rgb/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>YCbCr</title>
+				<link>https://charuka-dilshan.github.io/tags/ycbcr/</link>
+				<pubDate>Wed, 09 Sep 2026 03:45:00 +0530</pubDate>
+				<guid>https://charuka-dilshan.github.io/tags/ycbcr/</guid>
 				<description></description>
 			</item>
 			<item>
